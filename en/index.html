@@ -1,0 +1,2061 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API PandaRemit</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all.js"></script>
+  </head>
+
+  <body class="en en_index" data-languages="[&quot;json&quot;,&quot;shell&quot;,&quot;java&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="json">json</a>
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#version-1-0-0" class="toc-h1 toc-link" data-title="Version 1.0.0">Version 1.0.0</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#keys" class="toc-h2 toc-link" data-title="Keys">Keys</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#remitly-api" class="toc-h1 toc-link" data-title="Remitly API">Remitly API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-list-of-remitly" class="toc-h2 toc-link" data-title="API List of Remitly">API List of Remitly</a>
+                  </li>
+                  <li>
+                    <a href="#create-customer" class="toc-h2 toc-link" data-title="Create customer">Create customer</a>
+                  </li>
+                  <li>
+                    <a href="#update-customer" class="toc-h2 toc-link" data-title="Update customer">Update customer</a>
+                  </li>
+                  <li>
+                    <a href="#get-customer" class="toc-h2 toc-link" data-title="Get customer">Get customer</a>
+                  </li>
+                  <li>
+                    <a href="#create-transaction" class="toc-h2 toc-link" data-title="Create Transaction">Create Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#get-payment" class="toc-h2 toc-link" data-title="Get Payment">Get Payment</a>
+                  </li>
+                  <li>
+                    <a href="#get-transaction" class="toc-h2 toc-link" data-title="Get transaction">Get transaction</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#pandaremit-api" class="toc-h1 toc-link" data-title="PandaRemit API">PandaRemit API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-list-of-pandaremit" class="toc-h2 toc-link" data-title="API List of PandaRemit">API List of PandaRemit</a>
+                  </li>
+                  <li>
+                    <a href="#sync-customer" class="toc-h2 toc-link" data-title="Sync customer">Sync customer</a>
+                  </li>
+                  <li>
+                    <a href="#sync-transaction" class="toc-h2 toc-link" data-title="Sync transaction">Sync transaction</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#reconciliation" class="toc-h1 toc-link" data-title="Reconciliation">Reconciliation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#columns-explanation" class="toc-h2 toc-link" data-title="Columns Explanation">Columns Explanation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#appendix" class="toc-h1 toc-link" data-title="Appendix">Appendix</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-error-codes" class="toc-h2 toc-link" data-title="HTTP Error Codes">HTTP Error Codes</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'>Contact Us</a></li>
+            <li><a href='https://www.pandaremit.com'>Powered by PandaRemit</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='version-1-0-0'>Version 1.0.0</h1><h2 id='introduction'>Introduction</h2>
+<p>Welcome API for PandaRemit!</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='authentication'>Authentication</h2>
+<p>Any Pandaremit Partner that will use the API will be provided with a Merchant Id. This Merchant Id will be used in all the messages sent to API and will be used in the authentication process.</p>
+
+<p>A corresponding “Secret Key” will be assigned for each Merchant Id. The “Secret Key” will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <code>signature</code>.</p>
+
+<aside class="notice">
+You must send <code>signature</code> in every request.
+</aside>
+<h2 id='keys'>Keys</h2>
+<p>Definition of abbreviated values found in the documentation.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>R</td>
+<td>string</td>
+<td>value for this field is required</td>
+</tr>
+<tr>
+<td>O</td>
+<td>string</td>
+<td>value for this field is optional</td>
+</tr>
+<tr>
+<td>C</td>
+<td>string</td>
+<td>The requirement for this field is conditional based on other field values</td>
+</tr>
+</tbody></table>
+<h1 id='remitly-api'>Remitly API</h1><h2 id='api-list-of-remitly'>API List of Remitly</h2>
+<p>There are SIX methods that Remitly provides, they are:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Create customer</td>
+<td>Create a remittance account</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Update customer</td>
+<td>Update the remittance account</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Get customer</td>
+<td>Query remittance account information</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create transaction</td>
+<td>Create the remittance transaction</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Get payment</td>
+<td>Query the payment method of the transaction</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Get transaction</td>
+<td>Query information of the transaction</td>
+</tr>
+</tbody></table>
+<h2 id='create-customer'>Create customer</h2><h3 id='http-request'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/customer/create</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samuel"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"contact-phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+19421779999"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"date-of-birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-09-15"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last-4-ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"zip-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20030"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clifford road"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "attributes": {
+                 "first-name": "Sam", 
+                 "last-name": "Samuel", 
+                 "contact-phone": "+19421779999", 
+                 "date-of-birth": "1989-09-15", 
+                 "last-4-ssn": "1234", 
+                 "address": {
+                     "zip-code": "20030", 
+                     "street": "clifford road", 
+                     "city": "Los Angeles", 
+                     "state": "California"
+                 }
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/first-name</td>
+<td>String</td>
+<td>customer&#39;s firstname</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/last-name</td>
+<td>String</td>
+<td>customer&#39;s lastname</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/contact-phone</td>
+<td>E.64</td>
+<td>contact number for the customer</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/date-of-birth</td>
+<td>ISO8601</td>
+<td>customer&#39;s date of birth</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/last-4-ssn</td>
+<td>Integer</td>
+<td>the last 4 digits of customer&#39;s SSN</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/zip-code</td>
+<td>Integer</td>
+<td>zipcode of residential address</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/street</td>
+<td>String</td>
+<td>residential address</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/city</td>
+<td>String</td>
+<td>city of residence</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/state</td>
+<td>String</td>
+<td>state of residence</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly（If status equals Refused, it can be null）</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>Account Opening Result,Pretreatment results：<br/> Approved：the account has been opened successfully and remittances can be made.<br/> Processing：In the process of auditing<br/> Refused：Refusal to open an account<br/> Waiting replenish：additional materials are required to complete account opening.</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/ address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/ funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+</tr>
+</tbody></table>
+<h2 id='update-customer'>Update customer</h2><h3 id='http-request-2'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/customer/update</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92812"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"contact-phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+19421779999"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8888888"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"itin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6666666"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"zip-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20030"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clifford road"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+            </span><span class="p">},</span><span class="w"> 
+            </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"identity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"file-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drivers_licence"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"issuing-country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GT005"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-28"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"image-base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QEWIJILOOIKKIPPKMJWUIEW……."</span><span class="w">
+                </span><span class="p">},</span><span class="w"> 
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"file-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_statement"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"image-base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QEWIJILOOIKKIPPKMJWUIEW……."</span><span class="w">
+                </span><span class="p">},</span><span class="w"> 
+                </span><span class="s2">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"file-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tax_summary"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"image-base64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QEWIJILOOIKKIPPKMJWUIEW……."</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/update
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "attributes": {
+                 "customer-id": "92812", 
+                 "contact-phone": "+19421779999", 
+                 "ssn": "8888888", 
+                 "itin": "6666666", 
+                 "address": {
+                     "zip-code": "20030", 
+                     "street": "clifford road", 
+                     "city": "Los Angeles", 
+                     "state": "California"
+                 }, 
+                 "document": {
+                     "identity": {
+                         "file-type": "drivers_licence", 
+                         "issuing-country": "USA", 
+                         "number": "GT005", 
+                         "expiry": "2019-12-28", 
+                         "image-base64": "QEWIJILOOIKKIPPKMJWUIEW……."
+                     }, 
+                     "address": {
+                         "file-type": "bank_statement", 
+                         "image-base64": "QEWIJILOOIKKIPPKMJWUIEW……."
+                     }, 
+                     "funding": {
+                         "file-type": "tax_summary", 
+                         "image-base64": "QEWIJILOOIKKIPPKMJWUIEW……."
+                     }
+                 }
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body-2'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>Integer</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>Integer</td>
+<td>customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/contact-phone</td>
+<td>E.64</td>
+<td>contact number for the customer</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/ssn</td>
+<td>String</td>
+<td>full ssn</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/itin</td>
+<td>String</td>
+<td>full itin</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/address/zip-code</td>
+<td>Integer</td>
+<td>zipcode of residential address</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/address/street</td>
+<td>String</td>
+<td>residential address</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/address/city</td>
+<td>String</td>
+<td>city of residence</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/address/state</td>
+<td>String</td>
+<td>state of residence</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/document/identity/file-type</td>
+<td>String</td>
+<td>The type of document the file:<br> ID<br> Drivers_Licence<br> Passport</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/identity/issuing-country</td>
+<td>String</td>
+<td>The code of country is the three letters codes (ISO alpha-3)</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/identity/number</td>
+<td>String</td>
+<td>The document numbe</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/identity/expiry</td>
+<td>ISO8601</td>
+<td>Expiry date as per the document (YYYY-MM-DD)</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/identity/image-base64</td>
+<td>String</td>
+<td>The base64 image string of the document</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/address/file-type</td>
+<td>String</td>
+<td>The type of document the file:<br> Bank_Statement<br> Utility_Bill</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/address/image-base64</td>
+<td>String</td>
+<td>The base64 image string of the document</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/funding/file-type</td>
+<td>String</td>
+<td>The type of document the file:<br> Bank_Statement<br> Pay_Slip<br> Tax_Summary</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/document/funding/image-base64</td>
+<td>String</td>
+<td>The base64 image string of the document</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-2'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly（If status equals Refused, it can be null）</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>Account Opening Result,Pretreatment results：<br> Approved：the account has been opened successfully and remittances can be made.<br> Processing：In the process of auditing<br> Refused：Refusal to open an account<br> Waiting replenish：additional materials are required to complete account opening.</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br> Awaiting upload<br> Awaiting approval<br> Approved<br> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br> True<br> False</td>
+</tr>
+<tr>
+<td>/data/verification/identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br> Awaiting upload<br> Awaiting approval<br> Approved<br> No required</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br> True<br> False</td>
+</tr>
+<tr>
+<td>/data/verification/address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br> Awaiting upload<br> Awaiting approval<br> Approved<br> No required</td>
+</tr>
+<tr>
+<td>/data/verification/address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br> True<br> False</td>
+</tr>
+<tr>
+<td>/data/verification/ funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br> Awaiting upload<br> Awaiting approval<br> Approved<br> No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br> True<br> False</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+</tr>
+</tbody></table>
+<h2 id='get-customer'>Get customer</h2><h3 id='http-request-3'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/customer/get</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/get
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "customer-id": "9999821"
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body-3'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-3'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>Account Opening Result,Pretreatment results：<br>Approved：the account has been opened successfully and remittances can be made.<br>Processing：In the process of auditing<br>Refused：Refusal to open an account<br>Waiting replenish：additional materials are required to complete account opening.</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/ address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/ funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+</tr>
+</tbody></table>
+<h2 id='create-transaction'>Create Transaction</h2><h3 id='http-request-4'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/transaction/create</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100001"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"send-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"send-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"payout-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"payout-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4860.00"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.00"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"debit-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1005.00"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"fx-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.86"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Im sending money to myself"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="s2">"beneficiary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qian"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Li"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4564561436511563136"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/transaction/create
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "attributes": {
+                 "customer-id": "1100001", 
+                 "send-currency": "AUD", 
+                 "send-amount": "1000.00", 
+                 "payout-currency": "CNY", 
+                 "payout-amount": "4860.00", 
+                 "fee": "5.00", 
+                 "debit-amount": "1005.00", 
+                 "fx-rate": "4.86", 
+                 "reason": "Im sending money to myself"
+             }, 
+             "beneficiary": {
+                 "first-name": "Qian", 
+                 "last-name": "Li", 
+                 "account-number": "4564561436511563136"
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body-4'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/send-currency</td>
+<td>String</td>
+<td>The currency of the send amount</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/send-amount</td>
+<td>decimal</td>
+<td>The amount the customer wants to transfer</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/payout-currency</td>
+<td>String</td>
+<td>The currency the beneficiary will receive</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/payout-amount</td>
+<td>decimal</td>
+<td>The amount the beneficiary will receive in CNY</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/fee</td>
+<td>decimal</td>
+<td>Fee charged to the customer for the transaction</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-amount</td>
+<td>decimal</td>
+<td>The amount the customer need to pay</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/fx-rate</td>
+<td>decimal</td>
+<td>The rate offered to the customer</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/reason</td>
+<td>String</td>
+<td>Purpose of the transaction</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/beneficiary/first-name</td>
+<td>String</td>
+<td>first name of the benficiary</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/beneficiary/last-name</td>
+<td>String</td>
+<td>last name of benficiary</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/beneficiary/account-number</td>
+<td>Integer</td>
+<td>Beneficiary bank account number</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-4'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/attributes/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-amount</td>
+<td>decimal</td>
+<td>The amount the customer need to pay</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-status</td>
+<td>String</td>
+<td>The payment status of the transactions：<br>Awaiting funding<br>Funds received<br>Refunded</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>The status of the transactions：<br>Invalid<br>Rejected<br>Pending<br>Holding<br>Reviewing<br>Approved<br>Cancelled</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/beneficiary/account-number</td>
+<td>Integer</td>
+<td>Beneficiary bank account number</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/payment/online/funding-url</td>
+<td>String</td>
+<td>The funding URL link for online payment</td>
+</tr>
+<tr>
+<td>/data/payment/online/effective-time</td>
+<td>Integer</td>
+<td>Effective deadline（UTC）</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-name</td>
+<td>String</td>
+<td>The funding account name for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-number</td>
+<td>String</td>
+<td>The funding account number for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/reference</td>
+<td>String</td>
+<td>The funding reference for bank_transfer only</td>
+</tr>
+</tbody></table>
+<h2 id='get-payment'>Get Payment</h2><h3 id='http-request-5'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/transaction/getpayment</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"transaction-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"938918013411"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/transaction/getpayment
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "customer-id": "9999821", 
+             "transaction-id": "938918013411"
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body-5'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-5'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/payment/online/funding-url</td>
+<td>String</td>
+<td>The funding URL link for online payment</td>
+</tr>
+<tr>
+<td>/data/payment/online/effective-time</td>
+<td>String</td>
+<td>Effective deadline（UTC）</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-name</td>
+<td>String</td>
+<td>The funding account name for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-number</td>
+<td>String</td>
+<td>The funding account number for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/reference</td>
+<td>String</td>
+<td>The funding reference for bank_transfer only</td>
+</tr>
+</tbody></table>
+<h2 id='get-transaction'>Get transaction</h2><h3 id='http-request-6'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/transaction/get</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"transaction-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"938918013411"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/transaction/get
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "customer-id": "9999821", 
+             "transaction-id": "938918013411"
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body-6'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-6'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/attributes/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-amount</td>
+<td>decimal</td>
+<td>The amount the customer need to pay</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-status</td>
+<td>String</td>
+<td>The payment status of the transactions：<br>Awaiting funding<br>Funds received<br>Refunded</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>The status of the transactions：<br>Invalid<br>Rejected<br>Pending<br>Holding<br>Reviewing<br>Approved<br>Cancelled</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/beneficiary/account-number</td>
+<td>Integer</td>
+<td>Beneficiary bank account number</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/verification/funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+</tr>
+<tr>
+<td>/data/payment/online/funding-url</td>
+<td>String</td>
+<td>The funding URL link for online payment</td>
+</tr>
+<tr>
+<td>/data/payment/online/effective-time</td>
+<td>Integer</td>
+<td>Effective deadline（UTC）</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-name</td>
+<td>String</td>
+<td>The funding account name for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/account-number</td>
+<td>String</td>
+<td>The funding account number for bank_transfer only</td>
+</tr>
+<tr>
+<td>/data/payment/bank-transfer/reference</td>
+<td>String</td>
+<td>The funding reference for bank_transfer only</td>
+</tr>
+</tbody></table>
+<h1 id='pandaremit-api'>PandaRemit API</h1><h2 id='api-list-of-pandaremit'>API List of PandaRemit</h2><h3 id='there-are-two-methods-that-pandaremit-provides-they-are'>There are TWO methods that PandaRemit provides, they are:</h3>
+<table><thead>
+<tr>
+<th>Num</th>
+<th>Api</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Sync customer</td>
+<td>Synchronize customer information (status)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sync transaction</td>
+<td>Synchronize transaction status</td>
+</tr>
+</tbody></table>
+<h2 id='sync-customer'>Sync customer</h2><h3 id='http-request-7'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/customer/sync</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waiting replenish"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="s2">"verification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ssn-itin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waiting upload"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w"> 
+            </span><span class="s2">"identity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waiting upload"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.pandaremit.com/partner/customer/sync
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "customer-id": "9999821", 
+             "attributes": {
+                 "status": "Waiting replenish"
+             }, 
+             "verification": {
+                 "ssn-itin": {
+                     "status": "Waiting upload", 
+                     "required": "true"
+                 }, 
+                 "identity": {
+                     "status": "Waiting upload", 
+                     "required": "true"
+                 }
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED"
+     }'</span>
+</code></pre><h3 id='request-body-7'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the customer in pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>Account Opening Result,Pretreatment results：<br>Approved：the account has been opened successfully and remittances can be made.<br>Processing：In the process of auditing<br>Refused：Refusal to open an account<br>Waiting replenish：additional materials are required to complete account opening.</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Waiting upload<br>Waiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>String</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>String</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ address/required</td>
+<td>String</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>String</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-7'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the customer in pandaremit</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/result/code</td>
+<td>String</td>
+<td>Result of sync：<br>Success<br>failure</td>
+</tr>
+<tr>
+<td>/data/result/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+</tbody></table>
+<h2 id='sync-transaction'>Sync transaction</h2><h3 id='http-request-8'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/partner/transaction/sync</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"transaction-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999821"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"debit-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"debit-status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Funds received"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Holding"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="s2">"verification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ssn-itin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waiting upload"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">},</span><span class="w"> 
+            </span><span class="s2">"identity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waiting upload"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.pandaremit.com/partner/transaction/sync
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "customer-id": "9999821", 
+             "transaction-id": "9999821", 
+             "attributes": {
+                 "debit-amount": "1000.00", 
+                 "debit-status": "Funds received", 
+                 "status": "Holding"
+             }, 
+             "verification": {
+                 "ssn-itin": {
+                     "status": "Waiting upload", 
+                     "required": "true"
+                 }, 
+                 "identity": {
+                     "status": "Waiting upload", 
+                     "required": "true"
+                 }
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED"
+     }'</span>
+</code></pre><h3 id='request-body-8'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-amount</td>
+<td>decimal</td>
+<td>The amount the customer need to pay</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/debit-status</td>
+<td>String</td>
+<td>The payment status of the transactions：<br>Awaiting funding<br>Funds received<br>Refunded</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>The status of the transactions：<br>Invalid<br>Rejected<br>Pending<br>Holding<br>Reviewing<br>Approved<br>Cancelled</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br>Awaiting upload<br>Awaiting approval<br>Approved<br>No required</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br>True<br>False</td>
+<td>C</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-8'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>the serial number of the transaction in pandaremit</td>
+</tr>
+<tr>
+<td>/data/customer-id</td>
+<td>String</td>
+<td>The customer&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/transaction-id</td>
+<td>String</td>
+<td>The transaction&#39;s unique identification number in Remitly</td>
+</tr>
+<tr>
+<td>/data/result/code</td>
+<td>String</td>
+<td>Result of sync：<br>Success<br>failure</td>
+</tr>
+<tr>
+<td>/data/result/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+</tbody></table>
+<h1 id='reconciliation'>Reconciliation</h1>
+<p>Pandaremit is using CSV file as reconciliation file, sent over SFTP.
+The SFTP is provided by Pandaremit, and will open a read-only account for partner. The reconciliation file will be stored on the following path: 
+<code>/report/[year]/[month]/[day]/yyyymmdd.csv</code>
+<code>Example, /report/2016/03/01/20160301.csv</code></p>
+
+<p>The file will be created on early T+1 day morning(00:30 AM, Beijing time), and will contains the record that be processed completely on T day.</p>
+<h3 id='columns-explanation'>Columns Explanation</h3>
+<table><thead>
+<tr>
+<th>Column name</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference-id</td>
+<td>Unique identifier of transaction, 12 digits, assigned by Partner</td>
+</tr>
+<tr>
+<td>transaction-id</td>
+<td>Unique identifier of transaction, 12 digits, assigned by Pandaremint</td>
+</tr>
+<tr>
+<td>send-amount</td>
+<td>Amount to be sent, in TranCurr currency</td>
+</tr>
+<tr>
+<td>send-currency</td>
+<td>Transaction currency, this field only supports RMB</td>
+</tr>
+<tr>
+<td>cost-amount</td>
+<td>Cost Amount of Partners</td>
+</tr>
+<tr>
+<td>cost-currency</td>
+<td>Cost Currency of Partners</td>
+</tr>
+<tr>
+<td>fx-rate</td>
+<td>Exchange Rate of Capital Conversion<br>C: present if locked exchange rate pattern <br>OR<br>C: present if unlocked exchange rate pattern and f rcv-status= RECEIVED</td>
+</tr>
+<tr>
+<td>rcv-account</td>
+<td>Beneficiary&#39;s UnionPay Card account number</td>
+</tr>
+<tr>
+<td>rcv-amount</td>
+<td>Amount of receiving remittance funds</td>
+</tr>
+<tr>
+<td>rcv-currency</td>
+<td>Currency of receiving remittance funds, , this field only supports RMB</td>
+</tr>
+<tr>
+<td>rcv-status</td>
+<td>The state of receiving remittance funds<br>RECEIVED<br>FAIL</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>The amount of Channel cost</td>
+</tr>
+<tr>
+<td>fee-currency</td>
+<td>The currency of Channel cost</td>
+</tr>
+<tr>
+<td>send-time</td>
+<td>Instruction creation time</td>
+</tr>
+<tr>
+<td>rcv-time</td>
+<td>Time when the beneficiary receives the remittance</td>
+</tr>
+</tbody></table>
+<h1 id='appendix'>Appendix</h1><h2 id='signature'>Signature</h2>
+<p>The addition of signature in the messages ensures that each received message is authentic and that the content was not altered.
+The signature for API is a hash based message authentication code, specifically HMAC-MD5. The signature is computed using the entire contents of the message and the Pandaremit Partner’s corresponding “Secret Key”.</p>
+
+<p>The procedure to compute the signature is as follows:
+1. Remove the signature field
+2. Sort field records into alphabetical order based on the field/parameter name.
+3. Concatenate the values of each field in the order from #2
+4. Compute the signature as the HMAC-MD5 of the result of #3 and key = “Secret Key”</p>
+
+<p>Example:
+Secret Key - testkey</p>
+
+<p><code>Status request:</code><br>
+&nbsp;&nbsp; MerchantId – 123456780012345<br>
+&nbsp;&nbsp; SearchStartDate – 201304230000<br>
+&nbsp;&nbsp; SearchEndDate – 201304240000<br>
+&nbsp;&nbsp; Signature – (to be computed)</p>
+
+<p><code>Step 1:</code> Remove the signature field<br>
+&nbsp;&nbsp; MerchantId – 123456780012345<br>
+&nbsp;&nbsp; SearchStartDate – 201304230000 S<br>
+&nbsp;&nbsp; earchEndDate – 201304240000<br>
+&nbsp;&nbsp; Signature</p>
+
+<p><code>Step 2:</code> Sort field records into alphabetical order based on the field name.<br>
+&nbsp;&nbsp; MerchantId– 123456780012345<br>
+&nbsp;&nbsp; earchEndDate– 201304240000<br>
+&nbsp;&nbsp; SearchStartDate– 201304230000</p>
+
+<p><code>Step 3:</code> Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000</p>
+
+<p><code>Step 4:</code> Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED</p>
+<h1 id='errors'>Errors</h1><h2 id='http-error-codes'>HTTP Error Codes</h2><h3 id='these-are-error-codes-that-will-be-returned-in-the-header-of-api-responses'>These are error codes that will be returned in the header of API responses</h3>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Generic invalid request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your AuthToken is invalid or expired.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- Requested endpoint without Authentication.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The requested record could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- Attempting to access a method that does not exist.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocessable entity -- The request data is not valid.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="json">json</a>
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
