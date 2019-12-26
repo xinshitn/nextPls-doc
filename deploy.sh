@@ -153,10 +153,12 @@ incremental_deploy() {
 
 commit+push() {
   set_user_id
+  echo "开始commit"
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   disable_expanded_output
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
+  echo "开始push"
   git push --quiet $repo $deploy_branch
   enable_expanded_output
 }
