@@ -16,8 +16,5 @@ jobs:
     - name: Build and test with Rake
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec middleman build --clean
-        ls
         chmod 777 deploy.sh
         ./deploy.sh
