@@ -159,7 +159,7 @@ commit+push() {
   disable_expanded_output
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
   echo "开始push"
-  git push --quiet $repo $deploy_branch
+  git push --quiet "https://github.com/xinshitn/nextPls-doc.git" $deploy_branch
   enable_expanded_output
 }
 
