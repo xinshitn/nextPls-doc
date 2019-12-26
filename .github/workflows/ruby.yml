@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-ruby@master
       with:
         ruby-version: 2.6.x
-    - name: Build and test with Rake
+    - name: Build and Deploy
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
