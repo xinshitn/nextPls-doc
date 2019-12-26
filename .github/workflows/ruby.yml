@@ -17,5 +17,5 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        ls
+        bundle exec middleman build
         sudo bash deploy.sh
