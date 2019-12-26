@@ -66,7 +66,7 @@ parse_args() {
   default_email="230417141@qq.com"
 
   #repository to deploy to. must be readable and writable.
-  repo="https://github.com/xinshitn/"
+  repo="https://github.com/xinshitn/nextPls-doc.git"
 
   #append commit hash to the end of message by default
   append_hash=${GIT_DEPLOY_APPEND_HASH:-true}
