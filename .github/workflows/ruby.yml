@@ -14,7 +14,8 @@ jobs:
       with:
         ruby-version: 2.6.x
     - name: Build and test with Rake
-      env:ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
