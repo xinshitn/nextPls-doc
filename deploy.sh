@@ -152,13 +152,6 @@ incremental_deploy() {
 }
 
 commit+push() {
-  mkdir actions-runner && cd actions-runner
-  curl -O https://githubassets.azureedge.net/runners/2.163.1/actions-runner-linux-x64-2.163.1.tar.gz
-  tar xzf ./actions-runner-linux-x64-2.163.1.tar.gz
-  ./config.sh --url https://github.com/xinshitn/nextPls-doc --token ABL7CVTT5SUUN6PCDXUPBMC6ARYFA
-  ./run.sh
-
-  cd ..
   set_user_id
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
