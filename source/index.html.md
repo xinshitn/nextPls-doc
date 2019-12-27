@@ -13,7 +13,8 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.0 [For English](/en)
+# 接口版本 v1.0.0 
+[For English](/en)
 ## 简介
 
 欢迎选择NextPls! 我们会最大程度地保障您的资金和数据安全。
