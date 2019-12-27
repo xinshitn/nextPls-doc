@@ -97,7 +97,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
      }'
 ```
 
-### <span class="request-body">Request Body</span>
+### Request Body
 Pointer | Type | Description | Required
 --------- | ------- | ------- | -----------
 /data/reference-id | String | customer's unique identification number in Pandaremit | R
@@ -112,7 +112,7 @@ Pointer | Type | Description | Required
 /data/attributes/address/state | String | state of residence | R
 /signature | String | computed signature | R
 
-### <span class="response-body">Response Body</span>
+### Response Body
 Pointer | Type | Description
 --------- | ------- | -----------
 /data/reference-id | String | customer's unique identification number in Pandaremit
