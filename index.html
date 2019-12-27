@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;json&quot;,&quot;shell&quot;,&quot;java&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,19 +210,101 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="json">json</a>
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="java">java</a>
+        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-0-0" class="toc-h1 toc-link" data-title="最新接口版本 v1.0.0">最新接口版本 v1.0.0</a>
+            <a href="#v1-0-0-for-english" class="toc-h1 toc-link" data-title="接口版本 v1.0.0 For English">接口版本 v1.0.0 <a href="/en">For English</a></a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#79cc871ca9" class="toc-h1 toc-link" data-title="开始">开始</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#1f21379869" class="toc-h2 toc-link" data-title="全流程接口">全流程接口</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#keys" class="toc-h2 toc-link" data-title="Keys">Keys</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getcashnetworklist" class="toc-h2 toc-link" data-title="GetCashNetworkList">GetCashNetworkList</a>
+                  </li>
+                  <li>
+                    <a href="#getbanknetworklist" class="toc-h2 toc-link" data-title="GetBankNetworkList">GetBankNetworkList</a>
+                  </li>
+                  <li>
+                    <a href="#getcountrypaymode" class="toc-h2 toc-link" data-title="GetCountryPayMode">GetCountryPayMode</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#b6eaa458d0" class="toc-h1 toc-link" data-title="收汇款人信息">收汇款人信息</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#dobeneficiaryadd" class="toc-h2 toc-link" data-title="DoBeneficiaryAdd">DoBeneficiaryAdd</a>
+                  </li>
+                  <li>
+                    <a href="#dobeneficiaryedit" class="toc-h2 toc-link" data-title="DoBeneficiaryEdit">DoBeneficiaryEdit</a>
+                  </li>
+                  <li>
+                    <a href="#docustomeradd" class="toc-h2 toc-link" data-title="DoCustomerAdd">DoCustomerAdd</a>
+                  </li>
+                  <li>
+                    <a href="#docustomeredit" class="toc-h2 toc-link" data-title="DoCustomerEdit">DoCustomerEdit</a>
+                  </li>
+                  <li>
+                    <a href="#dobeneficiarydel" class="toc-h2 toc-link" data-title="DoBeneficiaryDel">DoBeneficiaryDel</a>
+                  </li>
+                  <li>
+                    <a href="#getbeneficiarylist" class="toc-h2 toc-link" data-title="GetBeneficiaryList">GetBeneficiaryList</a>
+                  </li>
+                  <li>
+                    <a href="#getbeneficiary" class="toc-h2 toc-link" data-title="GetBeneficiary">GetBeneficiary</a>
+                  </li>
+                  <li>
+                    <a href="#getcustomer" class="toc-h2 toc-link" data-title="GetCustomer">GetCustomer</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#dfe799947f" class="toc-h1 toc-link" data-title="交易">交易</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getbalance" class="toc-h2 toc-link" data-title="GetBalance">GetBalance</a>
+                  </li>
+                  <li>
+                    <a href="#getexrate" class="toc-h2 toc-link" data-title="GetExRate">GetExRate</a>
+                  </li>
+                  <li>
+                    <a href="#dotransactionpre" class="toc-h2 toc-link" data-title="DoTransactionPre">DoTransactionPre</a>
+                  </li>
+                  <li>
+                    <a href="#dotransactionadd" class="toc-h2 toc-link" data-title="DoTransactionAdd">DoTransactionAdd</a>
+                  </li>
+                  <li>
+                    <a href="#gettransactionstatus" class="toc-h2 toc-link" data-title="GetTransactionStatus">GetTransactionStatus</a>
+                  </li>
+                  <li>
+                    <a href="#gettransactionlist" class="toc-h2 toc-link" data-title="GetTransactionList">GetTransactionList</a>
+                  </li>
+                  <li>
+                    <a href="#gettransaction" class="toc-h2 toc-link" data-title="GetTransaction">GetTransaction</a>
                   </li>
               </ul>
           </li>
@@ -235,17 +317,322 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='v1-0-0'>最新接口版本 v1.0.0</h1><h2 id='5ea2e0cde2'>简介</h2>
+        <h1 id='v1-0-0-for-english'>接口版本 v1.0.0 <a href="/en">For English</a></h1><h2 id='5ea2e0cde2'>简介</h2>
 <p>欢迎选择NextPls! 我们会最大程度地保障您的资金和数据安全。</p>
 
 <p>我们拥有一支优秀的开发团队。</p>
 
 <p>如果想获取更多信息，可以访问我们的官方网站 <a href="https://www.nextpls.com">NextPls</a> 更多地了解我们。</p>
-<h2 id='1f21379869'>全流程接口</h2>
-<p><a href="/en">点击访问</a></p>
+<h1 id='79cc871ca9'>开始</h1><h2 id='authentication'>Authentication</h2>
+<p>Any Pandaremit Partner that will use the API will be provided with a Merchant Id. This Merchant Id will be used in all the messages sent to API and will be used in the authentication process.</p>
+
+<p>A corresponding “Secret Key” will be assigned for each Merchant Id. The “Secret Key” will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <code>signature</code>.</p>
+
+<aside class="notice">
+You must send <code>signature</code> in every request.
+</aside>
+<h2 id='keys'>Keys</h2>
+<p>在下面的文档中缩写值的定义</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>M</td>
+<td>string</td>
+<td>必填字段</td>
+</tr>
+<tr>
+<td>O</td>
+<td>string</td>
+<td>选填字段</td>
+</tr>
+<tr>
+<td>C</td>
+<td>string</td>
+<td>有前置条件的选填或必填字段</td>
+</tr>
+</tbody></table>
+<h1 id='41654e0268'>基础信息</h1><h2 id='getcashnetworklist'>GetCashNetworkList</h2>
+<p>获取支持现金业务的代理网络列表 </p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/cashnetwork/list</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samuel"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"contact-phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+19421779999"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"date-of-birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-09-15"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last-4-ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"zip-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20030"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clifford road"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"merchant-id:10192012192"</span>
+    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+    -d
+    <span class="s1">'{
+         "data": {
+             "reference-id": "2019829921122331", 
+             "attributes": {
+                 "first-name": "Sam", 
+                 "last-name": "Samuel", 
+                 "contact-phone": "+19421779999", 
+                 "date-of-birth": "1989-09-15", 
+                 "last-4-ssn": "1234", 
+                 "address": {
+                     "zip-code": "20030", 
+                     "street": "clifford road", 
+                     "city": "Los Angeles", 
+                     "state": "California"
+                 }
+             }
+         }, 
+         "signature": "877CA84B66CA50234464F660B0DB51ED "
+     }'</span>
+</code></pre><h3 id='request-body'><span class="request-body">Request Body</span></h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/first-name</td>
+<td>String</td>
+<td>customer&#39;s firstname</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/last-name</td>
+<td>String</td>
+<td>customer&#39;s lastname</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/contact-phone</td>
+<td>E.64</td>
+<td>contact number for the customer</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/date-of-birth</td>
+<td>ISO8601</td>
+<td>customer&#39;s date of birth</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/last-4-ssn</td>
+<td>Integer</td>
+<td>the last 4 digits of customer&#39;s SSN</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/zip-code</td>
+<td>Integer</td>
+<td>zipcode of residential address</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/street</td>
+<td>String</td>
+<td>residential address</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/city</td>
+<td>String</td>
+<td>city of residence</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/data/attributes/address/state</td>
+<td>String</td>
+<td>state of residence</td>
+<td>R</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>computed signature</td>
+<td>R</td>
+</tr>
+</tbody></table>
+<h3 id='response-body'><span class="response-body">Response Body</span></h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/data/reference-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Pandaremit</td>
+</tr>
+<tr>
+<td>/data/attributes/customer-id</td>
+<td>String</td>
+<td>customer&#39;s unique identification number in Remitly（If status equals Refused, it can be null）</td>
+</tr>
+<tr>
+<td>/data/attributes/status</td>
+<td>String</td>
+<td>Account Opening Result,Pretreatment results：<br/> Approved：the account has been opened successfully and remittances can be made.<br/> Processing：In the process of auditing<br/> Refused：Refusal to open an account<br/> Waiting replenish：additional materials are required to complete account opening.</td>
+</tr>
+<tr>
+<td>/data/attributes/message</td>
+<td>String</td>
+<td>Description information of the text</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ssn-itin/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/identity/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ identity/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/ address/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/ address/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/data/verification/ funding/status</td>
+<td>String</td>
+<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
+</tr>
+<tr>
+<td>/data/verification/funding/required</td>
+<td>Boolean</td>
+<td>Pretreatment results：<br/> True<br/> False</td>
+</tr>
+<tr>
+<td>/signature</td>
+<td>String</td>
+<td>Computed signature</td>
+</tr>
+</tbody></table>
+<h2 id='getbanknetworklist'>GetBankNetworkList</h2>
+<p>获取支持银行业务的代理网络列表</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/bankNetwork/list</code></p>
+<h2 id='getcountrypaymode'>GetCountryPayMode</h2>
+<p>获取指定国家支持的支付模式 </p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/countryPayMode</code></p>
+<h1 id='b6eaa458d0'>收汇款人信息</h1><h2 id='dobeneficiaryadd'>DoBeneficiaryAdd</h2>
+<p>添加收款人信息</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/beneficiary/add</code></p>
+<h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
+<p>修改收款人信息</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
+<h2 id='docustomeradd'>DoCustomerAdd</h2>
+<p>添加汇款人信息</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/customer/add</code></p>
+<h2 id='docustomeredit'>DoCustomerEdit</h2>
+<p>修改汇款人信息</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/customer/edit</code></p>
+<h2 id='dobeneficiarydel'>DoBeneficiaryDel</h2>
+<p>删除收款人 </p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/beneficiary/del</code></p>
+<h2 id='getbeneficiarylist'>GetBeneficiaryList</h2>
+<p>获取收款人列表</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/beneficiary/list</code></p>
+<h2 id='getbeneficiary'>GetBeneficiary</h2>
+<p>获取指定收款人信息 </p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/beneficiary</code></p>
+<h2 id='getcustomer'>GetCustomer</h2>
+<p>获取汇款人信息 </p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/customer</code></p>
+<h1 id='dfe799947f'>交易</h1><h2 id='getbalance'>GetBalance</h2>
+<p>获取账户余额 </p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/balance</code></p>
+<h2 id='getexrate'>GetExRate</h2>
+<p>获取汇率 </p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/exRate</code></p>
+<h2 id='dotransactionpre'>DoTransactionPre</h2>
+<p>预创建订单 </p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/transaction/pre</code></p>
+<h2 id='dotransactionadd'>DoTransactionAdd</h2>
+<p>创建订单 </p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/transaction/add</code></p>
+<h2 id='gettransactionstatus'>GetTransactionStatus</h2>
+<p>检查交易状态</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/transaction/status</code></p>
+<h2 id='gettransactionlist'>GetTransactionList</h2>
+<p>获取交易列表</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/transaction/list</code></p>
+<h2 id='gettransaction'>GetTransaction</h2>
+<p>获取指定交易信息 </p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/get/transaction</code></p>
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="json">json</a>
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="java">java</a>
+          </div>
       </div>
     </div>
   </body>
