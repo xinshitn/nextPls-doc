@@ -874,7 +874,34 @@ You must send <code>signature</code> in every request.
 <p>添加汇款人信息</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/customer/add</code></p>
-<h3 id='request-body-6'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-6'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -883,8 +910,153 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/firstName</td>
+<td>String</td>
+<td>汇款人名</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/middleName</td>
+<td>String</td>
+<td>汇款人中名</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/lastName</td>
+<td>String</td>
+<td>汇款人姓</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/telephone</td>
+<td>String</td>
+<td>汇款人手机号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/email</td>
+<td>String</td>
+<td>汇款人邮箱</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address1</td>
+<td>String</td>
+<td>汇款人地址1</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/address2</td>
+<td>String</td>
+<td>汇款人地址2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address3</td>
+<td>String</td>
+<td>汇款人地址3</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idType</td>
+<td>int</td>
+<td>汇款人证件类型</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/idNumber</td>
+<td>String</td>
+<td>汇款人证件号码</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/idDesc</td>
+<td>String</td>
+<td>汇款人描述</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idIssueDate</td>
+<td>String</td>
+<td>汇款人证件生效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idExpDate</td>
+<td>String</td>
+<td>汇款人证件失效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/birthdate</td>
+<td>String</td>
+<td>汇款人生日</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/sex</td>
+<td>String</td>
+<td>汇款人性别</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/nationality</td>
+<td>String</td>
+<td>汇款人国籍</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/accountNumber</td>
+<td>String</td>
+<td>汇款人银行账号</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/sourceIncome</td>
+<td>String</td>
+<td>汇款人收入来源</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-6'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-6'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
