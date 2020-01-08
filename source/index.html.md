@@ -102,16 +102,50 @@ curl -X POST https://open.remitly.com/partner/customer/create
 Pointer | Type | Description | Required
 --------- | ------- | ------- | -----------
 /data/reference-id | String | customer's unique identification number in Pandaremit | R
-/data/attributes/first-name | String | customer's firstname | R
-/data/attributes/last-name | String | customer's lastname | R
-/data/attributes/contact-phone | E.64 | contact number for the customer | R
-/data/attributes/date-of-birth | ISO8601 | customer's date of birth | R
-/data/attributes/last-4-ssn | Integer | the last 4 digits of customer's SSN | R
-/data/attributes/address/zip-code | Integer | zipcode of residential address | R
-/data/attributes/address/street | String | residential address | R
-/data/attributes/address/city | String | city of residence | R
-/data/attributes/address/state | String | state of residence | R
-/signature | String | computed signature | R
+/data/attributes/first-name | String | customer's firstname | M
+/data/attributes/last-name | String | customer's lastname | M
+/data/attributes/contact-phone | E.64 | contact number for the customer | M
+/data/attributes/date-of-birth | ISO8601 | customer's date of birth | M
+/data/attributes/last-4-ssn | Integer | the last 4 digits of customer's SSN | M
+/data/attributes/address/zip-code | Integer | zipcode of residential address | M
+/data/attributes/address/street | String | residential address | M
+/data/attributes/address/city | String | city of residence | M
+/data/attributes/address/state | String | state of residence | M
+/signature | String | computed signature | M
+
+> Response Body:
+
+```json
+{
+    "data": {
+        "reference-id": "2019829921122331", 
+        "attributes": {
+            "customer-id": "", 
+            "status": "", 
+            "message": ""
+        },
+        "verification": {
+            "ssn-itin": {
+                "status": "",
+                "required": ""
+            },
+            "identity": {
+                "status": "",
+                "required": ""
+            },
+            "address": {
+                "status": "",
+                "required": ""
+            },
+            "funding": {
+                "status": "",
+                "required": ""
+            }
+        }
+    }, 
+    "signature": "877CA84B66CA50234464F660B0DB51ED "
+}
+```
 
 ### Response Body
 Pointer | Type | Description
@@ -136,10 +170,26 @@ Pointer | Type | Description
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/bankNetwork/list`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetCountryPayMode
 获取指定国家支持的支付模式 
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/countryPayMode`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 # 收汇款人信息
 ## DoBeneficiaryAdd
@@ -147,40 +197,104 @@ Pointer | Type | Description
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/beneficiary/add`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## DoBeneficiaryEdit
 修改收款人信息
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/beneficiary/edit`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 ## DoCustomerAdd
 添加汇款人信息
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/customer/add`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## DoCustomerEdit
 修改汇款人信息
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/customer/edit`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 ## DoBeneficiaryDel
 删除收款人 
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/beneficiary/del`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetBeneficiaryList
 获取收款人列表
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/beneficiary/list`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 ## GetBeneficiary
 获取指定收款人信息 
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/beneficiary`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetCustomer
 获取汇款人信息 
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/customer`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 # 交易
 ## GetBalance
@@ -188,32 +302,88 @@ Pointer | Type | Description
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/balance`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetExRate
 获取汇率 
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/exRate`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 ## DoTransactionPre
 预创建订单 
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/transaction/pre`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## DoTransactionAdd
 创建订单 
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/transaction/add`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
 
 ## GetTransactionStatus
 检查交易状态
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/transaction/status`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetTransactionList
 获取交易列表
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/transaction/list`
 
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
+
 ## GetTransaction
 获取指定交易信息 
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/transaction`
+
+### Request Body
+Pointer | Type | Description | Required
+--------- | ------- | ------- | ----------
+
+### Response Body
+Pointer | Type | Description
+--------- | ------- | -----------
