@@ -428,64 +428,97 @@ You must send <code>signature</code> in every request.
 <td>/data/attributes/first-name</td>
 <td>String</td>
 <td>customer&#39;s firstname</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/last-name</td>
 <td>String</td>
 <td>customer&#39;s lastname</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/contact-phone</td>
 <td>E.64</td>
 <td>contact number for the customer</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/date-of-birth</td>
 <td>ISO8601</td>
 <td>customer&#39;s date of birth</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/last-4-ssn</td>
 <td>Integer</td>
 <td>the last 4 digits of customer&#39;s SSN</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/address/zip-code</td>
 <td>Integer</td>
 <td>zipcode of residential address</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/address/street</td>
 <td>String</td>
 <td>residential address</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/address/city</td>
 <td>String</td>
 <td>city of residence</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/data/attributes/address/state</td>
 <td>String</td>
 <td>state of residence</td>
-<td>R</td>
+<td>M</td>
 </tr>
 <tr>
 <td>/signature</td>
 <td>String</td>
 <td>computed signature</td>
-<td>R</td>
+<td>M</td>
 </tr>
 </tbody></table>
-<h3 id='response-body'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"verification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ssn-itin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"identity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -563,70 +596,393 @@ You must send <code>signature</code> in every request.
 <p>获取支持银行业务的代理网络列表</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/bankNetwork/list</code></p>
+<h3 id='request-body-2'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-2'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='getcountrypaymode'>GetCountryPayMode</h2>
 <p>获取指定国家支持的支付模式 </p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/countryPayMode</code></p>
+<h3 id='request-body-3'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-3'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h1 id='b6eaa458d0'>收汇款人信息</h1><h2 id='dobeneficiaryadd'>DoBeneficiaryAdd</h2>
 <p>添加收款人信息</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary/add</code></p>
+<h3 id='request-body-4'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-4'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
 <p>修改收款人信息</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
+<h3 id='request-body-5'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-5'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='docustomeradd'>DoCustomerAdd</h2>
 <p>添加汇款人信息</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/customer/add</code></p>
+<h3 id='request-body-6'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-6'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='docustomeredit'>DoCustomerEdit</h2>
 <p>修改汇款人信息</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/customer/edit</code></p>
+<h3 id='request-body-7'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-7'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='dobeneficiarydel'>DoBeneficiaryDel</h2>
 <p>删除收款人 </p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/beneficiary/del</code></p>
+<h3 id='request-body-8'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-8'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='getbeneficiarylist'>GetBeneficiaryList</h2>
 <p>获取收款人列表</p>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary/list</code></p>
+<h3 id='request-body-9'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-9'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='getbeneficiary'>GetBeneficiary</h2>
 <p>获取指定收款人信息 </p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary</code></p>
+<h3 id='request-body-10'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-10'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='getcustomer'>GetCustomer</h2>
 <p>获取汇款人信息 </p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/customer</code></p>
+<h3 id='request-body-11'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-11'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h1 id='dfe799947f'>交易</h1><h2 id='getbalance'>GetBalance</h2>
 <p>获取账户余额 </p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/balance</code></p>
+<h3 id='request-body-12'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-12'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='getexrate'>GetExRate</h2>
 <p>获取汇率 </p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/exRate</code></p>
+<h3 id='request-body-13'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-13'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='dotransactionpre'>DoTransactionPre</h2>
 <p>预创建订单 </p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/pre</code></p>
+<h3 id='request-body-14'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-14'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='dotransactionadd'>DoTransactionAdd</h2>
 <p>创建订单 </p>
 <h3 id='http-request-15'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/add</code></p>
+<h3 id='request-body-15'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-15'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='gettransactionstatus'>GetTransactionStatus</h2>
 <p>检查交易状态</p>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction/status</code></p>
+<h3 id='request-body-16'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-16'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='gettransactionlist'>GetTransactionList</h2>
 <p>获取交易列表</p>
 <h3 id='http-request-17'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction/list</code></p>
+<h3 id='request-body-17'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-17'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='gettransaction'>GetTransaction</h2>
 <p>获取指定交易信息 </p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction</code></p>
+<h3 id='request-body-18'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-body-18'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 
       </div>
       <div class="dark-box">
