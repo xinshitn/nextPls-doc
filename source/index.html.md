@@ -197,9 +197,92 @@ Pointer | Type | Description
 ### HTTP Request
 <span class="http-method post">POST</span> `/get/beneficiary/add`
 
+> Request Body:
+
+```json
+{
+    "apiName": "DO_BENEFICIARY_ADD",
+    "entity": {
+        "firstName": "Beneficiary_First_Name",
+        "middleName": "Beneficiary_Middle_Name",
+        "lastName": "Beneficiary_Last_Name",
+        "telephone": "12345678910",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "birthdate": "01/01/1994",
+        "sex": "M",
+        "nationality": "HKG",
+        "bankCode": "11003544",
+        "bankAccountNumber": "4555556564564",
+        "bankAccountName": "Beneficiary_BankName",
+        "bankAddress": "Beneficiary_BankAddress"
+    }
+}
+```
+
 ### Request Body
 Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+----------------------- | ------- | ------- | ----------
+/apiName | String | 调用接口名称 | M
+/entity/firstName | String | 收款人名 | M
+/entity/middleName | String | 收款人中名 | O
+/entity/lastName | String | 收款人姓 | M
+/entity/telephone | String | 收款人手机号 | M
+/entity/email | String | 收款人邮箱 | O
+/entity/address1 | String | 收款人地址1 | M
+/entity/address2 | String | 收款人地址2 | O
+/entity/address3 | String | 收款人地址3 | O
+/entity/idType | int | 收款人证件类型 | M
+/entity/idNumber | String | 收款人证件号码 | M
+/entity/idDesc | String | 收款人描述 | O
+/entity/idIssueDate | String | 收款人证件生效时间 | O
+/entity/idExpDate | String | 收款人证件失效时间 | O
+/entity/birthdate | String | 收款人生日 | O
+/entity/sex | String | 收款人性别 | O
+/entity/nationality | String | 收款人国籍 | M
+/entity/bankCode | String | 收款人账户银行编号 | M
+/entity/bankAccountNumber | String | 收款人银行账户 | M
+/entity/bankAccountName | String | 收款人账户银行名称 | M
+/entity/bankAddress | String | 收款人账户银行地址 | O
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_BENEFICIARY_ADD_R",
+    "code": "200",
+    "entity": {
+        "firstName": "Beneficiary_First_Name",
+        "middleName": "Beneficiary_Middle_Name",
+        "lastName": "Beneficiary_Last_Name",
+        "telephone": "12345678910",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "birthdate": "01/01/1994",
+        "sex": "M",
+        "nationality": "HKG",
+        "bankCode": "11003544",
+        "bankAccountNumber": "4555556564564",
+        "bankAccountName": "Beneficiary_BankName",
+        "bankAddress": "Beneficiary_BankAddress"
+    },
+    "msg": "success"
+}
+```
 
 ### Response Body
 Pointer | Type | Description
@@ -218,7 +301,7 @@ Pointer | Type | Description | Required
 Pointer | Type | Description
 --------- | ------- | -----------
 
-## DoCustomerAdd
+## DoRemitterAdd
 添加汇款人信息
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/customer/add`
