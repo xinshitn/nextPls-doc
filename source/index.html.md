@@ -306,9 +306,88 @@ Pointer | Type | Description
 ### HTTP Request
 <span class="http-method post">POST</span> `/do/customer/add`
 
+> Request Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_ADD",
+    "entity": {
+        "firstName": "REMITTER_First_Name",
+        "middleName": "REMITTER_Middle_Name",
+        "lastName": "REMITTER_Last_Name",
+        "telephone": "12345678910",
+        "sex": "M",
+        "birthdate": "01/01/1994",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "nationality": "HKG",
+        "accountNumber": "",
+        "sourceIncome": "1"
+    }
+}
+```
+
 ### Request Body
 Pointer | Type | Description | Required
 --------- | ------- | ------- | ----------
+/apiName | String | 调用接口名称 | M
+/entity/firstName | String | 汇款人名 | M
+/entity/middleName | String | 汇款人中名 | O
+/entity/lastName | String | 汇款人姓 | M
+/entity/telephone | String | 汇款人手机号 | M
+/entity/email | String | 汇款人邮箱 | O
+/entity/address1 | String | 汇款人地址1 | M
+/entity/address2 | String | 汇款人地址2 | O
+/entity/address3 | String | 汇款人地址3 | O
+/entity/idType | int | 汇款人证件类型 | M
+/entity/idNumber | String | 汇款人证件号码 | M
+/entity/idDesc | String | 汇款人描述 | O
+/entity/idIssueDate | String | 汇款人证件生效时间 | O
+/entity/idExpDate | String | 汇款人证件失效时间 | O
+/entity/birthdate | String | 汇款人生日 | O
+/entity/sex | String | 汇款人性别 | O
+/entity/nationality | String | 汇款人国籍 | M
+/entity/accountNumber | String | 汇款人银行账号 | O
+/entity/sourceIncome | String | 汇款人收入来源 | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_ADD_R",
+    "code": "200",
+    "entity": {
+        "firstName": "Beneficiary_First_Name",
+        "middleName": "Beneficiary_Middle_Name",
+        "lastName": "Beneficiary_Last_Name",
+        "telephone": "12345678910",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "birthdate": "01/01/1994",
+        "sex": "M",
+        "nationality": "HKG",
+        "bankCode": "11003544",
+        "bankAccountNumber": "4555556564564",
+        "bankAccountName": "Beneficiary_BankName",
+        "bankAddress": "Beneficiary_BankAddress"
+    },
+    "msg": "success"
+}
+```
 
 ### Response Body
 Pointer | Type | Description
