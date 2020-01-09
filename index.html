@@ -266,7 +266,7 @@
                     <a href="#doremitteradd" class="toc-h2 toc-link" data-title="DoRemitterAdd">DoRemitterAdd</a>
                   </li>
                   <li>
-                    <a href="#docustomeredit" class="toc-h2 toc-link" data-title="DoCustomerEdit">DoCustomerEdit</a>
+                    <a href="#doremitteredit" class="toc-h2 toc-link" data-title="DoRemitterEdit">DoRemitterEdit</a>
                   </li>
                   <li>
                     <a href="#dobeneficiarydel" class="toc-h2 toc-link" data-title="DoBeneficiaryDel">DoBeneficiaryDel</a>
@@ -278,7 +278,7 @@
                     <a href="#getbeneficiary" class="toc-h2 toc-link" data-title="GetBeneficiary">GetBeneficiary</a>
                   </li>
                   <li>
-                    <a href="#getcustomer" class="toc-h2 toc-link" data-title="GetCustomer">GetCustomer</a>
+                    <a href="#getremitter" class="toc-h2 toc-link" data-title="GetRemitter">GetRemitter</a>
                   </li>
               </ul>
           </li>
@@ -368,23 +368,7 @@ You must send <code>signature</code> in every request.
 <p>Request Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"first-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"last-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samuel"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"contact-phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+19421779999"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"date-of-birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-09-15"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"last-4-ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"zip-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20030"</span><span class="p">,</span><span class="w"> 
-                </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clifford road"</span><span class="p">,</span><span class="w"> 
-                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w"> 
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
-    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
     -H <span class="s2">"merchant-id:10192012192"</span>
@@ -490,33 +474,7 @@ You must send <code>signature</code> in every request.
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019829921122331"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"customer-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"verification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"ssn-itin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"identity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
-    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877CA84B66CA50234464F660B0DB51ED "</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body'>Response Body</h3>
 <table><thead>
@@ -649,6 +607,7 @@ You must send <code>signature</code> in every request.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
@@ -684,6 +643,12 @@ You must send <code>signature</code> in every request.
 <td>/apiName</td>
 <td>String</td>
 <td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
 <td>M</td>
 </tr>
 <tr>
@@ -815,6 +780,58 @@ You must send <code>signature</code> in every request.
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-4'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Pointer</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
+</tbody></table>
+<h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
+<p>修改收款人信息</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
@@ -835,23 +852,9 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"bankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankName"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-4'>Response Body</h3>
-<table><thead>
-<tr>
-<th>Pointer</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
-<p>修改收款人信息</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
-<h3 id='request-body-5'>Request Body</h3>
+</span></code></pre><h3 id='request-body-5'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -860,8 +863,159 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/firstName</td>
+<td>String</td>
+<td>收款人名</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/middleName</td>
+<td>String</td>
+<td>收款人中名</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/lastName</td>
+<td>String</td>
+<td>收款人姓</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/telephone</td>
+<td>String</td>
+<td>收款人手机号</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/email</td>
+<td>String</td>
+<td>收款人邮箱</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address1</td>
+<td>String</td>
+<td>收款人地址1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address2</td>
+<td>String</td>
+<td>收款人地址2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address3</td>
+<td>String</td>
+<td>收款人地址3</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idType</td>
+<td>int</td>
+<td>收款人证件类型</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idNumber</td>
+<td>String</td>
+<td>收款人证件号码</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idDesc</td>
+<td>String</td>
+<td>收款人描述</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idIssueDate</td>
+<td>String</td>
+<td>收款人证件生效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idExpDate</td>
+<td>String</td>
+<td>收款人证件失效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/birthdate</td>
+<td>String</td>
+<td>收款人生日</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/sex</td>
+<td>String</td>
+<td>收款人性别</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/nationality</td>
+<td>String</td>
+<td>收款人国籍</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/bankCode</td>
+<td>String</td>
+<td>收款人账户银行编号</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/bankAccountNumber</td>
+<td>String</td>
+<td>收款人银行账户</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/bankAccountName</td>
+<td>String</td>
+<td>收款人账户银行名称</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/bankAddress</td>
+<td>String</td>
+<td>收款人账户银行地址</td>
+<td>O</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-5'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-5'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -870,10 +1024,16 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
+
+<p>/apiName | String | 调用接口名称
+/code | String | 返回码
+/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
+/entity/beneficiaryNo | String | NextPls收款人唯一编号
+/msg | String | 返回消息</p>
 <h2 id='doremitteradd'>DoRemitterAdd</h2>
 <p>添加汇款人信息</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/customer/add</code></p>
+<p><span class="http-method post">POST</span> <code>/do/remitter/add</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -881,14 +1041,15 @@ You must send <code>signature</code> in every request.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_First_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Middle_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -914,6 +1075,12 @@ You must send <code>signature</code> in every request.
 <td>/apiName</td>
 <td>String</td>
 <td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1030,29 +1197,11 @@ You must send <code>signature</code> in every request.
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankName"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1064,12 +1213,66 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
-<h2 id='docustomeredit'>DoCustomerEdit</h2>
+<h2 id='doremitteredit'>DoRemitterEdit</h2>
 <p>修改汇款人信息</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/customer/edit</code></p>
-<h3 id='request-body-7'>Request Body</h3>
+<p><span class="http-method post">POST</span> <code>/do/remitter/edit</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-7'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1078,8 +1281,147 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/firstName</td>
+<td>String</td>
+<td>汇款人名</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/middleName</td>
+<td>String</td>
+<td>汇款人中名</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/lastName</td>
+<td>String</td>
+<td>汇款人姓</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/telephone</td>
+<td>String</td>
+<td>汇款人手机号</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/email</td>
+<td>String</td>
+<td>汇款人邮箱</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address1</td>
+<td>String</td>
+<td>汇款人地址1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address2</td>
+<td>String</td>
+<td>汇款人地址2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/address3</td>
+<td>String</td>
+<td>汇款人地址3</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idType</td>
+<td>int</td>
+<td>汇款人证件类型</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idNumber</td>
+<td>String</td>
+<td>汇款人证件号码</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idDesc</td>
+<td>String</td>
+<td>汇款人描述</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idIssueDate</td>
+<td>String</td>
+<td>汇款人证件生效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/idExpDate</td>
+<td>String</td>
+<td>汇款人证件失效时间</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/birthdate</td>
+<td>String</td>
+<td>汇款人生日</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/sex</td>
+<td>String</td>
+<td>汇款人性别</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/nationality</td>
+<td>String</td>
+<td>汇款人国籍</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/accountNumber</td>
+<td>String</td>
+<td>汇款人银行账号</td>
+<td>O</td>
+</tr>
+<tr>
+<td>/entity/sourceIncome</td>
+<td>String</td>
+<td>汇款人收入来源</td>
+<td>O</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-7'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-7'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1087,12 +1429,48 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h2 id='dobeneficiarydel'>DoBeneficiaryDel</h2>
 <p>删除收款人 </p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/beneficiary/del</code></p>
-<h3 id='request-body-8'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_DEL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-8'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1101,8 +1479,39 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/BeneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-8'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_DEL_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-8'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1110,6 +1519,31 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h2 id='getbeneficiarylist'>GetBeneficiaryList</h2>
 <p>获取收款人列表</p>
@@ -1124,6 +1558,12 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
 </tbody></table>
 <h3 id='response-body-9'>Response Body</h3>
 <table><thead>
@@ -1138,7 +1578,18 @@ You must send <code>signature</code> in every request.
 <p>获取指定收款人信息 </p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary</code></p>
-<h3 id='request-body-10'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-10'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1147,8 +1598,58 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/BeneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-10'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-10'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1156,12 +1657,143 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/firstName</td>
+<td>String</td>
+<td>收款人名</td>
+</tr>
+<tr>
+<td>/entity/middleName</td>
+<td>String</td>
+<td>收款人中名</td>
+</tr>
+<tr>
+<td>/entity/lastName</td>
+<td>String</td>
+<td>收款人姓</td>
+</tr>
+<tr>
+<td>/entity/telephone</td>
+<td>String</td>
+<td>收款人手机号</td>
+</tr>
+<tr>
+<td>/entity/email</td>
+<td>String</td>
+<td>收款人邮箱</td>
+</tr>
+<tr>
+<td>/entity/address1</td>
+<td>String</td>
+<td>收款人地址1</td>
+</tr>
+<tr>
+<td>/entity/address2</td>
+<td>String</td>
+<td>收款人地址2</td>
+</tr>
+<tr>
+<td>/entity/address3</td>
+<td>String</td>
+<td>收款人地址3</td>
+</tr>
+<tr>
+<td>/entity/idType</td>
+<td>int</td>
+<td>收款人证件类型</td>
+</tr>
+<tr>
+<td>/entity/idNumber</td>
+<td>String</td>
+<td>收款人证件号码</td>
+</tr>
+<tr>
+<td>/entity/idDesc</td>
+<td>String</td>
+<td>收款人描述</td>
+</tr>
+<tr>
+<td>/entity/idIssueDate</td>
+<td>String</td>
+<td>收款人证件生效时间</td>
+</tr>
+<tr>
+<td>/entity/idExpDate</td>
+<td>String</td>
+<td>收款人证件失效时间</td>
+</tr>
+<tr>
+<td>/entity/birthdate</td>
+<td>String</td>
+<td>收款人生日</td>
+</tr>
+<tr>
+<td>/entity/sex</td>
+<td>String</td>
+<td>收款人性别</td>
+</tr>
+<tr>
+<td>/entity/nationality</td>
+<td>String</td>
+<td>收款人国籍</td>
+</tr>
+<tr>
+<td>/entity/accountNumber</td>
+<td>String</td>
+<td>收款人银行账号</td>
+</tr>
+<tr>
+<td>/entity/sourceIncome</td>
+<td>String</td>
+<td>收款人收入来源</td>
+</tr>
+<tr>
+<td>/entity/creatTime</td>
+<td>String</td>
+<td>收款人创建时间</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
-<h2 id='getcustomer'>GetCustomer</h2>
+<h2 id='getremitter'>GetRemitter</h2>
 <p>获取汇款人信息 </p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/customer</code></p>
-<h3 id='request-body-11'>Request Body</h3>
+<p><span class="http-method post">POST</span> <code>/get/remitter</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-11'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1170,8 +1802,58 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td></td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+<td></td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+<td></td>
+</tr>
 </tbody></table>
-<h3 id='response-body-11'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-11'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1179,6 +1861,126 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/firstName</td>
+<td>String</td>
+<td>汇款人名</td>
+</tr>
+<tr>
+<td>/entity/middleName</td>
+<td>String</td>
+<td>汇款人中名</td>
+</tr>
+<tr>
+<td>/entity/lastName</td>
+<td>String</td>
+<td>汇款人姓</td>
+</tr>
+<tr>
+<td>/entity/telephone</td>
+<td>String</td>
+<td>汇款人手机号</td>
+</tr>
+<tr>
+<td>/entity/email</td>
+<td>String</td>
+<td>汇款人邮箱</td>
+</tr>
+<tr>
+<td>/entity/address1</td>
+<td>String</td>
+<td>汇款人地址1</td>
+</tr>
+<tr>
+<td>/entity/address2</td>
+<td>String</td>
+<td>汇款人地址2</td>
+</tr>
+<tr>
+<td>/entity/address3</td>
+<td>String</td>
+<td>汇款人地址3</td>
+</tr>
+<tr>
+<td>/entity/idType</td>
+<td>int</td>
+<td>汇款人证件类型</td>
+</tr>
+<tr>
+<td>/entity/idNumber</td>
+<td>String</td>
+<td>汇款人证件号码</td>
+</tr>
+<tr>
+<td>/entity/idDesc</td>
+<td>String</td>
+<td>汇款人描述</td>
+</tr>
+<tr>
+<td>/entity/idIssueDate</td>
+<td>String</td>
+<td>汇款人证件生效时间</td>
+</tr>
+<tr>
+<td>/entity/idExpDate</td>
+<td>String</td>
+<td>汇款人证件失效时间</td>
+</tr>
+<tr>
+<td>/entity/birthdate</td>
+<td>String</td>
+<td>汇款人生日</td>
+</tr>
+<tr>
+<td>/entity/sex</td>
+<td>String</td>
+<td>汇款人性别</td>
+</tr>
+<tr>
+<td>/entity/nationality</td>
+<td>String</td>
+<td>汇款人国籍</td>
+</tr>
+<tr>
+<td>/entity/accountNumber</td>
+<td>String</td>
+<td>汇款人银行账号</td>
+</tr>
+<tr>
+<td>/entity/sourceIncome</td>
+<td>String</td>
+<td>汇款人收入来源</td>
+</tr>
+<tr>
+<td>/entity/creatTime</td>
+<td>String</td>
+<td>汇款人创建时间</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h1 id='dfe799947f'>交易</h1><h2 id='getbalance'>GetBalance</h2>
 <p>获取账户余额 </p>
@@ -1230,7 +2032,21 @@ You must send <code>signature</code> in every request.
 <p>预创建订单 </p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/pre</code></p>
-<h3 id='request-body-14'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transferAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-14'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1239,8 +2055,66 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payInCurrency</td>
+<td>String</td>
+<td>存入币种</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payOutCurrency</td>
+<td>String</td>
+<td>到账币种</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/transferCurrency</td>
+<td>String</td>
+<td>结算币种</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/transferAmount</td>
+<td>String</td>
+<td>结算金额</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/paymentMode</td>
+<td>String</td>
+<td>支付方式</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-14'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.580162"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payoutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payoutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658.02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalPayable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110.80"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vatValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.80"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vatPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"recommendAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payoutBranchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1117"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-14'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1248,12 +2122,104 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/exchangeRate</td>
+<td>String</td>
+<td>汇率</td>
+</tr>
+<tr>
+<td>/entity/commission</td>
+<td>String</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>/entity/payInCurrency</td>
+<td>String</td>
+<td>存入币种</td>
+</tr>
+<tr>
+<td>/entity/payoutCurrency</td>
+<td>String</td>
+<td>到账币种</td>
+</tr>
+<tr>
+<td>/entity/payInAmount</td>
+<td>String</td>
+<td>预交金额</td>
+</tr>
+<tr>
+<td>/entity/payoutAmount</td>
+<td>String</td>
+<td>到账金额</td>
+</tr>
+<tr>
+<td>/entity/totalPayable</td>
+<td>String</td>
+<td>应支付金额</td>
+</tr>
+<tr>
+<td>/entity/vatValue</td>
+<td>String</td>
+<td>增值税金额</td>
+</tr>
+<tr>
+<td>/entity/vatPercentage</td>
+<td>String</td>
+<td>增值税税率</td>
+</tr>
+<tr>
+<td>/entity/recommendAgent</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>/entity/payoutBranchCode</td>
+<td>String</td>
+<td>到账银行代码</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h2 id='dotransactionadd'>DoTransactionAdd</h2>
 <p>创建订单 </p>
 <h3 id='http-request-15'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/add</code></p>
-<h3 id='request-body-15'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXN141231"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"settlementCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-15'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1262,8 +2228,105 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payOutCurrency</td>
+<td>String</td>
+<td>到账币种</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payOutCountry</td>
+<td>String</td>
+<td>到账城市</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/relationship</td>
+<td>String</td>
+<td>汇款人与收款人关系</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/paymentMode</td>
+<td>String</td>
+<td>支付方式</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/purposeCode</td>
+<td>String</td>
+<td>转账原因</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payInCountry</td>
+<td>String</td>
+<td>发起转账城市</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/payInCurrency</td>
+<td>String</td>
+<td>发起转账币种</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/settlementCurrency</td>
+<td>String</td>
+<td>结算币种</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-15'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-15'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1271,12 +2334,48 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+</tr>
+<tr>
+<td>/entity/txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h2 id='gettransactionstatus'>GetTransactionStatus</h2>
 <p>检查交易状态</p>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction/status</code></p>
-<h3 id='request-body-16'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-16'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1285,8 +2384,40 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-16'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INIT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-16'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1294,6 +2425,36 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+</tr>
+<tr>
+<td>/entity/txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+</tr>
+<tr>
+<td>/entity/status</td>
+<td>String</td>
+<td>订单状态</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 <h2 id='gettransactionlist'>GetTransactionList</h2>
 <p>获取交易列表</p>
@@ -1322,7 +2483,18 @@ You must send <code>signature</code> in every request.
 <p>获取指定交易信息 </p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction</code></p>
-<h3 id='request-body-18'>Request Body</h3>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-body-18'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1331,8 +2503,51 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+<td>M</td>
+</tr>
+<tr>
+<td>/entity/txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+<td>M</td>
+</tr>
 </tbody></table>
-<h3 id='response-body-18'>Response Body</h3>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXN141231"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"settlementCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-18'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -1340,6 +2555,96 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>/apiName</td>
+<td>String</td>
+<td>调用接口名称</td>
+</tr>
+<tr>
+<td>/code</td>
+<td>String</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>/entity/clientTxnNo</td>
+<td>String</td>
+<td>客户端订单唯一编号</td>
+</tr>
+<tr>
+<td>/entity/txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+</tr>
+<tr>
+<td>/entity/payOutCurrency</td>
+<td>String</td>
+<td>到账币种</td>
+</tr>
+<tr>
+<td>/entity/payOutCountry</td>
+<td>String</td>
+<td>到账城市</td>
+</tr>
+<tr>
+<td>/entity/clientRemitterNo</td>
+<td>String</td>
+<td>客户端汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/remitterNo</td>
+<td>String</td>
+<td>NextPls汇款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/clientBeneficiaryNo</td>
+<td>String</td>
+<td>客户端收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/beneficiaryNo</td>
+<td>String</td>
+<td>NextPls收款人唯一编号</td>
+</tr>
+<tr>
+<td>/entity/relationship</td>
+<td>String</td>
+<td>汇款人与收款人关系</td>
+</tr>
+<tr>
+<td>/entity/paymentMode</td>
+<td>String</td>
+<td>支付方式</td>
+</tr>
+<tr>
+<td>/entity/purposeCode</td>
+<td>String</td>
+<td>转账原因</td>
+</tr>
+<tr>
+<td>/entity/payInCountry</td>
+<td>String</td>
+<td>发起转账城市</td>
+</tr>
+<tr>
+<td>/entity/payInCurrency</td>
+<td>String</td>
+<td>发起转账币种</td>
+</tr>
+<tr>
+<td>/entity/settlementCurrency</td>
+<td>String</td>
+<td>结算币种</td>
+</tr>
+<tr>
+<td>/entity/creatTime</td>
+<td>String</td>
+<td>订单创建时间</td>
+</tr>
+<tr>
+<td>/msg</td>
+<td>String</td>
+<td>返回消息</td>
+</tr>
 </tbody></table>
 
       </div>
