@@ -402,72 +402,6 @@ You must send <code>signature</code> in every request.
 <th>Required</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>/data/reference-id</td>
-<td>String</td>
-<td>customer&#39;s unique identification number in Pandaremit</td>
-<td>R</td>
-</tr>
-<tr>
-<td>/data/attributes/first-name</td>
-<td>String</td>
-<td>customer&#39;s firstname</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/last-name</td>
-<td>String</td>
-<td>customer&#39;s lastname</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/contact-phone</td>
-<td>E.64</td>
-<td>contact number for the customer</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/date-of-birth</td>
-<td>ISO8601</td>
-<td>customer&#39;s date of birth</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/last-4-ssn</td>
-<td>Integer</td>
-<td>the last 4 digits of customer&#39;s SSN</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/address/zip-code</td>
-<td>Integer</td>
-<td>zipcode of residential address</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/address/street</td>
-<td>String</td>
-<td>residential address</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/address/city</td>
-<td>String</td>
-<td>city of residence</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/data/attributes/address/state</td>
-<td>String</td>
-<td>state of residence</td>
-<td>M</td>
-</tr>
-<tr>
-<td>/signature</td>
-<td>String</td>
-<td>computed signature</td>
-<td>M</td>
-</tr>
 </tbody></table>
 
 <blockquote>
@@ -476,7 +410,76 @@ You must send <code>signature</code> in every request.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body'>Response Body</h3>
+</span></code></pre>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>属性值</th>
+        <th>描述</th>  
+    </tr >
+    <tr >
+        <td rowspan="9">type</td>
+        <td>text</td>
+        <td>单行文本输入框</td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>密码输入框</td>
+    </tr>
+    <tr>
+        <td>radio</td>
+        <td>单选按钮</td>
+    </tr>
+    <tr>
+        <td>CheckBox</td>
+        <td>复选按钮</td>
+    </tr>
+    <tr><td>button</td>
+        <td>普通按钮</td>
+    </tr>
+    <tr>
+        <td>submit</td>
+        <td>提交按钮</td>
+    </tr>
+    <tr>
+        <td>reset</td>
+        <td>重置按钮</td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td>图像形式的提交按钮</td>
+    </tr>
+    <tr>
+        <td >file</td>
+        <td>文件域</td>
+    </tr>
+    <tr>
+        <td >name</td>
+        <td>用户自定义</td>
+        <td>控件名称</td>
+    </tr>
+    <tr>
+        <td >value</td>
+        <td >用户自定义</td>
+        <td >默认文本值</td>
+    </tr>
+    <tr>
+        <td >size</td>
+        <td >正整数</td>
+        <td >控件在页面中的显示宽度</td>
+    </tr>
+    <tr>
+        <td >checked</td>
+        <td >checked</td>
+        <td >定义选择控件默认被选中项</td>
+    </tr>
+    <tr>
+        <td >maxlength</td>
+        <td >正整数</td>
+        <td >控件允许输入的最多字符</td>
+    </tr>
+</table>
+<h3 id='response-body'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Pointer</th>
@@ -484,71 +487,6 @@ You must send <code>signature</code> in every request.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>/data/reference-id</td>
-<td>String</td>
-<td>customer&#39;s unique identification number in Pandaremit</td>
-</tr>
-<tr>
-<td>/data/attributes/customer-id</td>
-<td>String</td>
-<td>customer&#39;s unique identification number in Remitly（If status equals Refused, it can be null）</td>
-</tr>
-<tr>
-<td>/data/attributes/status</td>
-<td>String</td>
-<td>Account Opening Result,Pretreatment results：<br/> Approved：the account has been opened successfully and remittances can be made.<br/> Processing：In the process of auditing<br/> Refused：Refusal to open an account<br/> Waiting replenish：additional materials are required to complete account opening.</td>
-</tr>
-<tr>
-<td>/data/attributes/message</td>
-<td>String</td>
-<td>Description information of the text</td>
-</tr>
-<tr>
-<td>/data/verification/ssn-itin/status</td>
-<td>String</td>
-<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
-</tr>
-<tr>
-<td>/data/verification/ssn-itin/required</td>
-<td>Boolean</td>
-<td>Pretreatment results：<br/> True<br/> False</td>
-</tr>
-<tr>
-<td>/data/verification/identity/status</td>
-<td>String</td>
-<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
-</tr>
-<tr>
-<td>/data/verification/ identity/required</td>
-<td>Boolean</td>
-<td>Pretreatment results：<br/> True<br/> False</td>
-</tr>
-<tr>
-<td>/data/verification/ address/status</td>
-<td>String</td>
-<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
-</tr>
-<tr>
-<td>/data/verification/ address/required</td>
-<td>Boolean</td>
-<td>Pretreatment results：<br/> True<br/> False</td>
-</tr>
-<tr>
-<td>/data/verification/ funding/status</td>
-<td>String</td>
-<td>Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required</td>
-</tr>
-<tr>
-<td>/data/verification/funding/required</td>
-<td>Boolean</td>
-<td>Pretreatment results：<br/> True<br/> False</td>
-</tr>
-<tr>
-<td>/signature</td>
-<td>String</td>
-<td>Computed signature</td>
-</tr>
 </tbody></table>
 <h2 id='getbanknetworklist'>GetBankNetworkList</h2>
 <p>获取支持银行业务的代理网络列表</p>
@@ -2537,7 +2475,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122145"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
