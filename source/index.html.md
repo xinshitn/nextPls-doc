@@ -85,17 +85,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Pointer | Type | Description | Required
 --------- | ------- | ------- | -----------
-/data/reference-id | String | customer's unique identification number in Pandaremit | R
-/data/attributes/first-name | String | customer's firstname | M
-/data/attributes/last-name | String | customer's lastname | M
-/data/attributes/contact-phone | E.64 | contact number for the customer | M
-/data/attributes/date-of-birth | ISO8601 | customer's date of birth | M
-/data/attributes/last-4-ssn | Integer | the last 4 digits of customer's SSN | M
-/data/attributes/address/zip-code | Integer | zipcode of residential address | M
-/data/attributes/address/street | String | residential address | M
-/data/attributes/address/city | String | city of residence | M
-/data/attributes/address/state | String | state of residence | M
-/signature | String | computed signature | M
+
 
 > Response Body:
 
@@ -105,23 +95,78 @@ Pointer | Type | Description | Required
 }
 ```
 
+<table>
+	<tr>
+	    <th>属性</th>
+	    <th>属性值</th>
+	    <th>描述</th>  
+	</tr >
+	<tr >
+	    <td rowspan="9">type</td>
+	    <td>text</td>
+	    <td>单行文本输入框</td>
+	</tr>
+	<tr>
+	    <td>password</td>
+	    <td>密码输入框</td>
+	</tr>
+	<tr>
+	    <td>radio</td>
+	    <td>单选按钮</td>
+	</tr>
+	<tr>
+	    <td>CheckBox</td>
+	    <td>复选按钮</td>
+	</tr>
+	<tr><td>button</td>
+	    <td>普通按钮</td>
+	</tr>
+	<tr>
+	    <td>submit</td>
+	    <td>提交按钮</td>
+	</tr>
+	<tr>
+	    <td>reset</td>
+	    <td>重置按钮</td>
+	</tr>
+	<tr>
+	    <td>image</td>
+	    <td>图像形式的提交按钮</td>
+	</tr>
+	<tr>
+	    <td >file</td>
+	    <td>文件域</td>
+	</tr>
+	<tr>
+	    <td >name</td>
+	    <td>用户自定义</td>
+	    <td>控件名称</td>
+	</tr>
+	<tr>
+	    <td >value</td>
+	    <td >用户自定义</td>
+	    <td >默认文本值</td>
+	</tr>
+	<tr>
+	    <td >size</td>
+	    <td >正整数</td>
+	    <td >控件在页面中的显示宽度</td>
+	</tr>
+	<tr>
+	    <td >checked</td>
+	    <td >checked</td>
+	    <td >定义选择控件默认被选中项</td>
+	</tr>
+	<tr>
+	    <td >maxlength</td>
+	    <td >正整数</td>
+	    <td >控件允许输入的最多字符</td>
+	</tr>
+</table>
+
 ### Response Body
 Pointer | Type | Description
 --------- | ------- | -----------
-/data/reference-id | String | customer's unique identification number in Pandaremit
-/data/attributes/customer-id | String | customer's unique identification number in Remitly（If status equals Refused, it can be null）
-/data/attributes/status | String | Account Opening Result,Pretreatment results：<br/> Approved：the account has been opened successfully and remittances can be made.<br/> Processing：In the process of auditing<br/> Refused：Refusal to open an account<br/> Waiting replenish：additional materials are required to complete account opening.
-/data/attributes/message | String | Description information of the text
-/data/verification/ssn-itin/status | String | Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required
-/data/verification/ssn-itin/required | Boolean | Pretreatment results：<br/> True<br/> False
-/data/verification/identity/status | String | Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required
-/data/verification/ identity/required | Boolean | Pretreatment results：<br/> True<br/> False
-/data/verification/ address/status | String | Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required
-/data/verification/ address/required | Boolean | Pretreatment results：<br/> True<br/> False
-/data/verification/ funding/status | String | Pretreatment results：<br/> Awaiting upload<br/> Awaiting approval<br/> Approved<br/> No required
-/data/verification/funding/required | Boolean | Pretreatment results：<br/> True<br/> False
-/signature | String | Computed signature
-
 
 ## GetBankNetworkList
 获取支持银行业务的代理网络列表
@@ -988,7 +1033,7 @@ Pointer | Type | Description | Required
         "clientRemitterNo": "RE1233112",
         "remitterNo": "RP122141",
         "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122141",
+        "beneficiaryNo": "RP122145",
         "relationship": "Friend",
         "paymentMode": "BANK",
         "purposeCode": "3",
