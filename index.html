@@ -232,7 +232,7 @@
             <a href="#79cc871ca9" class="toc-h1 toc-link" data-title="开始">开始</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                    <a href="#cryptography-in-nextpls-api-nextpls-api" class="toc-h2 toc-link" data-title="Cryptography in NextPls API(NextPls API的加密方式)">Cryptography in NextPls API(NextPls API的加密方式)</a>
                   </li>
                   <li>
                     <a href="#keys" class="toc-h2 toc-link" data-title="Keys">Keys</a>
@@ -242,12 +242,6 @@
           <li>
             <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#getcashnetworklist" class="toc-h2 toc-link" data-title="GetCashNetworkList">GetCashNetworkList</a>
-                  </li>
-                  <li>
-                    <a href="#getbanknetworklist" class="toc-h2 toc-link" data-title="GetBankNetworkList">GetBankNetworkList</a>
-                  </li>
                   <li>
                     <a href="#getcountrypaymode" class="toc-h2 toc-link" data-title="GetCountryPayMode">GetCountryPayMode</a>
                   </li>
@@ -325,15 +319,94 @@
 <p>我们拥有一支优秀的开发团队。</p>
 
 <p>如果想获取更多信息，可以访问我们的官方网站 <a href="https://www.nextpls.com">NextPls</a> 更多地了解我们。</p>
-<h1 id='79cc871ca9'>开始</h1><h2 id='authentication'>Authentication</h2>
-<p>Any Pandaremit Partner that will use the API will be provided with a Merchant Id. This Merchant Id will be used in all the messages sent to API and will be used in the authentication process.</p>
+<h1 id='79cc871ca9'>开始</h1><h2 id='cryptography-in-nextpls-api-nextpls-api'>Cryptography in NextPls API(NextPls API的加密方式)</h2><h3 id='request'>Request</h3><h4 id='generating-a-cek-cek'>Generating a CEK(生成一个CEK)</h4>
+<p>All request body should be encrypted with RSA algorithm before sending to the NextPls server.So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.
+(消息在发送到NextPls之前，所有的请求体都应该使用加密算法对请求体进行加密。因此，我们需要一个CEK(内容加密密钥),该密钥将被加密后放在请求头的Content-Code的字段中发送到NextPls服务器。</p>
 
-<p>A corresponding “Secret Key” will be assigned for each Merchant Id. The “Secret Key” will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <code>signature</code>.</p>
+<p>我们希望一个CEK由两个16位字符串拼接而成(16位的初始向量ivParameter和16位的AES密钥sKey)</p>
+<h5 id='30fd4ed55b'>示例</h5>
+<table><thead>
+<tr>
+<th>item</th>
+<th>ASCII_string</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sKey</td>
+<td>cek_tester_remit</td>
+</tr>
+<tr>
+<td>ivParameter</td>
+<td>initial_tester01</td>
+</tr>
+<tr>
+<td>CEK</td>
+<td>cek_tester_remitinitial_tester01</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
-You must send <code>signature</code> in every request.
+CEK不必为有特殊含义的字符串
 </aside>
-<h2 id='keys'>Keys</h2>
+  
+<h4 id='encrypting-body-part-with-the-cek-cek'>Encrypting body part with the CEK(利用CEK对方法体进行加密)</h4>
+<p>在对方法体进行加密时，应使用AES/CBC/PKCS5Padding算法对方法体进行加密，之后应使用BASE64对结果进行转码。</p>
+<h5 id='30fd4ed55b-2'>示例</h5>
+<p>下面的Java代码展示了如何使用AES/CBC/PKCS5Padding算法生成加密体的示例
+<code>
+    Cipher cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);
+    byte[] raw = sKey.getBytes();
+    SecretKeySpec skeySpec = new SecretKeySpec(raw, &quot;AES&quot;);
+    IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());
+    cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+    byte[] encrypted = cipher.doFinal(body.getBytes(&quot;UTF-8&quot;));
+    String encryptedBody = Base64.getEncoder().encodeToString(encrypted);
+</code></p>
+<h4 id='encrypting-cek-with-nextpls-public-key-nextpls-cek'>Encrypting CEK with NextPls public key(利用NextPls公钥对CEK进行加密)</h4>
+<p>想要请求API调用的代理方必须将加密后的CEK放在请求头之中。应使用RSA加密算法对CEK进行加密，所有的代理方都会获得由NextPls提供的一个用于CEK加密的公钥。</p>
+<h5 id='30fd4ed55b-3'>示例</h5>
+<p>下面的Java代码展示了如何使用RSA加密算法对CEK进行加密
+<code>
+    Cipher cipher = Cipher.getInstance(&quot;RSA&quot;);
+    cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+    byte[] sbt = source.getBytes(ENCODING);
+    byte[] epByte = cipher.doFinal(sbt);
+    String encryptedCEK = Base64.getEncoder().encodeToString(epByte);
+</code></p>
+<h4 id='generating-signature'>Generating signature(生成签名)</h4>
+<p>想要请求API调用的代理方还必须在请求头中附加签名值。签名值用于认证请求是否来自于代理方。</p>
+
+<p>签名为对方法体加密结果进行加密，签名算法为SHA256withRSA，之后仍需使用BASE64对结果进行转码。结果放在请求头的Signature的字段中。</p>
+<h5 id='30fd4ed55b-4'>示例</h5>
+<p>下面的Java代码展示了如何使用签名如何生成
+<code>
+    byte[] signed = signSHA256withRSA(encryptedBody);
+    String signBase64 = Base64.getEncoder().encodeToString(signed);
+    String signature = StringUtils.deleteWhitespace(signBase64);
+</code></p>
+<h4 id='generating-request-header-and-body'>Generating request header and body(生成请求头和请求体)</h4>
+<p>使用加密的CEK、加密的方法体和签名便可组成一个完整的请求</p>
+<h5 id='30fd4ed55b-5'>示例</h5>
+<blockquote>
+<p>Header</p>
+
+<blockquote>
+<p>Accept:application/base64
+Authorization:AU1234567
+Content-Code:dpcnD2YnJpCr0EIUNkz5so9rsBloBJRk/ie/awlgOV8ECoob3yB9QoAtP7LQNtOmziQOrFXueD0B62gc2f+AqCOs5D66sWQjlCWnjyqOkFjfow93CtYvGwpuoiqNArk39qvbe3lTo2g3qalg5YEe0Reohf2yHFbsYrwtgvBWQUI=
+Signature:CiELHoMm9ab9FduNLWQZ15OI4O+ms8xGjJBEMyRsLRvi9cQI0QctIajwnejCrri7q0ep2zf6Fqn9DIWpF2vgsAHK3SWr2SkykxY2Sheisv1hjpxOVYgnLDcI/0KXTFSjHQWQ+JG6d8VvwrAErqY0jk9pafUj1SfxrHpUzEUWDGQ=</p>
+</blockquote>
+
+<p>Body
+Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0Rja/2H87VLLmsQx7Bkbe0yah8ALIaCabwY30aG/FPsjY4Y7OhujaEAzOVRUrV21iYDL5nUg=</p>
+</blockquote>
+<h3 id='response'>Response</h3><h4 id='verifying-signature'>Verifying signature(验证签名)</h4>
+<p>为了验证NextPls服务器的真实性，代理方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验</p>
+<h5 id='30fd4ed55b-6'>示例</h5><pre class="highlight plaintext"><code>    Signature signetcheck = Signature.getInstance(SIGNATURE_ALGORITHM);
+    signetcheck.initVerify(getPublicKey());
+    signetcheck.update(data.getBytes(ENCODING));
+    boolean result = signetcheck.verify(Base64.getDecoder().decode(sign));
+</code></pre><h4 id='deriving-cek'>Deriving CEK</h4><h4 id='decrypting-body-part-with-cek'>Decrypting body part with CEK</h4><h2 id='keys'>Keys</h2>
 <p>在下面的文档中缩写值的定义</p>
 
 <table><thead>
@@ -359,98 +432,11 @@ You must send <code>signature</code> in every request.
 <td>有前置条件的选填或必填字段</td>
 </tr>
 </tbody></table>
-<h1 id='41654e0268'>基础信息</h1><h2 id='getcashnetworklist'>GetCashNetworkList</h2>
-<p>获取支持现金业务的代理网络列表 </p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/cashnetwork/list</code></p>
-
-<blockquote>
-<p>Request Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
-    -H <span class="s2">"merchant-id:10192012192"</span>
-    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
-    -d
-    <span class="s1">'{
-         "data": {
-             "reference-id": "2019829921122331", 
-             "attributes": {
-                 "first-name": "Sam", 
-                 "last-name": "Samuel", 
-                 "contact-phone": "+19421779999", 
-                 "date-of-birth": "1989-09-15", 
-                 "last-4-ssn": "1234", 
-                 "address": {
-                     "zip-code": "20030", 
-                     "street": "clifford road", 
-                     "city": "Los Angeles", 
-                     "state": "California"
-                 }
-             }
-         }, 
-         "signature": "877CA84B66CA50234464F660B0DB51ED "
-     }'</span>
-</code></pre><h3 id='request-body'>Request Body</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th></th>
-<th>类型</th>
-<th>描述</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<blockquote>
-<p>Response Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body'>Response Body</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th></th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h2 id='getbanknetworklist'>GetBankNetworkList</h2>
-<p>获取支持银行业务的代理网络列表</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/bankNetwork/list</code></p>
-<h3 id='request-body-2'>Request Body</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th></th>
-<th>类型</th>
-<th>描述</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='response-body-2'>Response Body</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th></th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h2 id='getcountrypaymode'>GetCountryPayMode</h2>
+<h1 id='41654e0268'>基础信息</h1><h2 id='getcountrypaymode'>GetCountryPayMode</h2>
 <p>获取指定国家支持的支付模式 </p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/countryPayMode</code></p>
-<h3 id='request-body-3'>Request Body</h3>
+<h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -461,7 +447,7 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='response-body-3'>Response Body</h3>
+<h3 id='response-body'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -473,7 +459,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h1 id='b6eaa458d0'>收汇款人信息</h1><h2 id='dobeneficiaryadd'>DoBeneficiaryAdd</h2>
 <p>添加收款人信息</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary/add</code></p>
 
 <blockquote>
@@ -505,7 +491,39 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-4'>Request Body</h3>
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H ”Authorization:“
+    -H <span class="s2">"Signature:"</span>
+    -H <span class="s2">"Content-Code:"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "DO_BENEFICIARY_ADD",
+             "entity": {
+                 "clientRemitterNo": "BE1231211",
+                 "firstName": "Beneficiary_First_Name",
+                 "middleName": "Beneficiary_Middle_Name",
+                 "lastName": "Beneficiary_Last_Name",
+                 "telephone": "12345678910",
+                 "email": "nextPls@nextPls.com",
+                 "address1": "Philippines",
+                 "address2": "",
+                 "address3": "",
+                 "idType": "0",
+                 "idNumber": "PS256454165",
+                 "idDesc": "",
+                 "idIssueDate": "01/01/1994",
+                 "idExpDate": "01/01/1994",
+                 "birthdate": "01/01/1994",
+                 "sex": "M",
+                 "nationality": "HKG",
+                 "bankCode": "11003544",
+                 "bankAccountNumber": "4555556564564",
+                 "bankAccountName": "Beneficiary_BankName",
+                 "bankAddress": "Beneficiary_BankAddress"
+             }
+     }'</span>
+</code></pre><h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -690,7 +708,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-4'>Response Body</h3>
+</span></code></pre><h3 id='response-body-2'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -738,7 +756,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
 <p>修改收款人信息</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
 
 <blockquote>
@@ -771,7 +789,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-5'>Request Body</h3>
+</span></code></pre><h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -963,7 +981,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-5'>Response Body</h3>
+</span></code></pre><h3 id='response-body-3'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1011,7 +1029,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='doremitteradd'>DoRemitterAdd</h2>
 <p>添加汇款人信息</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/remitter/add</code></p>
 
 <blockquote>
@@ -1041,7 +1059,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-6'>Request Body</h3>
+</span></code></pre><h3 id='request-body-4'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1212,7 +1230,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-6'>Response Body</h3>
+</span></code></pre><h3 id='response-body-4'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1260,7 +1278,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='doremitteredit'>DoRemitterEdit</h2>
 <p>修改汇款人信息</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/remitter/edit</code></p>
 
 <blockquote>
@@ -1291,7 +1309,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-7'>Request Body</h3>
+</span></code></pre><h3 id='request-body-5'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1469,7 +1487,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-7'>Response Body</h3>
+</span></code></pre><h3 id='response-body-5'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1517,7 +1535,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='dobeneficiarydel'>DoBeneficiaryDel</h2>
 <p>删除收款人 </p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/beneficiary/del</code></p>
 
 <blockquote>
@@ -1530,7 +1548,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-8'>Request Body</h3>
+</span></code></pre><h3 id='request-body-6'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1582,7 +1600,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-8'>Response Body</h3>
+</span></code></pre><h3 id='response-body-6'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1630,9 +1648,9 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='getbeneficiarylist'>GetBeneficiaryList</h2>
 <p>获取收款人列表</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary/list</code></p>
-<h3 id='request-body-9'>Request Body</h3>
+<h3 id='request-body-7'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1643,7 +1661,7 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='response-body-9'>Response Body</h3>
+<h3 id='response-body-7'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1655,7 +1673,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='getbeneficiary'>GetBeneficiary</h2>
 <p>获取指定收款人信息 </p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/beneficiary</code></p>
 
 <blockquote>
@@ -1668,7 +1686,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-10'>Request Body</h3>
+</span></code></pre><h3 id='request-body-8'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1739,7 +1757,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-10'>Response Body</h3>
+</span></code></pre><h3 id='response-body-8'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1901,7 +1919,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='getremitter'>GetRemitter</h2>
 <p>获取汇款人信息 </p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/remitter</code></p>
 
 <blockquote>
@@ -1914,7 +1932,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-11'>Request Body</h3>
+</span></code></pre><h3 id='request-body-9'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1985,7 +2003,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-11'>Response Body</h3>
+</span></code></pre><h3 id='response-body-9'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2147,9 +2165,9 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h1 id='dfe799947f'>交易</h1><h2 id='getbalance'>GetBalance</h2>
 <p>获取账户余额 </p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/balance</code></p>
-<h3 id='request-body-12'>Request Body</h3>
+<h3 id='request-body-10'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2160,7 +2178,7 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='response-body-12'>Response Body</h3>
+<h3 id='response-body-10'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2172,9 +2190,9 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='getexrate'>GetExRate</h2>
 <p>获取汇率 </p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/exRate</code></p>
-<h3 id='request-body-13'>Request Body</h3>
+<h3 id='request-body-11'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2185,7 +2203,7 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='response-body-13'>Response Body</h3>
+<h3 id='response-body-11'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2197,7 +2215,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='dotransactionpre'>DoTransactionPre</h2>
 <p>预创建订单 </p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/pre</code></p>
 
 <blockquote>
@@ -2213,7 +2231,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-14'>Request Body</h3>
+</span></code></pre><h3 id='request-body-12'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2295,7 +2313,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-14'>Response Body</h3>
+</span></code></pre><h3 id='response-body-12'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2397,7 +2415,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='dotransactionadd'>DoTransactionAdd</h2>
 <p>创建订单 </p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/do/transaction/add</code></p>
 
 <blockquote>
@@ -2421,7 +2439,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"settlementCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-15'>Request Body</h3>
+</span></code></pre><h3 id='request-body-13'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2550,7 +2568,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-15'>Response Body</h3>
+</span></code></pre><h3 id='response-body-13'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2598,7 +2616,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='gettransactionstatus'>GetTransactionStatus</h2>
 <p>检查交易状态</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction/status</code></p>
 
 <blockquote>
@@ -2611,7 +2629,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-16'>Request Body</h3>
+</span></code></pre><h3 id='request-body-14'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2664,7 +2682,7 @@ You must send <code>signature</code> in every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-16'>Response Body</h3>
+</span></code></pre><h3 id='response-body-14'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2718,9 +2736,9 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='gettransactionlist'>GetTransactionList</h2>
 <p>获取交易列表</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction/list</code></p>
-<h3 id='request-body-17'>Request Body</h3>
+<h3 id='request-body-15'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2731,7 +2749,7 @@ You must send <code>signature</code> in every request.
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='response-body-17'>Response Body</h3>
+<h3 id='response-body-15'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2742,7 +2760,7 @@ You must send <code>signature</code> in every request.
 </tbody></table>
 <h2 id='gettransaction'>GetTransaction</h2>
 <p>获取指定交易信息 </p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>/get/transaction</code></p>
 
 <blockquote>
@@ -2755,7 +2773,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-body-18'>Request Body</h3>
+</span></code></pre><h3 id='request-body-16'>Request Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2819,7 +2837,7 @@ You must send <code>signature</code> in every request.
         </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-18'>Response Body</h3>
+</span></code></pre><h3 id='response-body-16'>Response Body</h3>
 <table><thead>
 <tr>
 <th>参数</th>
