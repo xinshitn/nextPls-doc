@@ -83,8 +83,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | -----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 
 > Response Body:
@@ -95,78 +95,9 @@ Pointer | Type | Description | Required
 }
 ```
 
-<table>
-	<tr>
-	    <th>属性</th>
-	    <th>属性值</th>
-	    <th>描述</th>  
-	</tr >
-	<tr >
-	    <td rowspan="9">type</td>
-	    <td>text</td>
-	    <td>单行文本输入框</td>
-	</tr>
-	<tr>
-	    <td>password</td>
-	    <td>密码输入框</td>
-	</tr>
-	<tr>
-	    <td>radio</td>
-	    <td>单选按钮</td>
-	</tr>
-	<tr>
-	    <td>CheckBox</td>
-	    <td>复选按钮</td>
-	</tr>
-	<tr><td>button</td>
-	    <td>普通按钮</td>
-	</tr>
-	<tr>
-	    <td>submit</td>
-	    <td>提交按钮</td>
-	</tr>
-	<tr>
-	    <td>reset</td>
-	    <td>重置按钮</td>
-	</tr>
-	<tr>
-	    <td>image</td>
-	    <td>图像形式的提交按钮</td>
-	</tr>
-	<tr>
-	    <td >file</td>
-	    <td>文件域</td>
-	</tr>
-	<tr>
-	    <td >name</td>
-	    <td>用户自定义</td>
-	    <td>控件名称</td>
-	</tr>
-	<tr>
-	    <td >value</td>
-	    <td >用户自定义</td>
-	    <td >默认文本值</td>
-	</tr>
-	<tr>
-	    <td >size</td>
-	    <td >正整数</td>
-	    <td >控件在页面中的显示宽度</td>
-	</tr>
-	<tr>
-	    <td >checked</td>
-	    <td >checked</td>
-	    <td >定义选择控件默认被选中项</td>
-	</tr>
-	<tr>
-	    <td >maxlength</td>
-	    <td >正整数</td>
-	    <td >控件允许输入的最多字符</td>
-	</tr>
-</table>
-
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 ## GetBankNetworkList
 获取支持银行业务的代理网络列表
@@ -174,12 +105,12 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/bankNetwork/list`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 ## GetCountryPayMode
 获取指定国家支持的支付模式 
@@ -187,12 +118,12 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/countryPayMode`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 # 收汇款人信息
 ## DoBeneficiaryAdd
@@ -232,30 +163,31 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
------------------------ | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
-/entity/firstName | String | 收款人名 | M
-/entity/middleName | String | 收款人中名 | O
-/entity/lastName | String | 收款人姓 | M
-/entity/telephone | String | 收款人手机号 | M
-/entity/email | String | 收款人邮箱 | O
-/entity/address1 | String | 收款人地址1 | M
-/entity/address2 | String | 收款人地址2 | O
-/entity/address3 | String | 收款人地址3 | O
-/entity/idType | int | 收款人证件类型 | M
-/entity/idNumber | String | 收款人证件号码 | M
-/entity/idDesc | String | 收款人描述 | O
-/entity/idIssueDate | String | 收款人证件生效时间 | O
-/entity/idExpDate | String | 收款人证件失效时间 | O
-/entity/birthdate | String | 收款人生日 | O
-/entity/sex | String | 收款人性别 | O
-/entity/nationality | String | 收款人国籍 | M
-/entity/bankCode | String | 收款人账户银行编号 | M
-/entity/bankAccountNumber | String | 收款人银行账户 | M
-/entity/bankAccountName | String | 收款人账户银行名称 | M
-/entity/bankAddress | String | 收款人账户银行地址 | O
+参数 | 参数 | 类型 | 描述 | O/M
+--------- | :------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
+| | firstName | String | 收款人名 | M
+| | middleName | String | 收款人中名 | O
+| | lastName | String | 收款人姓 | M
+| | telephone | String | 收款人手机号 | M
+| | email | String | 收款人邮箱 | O
+| | address1 | String | 收款人地址1 | M
+| | address2 | String | 收款人地址2 | O
+| | address3 | String | 收款人地址3 | O
+| | idType | int | 收款人证件类型 | M
+| | idNumber | String | 收款人证件号码 | M
+| | idDesc | String | 收款人描述 | O
+| | idIssueDate | String | 收款人证件生效时间 | O
+| | idExpDate | String | 收款人证件失效时间 | O
+| | birthdate | String | 收款人生日 | O
+| | sex | String | 收款人性别 | O
+| | nationality | String | 收款人国籍 | M
+| | bankCode | String | 收款人账户银行编号 | M
+| | bankAccountNumber | String | 收款人银行账户 | M
+| | bankAccountName | String | 收款人账户银行名称 | M
+| | bankAddress | String | 收款人账户银行地址 | O
 
 > Response Body:
 
@@ -272,13 +204,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
-/entity/beneficiaryNo | String | NextPls收款人唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName |  | String | 调用接口名称
+code |  |String | 返回码
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号
+| | beneficiaryNo | String | NextPls收款人唯一编号
+msg |  |String | 返回消息
 
 
 ## DoBeneficiaryEdit
@@ -319,31 +252,32 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
-/entity/beneficiaryNo | String | NextPls收款人唯一编号 | M
-/entity/firstName | String | 收款人名 | O
-/entity/middleName | String | 收款人中名 | O
-/entity/lastName | String | 收款人姓 | O
-/entity/telephone | String | 收款人手机号 | O
-/entity/email | String | 收款人邮箱 | O
-/entity/address1 | String | 收款人地址1 | O
-/entity/address2 | String | 收款人地址2 | O
-/entity/address3 | String | 收款人地址3 | O
-/entity/idType | int | 收款人证件类型 | O
-/entity/idNumber | String | 收款人证件号码 | O
-/entity/idDesc | String | 收款人描述 | O
-/entity/idIssueDate | String | 收款人证件生效时间 | O
-/entity/idExpDate | String | 收款人证件失效时间 | O
-/entity/birthdate | String | 收款人生日 | O
-/entity/sex | String | 收款人性别 | O
-/entity/nationality | String | 收款人国籍 | O
-/entity/bankCode | String | 收款人账户银行编号 | O
-/entity/bankAccountNumber | String | 收款人银行账户 | O
-/entity/bankAccountName | String | 收款人账户银行名称 | O
-/entity/bankAddress | String | 收款人账户银行地址 | O
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| |clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
+| | beneficiaryNo | String | NextPls收款人唯一编号 | M
+| | firstName | String | 收款人名 | O
+| | middleName | String | 收款人中名 | O
+| | lastName | String | 收款人姓 | O
+| | telephone | String | 收款人手机号 | O
+| | email | String | 收款人邮箱 | O
+| | address1 | String | 收款人地址1 | O
+| | address2 | String | 收款人地址2 | O
+| | address3 | String | 收款人地址3 | O
+| | idType | int | 收款人证件类型 | O
+| | idNumber | String | 收款人证件号码 | O
+| | idDesc | String | 收款人描述 | O
+| | idIssueDate | String | 收款人证件生效时间 | O
+| | idExpDate | String | 收款人证件失效时间 | O
+| | birthdate | String | 收款人生日 | O
+| | sex | String | 收款人性别 | O
+| | nationality | String | 收款人国籍 | O
+| | bankCode | String | 收款人账户银行编号 | O
+| | bankAccountNumber | String | 收款人银行账户 | O
+| | bankAccountName | String | 收款人账户银行名称 | O
+| | bankAddress | String | 收款人账户银行地址 | O
 
 > Response Body:
 
@@ -360,14 +294,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
-/entity/beneficiaryNo | String | NextPls收款人唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号
+| | beneficiaryNo | String | NextPls收款人唯一编号
+msg | | String | 返回消息
 
 ## DoRemitterAdd
 添加汇款人信息
@@ -404,28 +338,29 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号 | M
-/entity/firstName | String | 汇款人名 | M
-/entity/middleName | String | 汇款人中名 | O
-/entity/lastName | String | 汇款人姓 | M
-/entity/telephone | String | 汇款人手机号 | M
-/entity/email | String | 汇款人邮箱 | O
-/entity/address1 | String | 汇款人地址1 | M
-/entity/address2 | String | 汇款人地址2 | O
-/entity/address3 | String | 汇款人地址3 | O
-/entity/idType | int | 汇款人证件类型 | M
-/entity/idNumber | String | 汇款人证件号码 | M
-/entity/idDesc | String | 汇款人描述 | O
-/entity/idIssueDate | String | 汇款人证件生效时间 | O
-/entity/idExpDate | String | 汇款人证件失效时间 | O
-/entity/birthdate | String | 汇款人生日 | O
-/entity/sex | String | 汇款人性别 | O
-/entity/nationality | String | 汇款人国籍 | M
-/entity/accountNumber | String | 汇款人银行账号 | O
-/entity/sourceIncome | String | 汇款人收入来源 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号 | M
+| | firstName | String | 汇款人名 | M
+| | middleName | String | 汇款人中名 | O
+| | lastName | String | 汇款人姓 | M
+| | telephone | String | 汇款人手机号 | M
+| | email | String | 汇款人邮箱 | O
+| | address1 | String | 汇款人地址1 | M
+| | address2 | String | 汇款人地址2 | O
+| | address3 | String | 汇款人地址3 | O
+| | idType | int | 汇款人证件类型 | M
+| | idNumber | String | 汇款人证件号码 | M
+| | idDesc | String | 汇款人描述 | O
+| | idIssueDate | String | 汇款人证件生效时间 | O
+| | idExpDate | String | 汇款人证件失效时间 | O
+| | birthdate | String | 汇款人生日 | O
+| | sex | String | 汇款人性别 | O
+| | nationality | String | 汇款人国籍 | M
+| | accountNumber | String | 汇款人银行账号 | O
+| | sourceIncome | String | 汇款人收入来源 | M
 
 > Response Body:
 
@@ -442,13 +377,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号
-/entity/remitterNo | String | NextPls汇款人唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号
+| | remitterNo | String | NextPls汇款人唯一编号
+msg | | String | 返回消息
 
 ## DoRemitterEdit
 修改汇款人信息
@@ -486,29 +422,30 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号 | M
-/entity/remitterNo | String | NextPls汇款人唯一编号 | M
-/entity/firstName | String | 汇款人名 | O
-/entity/middleName | String | 汇款人中名 | O
-/entity/lastName | String | 汇款人姓 | O
-/entity/telephone | String | 汇款人手机号 | O
-/entity/email | String | 汇款人邮箱 | O
-/entity/address1 | String | 汇款人地址1 | O
-/entity/address2 | String | 汇款人地址2 | O
-/entity/address3 | String | 汇款人地址3 | O
-/entity/idType | int | 汇款人证件类型 | O
-/entity/idNumber | String | 汇款人证件号码 | O
-/entity/idDesc | String | 汇款人描述 | O
-/entity/idIssueDate | String | 汇款人证件生效时间 | O
-/entity/idExpDate | String | 汇款人证件失效时间 | O
-/entity/birthdate | String | 汇款人生日 | O
-/entity/sex | String | 汇款人性别 | O
-/entity/nationality | String | 汇款人国籍 | O
-/entity/accountNumber | String | 汇款人银行账号 | O
-/entity/sourceIncome | String | 汇款人收入来源 | O
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号 | M
+| | remitterNo | String | NextPls汇款人唯一编号 | M
+| | firstName | String | 汇款人名 | O
+| | middleName | String | 汇款人中名 | O
+| | lastName | String | 汇款人姓 | O
+| | telephone | String | 汇款人手机号 | O
+| | email | String | 汇款人邮箱 | O
+| | address1 | String | 汇款人地址1 | O
+| | address2 | String | 汇款人地址2 | O
+| | address3 | String | 汇款人地址3 | O
+| | idType | int | 汇款人证件类型 | O
+| | idNumber | String | 汇款人证件号码 | O
+| | idDesc | String | 汇款人描述 | O
+| | idIssueDate | String | 汇款人证件生效时间 | O
+| | idExpDate | String | 汇款人证件失效时间 | O
+| | birthdate | String | 汇款人生日 | O
+| | sex | String | 汇款人性别 | O
+| | nationality | String | 汇款人国籍 | O
+| | accountNumber | String | 汇款人银行账号 | O
+| | sourceIncome | String | 汇款人收入来源 | O
 
 > Response Body:
 
@@ -525,13 +462,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号
-/entity/remitterNo | String | NextPls汇款人唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号
+| | remitterNo | String | NextPls汇款人唯一编号
+msg | | String | 返回消息
 
 
 ## DoBeneficiaryDel
@@ -552,11 +490,12 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
-/entity/BeneficiaryNo | String | NextPls收款人唯一编号 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
+| | BeneficiaryNo | String | NextPls收款人唯一编号 | M
 
 > Response Body:
 
@@ -573,13 +512,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
-/entity/beneficiaryNo | String | NextPls收款人唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号
+| | beneficiaryNo | String | NextPls收款人唯一编号
+msg | | String | 返回消息
 
 ## GetBeneficiaryList
 获取收款人列表
@@ -587,14 +527,12 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/beneficiary/list`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -----
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 ## GetBeneficiary
 获取指定收款人信息 
@@ -614,11 +552,12 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
-/entity/BeneficiaryNo | String | NextPls收款人唯一编号 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
+| | BeneficiaryNo | String | NextPls收款人唯一编号 | M
 
 > Response Body:
 
@@ -654,32 +593,33 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
-/entity/beneficiaryNo | String | NextPls收款人唯一编号
-/entity/firstName | String | 收款人名
-/entity/middleName | String | 收款人中名
-/entity/lastName | String | 收款人姓
-/entity/telephone | String | 收款人手机号
-/entity/email | String | 收款人邮箱
-/entity/address1 | String | 收款人地址1
-/entity/address2 | String | 收款人地址2
-/entity/address3 | String | 收款人地址3
-/entity/idType | int | 收款人证件类型
-/entity/idNumber | String | 收款人证件号码
-/entity/idDesc | String | 收款人描述
-/entity/idIssueDate | String | 收款人证件生效时间
-/entity/idExpDate | String | 收款人证件失效时间
-/entity/birthdate | String | 收款人生日
-/entity/sex | String | 收款人性别
-/entity/nationality | String | 收款人国籍 
-/entity/accountNumber | String | 收款人银行账号
-/entity/sourceIncome | String | 收款人收入来源
-/entity/creatTime | String | 收款人创建时间
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号
+| | beneficiaryNo | String | NextPls收款人唯一编号
+| | firstName | String | 收款人名
+| | middleName | String | 收款人中名
+| | lastName | String | 收款人姓
+| | telephone | String | 收款人手机号
+| | email | String | 收款人邮箱
+| | address1 | String | 收款人地址1
+| | address2 | String | 收款人地址2
+| | address3 | String | 收款人地址3
+| | idType | int | 收款人证件类型
+| | idNumber | String | 收款人证件号码
+| | idDesc | String | 收款人描述
+| | idIssueDate | String | 收款人证件生效时间
+| | idExpDate | String | 收款人证件失效时间
+| | birthdate | String | 收款人生日
+| | sex | String | 收款人性别
+| | nationality | String | 收款人国籍 
+| | accountNumber | String | 收款人银行账号
+| | sourceIncome | String | 收款人收入来源
+| | creatTime | String | 收款人创建时间
+msg | | String | 返回消息
 
 ## GetRemitter
 获取汇款人信息 
@@ -699,11 +639,12 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号
-/entity/remitterNo | String | NextPls汇款人唯一编号
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号
+| | remitterNo | String | NextPls汇款人唯一编号
 
 > Response Body:
 
@@ -739,32 +680,33 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号
-/entity/remitterNo | String | NextPls汇款人唯一编号
-/entity/firstName | String | 汇款人名
-/entity/middleName | String | 汇款人中名
-/entity/lastName | String | 汇款人姓
-/entity/telephone | String | 汇款人手机号
-/entity/email | String | 汇款人邮箱
-/entity/address1 | String | 汇款人地址1
-/entity/address2 | String | 汇款人地址2
-/entity/address3 | String | 汇款人地址3
-/entity/idType | int | 汇款人证件类型
-/entity/idNumber | String | 汇款人证件号码
-/entity/idDesc | String | 汇款人描述
-/entity/idIssueDate | String | 汇款人证件生效时间
-/entity/idExpDate | String | 汇款人证件失效时间
-/entity/birthdate | String | 汇款人生日
-/entity/sex | String | 汇款人性别
-/entity/nationality | String | 汇款人国籍
-/entity/accountNumber | String | 汇款人银行账号
-/entity/sourceIncome | String | 汇款人收入来源
-/entity/creatTime | String | 汇款人创建时间
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientRemitterNo | String | 客户端汇款人唯一编号
+| | remitterNo | String | NextPls汇款人唯一编号
+| | firstName | String | 汇款人名
+| | middleName | String | 汇款人中名
+| | lastName | String | 汇款人姓
+| | telephone | String | 汇款人手机号
+| | email | String | 汇款人邮箱
+| | address1 | String | 汇款人地址1
+| | address2 | String | 汇款人地址2
+| | address3 | String | 汇款人地址3
+| | idType | int | 汇款人证件类型
+| | idNumber | String | 汇款人证件号码
+| | idDesc | String | 汇款人描述
+| | idIssueDate | String | 汇款人证件生效时间
+| | idExpDate | String | 汇款人证件失效时间
+| | birthdate | String | 汇款人生日
+| | sex | String | 汇款人性别
+| | nationality | String | 汇款人国籍
+| | accountNumber | String | 汇款人银行账号
+| | sourceIncome | String | 汇款人收入来源
+| | creatTime | String | 汇款人创建时间
+msg | | String | 返回消息
 
 # 交易
 ## GetBalance
@@ -773,12 +715,12 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/balance`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 ## GetExRate
 获取汇率 
@@ -786,12 +728,12 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/exRate`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
 
 ## DoTransactionPre
 预创建订单 
@@ -814,14 +756,15 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/payInCurrency | String | 存入币种 | M
-/entity/payOutCurrency | String | 到账币种 | M
-/entity/transferCurrency | String | 结算币种 | M
-/entity/transferAmount | String | 结算金额 | M
-/entity/paymentMode | String | 支付方式 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | payInCurrency | String | 存入币种 | M
+| | payOutCurrency | String | 到账币种 | M
+| | transferCurrency | String | 结算币种 | M
+| | transferAmount | String | 结算金额 | M
+| | paymentMode | String | 支付方式 | M
 
 > Response Body:
 
@@ -847,22 +790,23 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/exchangeRate | String | 汇率
-/entity/commission | String | 手续费
-/entity/payInCurrency | String | 存入币种
-/entity/payoutCurrency | String | 到账币种
-/entity/payInAmount | String | 预交金额
-/entity/payoutAmount | String | 到账金额
-/entity/totalPayable | String | 应支付金额
-/entity/vatValue | String | 增值税金额
-/entity/vatPercentage | String | 增值税税率
-/entity/recommendAgent | String | 
-/entity/payoutBranchCode | String | 到账银行代码
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | exchangeRate | String | 汇率
+| | commission | String | 手续费
+| | payInCurrency | String | 存入币种
+| | payoutCurrency | String | 到账币种
+| | payInAmount | String | 预交金额
+| | payoutAmount | String | 到账金额
+| | totalPayable | String | 应支付金额
+| | vatValue | String | 增值税金额
+| | vatPercentage | String | 增值税税率
+| | recommendAgent | String | 
+| | payoutBranchCode | String | 到账银行代码
+msg | | String | 返回消息
 
 ## DoTransactionAdd
 创建订单 
@@ -893,22 +837,23 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientTxnNo | String | 客户端订单唯一编号 | M
-/entity/payOutCurrency | String | 到账币种 | M
-/entity/payOutCountry | String | 到账城市 | M
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号 | M
-/entity/remitterNo | String | NextPls汇款人唯一编号 | M
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
-/entity/beneficiaryNo | String | NextPls收款人唯一编号 | M
-/entity/relationship | String | 汇款人与收款人关系 | M
-/entity/paymentMode | String | 支付方式 | M
-/entity/purposeCode | String | 转账原因 | M
-/entity/payInCountry | String | 发起转账城市 | M
-/entity/payInCurrency | String | 发起转账币种 | M
-/entity/settlementCurrency | String | 结算币种 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号 | M
+| | payOutCurrency | String | 到账币种 | M
+| | payOutCountry | String | 到账城市 | M
+| | clientRemitterNo | String | 客户端汇款人唯一编号 | M
+| | remitterNo | String | NextPls汇款人唯一编号 | M
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号 | M
+| | beneficiaryNo | String | NextPls收款人唯一编号 | M
+| | relationship | String | 汇款人与收款人关系 | M
+| | paymentMode | String | 支付方式 | M
+| | purposeCode | String | 转账原因 | M
+| | payInCountry | String | 发起转账城市 | M
+| | payInCurrency | String | 发起转账币种 | M
+| | settlementCurrency | String | 结算币种 | M
 
 > Response Body:
 
@@ -925,13 +870,14 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientTxnNo | String | 客户端订单唯一编号
-/entity/txnNo | String | NextPls订单唯一编号
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号
+| | txnNo | String | NextPls订单唯一编号
+msg | | String | 返回消息
 
 ## GetTransactionStatus
 检查交易状态
@@ -951,11 +897,12 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientTxnNo | String | 客户端订单唯一编号 | M
-/entity/txnNo | String | NextPls订单唯一编号 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号 | M
+| | txnNo | String | NextPls订单唯一编号 | M
 
 > Response Body:
 
@@ -973,14 +920,15 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientTxnNo | String | 客户端订单唯一编号
-/entity/txnNo | String | NextPls订单唯一编号
-/entity/status | String | 订单状态
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName | | String | 调用接口名称
+code | | String | 返回码
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号
+| | txnNo | String | NextPls订单唯一编号
+| | status | String | 订单状态
+msg | | String | 返回消息
 
 ## GetTransactionList
 获取交易列表
@@ -988,11 +936,11 @@ Pointer | Type | Description
 <span class="http-method post">POST</span> `/get/transaction/list`
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-Pointer | Type | Description
+参数 | Type | Description
 --------- | ------- | -----------
 
 ## GetTransaction
@@ -1013,11 +961,12 @@ Pointer | Type | Description
 ```
 
 ### Request Body
-Pointer | Type | Description | Required
---------- | ------- | ------- | ----------
-/apiName | String | 调用接口名称 | M
-/entity/clientTxnNo | String | 客户端订单唯一编号 | M
-/entity/txnNo | String | NextPls订单唯一编号 | M
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号 | M
+| | txnNo | String | NextPls订单唯一编号 | M
 
 > Response Body:
 
@@ -1046,23 +995,24 @@ Pointer | Type | Description | Required
 ```
 
 ### Response Body
-Pointer | Type | Description
---------- | ------- | -----------
-/apiName | String | 调用接口名称
-/code | String | 返回码
-/entity/clientTxnNo | String | 客户端订单唯一编号
-/entity/txnNo | String | NextPls订单唯一编号
-/entity/payOutCurrency | String | 到账币种
-/entity/payOutCountry | String | 到账城市
-/entity/clientRemitterNo | String | 客户端汇款人唯一编号
-/entity/remitterNo | String | NextPls汇款人唯一编号
-/entity/clientBeneficiaryNo | String | 客户端收款人唯一编号
-/entity/beneficiaryNo | String | NextPls收款人唯一编号
-/entity/relationship | String | 汇款人与收款人关系
-/entity/paymentMode | String | 支付方式
-/entity/purposeCode | String | 转账原因
-/entity/payInCountry | String | 发起转账城市
-/entity/payInCurrency | String | 发起转账币种
-/entity/settlementCurrency | String | 结算币种
-/entity/creatTime | String | 订单创建时间
-/msg | String | 返回消息
+参数 |   | 类型 | 描述
+--------- | ------- | ------- |-----------
+apiName |  | String | 调用接口名称
+code |  | String | 返回码
+entity |
+| | clientTxnNo | String | 客户端订单唯一编号
+| | txnNo | String | NextPls订单唯一编号
+| | payOutCurrency | String | 到账币种
+| | payOutCountry | String | 到账城市
+| | clientRemitterNo | String | 客户端汇款人唯一编号
+| | remitterNo | String | NextPls汇款人唯一编号
+| | clientBeneficiaryNo | String | 客户端收款人唯一编号
+| | beneficiaryNo | String | NextPls收款人唯一编号
+| | relationship | String | 汇款人与收款人关系
+| | paymentMode | String | 支付方式
+| | purposeCode | String | 转账原因
+| | payInCountry | String | 发起转账城市
+| | payInCurrency | String | 发起转账币种
+| | settlementCurrency | String | 结算币种
+| | creatTime | String | 订单创建时间
+msg | | String | 返回消息
