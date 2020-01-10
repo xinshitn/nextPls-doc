@@ -24,16 +24,94 @@ search: true
 如果想获取更多信息，可以访问我们的官方网站 [NextPls](https://www.nextpls.com) 更多地了解我们。
 
 # 开始
-## Authentication
-
-Any Pandaremit Partner that will use the API will be provided with a Merchant Id. This Merchant Id will be used in all the messages sent to API and will be used in the authentication process.
-
-A corresponding “Secret Key” will be assigned for each Merchant Id. The “Secret Key” will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in `signature`.
-
+## Cryptography in NextPls API(NextPls API的加密方式)
+### Request
+#### Generating a CEK(生成一个CEK)
+All request body should be encrypted with RSA algorithm before sending to the NextPls server.So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.
+(消息在发送到NextPls之前，所有的请求体都应该使用加密算法对请求体进行加密。因此，我们需要一个CEK(内容加密密钥),该密钥将被加密后放在请求头的Content-Code的字段中发送到NextPls服务器。
+  
+我们希望一个CEK由两个16位字符串拼接而成(16位的初始向量ivParameter和16位的AES密钥sKey)
+  
+##### 示例
+item | ASCII_string 
+--------- | -------
+sKey | cek_tester_remit
+ivParameter | initial_tester01
+CEK | cek_tester_remitinitial_tester01
+  
 <aside class="notice">
-You must send <code>signature</code> in every request.
+CEK不必为有特殊含义的字符串
 </aside>
+  
+#### Encrypting body part with the CEK(利用CEK对方法体进行加密)
+在对方法体进行加密时，应使用AES/CBC/PKCS5Padding算法对方法体进行加密，之后应使用BASE64对结果进行转码。
 
+##### 示例
+下面的Java代码展示了如何使用AES/CBC/PKCS5Padding算法生成加密体的示例
+```
+    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+    byte[] raw = sKey.getBytes();
+    SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+    IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());
+    cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+    byte[] encrypted = cipher.doFinal(body.getBytes("UTF-8"));
+    String encryptedBody = Base64.getEncoder().encodeToString(encrypted);
+```
+
+#### Encrypting CEK with NextPls public key(利用NextPls公钥对CEK进行加密)
+想要请求API调用的代理方必须将加密后的CEK放在请求头之中。应使用RSA加密算法对CEK进行加密，所有的代理方都会获得由NextPls提供的一个用于CEK加密的公钥。
+
+##### 示例
+下面的Java代码展示了如何使用RSA加密算法对CEK进行加密
+```
+    Cipher cipher = Cipher.getInstance("RSA");
+    cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+    byte[] sbt = source.getBytes(ENCODING);
+    byte[] epByte = cipher.doFinal(sbt);
+    String encryptedCEK = Base64.getEncoder().encodeToString(epByte);
+```
+  
+#### Generating signature(生成签名)
+想要请求API调用的代理方还必须在请求头中附加签名值。签名值用于认证请求是否来自于代理方。
+  
+签名为对方法体加密结果进行加密，签名算法为SHA256withRSA，之后仍需使用BASE64对结果进行转码。结果放在请求头的Signature的字段中。
+
+##### 示例
+下面的Java代码展示了如何使用签名如何生成
+```
+    byte[] signed = signSHA256withRSA(encryptedBody);
+    String signBase64 = Base64.getEncoder().encodeToString(signed);
+    String signature = StringUtils.deleteWhitespace(signBase64);
+```
+  
+#### Generating request header and body(生成请求头和请求体)
+使用加密的CEK、加密的方法体和签名便可组成一个完整的请求
+  
+##### 示例
+>Header
+>>Accept:application/base64
+>>Authorization:AU1234567
+>>Content-Code:dpcnD2YnJpCr0EIUNkz5so9rsBloBJRk/ie/awlgOV8ECoob3yB9QoAtP7LQNtOmziQOrFXueD0B62gc2f+AqCOs5D66sWQjlCWnjyqOkFjfow93CtYvGwpuoiqNArk39qvbe3lTo2g3qalg5YEe0Reohf2yHFbsYrwtgvBWQUI=
+>>Signature:CiELHoMm9ab9FduNLWQZ15OI4O+ms8xGjJBEMyRsLRvi9cQI0QctIajwnejCrri7q0ep2zf6Fqn9DIWpF2vgsAHK3SWr2SkykxY2Sheisv1hjpxOVYgnLDcI/0KXTFSjHQWQ+JG6d8VvwrAErqY0jk9pafUj1SfxrHpUzEUWDGQ=
+
+>Body
+>Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0Rja/2H87VLLmsQx7Bkbe0yah8ALIaCabwY30aG/FPsjY4Y7OhujaEAzOVRUrV21iYDL5nUg=
+
+### Response
+#### Verifying signature(验证签名)
+为了验证NextPls服务器的真实性，代理方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验
+
+##### 示例
+```
+    Signature signetcheck = Signature.getInstance(SIGNATURE_ALGORITHM);
+    signetcheck.initVerify(getPublicKey());
+    signetcheck.update(data.getBytes(ENCODING));
+    boolean result = signetcheck.verify(Base64.getDecoder().decode(sign));
+```
+
+#### Deriving CEK
+
+#### Decrypting body part with CEK
 ## Keys
 在下面的文档中缩写值的定义
 
@@ -44,74 +122,6 @@ O | string | 选填字段
 C | string | 有前置条件的选填或必填字段
 
 # 基础信息
-## GetCashNetworkList
-获取支持现金业务的代理网络列表 
-### HTTP Request
-<span class="http-method post">POST</span> `/get/cashnetwork/list`
-
-> Request Body:
-
-```json
-{
-    
-}
-```
-```shell
-curl -X POST https://open.remitly.com/partner/customer/create
-    -H "merchant-id:10192012192"
-    -H "Content-Type: application/vnd.api+json"
-    -d
-    '{
-         "data": {
-             "reference-id": "2019829921122331", 
-             "attributes": {
-                 "first-name": "Sam", 
-                 "last-name": "Samuel", 
-                 "contact-phone": "+19421779999", 
-                 "date-of-birth": "1989-09-15", 
-                 "last-4-ssn": "1234", 
-                 "address": {
-                     "zip-code": "20030", 
-                     "street": "clifford road", 
-                     "city": "Los Angeles", 
-                     "state": "California"
-                 }
-             }
-         }, 
-         "signature": "877CA84B66CA50234464F660B0DB51ED "
-     }'
-```
-
-### Request Body
-参数 |  | 类型 | 描述 | O/M
---------- | ------- | ------- | ---------- | -------
-
-
-> Response Body:
-
-```json
-{
-    
-}
-```
-
-### Response Body
-参数 |   | 类型 | 描述
---------- | ------- | ------- |-----------
-
-## GetBankNetworkList
-获取支持银行业务的代理网络列表
-### HTTP Request
-<span class="http-method post">POST</span> `/get/bankNetwork/list`
-
-### Request Body
-参数 |  | 类型 | 描述 | O/M
---------- | ------- | ------- | ---------- | -------
-
-### Response Body
-参数 |   | 类型 | 描述
---------- | ------- | ------- |-----------
-
 ## GetCountryPayMode
 获取指定国家支持的支付模式 
 ### HTTP Request
@@ -122,7 +132,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 
 ### Response Body
-参数 |   | 类型 | 描述
+参数 | | 类型 | 描述
 --------- | ------- | ------- |-----------
 
 # 收汇款人信息
@@ -160,6 +170,40 @@ curl -X POST https://open.remitly.com/partner/customer/create
         "bankAddress": "Beneficiary_BankAddress"
     }
 }
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:“
+    -H "Signature:"
+    -H "Content-Code:"
+    -d
+    '{
+         "apiName": "DO_BENEFICIARY_ADD",
+             "entity": {
+                 "clientRemitterNo": "BE1231211",
+                 "firstName": "Beneficiary_First_Name",
+                 "middleName": "Beneficiary_Middle_Name",
+                 "lastName": "Beneficiary_Last_Name",
+                 "telephone": "12345678910",
+                 "email": "nextPls@nextPls.com",
+                 "address1": "Philippines",
+                 "address2": "",
+                 "address3": "",
+                 "idType": "0",
+                 "idNumber": "PS256454165",
+                 "idDesc": "",
+                 "idIssueDate": "01/01/1994",
+                 "idExpDate": "01/01/1994",
+                 "birthdate": "01/01/1994",
+                 "sex": "M",
+                 "nationality": "HKG",
+                 "bankCode": "11003544",
+                 "bankAccountNumber": "4555556564564",
+                 "bankAccountName": "Beneficiary_BankName",
+                 "bankAddress": "Beneficiary_BankAddress"
+             }
+     }'
 ```
 
 ### Request Body
