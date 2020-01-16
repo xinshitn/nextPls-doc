@@ -311,8 +311,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
-apiName | | String | the name of the invocation interface | M
-entity | | Object | agent request parameter list | M
+apiName | | String | The name of the invocation interface | M
+entity | | Object | Agent request parameter list | M
 | | clientBeneficiaryNo | String | Unique code for agent beneficiary | M
 | | firstName | String | Beneficiary First Name | M
 | | middleName | String | Beneficiary Middle Name | O
@@ -321,19 +321,19 @@ entity | | Object | agent request parameter list | M
 | | email | String | Email of Beneficiary | O
 | | address1 | String | Beneficiary Address line 1 | M
 | | address2 | String | Beneficiary Address line 2 | O
-| | address3 | String | 收款人地址3 | O
-| | idType | int | 收款人证件类型 | M
-| | idNumber | String | 收款人证件号码 | M
-| | idDesc | String | 收款人Description | O
-| | idIssueDate | String | 收款人证件生效时间 | O
-| | idExpDate | String | 收款人证件失效时间 | O
-| | birthdate | String | 收款人生日 | O
-| | sex | String | 收款人性别 | O
-| | nationality | String | 收款人国籍 | M
-| | bankCode | String | 收款人账户银行编号 | M
-| | bankAccountNumber | String | 收款人银行账户 | M
-| | bankAccountName | String | 收款人账户银行名称 | M
-| | bankAddress | String | 收款人账户银行地址 | O
+| | address3 | String | Beneficiary Address line 3 | O
+| | idType | int | Type of Beneficiary Id Proof | M
+| | idNumber | String | Beneficiary ID Number | M
+| | idDesc | String | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | idIssueDate | String | Issue date of Beneficiary Id proof(MM/DD/YYYY) | O
+| | idExpDate | String | Expiry date of Beneficiary Id proof(MM/DD/YYYY) | O
+| | birthdate | String | Beneficiary BirthDate | O
+| | sex | String | Gender of Beneficiary | O
+| | nationality | String | Nationality of Beneficiary(3 Character Country ISO Code) | M
+| | bankCode | String | Bank code for Beneficiary | C
+| | bankAccountNumber | String | Bank Account Number of Beneficiary | M
+| | bankAccountName | String | Bank Account name of Beneficiary | M
+| | bankAddress | String | Beneficiary Bank Address | O
 
 > Response Body:
 
@@ -447,8 +447,8 @@ entity | | Object | 代理方请求参数 | M
 | | address1 | String | Beneficiary Address line 1 | O
 | | address2 | String | Beneficiary Address line 2 | O
 | | address3 | String | Beneficiary Address line 3 | O
-| | idType | int | 收款人证件类型 | O
-| | idNumber | String | 收款人证件号码 | O
+| | idType | int | Type of Beneficiary Id Proof | O
+| | idNumber | String | Beneficiary ID Number | O
 | | idDesc | String | 收款人Description | O
 | | idIssueDate | String | 收款人证件生效时间 | O
 | | idExpDate | String | 收款人证件失效时间 | O
@@ -878,8 +878,8 @@ entity | | Object | NextPls返回结果
 | | address1 | String | Beneficiary Address line 1
 | | address2 | String | Beneficiary Address line 2
 | | address3 | String | Beneficiary Address line 3
-| | idType | int | 收款人证件类型
-| | idNumber | String | 收款人证件号码
+| | idType | int | Type of Beneficiary Id Proof
+| | idNumber | String | Beneficiary ID Number
 | | idDesc | String | 收款人Description
 | | idIssueDate | String | 收款人证件生效时间
 | | idExpDate | String | 收款人证件失效时间
@@ -926,10 +926,10 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Parameter |  | Type | Description | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称
+apiName | | String | 调用接口名称 | M
 entity | | Object | 代理方请求参数 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
+| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
+| | remitterNo | String | NextPls汇款人唯一编号 | M
 
 > Response Body:
 

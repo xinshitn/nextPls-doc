@@ -326,12 +326,12 @@ entity | | Object | 代理方请求参数 | M
 | | address3 | String | 收款人地址3 | O
 | | idType | int | 收款人证件类型 | M
 | | idNumber | String | 收款人证件号码 | M
-| | idDesc | String | 收款人描述 | O
+| | idDesc | String | 收款人证件描述，当证件类型为6的时候为必填项 | C
 | | idIssueDate | String | 收款人证件生效时间 | O
 | | idExpDate | String | 收款人证件失效时间 | O
 | | birthdate | String | 收款人生日 | O
 | | sex | String | 收款人性别 | O
-| | nationality | String | 收款人国籍 | M
+| | nationality | String | 收款人国籍(3位的国家ISO代码) | M
 | | bankCode | String | 收款人账户银行编号 | M
 | | bankAccountNumber | String | 收款人银行账户 | M
 | | bankAccountName | String | 收款人账户银行名称 | M
@@ -354,7 +354,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName |  | String | 调用接口名称
+apiName |  | String | 被调用接口名称
 code |  |String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 代理方收款人唯一编号
@@ -479,7 +479,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 代理方收款人唯一编号
@@ -594,7 +594,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 代理方汇款人唯一编号
@@ -712,7 +712,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 代理方汇款人唯一编号
@@ -777,7 +777,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 代理方收款人唯一编号
@@ -867,7 +867,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 代理方收款人唯一编号
@@ -928,10 +928,10 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称
+apiName | | String | 调用接口名称 | M
 entity | | Object | 代理方请求参数 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
+| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
+| | remitterNo | String | NextPls汇款人唯一编号 | M
 
 > Response Body:
 
@@ -969,7 +969,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 代理方汇款人唯一编号
@@ -1085,7 +1085,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | exchangeRate | String | 汇率
@@ -1191,7 +1191,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |  | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientTxnNo | String | 代理方订单唯一编号
@@ -1256,7 +1256,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |  | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
+apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientTxnNo | String | 代理方订单唯一编号
@@ -1340,7 +1340,7 @@ entity | | Object | 代理方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName |  | String | 调用接口名称
+apiName |  | String | 被调用接口名称
 code |  | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientTxnNo | String | 代理方订单唯一编号
