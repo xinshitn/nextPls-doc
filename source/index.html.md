@@ -326,25 +326,25 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientRemitterNo(20) | String | 客户方汇款人唯一编号 | M
-| | firstName(50) | String | 汇款人名 | M
-| | middleName(50) | String | 汇款人中名 | O
-| | lastName(50) | String | 汇款人姓 | M
-| | mobile(20) | String | 汇款人手机号 | M
-| | email(50) | String | 汇款人邮箱 | O
-| | address1(35) | String | 汇款人地址1 | M
-| | address2(35) | String | 汇款人地址2 | O
-| | address3(50) | String | 汇款人地址3 | O
-| | idType(3) | int | 汇款人证件类型 | M
-| | idNumber(20) | String | 汇款人证件号码 | M
-| | idDesc(30) | String | 汇款人描述 | O
-| | idIssueDate(10) | String | 汇款人证件生效时间 | O
-| | idExpDate(10) | String | 汇款人证件失效时间 | O
-| | birthdate(10) | String | 汇款人生日 | O
-| | sex(1) | String | 汇款人性别 | O
-| | nationality(3) | String | 汇款人国籍 | M
-| | accountNumber(30) | String | 汇款人银行账号 | O
-| | sourceIncome(2) | String | 汇款人收入来源 | M
+| | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | M
+| | firstName | String(50) | 汇款人名 | M
+| | middleName | String(50) | 汇款人中名 | O
+| | lastName | String(50) | 汇款人姓 | M
+| | mobile | String(20) | 汇款人手机号 | M
+| | email | String(50) | 汇款人邮箱 | O
+| | address1 | String(35) | 汇款人地址1 | M
+| | address2 | String(35) | 汇款人地址2 | O
+| | address3 | String(50) | 汇款人地址3 | O
+| | idType | int(3) | 汇款人证件类型 | M
+| | idNumber | String(20) | 汇款人证件号码 | M
+| | idDesc | String(30) | 汇款人描述 | O
+| | idIssueDate | String(10) | 汇款人证件生效时间 | O
+| | idExpDate | String(10) | 汇款人证件失效时间 | O
+| | birthdate | String(10) | 汇款人生日 | O
+| | sex | String(1) | 汇款人性别 | O
+| | nationality | String(3) | 汇款人国籍 | M
+| | accountNumber | String(30) | 汇款人银行账号 | O
+| | sourceIncome | String(2) | 汇款人收入来源 | M
 
 > Response Body:
 
@@ -457,26 +457,26 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientRemitterNo(20) | String | 客户方汇款人唯一编号 | M
-| | remitterNo(20) | String | NextPls汇款人唯一编号 | M
-| | firstName(50) | String | 汇款人名 | O
-| | middleName(50) | String | 汇款人中名 | O
-| | lastName(50) | String | 汇款人姓 | O
-| | mobile(20) | String | 汇款人手机号 | O
-| | email(50) | String | 汇款人邮箱 | O
-| | address1(35) | String | 汇款人地址1 | O
-| | address2(35) | String | 汇款人地址2 | O
-| | address3(50) | String | 汇款人地址3 | O
-| | idType(3) | int | 汇款人证件类型 | O
-| | idNumber(20) | String | 汇款人证件号码 | O
-| | idDesc(30) | String | 汇款人描述 | O
-| | idIssueDate(10) | String | 汇款人证件生效时间 | O
-| | idExpDate(10) | String | 汇款人证件失效时间 | O
-| | birthdate(10) | String | 汇款人生日 | O
-| | sex(1) | String | 汇款人性别 | O
-| | nationality(3) | String | 汇款人国籍 | O
-| | accountNumber(30) | String | 汇款人银行账号 | O
-| | sourceIncome(2) | String | 汇款人收入来源 | O
+| | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | M
+| | remitterNo | String(20) | NextPls汇款人唯一编号 | M
+| | firstName | String(50) | 汇款人名 | O
+| | middleName | String(50) | 汇款人中名 | O
+| | lastName | String(50) | 汇款人姓 | O
+| | mobile | String(20) | 汇款人手机号 | O
+| | email | String(50) | 汇款人邮箱 | O
+| | address1 | String(35) | 汇款人地址1 | O
+| | address2 | String(35) | 汇款人地址2 | O
+| | address3 | String(35) | 汇款人地址3 | O
+| | idType | int(3) | 汇款人证件类型 | O
+| | idNumber | String(20) | 汇款人证件号码 | O
+| | idDesc | String(30) | 汇款人描述 | O
+| | idIssueDate | String(10) | 汇款人证件生效时间 | O
+| | idExpDate | String(10) | 汇款人证件失效时间 | O
+| | birthdate | String(10) | 汇款人生日 | O
+| | sex | String(1) | 汇款人性别 | O
+| | nationality | String(3) | 汇款人国籍 | O
+| | accountNumber | String(30) | 汇款人银行账号 | O
+| | sourceIncome | String(2) | 汇款人收入来源 | O
 
 > Response Body:
 
@@ -591,27 +591,27 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | :------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientBeneficiaryNo(20) | String | 客户方收款人唯一编号 | M
-| | firstName(50) | String | 收款人名 | M
-| | middleName(50) | String | 收款人中名 | O
-| | lastName(50) | String | 收款人姓 | M
-| | mobile(20) | String | 收款人手机号 | M
-| | email(50) | String | 收款人邮箱 | O
-| | address1(35) | String | 收款人地址1 | M
-| | address2(35) | String | 收款人地址2 | O
-| | address3(35) | String | 收款人地址3 | O
-| | idType(2) | int | 收款人证件类型 | M
-| | idNumber(20) | String | 收款人证件号码 | M
-| | idDesc(20) | String | 收款人证件描述，当证件类型为6的时候为必填项 | C
-| | idIssueDate(10) | String | 收款人证件生效时间 | O
-| | idExpDate(10) | String | 收款人证件失效时间 | O
-| | birthdate(10) | String | 收款人生日 | O
-| | sex(1) | String | 收款人性别 | O
-| | nationality(3) | String | 收款人国籍(3位的国家ISO代码) | M
-| | bankCode(20) | String | 收款人账户银行编号 | M
-| | bankAccountNumber(30) | String | 收款人银行账户 | M
-| | bankAccountName(35) | String | 收款人账户银行名称 | M
-| | bankAddress(35) | String | 收款人账户银行地址 | O
+| | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
+| | firstName | String(50) | 收款人名 | M
+| | middleName | String(50) | 收款人中名 | O
+| | lastName | String(50) | 收款人姓 | M
+| | mobile | String(20) | 收款人手机号 | M
+| | email | String(50) | 收款人邮箱 | O
+| | address1 | String(35) | 收款人地址1 | M
+| | address2 | String(35) | 收款人地址2 | O
+| | address3 | String(35) | 收款人地址3 | O
+| | idType | int(2) | 收款人证件类型 | M
+| | idNumber | String(20) | 收款人证件号码 | M
+| | idDesc | String(20) | 收款人证件描述，当证件类型为6的时候为必填项 | C
+| | idIssueDate | String(10) | 收款人证件生效时间 | O
+| | idExpDate | String(10) | 收款人证件失效时间 | O
+| | birthdate | String(10) | 收款人生日 | O
+| | sex | String(1) | 收款人性别 | O
+| | nationality | String(3) | 收款人国籍(3位的国家ISO代码) | M
+| | bankCode | String(20) | 收款人账户银行编号 | M
+| | bankAccountNumber | String(30) | 收款人银行账户 | M
+| | bankAccountName | String(35) | 收款人账户银行名称 | M
+| | bankAddress | String(35) | 收款人账户银行地址 | O
 
 > Response Body:
 
@@ -729,28 +729,28 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| |clientBeneficiaryNo(20) | String | 客户方收款人唯一编号 | M
-| | beneficiaryNo(20) | String | NextPls收款人唯一编号 | M
-| | firstName(50) | String | 收款人名 | O
-| | middleName(50) | String | 收款人中名 | O
-| | lastName(50) | String | 收款人姓 | O
-| | mobile(20) | String | 收款人手机号 | O
-| | email(35) | String | 收款人邮箱 | O
-| | address1(35) | String | 收款人地址1 | O
-| | address2(35) | String | 收款人地址2 | O
-| | address3(35) | String | 收款人地址3 | O
-| | idType(2) | int | 收款人证件类型 | O
-| | idNumber(20) | String | 收款人证件号码 | O
-| | idDesc(20) | String | 收款人描述 | O
-| | idIssueDate(10) | String | 收款人证件生效时间 | O
-| | idExpDate(10) | String | 收款人证件失效时间 | O
-| | birthdate(10) | String | 收款人生日 | O
-| | sex(1) | String | 收款人性别 | O
-| | nationality(3) | String | 收款人国籍 | O
-| | bankCode(20) | String | 收款人账户银行编号 | O
-| | bankAccountNumber(30) | String | 收款人银行账户 | O
-| | bankAccountName(35) | String | 收款人账户银行名称 | O
-| | bankAddress(35) | String | 收款人账户银行地址 | O
+| |clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
+| | beneficiaryNo | String(20) | NextPls收款人唯一编号 | M
+| | firstName | String(50) | 收款人名 | O
+| | middleName | String(50) | 收款人中名 | O
+| | lastName | String(50) | 收款人姓 | O
+| | mobile | String(20) | 收款人手机号 | O
+| | email | String(35) | 收款人邮箱 | O
+| | address1 | String(35) | 收款人地址1 | O
+| | address2 | String(35) | 收款人地址2 | O
+| | address3 | String(35) | 收款人地址3 | O
+| | idType | int(2) | 收款人证件类型 | O
+| | idNumber | String(20) | 收款人证件号码 | O
+| | idDesc | String(20) | 收款人描述 | O
+| | idIssueDate | String(10) | 收款人证件生效时间 | O
+| | idExpDate | String(10) | 收款人证件失效时间 | O
+| | birthdate | String(10) | 收款人生日 | O
+| | sex | String(1) | 收款人性别 | O
+| | nationality | String(3) | 收款人国籍 | O
+| | bankCode | String(20) | 收款人账户银行编号 | O
+| | bankAccountNumber | String(30) | 收款人银行账户 | O
+| | bankAccountName | String(35) | 收款人账户银行名称 | O
+| | bankAddress | String(35) | 收款人账户银行地址 | O
 
 > Response Body:
 
@@ -829,8 +829,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientBeneficiaryNo(20) | String | 客户方收款人唯一编号 | M
-| | BeneficiaryNo(20) | String | NextPls收款人唯一编号 | M
+| | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
+| | BeneficiaryNo | String(20) | NextPls收款人唯一编号 | M
 
 > Response Body:
 
@@ -901,8 +901,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientRemitterNo(20) | String | 客户方汇款人唯一编号 | C
-| | remitterNo(20) | String | NextPls汇款人唯一编号 | C
+| | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | C
+| | remitterNo | String(20) | NextPls汇款人唯一编号 | C
 
 > Response Body:
 
@@ -1016,8 +1016,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientBeneficiaryNo(20) | String | 客户方收款人唯一编号 | C
-| | beneficiaryNo(20) | String | NextPls收款人唯一编号 | C
+| | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | C
+| | beneficiaryNo | String(20) | NextPls收款人唯一编号 | C
 
 > Response Body:
 
@@ -1129,7 +1129,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | currency(3) | String | 存款币种 | M
+| | currency | String(3) | 存款币种 | M
 
 > Response Body:
 
@@ -1206,8 +1206,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | payInCurrency(3) | String | 存入币种 | M
-| | payOutCurrency(3) | String | 到账币种 | M
+| | payInCurrency | String(3) | 存入币种 | M
+| | payOutCurrency | String(3) | 到账币种 | M
 
 > Response Body:
 
@@ -1298,12 +1298,12 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientTxnNo(20) | String | 客户方唯一编号 | M
-| | payInCurrency(3) | String | 存入币种 | M
-| | payOutCurrency(3) | String | 到账币种 | M
-| | transferCurrency(3) | String | 结算币种 | M
-| | transferAmount(18) | String | 结算金额 | M
-| | paymentMode(20) | String | 支付方式 | M
+| | clientTxnNo | String(20) | 客户方唯一编号 | M
+| | payInCurrency | String(3) | 存入币种 | M
+| | payOutCurrency | String(3) | 到账币种 | M
+| | transferCurrency | String(3) | 结算币种 | M
+| | transferAmount | String(18) | 结算金额 | M
+| | paymentMode | String(20) | 支付方式 | M
 
 > Response Body:
 
@@ -1413,13 +1413,13 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | TxnNo(20) | String | 订单编号 | M
-| | clientTxnNo(20) | String | 客户方订单编号 | M
-| | payInCountry(3) | String | 汇入币种 | M
-| | payOutCountry(3) | String | 到账币种 | M
-| | remitterNo(20) | String | 汇款人编号 | M
-| | beneficiaryNo(20) | String | 收款人编号 | M
-| | purposeCode(2) | String | 汇款目的编号 | M
+| | TxnNo | String(20) | 订单编号 | M
+| | clientTxnNo | String(20) | 客户方订单编号 | M
+| | payInCountry | String(3) | 汇入币种 | M
+| | payOutCountry | String(3) | 到账币种 | M
+| | remitterNo | String(20) | 汇款人编号 | M
+| | beneficiaryNo | String(20) | 收款人编号 | M
+| | purposeCode | String(2) | 汇款目的编号 | M
 
 > Response Body:
 
@@ -1483,8 +1483,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientTxnNo(20) | String | 客户方订单唯一编号 | M
-| | txnNo(20) | String | NextPls订单唯一编号 | M
+| | clientTxnNo | String(20) | 客户方订单唯一编号 | M
+| | txnNo | String(20) | NextPls订单唯一编号 | M
 
 > Response Body:
 
