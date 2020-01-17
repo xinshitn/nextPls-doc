@@ -319,12 +319,27 @@
 
 <p>Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). </p>
 
-<p><code>Example</code>
-item | ASCII_string 
---------- | -------
-sKey | cek_tester_remit
-ivParameter | initial_tester01
-CEK | cek_tester_remitinitial_tester01</p>
+<p><code>Example</code></p>
+
+<table><thead>
+<tr>
+<th>item</th>
+<th>ASCII_string</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sKey</td>
+<td>cek_tester_remit</td>
+</tr>
+<tr>
+<td>ivParameter</td>
+<td>initial_tester01</td>
+</tr>
+<tr>
+<td>CEK</td>
+<td>cek_tester_remitinitial_tester01</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 CEK is not a necessarily human readable ASCII string
@@ -1490,6 +1505,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankName"</span><span class="p">,</span><span class="w">
@@ -1523,6 +1539,7 @@ CEK is not a necessarily human readable ASCII string
              "birthdate": "01/01/1994",
              "sex": "M",
              "nationality": "HKG",
+             "relationship": "3",
              "bankCode": "11003544",
              "bankAccountNumber": "4555556564564",
              "bankAccountName": "Beneficiary_BankName",
@@ -1575,7 +1592,7 @@ CEK is not a necessarily human readable ASCII string
 <tr>
 <td></td>
 <td style="text-align: left">beneficiaryNo</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Unique code for NextPls</td>
 <td>M</td>
 </tr>
@@ -1690,6 +1707,13 @@ CEK is not a necessarily human readable ASCII string
 <td>String(3)</td>
 <td>Nationality of Beneficiary(3 Character Country ISO Code)</td>
 <td>O</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">relationship</td>
+<td>String(3)</td>
+<td>Relationship with the remitter</td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
@@ -1846,14 +1870,14 @@ CEK is not a necessarily human readable ASCII string
 <tr>
 <td></td>
 <td>clientBeneficiaryNo</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Unique code for partner beneficiary</td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>beneficiaryNo</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Unique code for NextPls beneficiary</td>
 <td></td>
 </tr>
@@ -2270,8 +2294,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2334,7 +2357,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>telephone</td>
+<td>mobile</td>
 <td>String</td>
 <td>Mobile phone Number of Beneficiary</td>
 </tr>
@@ -2473,7 +2496,7 @@ CEK is not a necessarily human readable ASCII string
         <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
             <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsBalanceDto</span> <span class="n">balanceDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBalanceDto</span><span class="o">();</span>
+            <span class="n">NextPlsBalanceRequestDto</span> <span class="n">balanceDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBalanceRequestDto</span><span class="o">();</span>
             <span class="n">balanceDto</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
             <span class="n">NextPlsGetBalanceRequest</span> <span class="n">balanceRequest</span> <span class="o">=</span> <span class="n">NextPlsGetBalanceRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">balanceDto</span><span class="o">);</span>
             <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">balanceRequest</span><span class="o">);</span>             
@@ -2606,7 +2629,7 @@ CEK is not a necessarily human readable ASCII string
         <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
             <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsExRateDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateDto</span><span class="o">();</span>
+            <span class="n">NextPlsExRateRequestDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateRequestDto</span><span class="o">();</span>
             <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
             <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
             <span class="n">NextPlsGetExRateRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
