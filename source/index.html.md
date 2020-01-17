@@ -26,7 +26,7 @@ search: true
 # 开始
 ## NextPls API的加密方式
 ### Request
-1. 生成一个CEK
+1.生成一个CEK
 
 消息在发送到NextPls之前，所有的请求体都应该使用加密算法对请求体进行加密。因此，我们需要一个CEK(内容加密密钥),该密钥将被加密后放在请求头的Content-Code的字段中发送到NextPls服务器。
   
@@ -43,7 +43,7 @@ CEK | cek_tester_remitinitial_tester01
 CEK不需要有特殊含义，可以为随机的字符串
 </aside>
   
-2. 利用CEK对方法体进行加密
+2.利用CEK对方法体进行加密
 
 在将请求发送到NextPls之前，应使用CEK加密消息体部分
 
@@ -68,7 +68,7 @@ CEK不需要有特殊含义，可以为随机的字符串
     }
 ```
 
-2. 利用NextPls公钥对CEK进行加密
+3.利用NextPls公钥对CEK进行加密
 
 在调用API前，必须将加密后的CEK放在请求头之中。应使用RSA算法对CEK进行加密，所有的客户都会获得由NextPls提供的一个用于CEK加密的专有公钥。
 
@@ -89,7 +89,7 @@ CEK不需要有特殊含义，可以为随机的字符串
     }
 ```
 
-3. 生成签名
+4.生成签名
 
 在调用API前，还必须在请求头中附加签名值。签名值用于认证请求是否来自于客户方。
   
@@ -113,7 +113,7 @@ CEK不需要有特殊含义，可以为随机的字符串
     }
 ```
   
-4. 生成请求头和请求体
+5.生成请求头和请求体
 
 使用加密的CEK、加密的方法体和签名便可组成一个完整的请求
   
@@ -131,7 +131,7 @@ Body |
 Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0Rja/2H87VLLmsQx7Bkbe0yah8ALIaCabwY30aG/FPsjY4Y7OhujaEAzOVRUrV21iYDL5nUg= |
 
 ### Response
-1. 验证签名
+1.验证签名
 
 为了验证NextPls服务器的真实性，客户方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验,如果结果不是true，这意味着无效的签名，响应主体的真实性得不到保证，客户方不应该进行进一步的处理
 
@@ -151,7 +151,7 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
     }
 ```
 
-2. CEK的获取
+2.CEK的获取
 
 所有的响应体在从NextPls服务器发送之前都使用AES/CBC/PKCS5Padding算法进行加密。因此，它需要首先从http报头中的Content-Code字段中解析CEK(通过内容加密密钥)
 
@@ -196,7 +196,7 @@ CEK可以从响应头中的Content-Code字段中获得
     }
 ```
 
-3. 用CEK解密响应体
+3.用CEK解密响应体
 
 您可以在响应体中通过获取的CEK解码，以获取响应的json对象
 
@@ -930,8 +930,7 @@ entity | | Object | 客户方请求参数 | M
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1",
-        "creatTime": "2020-01-07 15:49:35"
+        "sourceIncome": "1"
     },
     "msg": "success"
 }
@@ -963,7 +962,6 @@ entity | | Object | NextPls返回结果
 | | nationality | String | 汇款人国籍
 | | accountNumber | String | 汇款人银行账号
 | | sourceIncome | String | 汇款人收入来源
-| | creatTime | String | 汇款人创建时间
 msg | | String | 返回消息
 
 ## GetBeneficiary
@@ -1045,8 +1043,7 @@ entity | | Object | 客户方请求参数 | M
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1",
-        "creatTime": "2020-01-07 15:49:35"
+        "sourceIncome": "1"
     },
     "msg": "success"
 }
@@ -1078,7 +1075,6 @@ entity | | Object | NextPls返回结果
 | | nationality | String | 收款人国籍 
 | | accountNumber | String | 收款人银行账号
 | | sourceIncome | String | 收款人收入来源
-| | creatTime | String | 收款人创建时间
 msg | | String | 返回消息
 
 
