@@ -530,6 +530,7 @@ msg | | String | 返回消息
         "birthdate": "01/01/1994",
         "sex": "M",
         "nationality": "HKG",
+        "relationship": "3",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
@@ -564,6 +565,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
                  "birthdate": "01/01/1994",
                  "sex": "M",
                  "nationality": "HKG",
+                 "relationship": "3",
                  "bankCode": "11003544",
                  "bankAccountNumber": "4555556564564",
                  "bankAccountName": "Beneficiary_BankName",
@@ -608,6 +610,7 @@ entity | | Object | 客户方请求参数 | M
 | | birthdate | String(10) | 收款人生日 | O
 | | sex | String(1) | 收款人性别 | O
 | | nationality | String(3) | 收款人国籍(3位的国家ISO代码) | M
+| | relationship | String(3) | 与汇款者的关系编码 | M
 | | bankCode | String(20) | 收款人账户银行编号 | C
 | | bankAccountNumber | String(30) | 收款人银行账户 | C
 | | bankAccountName | String(35) | 收款人账户银行名称 | C
@@ -667,6 +670,7 @@ msg |  |String | 返回消息
         "birthdate": "01/01/1994",
         "sex": "M",
         "nationality": "HKG",
+        "relationship": "3",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
@@ -702,6 +706,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "birthdate": "01/01/1994",
              "sex": "M",
              "nationality": "HKG",
+             "relationship": "3",
              "bankCode": "11003544",
              "bankAccountNumber": "4555556564564",
              "bankAccountName": "Beneficiary_BankName",
@@ -747,6 +752,7 @@ entity | | Object | 客户方请求参数 | M
 | | birthdate | String(10) | 收款人生日 | O
 | | sex | String(1) | 收款人性别 | O
 | | nationality | String(3) | 收款人国籍 | O
+| | relationship | String(3) | 与汇款者的关系编码 | M
 | | bankCode | String(20) | 收款人账户银行编号 | O
 | | bankAccountNumber | String(30) | 收款人银行账户 | O
 | | bankAccountName | String(35) | 收款人账户银行名称 | O
@@ -1042,8 +1048,8 @@ entity | | Object | 客户方请求参数 | M
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
-        "accountNumber": "",
-        "sourceIncome": "1"
+        "relationship": "3",
+        "accountNumber": ""
     },
     "msg": "success"
 }
@@ -1060,7 +1066,7 @@ entity | | Object | NextPls返回结果
 | | firstName | String | 收款人名
 | | middleName | String | 收款人中名
 | | lastName | String | 收款人姓
-| | telephone | String | 收款人手机号
+| | mobile | String | 收款人手机号
 | | email | String | 收款人邮箱
 | | address1 | String | 收款人地址1
 | | address2 | String | 收款人地址2
@@ -1073,8 +1079,11 @@ entity | | Object | NextPls返回结果
 | | birthdate | String | 收款人生日
 | | sex | String | 收款人性别
 | | nationality | String | 收款人国籍 
+| | relationship | String | 与汇款者的关系
+| | bankCode | String | BankCode
 | | accountNumber | String | 收款人银行账号
-| | sourceIncome | String | 收款人收入来源
+| | bankAccountName | String | 收款人银行名称
+| | bankAddress | String | 收款人银行地址
 msg | | String | 返回消息
 
 
@@ -1111,7 +1120,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
         public static void main(String[] args){
             
             NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBalanceDto balanceDto = new NextPlsBalanceDto();
+            NextPlsBalanceRequestDto balanceDto = new NextPlsBalanceRequestDto();
             balanceDto.setCurrency("HKD");
             NextPlsGetBalanceRequest balanceRequest = NextPlsGetBalanceRequest.build(balanceDto);
             client.execute(balanceRequest);             
@@ -1187,7 +1196,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
         public static void main(String[] args){
             
             NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsExRateDto exRateDto = new NextPlsExRateDto();
+            NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
             exRateDto.setPayInCurrency("HKD");
             exRateDto.setPayOutCurrency("PHP");
             NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);

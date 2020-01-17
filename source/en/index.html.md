@@ -32,6 +32,7 @@ All request body should be encrypted with AES128 algorithm before sending to the
 Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). 
   
 `Example`
+
 item | ASCII_string 
 --------- | -------
 sKey | cek_tester_remit
@@ -677,6 +678,7 @@ This method allows the partner to Edit Registered Beneficiary Profile.
         "birthdate": "01/01/1994",
         "sex": "M",
         "nationality": "HKG",
+        "relationship": "3",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
@@ -712,6 +714,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "birthdate": "01/01/1994",
              "sex": "M",
              "nationality": "HKG",
+             "relationship": "3",
              "bankCode": "11003544",
              "bankAccountNumber": "4555556564564",
              "bankAccountName": "Beneficiary_BankName",
@@ -740,7 +743,7 @@ Parameter | | Type | Description | O/M
 apiName | | String | DO_BENEFICIARY_EDIT | M
 entity | | Object | Parameter list | M
 | | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
-| | beneficiaryNo | String | Unique code for NextPls | M
+| | beneficiaryNo | String(20) | Unique code for NextPls | M
 | | firstName | String(50) | Beneficiary First Name | O
 | | middleName | String(50) | Beneficiary Middle Name | O
 | | lastName | String(50) | Beneficiary Last Name | O
@@ -757,6 +760,7 @@ entity | | Object | Parameter list | M
 | | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
 | | sex | String(1) | Gender of Beneficiary | O
 | | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | O
+| | relationship | String(3) | Relationship with the remitter | M
 | | bankCode | String(20) | Bank code for Beneficiary | O
 | | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | O
 | | bankAccountName | String(35) | Bank Account name of Beneficiary | O
@@ -838,8 +842,8 @@ Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_BENEFICIARY_DEL | M
 entity | | Object | Parameter list | M
-| | clientBeneficiaryNo | String | Unique code for partner beneficiary
-| | beneficiaryNo | String | Unique code for NextPls beneficiary
+| | clientBeneficiaryNo | String(20) | Unique code for partner beneficiary
+| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary
 
 > Response Body:
 
@@ -859,10 +863,6 @@ apiName | | String | DO_BENEFICIARY_DEL_R
 code | | String | Result Code
 entity | | Object | Parameter list
 msg | | String | Result message
-
-
-
-
 
 
 
@@ -1064,8 +1064,7 @@ entity | | Object | Parameter list | M
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "relationship": "3",
-        "accountNumber": "",
-        "sourceIncome": "1"
+        "accountNumber": ""
     },
     "msg": "success"
 }
@@ -1082,7 +1081,7 @@ entity | | Object | Parameter list
 | | firstName | String | Beneficiary First Name
 | | middleName | String | Beneficiary Middle Name
 | | lastName | String | Beneficiary Last Name
-| | telephone | String | Mobile phone Number of Beneficiary
+| | mobile | String | Mobile phone Number of Beneficiary
 | | email | String | Email of Beneficiary
 | | address1 | String | Beneficiary Address1
 | | address2 | String | Beneficiary Address2
@@ -1136,7 +1135,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
         public static void main(String[] args){
             
             NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBalanceDto balanceDto = new NextPlsBalanceDto();
+            NextPlsBalanceRequestDto balanceDto = new NextPlsBalanceRequestDto();
             balanceDto.setCurrency("HKD");
             NextPlsGetBalanceRequest balanceRequest = NextPlsGetBalanceRequest.build(balanceDto);
             client.execute(balanceRequest);             
@@ -1212,7 +1211,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
         public static void main(String[] args){
             
             NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsExRateDto exRateDto = new NextPlsExRateDto();
+            NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
             exRateDto.setPayInCurrency("HKD");
             exRateDto.setPayOutCurrency("PHP");
             NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
