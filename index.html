@@ -286,7 +286,7 @@
                     <a href="#dotransactionpre" class="toc-h2 toc-link" data-title="DoTransactionPre">DoTransactionPre</a>
                   </li>
                   <li>
-                    <a href="#dotransactionadd" class="toc-h2 toc-link" data-title="DoTransactionAdd">DoTransactionAdd</a>
+                    <a href="#dotransaction" class="toc-h2 toc-link" data-title="DoTransaction">DoTransaction</a>
                   </li>
                   <li>
                     <a href="#gettransactionstatus" class="toc-h2 toc-link" data-title="GetTransactionStatus">GetTransactionStatus</a>
@@ -1322,14 +1322,14 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td style="text-align: left">idType</td>
 <td>int(2)</td>
 <td>收款人证件类型</td>
-<td>M</td>
+<td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idNumber</td>
 <td>String(20)</td>
 <td>收款人证件号码</td>
-<td>M</td>
+<td>O</td>
 </tr>
 <tr>
 <td></td>
@@ -1378,21 +1378,21 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td style="text-align: left">bankCode</td>
 <td>String(20)</td>
 <td>收款人账户银行编号</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">bankAccountNumber</td>
 <td>String(30)</td>
 <td>收款人银行账户</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">bankAccountName</td>
 <td>String(35)</td>
 <td>收款人账户银行名称</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
@@ -2941,7 +2941,7 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>返回消息</td>
 </tr>
 </tbody></table>
-<h2 id='dotransactionadd'>DoTransactionAdd</h2>
+<h2 id='dotransaction'>DoTransaction</h2>
 <p>创建订单 </p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>DO_TRANSACTION</code></p>
@@ -3113,15 +3113,21 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 <tr>
 <td></td>
+<td>txnNo</td>
+<td>String</td>
+<td>NextPls订单唯一编号</td>
+</tr>
+<tr>
+<td></td>
 <td>clientTxnNo</td>
 <td>String</td>
 <td>客户方订单唯一编号</td>
 </tr>
 <tr>
 <td></td>
-<td>txnNo</td>
+<td>status</td>
 <td>String</td>
-<td>NextPls订单唯一编号</td>
+<td>订单状态</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -3141,8 +3147,8 @@ CEK不需要有特殊含义，可以为随机的字符串
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
@@ -3154,8 +3160,8 @@ CEK不需要有特殊含义，可以为随机的字符串
     <span class="s1">'{
          "apiName": "GET_TRANSACTION_STATUS",
          "entity": {
-             "clientTxnNo": "1000",
-             "txnNo": "IU201G0279816077"
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000"
          }
      }'</span>
 </code></pre><h3 id='request-body-12'>Request Body</h3>
@@ -3184,16 +3190,16 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 <tr>
 <td></td>
-<td>clientTxnNo</td>
+<td>txnNo</td>
 <td>String(20)</td>
-<td>客户方订单唯一编号</td>
+<td>NextPls订单唯一编号</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>txnNo</td>
+<td>clientTxnNo</td>
 <td>String(20)</td>
-<td>NextPls订单唯一编号</td>
+<td>客户方订单唯一编号</td>
 <td>M</td>
 </tr>
 </tbody></table>
@@ -3205,8 +3211,8 @@ CEK不需要有特殊含义，可以为随机的字符串
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
@@ -3240,15 +3246,15 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 <tr>
 <td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>客户方订单唯一编号</td>
-</tr>
-<tr>
-<td></td>
 <td>txnNo</td>
 <td>String</td>
 <td>NextPls订单唯一编号</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String</td>
+<td>客户方订单唯一编号</td>
 </tr>
 <tr>
 <td></td>

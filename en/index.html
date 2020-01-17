@@ -263,27 +263,18 @@
                     <a href="#dobeneficiaryedit" class="toc-h2 toc-link" data-title="DoBeneficiaryEdit">DoBeneficiaryEdit</a>
                   </li>
                   <li>
-                    <a href="#doremitteradd-2" class="toc-h2 toc-link" data-title="DoRemitterAdd">DoRemitterAdd</a>
-                  </li>
-                  <li>
-                    <a href="#doremitteredit-2" class="toc-h2 toc-link" data-title="DoRemitterEdit">DoRemitterEdit</a>
-                  </li>
-                  <li>
                     <a href="#dobeneficiarydel" class="toc-h2 toc-link" data-title="DoBeneficiaryDel">DoBeneficiaryDel</a>
-                  </li>
-                  <li>
-                    <a href="#getbeneficiarylist" class="toc-h2 toc-link" data-title="GetBeneficiaryList">GetBeneficiaryList</a>
-                  </li>
-                  <li>
-                    <a href="#getbeneficiary" class="toc-h2 toc-link" data-title="GetBeneficiary">GetBeneficiary</a>
                   </li>
                   <li>
                     <a href="#getremitter" class="toc-h2 toc-link" data-title="GetRemitter">GetRemitter</a>
                   </li>
+                  <li>
+                    <a href="#getbeneficiary" class="toc-h2 toc-link" data-title="GetBeneficiary">GetBeneficiary</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#dfe799947f" class="toc-h1 toc-link" data-title="交易">交易</a>
+            <a href="#transaction" class="toc-h1 toc-link" data-title="Transaction">Transaction</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#getbalance" class="toc-h2 toc-link" data-title="GetBalance">GetBalance</a>
@@ -295,16 +286,10 @@
                     <a href="#dotransactionpre" class="toc-h2 toc-link" data-title="DoTransactionPre">DoTransactionPre</a>
                   </li>
                   <li>
-                    <a href="#dotransactionadd" class="toc-h2 toc-link" data-title="DoTransactionAdd">DoTransactionAdd</a>
+                    <a href="#dotransaction" class="toc-h2 toc-link" data-title="DoTransaction">DoTransaction</a>
                   </li>
                   <li>
                     <a href="#gettransactionstatus" class="toc-h2 toc-link" data-title="GetTransactionStatus">GetTransactionStatus</a>
-                  </li>
-                  <li>
-                    <a href="#gettransactionlist" class="toc-h2 toc-link" data-title="GetTransactionList">GetTransactionList</a>
-                  </li>
-                  <li>
-                    <a href="#gettransaction" class="toc-h2 toc-link" data-title="GetTransaction">GetTransaction</a>
                   </li>
               </ul>
           </li>
@@ -349,7 +334,7 @@
 <p>All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.</p>
 
 <p>Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). </p>
-<h4 id='example'>Example</h4>
+<h3 id='example'>Example</h3>
 <table><thead>
 <tr>
 <th>item</th>
@@ -445,7 +430,7 @@ CEK is not a necessarily human readable ASCII string
     <span class="o">}</span>
 </code></pre><h3 id='5-generating-request-header-and-body'>5.Generating request header and body</h3>
 <p>With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  </p>
-<h4 id='example-2'>Example</h4>
+<h3 id='example-2'>Example</h3>
 <table><thead>
 <tr>
 <th>Header</th>
@@ -558,7 +543,7 @@ CEK is not a necessarily human readable ASCII string
             <span class="kt">byte</span><span class="o">[]</span> <span class="n">original</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">encrypted1</span><span class="o">);</span>
             <span class="n">String</span> <span class="n">encodingFormat</span> <span class="o">=</span> <span class="s">"UTF-8"</span><span class="o">;</span>
             <span class="n">String</span> <span class="n">resBody</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">original</span><span class="o">,</span> <span class="n">encodingFormat</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"解析获得响应数据为："</span> <span class="o">+</span> <span class="n">resBody</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The result is："</span> <span class="o">+</span> <span class="n">resBody</span><span class="o">);</span>
 
         <span class="o">}</span>
     <span class="o">}</span>
@@ -595,7 +580,7 @@ CEK is not a necessarily human readable ASCII string
 
 <p>The function is not open yet, Coming soon!</p>
 <h1 id='customer-information'>Customer Information</h1><h2 id='doremitteradd'>DoRemitterAdd</h2>
-<p>This method allows the partner to Registered Customer Profile. </p>
+<p>This method allows the partner to Registered Remitter Profile. </p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>DO_REMITTER_ADD</code></p>
 
@@ -689,77 +674,77 @@ CEK is not a necessarily human readable ASCII string
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>Params</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>clientRemitterNo</td>
 <td>String(20)</td>
-<td>Remitter number of partner</td>
+<td>Unique code for partner remitter</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>firstName</td>
 <td>String(50)</td>
-<td>Customer first name</td>
+<td>Remitter first name</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>middleName</td>
 <td>String(50)</td>
-<td>Customer middle name</td>
+<td>Remitter middle name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>lastName</td>
 <td>String(50)</td>
-<td>Customer last name</td>
+<td>Remitter last name</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>mobile</td>
 <td>String(20)</td>
-<td>Customer mobile number</td>
+<td>Remitter mobile number</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>email</td>
 <td>String(50)</td>
-<td>The email id of customer</td>
+<td>The email id of remitter</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>address1</td>
 <td>String(35)</td>
-<td>Customer Address1</td>
+<td>Remitter Address1</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>address2</td>
 <td>String(35)</td>
-<td>Customer Address2</td>
+<td>Remitter Address2</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>address3</td>
 <td>String(50)</td>
-<td>Customer Address3</td>
+<td>Remitter Address3</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>idType</td>
 <td>int(3)</td>
-<td>Customer identity type</td>
+<td>Remitter identity type</td>
 <td>M</td>
 </tr>
 <tr>
@@ -794,35 +779,35 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>birthdate</td>
 <td>String(10)</td>
-<td>Customer date of birth (MM/DD/YYYY)</td>
+<td>Remitter date of birth (MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>sex</td>
 <td>String(1)</td>
-<td>Customer gender. M=Male, F=Female</td>
+<td>Remitter gender. M=Male, F=Female</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>nationality</td>
 <td>String(3)</td>
-<td>Customer Nationality(3 characters Country ISO code)</td>
+<td>Remitter Nationality(3 characters Country ISO code)</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>accountNumber</td>
 <td>String(30)</td>
-<td>Customer account number</td>
+<td>Remitter account number</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>sourceIncome</td>
 <td>String(2)</td>
-<td>Customer source of income</td>
+<td>Remitter source of income</td>
 <td>M</td>
 </tr>
 </tbody></table>
@@ -864,19 +849,19 @@ CEK is not a necessarily human readable ASCII string
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>Params</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>clientRemitterNo</td>
 <td>String</td>
-<td>Remitter number of partner</td>
+<td>Unique code for partner remitter</td>
 </tr>
 <tr>
 <td></td>
 <td>remitterNo</td>
 <td>String</td>
-<td>Remitter number of NextPls</td>
+<td>Unique code for NextPls remitter</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -886,7 +871,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 </tbody></table>
 <h2 id='doremitteredit'>DoRemitterEdit</h2>
-<p>This method allows the partner to Edit Registered Customer Profile.</p>
+<p>This method allows the partner to Edit Registered Remitter Profile.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>DO_REMITTER_EDIT</code></p>
 
@@ -964,10 +949,10 @@ CEK is not a necessarily human readable ASCII string
 </code></pre><h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>Field</th>
 <th></th>
-<th>类型</th>
-<th>描述</th>
+<th>Type</th>
+<th>Describe</th>
 <th>O/M</th>
 </tr>
 </thead><tbody>
@@ -975,14 +960,14 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>客户方请求参数</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1003,63 +988,63 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>firstName</td>
 <td>String(50)</td>
-<td>Customer first name</td>
+<td>Remitter first name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>middleName</td>
 <td>String(50)</td>
-<td>Customer middle name</td>
+<td>Remitter middle name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>lastName</td>
 <td>String(50)</td>
-<td>Customer last name</td>
+<td>Remitter last name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>mobile</td>
 <td>String(20)</td>
-<td>Customer mobile number</td>
+<td>Remitter mobile number</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>email</td>
 <td>String(50)</td>
-<td>The email id of customer</td>
+<td>The email id of remitter</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>address1</td>
 <td>String(35)</td>
-<td>Customer Address1</td>
+<td>Remitter Address1</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>address2</td>
 <td>String(35)</td>
-<td>Customer Address2</td>
+<td>Remitter Address2</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>address3</td>
 <td>String(50)</td>
-<td>Customer Address3</td>
+<td>Remitter Address3</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>idType</td>
 <td>int(3)</td>
-<td>Customer identity type</td>
+<td>Remitter identity type</td>
 <td>O</td>
 </tr>
 <tr>
@@ -1094,35 +1079,35 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>birthdate</td>
 <td>String(10)</td>
-<td>Customer date of birth (MM/DD/YYYY)</td>
+<td>Remitter date of birth (MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>sex</td>
 <td>String(1)</td>
-<td>Customer gender. M=Male, F=Female</td>
+<td>Remitter gender. M=Male, F=Female</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>nationality</td>
 <td>String(3)</td>
-<td>Customer Nationality(3 characters Country ISO code)</td>
+<td>Remitter Nationality(3 characters Country ISO code)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>accountNumber</td>
 <td>String(30)</td>
-<td>Customer account number</td>
+<td>Remitter account number</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td>sourceIncome</td>
 <td>String(2)</td>
-<td>Customer source of income</td>
+<td>Remitter source of income</td>
 <td>O</td>
 </tr>
 </tbody></table>
@@ -1164,19 +1149,19 @@ CEK is not a necessarily human readable ASCII string
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>Params</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>clientRemitterNo</td>
 <td>String</td>
-<td>Remitter number of partner</td>
+<td>Unique code for partner remitter</td>
 </tr>
 <tr>
 <td></td>
 <td>remitterNo</td>
 <td>String</td>
-<td>Remitter number of NextPls</td>
+<td>Unique code for NextPls remitter</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -1186,9 +1171,9 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 </tbody></table>
 <h2 id='dobeneficiaryadd'>DoBeneficiaryAdd</h2>
-<p>添加收款人信息</p>
+<p>This method allows the partner to Register New Beneficiary.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/beneficiary/add</code></p>
+<p><span class="http-method post">POST</span> <code>DO_BENEFICIARY_ADD</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -1196,11 +1181,11 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1213,6 +1198,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankName"</span><span class="p">,</span><span class="w">
@@ -1228,11 +1214,11 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_ADD",
              "entity": {
-                 "clientRemitterNo": "BE1231211",
+                 "clientRemitterNo": "TEST_B001",
                  "firstName": "Beneficiary_First_Name",
                  "middleName": "Beneficiary_Middle_Name",
                  "lastName": "Beneficiary_Last_Name",
-                 "telephone": "12345678910",
+                 "mobile": "12345678910",
                  "email": "nextPls@nextPls.com",
                  "address1": "Philippines",
                  "address2": "",
@@ -1245,12 +1231,25 @@ CEK is not a necessarily human readable ASCII string
                  "birthdate": "01/01/1994",
                  "sex": "M",
                  "nationality": "HKG",
+                 "relationship": "4",
                  "bankCode": "11003544",
                  "bankAccountNumber": "4555556564564",
                  "bankAccountName": "Beneficiary_BankName",
                  "bankAddress": "Beneficiary_BankAddress"
              }
      }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
+            <span class="c1">// ...</span>
+            <span class="n">NextPlsDoBeneficiaryAddRequest</span> <span class="n">beneficiaryAddRequest</span> <span class="o">=</span> <span class="n">NextPlsDoBeneficiaryAddRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryAddRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre><h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
@@ -1265,160 +1264,167 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td style="text-align: left"></td>
 <td>String</td>
-<td>The name of the invocation interface</td>
+<td>Name of api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td style="text-align: left"></td>
 <td>Object</td>
-<td>Agent request parameter list</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">clientBeneficiaryNo</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Unique code for agent beneficiary</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">firstName</td>
-<td>String</td>
+<td>String(50)</td>
 <td>Beneficiary First Name</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">middleName</td>
-<td>String</td>
+<td>String(50)</td>
 <td>Beneficiary Middle Name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">lastName</td>
-<td>String</td>
+<td>String(50)</td>
 <td>Beneficiary Last Name</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align: left">telephone</td>
-<td>String</td>
-<td>Telephone Number of Beneficiary</td>
+<td style="text-align: left">mobile</td>
+<td>String(20)</td>
+<td>Mobile phone Number of Beneficiary</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">email</td>
-<td>String</td>
+<td>String(50)</td>
 <td>Email of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">address1</td>
-<td>String</td>
-<td>Beneficiary Address line 1</td>
+<td>String(35)</td>
+<td>Beneficiary Address1</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">address2</td>
-<td>String</td>
-<td>Beneficiary Address line 2</td>
+<td>String(35)</td>
+<td>Beneficiary Address2</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">address3</td>
-<td>String</td>
-<td>Beneficiary Address line 3</td>
+<td>String(35)</td>
+<td>Beneficiary Address3</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idType</td>
-<td>int</td>
+<td>int(2)</td>
 <td>Type of Beneficiary Id Proof</td>
-<td>M</td>
+<td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idNumber</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Beneficiary ID Number</td>
-<td>M</td>
+<td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idDesc</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Description of Beneficiary ID,&quot;M&quot; only if IDType is 6</td>
 <td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idIssueDate</td>
-<td>String</td>
-<td>Issue date of Beneficiary Id proof(MM/DD/YYYY)</td>
+<td>String(10)</td>
+<td>Issue date(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">idExpDate</td>
-<td>String</td>
-<td>Expiry date of Beneficiary Id proof(MM/DD/YYYY)</td>
+<td>String(10)</td>
+<td>Expiry date(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">birthdate</td>
-<td>String</td>
-<td>Beneficiary BirthDate</td>
+<td>String(10)</td>
+<td>Beneficiary BirthDate(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">sex</td>
-<td>String</td>
+<td>String(1)</td>
 <td>Gender of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">nationality</td>
-<td>String</td>
+<td>String(3)</td>
 <td>Nationality of Beneficiary(3 Character Country ISO Code)</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
+<td style="text-align: left">relationship</td>
+<td>String(3)</td>
+<td>Relationship with the remitter</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
 <td style="text-align: left">bankCode</td>
-<td>String</td>
+<td>String(20)</td>
 <td>Bank code for Beneficiary</td>
 <td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">bankAccountNumber</td>
-<td>String</td>
+<td>String(30)</td>
 <td>Bank Account Number of Beneficiary</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">bankAccountName</td>
-<td>String</td>
+<td>String(35)</td>
 <td>Bank Account name of Beneficiary</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td style="text-align: left">bankAddress</td>
-<td>String</td>
+<td>String(35)</td>
 <td>Beneficiary Bank Address</td>
 <td>O</td>
 </tr>
@@ -1432,73 +1438,73 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body-3'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>clientBeneficiaryNo</td>
 <td>String</td>
-<td>代理方收款人唯一编号</td>
+<td>Unique code for partner beneficiary</td>
 </tr>
 <tr>
 <td></td>
 <td>beneficiaryNo</td>
 <td>String</td>
-<td>NextPls收款人唯一编号</td>
+<td>Unique code for NextPls beneficiary</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='dobeneficiaryedit'>DoBeneficiaryEdit</h2>
-<p>修改收款人信息</p>
+<p>This method allows the partner to Edit Registered Beneficiary Profile.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/beneficiary/edit</code></p>
+<p><span class="http-method post">POST</span> <code>DO_BENEFICIARY_EDIT</code></p>
 
 <blockquote>
 <p>Request Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_EDIT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1526,12 +1532,12 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_ADD",
          "entity": {
-             "clientRemitterNo": "BE1231211",
-             "beneficiaryNo": "BP123123",
+             "clientRemitterNo": "TEST_B001",
+             "beneficiaryNo": "XD201G0589941750",
              "firstName": "Beneficiary_First_Name",
              "middleName": "Beneficiary_Middle_Name",
              "lastName": "Beneficiary_Last_Name",
-             "telephone": "12345678910",
+             "mobile": "12345678910",
              "email": "nextPls@nextPls.com",
              "address1": "Philippines",
              "address2": "",
@@ -1550,11 +1556,23 @@ CEK is not a necessarily human readable ASCII string
              "bankAddress": "Beneficiary_BankAddress"
          }
      }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
+            <span class="c1">// ...</span>
+            <span class="n">NextPlsDoBeneficiaryEditRequest</span> <span class="n">beneficiaryEditRequest</span> <span class="o">=</span> <span class="n">NextPlsDoBeneficiaryEditRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryEditRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre><h3 id='request-body-4'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th></th>
+<th style="text-align: left"></th>
 <th>Type</th>
 <th>Description</th>
 <th>O/M</th>
@@ -1562,170 +1580,170 @@ CEK is not a necessarily human readable ASCII string
 </thead><tbody>
 <tr>
 <td>apiName</td>
-<td></td>
+<td style="text-align: left"></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
-<td></td>
+<td style="text-align: left"></td>
 <td>Object</td>
-<td>代理方请求参数</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
+<td style="text-align: left">clientBeneficiaryNo</td>
+<td>String(20)</td>
+<td>Unique code for agent beneficiary</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>beneficiaryNo</td>
+<td style="text-align: left">beneficiaryNo</td>
 <td>String</td>
-<td>NextPls收款人唯一编号</td>
+<td>Unique code for NextPls</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>firstName</td>
-<td>String</td>
+<td style="text-align: left">firstName</td>
+<td>String(50)</td>
 <td>Beneficiary First Name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>middleName</td>
-<td>String</td>
+<td style="text-align: left">middleName</td>
+<td>String(50)</td>
 <td>Beneficiary Middle Name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>lastName</td>
-<td>String</td>
+<td style="text-align: left">lastName</td>
+<td>String(50)</td>
 <td>Beneficiary Last Name</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>telephone</td>
-<td>String</td>
-<td>Telephone Number of Beneficiary</td>
+<td style="text-align: left">mobile</td>
+<td>String(20)</td>
+<td>Mobile phone Number of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>email</td>
-<td>String</td>
+<td style="text-align: left">email</td>
+<td>String(50)</td>
 <td>Email of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>address1</td>
-<td>String</td>
-<td>Beneficiary Address line 1</td>
+<td style="text-align: left">address1</td>
+<td>String(35)</td>
+<td>Beneficiary Address1</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>address2</td>
-<td>String</td>
-<td>Beneficiary Address line 2</td>
+<td style="text-align: left">address2</td>
+<td>String(35)</td>
+<td>Beneficiary Address2</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>address3</td>
-<td>String</td>
-<td>Beneficiary Address line 3</td>
+<td style="text-align: left">address3</td>
+<td>String(35)</td>
+<td>Beneficiary Address3</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>idType</td>
-<td>int</td>
+<td style="text-align: left">idType</td>
+<td>int(2)</td>
 <td>Type of Beneficiary Id Proof</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>idNumber</td>
-<td>String</td>
+<td style="text-align: left">idNumber</td>
+<td>String(20)</td>
 <td>Beneficiary ID Number</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>idDesc</td>
-<td>String</td>
-<td>收款人Description</td>
+<td style="text-align: left">idDesc</td>
+<td>String(20)</td>
+<td>Description of Beneficiary ID,&quot;M&quot; only if IDType is 6</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>idIssueDate</td>
-<td>String</td>
-<td>收款人证件生效时间</td>
+<td style="text-align: left">idIssueDate</td>
+<td>String(10)</td>
+<td>Issue date(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>idExpDate</td>
-<td>String</td>
-<td>收款人证件失效时间</td>
+<td style="text-align: left">idExpDate</td>
+<td>String(10)</td>
+<td>Expiry date(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>birthdate</td>
-<td>String</td>
-<td>收款人生日</td>
+<td style="text-align: left">birthdate</td>
+<td>String(10)</td>
+<td>Beneficiary BirthDate(MM/DD/YYYY)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>sex</td>
-<td>String</td>
-<td>收款人性别</td>
+<td style="text-align: left">sex</td>
+<td>String(1)</td>
+<td>Gender of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>nationality</td>
-<td>String</td>
-<td>收款人国籍</td>
+<td style="text-align: left">nationality</td>
+<td>String(3)</td>
+<td>Nationality of Beneficiary(3 Character Country ISO Code)</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>bankCode</td>
-<td>String</td>
-<td>收款人账户银行编号</td>
+<td style="text-align: left">bankCode</td>
+<td>String(20)</td>
+<td>Bank code for Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>bankAccountNumber</td>
-<td>String</td>
-<td>收款人银行账户</td>
+<td style="text-align: left">bankAccountNumber</td>
+<td>String(30)</td>
+<td>Bank Account Number of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>bankAccountName</td>
-<td>String</td>
-<td>收款人账户银行名称</td>
+<td style="text-align: left">bankAccountName</td>
+<td>String(35)</td>
+<td>Bank Account name of Beneficiary</td>
 <td>O</td>
 </tr>
 <tr>
 <td></td>
-<td>bankAddress</td>
-<td>String</td>
-<td>收款人账户银行地址</td>
+<td style="text-align: left">bankAddress</td>
+<td>String(35)</td>
+<td>Beneficiary Bank Address</td>
 <td>O</td>
 </tr>
 </tbody></table>
@@ -1734,631 +1752,64 @@ CEK is not a necessarily human readable ASCII string
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_EDIT_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP123123"</span><span class="w">
+       </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body-4'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>clientBeneficiaryNo</td>
 <td>String</td>
-<td>代理方收款人唯一编号</td>
+<td>Unique code for partner beneficiary</td>
 </tr>
 <tr>
 <td></td>
 <td>beneficiaryNo</td>
 <td>String</td>
-<td>NextPls收款人唯一编号</td>
+<td>Unique code for NextPls beneficiary</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
-</tr>
-</tbody></table>
-<h2 id='doremitteradd-2'>DoRemitterAdd</h2>
-<p>添加汇款人信息</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/remitter/add</code></p>
-
-<blockquote>
-<p>Request Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
-    -d
-    <span class="s1">'{
-         "apiName": "DO_REMITTER_ADD",
-         "entity": {
-             "clientRemitterNo": "RE1233112",
-             "firstName": "Remitter_First_Name",
-             "middleName": "Remitter_Middle_Name",
-             "lastName": "Remitter_Last_Name",
-             "telephone": "12345678910",
-             "sex": "M",
-             "birthdate": "01/01/1994",
-             "email": "nextPls@nextPls.com",
-             "address1": "Italy",
-             "address2": "",
-             "address3": "",
-             "idType": "0",
-             "idNumber": "PS256454165",
-             "idDesc": "",
-             "idIssueDate": "01/01/1994",
-             "idExpDate": "01/01/1994",
-             "nationality": "HKG",
-             "accountNumber": "",
-             "sourceIncome": "1"
-         }
-     }'</span>
-</code></pre><h3 id='request-body-5'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-<td>M</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>firstName</td>
-<td>String</td>
-<td>汇款人名</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>middleName</td>
-<td>String</td>
-<td>汇款人中名</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>lastName</td>
-<td>String</td>
-<td>汇款人姓</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>telephone</td>
-<td>String</td>
-<td>汇款人手机号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>email</td>
-<td>String</td>
-<td>汇款人邮箱</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>address1</td>
-<td>String</td>
-<td>汇款人地址1</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>address2</td>
-<td>String</td>
-<td>汇款人地址2</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>address3</td>
-<td>String</td>
-<td>汇款人地址3</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idType</td>
-<td>int</td>
-<td>汇款人证件类型</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>idNumber</td>
-<td>String</td>
-<td>汇款人证件号码</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>idDesc</td>
-<td>String</td>
-<td>汇款人Description</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idIssueDate</td>
-<td>String</td>
-<td>汇款人证件生效时间</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idExpDate</td>
-<td>String</td>
-<td>汇款人证件失效时间</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>birthdate</td>
-<td>String</td>
-<td>汇款人生日</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>sex</td>
-<td>String</td>
-<td>汇款人性别</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>nationality</td>
-<td>String</td>
-<td>汇款人国籍</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>accountNumber</td>
-<td>String</td>
-<td>汇款人银行账号</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>sourceIncome</td>
-<td>String</td>
-<td>汇款人收入来源</td>
-<td>M</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-5'>Response Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-</tr>
-<tr>
-<td>code</td>
-<td></td>
-<td>String</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>返回消息</td>
-</tr>
-</tbody></table>
-<h2 id='doremitteredit-2'>DoRemitterEdit</h2>
-<p>修改汇款人信息</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/remitter/edit</code></p>
-
-<blockquote>
-<p>Request Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
-    -d
-    <span class="s1">'{
-         "apiName": "DO_REMITTER_EDIT",
-         "entity": {
-             "clientRemitterNo": "RE1233112",
-             "remitterNo": "RP122141",
-             "firstName": "Remitter_First_Name",
-             "middleName": "Remitter_Middle_Name",
-             "lastName": "Remitter_Last_Name",
-             "telephone": "12345678910",
-             "sex": "M",
-             "birthdate": "01/01/1994",
-             "email": "nextPls@nextPls.com",
-             "address1": "Philippines",
-             "address2": "",
-             "address3": "",
-             "idType": "0",
-             "idNumber": "PS256454165",
-             "idDesc": "",
-             "idIssueDate": "01/01/1994",
-             "idExpDate": "01/01/1994",
-             "nationality": "HKG",
-             "accountNumber": "",
-             "sourceIncome": "1"
-         }
-     }'</span>
-</code></pre><h3 id='request-body-6'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-<td>M</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>firstName</td>
-<td>String</td>
-<td>汇款人名</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>middleName</td>
-<td>String</td>
-<td>汇款人中名</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>lastName</td>
-<td>String</td>
-<td>汇款人姓</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>telephone</td>
-<td>String</td>
-<td>汇款人手机号</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>email</td>
-<td>String</td>
-<td>汇款人邮箱</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>address1</td>
-<td>String</td>
-<td>汇款人地址1</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>address2</td>
-<td>String</td>
-<td>汇款人地址2</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>address3</td>
-<td>String</td>
-<td>汇款人地址3</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idType</td>
-<td>int</td>
-<td>汇款人证件类型</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idNumber</td>
-<td>String</td>
-<td>汇款人证件号码</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idDesc</td>
-<td>String</td>
-<td>汇款人Description</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idIssueDate</td>
-<td>String</td>
-<td>汇款人证件生效时间</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>idExpDate</td>
-<td>String</td>
-<td>汇款人证件失效时间</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>birthdate</td>
-<td>String</td>
-<td>汇款人生日</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>sex</td>
-<td>String</td>
-<td>汇款人性别</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>nationality</td>
-<td>String</td>
-<td>汇款人国籍</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>accountNumber</td>
-<td>String</td>
-<td>汇款人银行账号</td>
-<td>O</td>
-</tr>
-<tr>
-<td></td>
-<td>sourceIncome</td>
-<td>String</td>
-<td>汇款人收入来源</td>
-<td>O</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-6'>Response Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-</tr>
-<tr>
-<td>code</td>
-<td></td>
-<td>String</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='dobeneficiarydel'>DoBeneficiaryDel</h2>
-<p>删除收款人 </p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/beneficiary/del</code></p>
+<p>This method allows the partner to Delete Registered beneficiary.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>DO_BENEFICIARY_DEL</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -2366,8 +1817,8 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_DEL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
@@ -2379,17 +1830,29 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_DEL",
          "entity": {
-             "clientBeneficiaryNo": "BE1233112",
-             "beneficiaryNo": "RP122141"
+             "clientBeneficiaryNo": "TEST_B002",
+             "beneficiaryNo": "XD201G0589941750"
          }
      }'</span>
-</code></pre><h3 id='request-body-7'>Request Body</h3>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B002"</span><span class="o">);</span>
+            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
+            <span class="n">NextPlsDoBeneficiaryDelRequest</span> <span class="n">beneficiaryDelRequest</span> <span class="o">=</span> <span class="n">NextPlsDoBeneficiaryDelRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryDelRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h3 id='request-body-5'>Request Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 <th>O/M</th>
 </tr>
 </thead><tbody>
@@ -2397,29 +1860,29 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>代理方请求参数</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>clientBeneficiaryNo</td>
 <td>String</td>
-<td>代理方收款人唯一编号</td>
-<td>M</td>
+<td>Unique code for partner beneficiary</td>
+<td></td>
 </tr>
 <tr>
 <td></td>
-<td>BeneficiaryNo</td>
+<td>beneficiaryNo</td>
 <td>String</td>
-<td>NextPls收款人唯一编号</td>
-<td>M</td>
+<td>Unique code for NextPls beneficiary</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -2429,327 +1892,47 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_DEL_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-7'>Response Body</h3>
+</span></code></pre><h3 id='response-body-5'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>beneficiaryNo</td>
-<td>String</td>
-<td>NextPls收款人唯一编号</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
-</tr>
-</tbody></table>
-<h2 id='getbeneficiarylist'>GetBeneficiaryList</h2>
-<p>获取收款人列表</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/beneficiary/list</code></p>
-
-<p>The function is not open yet, Coming soon!</p>
-<h2 id='getbeneficiary'>GetBeneficiary</h2>
-<p>获取指定收款人信息 </p>
-<h3 id='http-request-10'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/beneficiary</code></p>
-
-<blockquote>
-<p>Request Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
-    -d
-    <span class="s1">'{
-        "apiName": "GET_BENEFICIARY",
-        "entity": {
-            "clientBeneficiaryNo": "BE1233112",
-            "beneficiaryNo": "RP122141"
-        } 
-     }'</span>
-</code></pre><h3 id='request-body-8'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-<td>M</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>BeneficiaryNo</td>
-<td>String</td>
-<td>NextPls收款人唯一编号</td>
-<td>M</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY_R"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-8'>Response Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-</tr>
-<tr>
-<td>code</td>
-<td></td>
-<td>String</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>beneficiaryNo</td>
-<td>String</td>
-<td>NextPls收款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>firstName</td>
-<td>String</td>
-<td>Beneficiary First Name</td>
-</tr>
-<tr>
-<td></td>
-<td>middleName</td>
-<td>String</td>
-<td>Beneficiary Middle Name</td>
-</tr>
-<tr>
-<td></td>
-<td>lastName</td>
-<td>String</td>
-<td>Beneficiary Last Name</td>
-</tr>
-<tr>
-<td></td>
-<td>telephone</td>
-<td>String</td>
-<td>Telephone Number of Beneficiary</td>
-</tr>
-<tr>
-<td></td>
-<td>email</td>
-<td>String</td>
-<td>Email of Beneficiary</td>
-</tr>
-<tr>
-<td></td>
-<td>address1</td>
-<td>String</td>
-<td>Beneficiary Address line 1</td>
-</tr>
-<tr>
-<td></td>
-<td>address2</td>
-<td>String</td>
-<td>Beneficiary Address line 2</td>
-</tr>
-<tr>
-<td></td>
-<td>address3</td>
-<td>String</td>
-<td>Beneficiary Address line 3</td>
-</tr>
-<tr>
-<td></td>
-<td>idType</td>
-<td>int</td>
-<td>Type of Beneficiary Id Proof</td>
-</tr>
-<tr>
-<td></td>
-<td>idNumber</td>
-<td>String</td>
-<td>Beneficiary ID Number</td>
-</tr>
-<tr>
-<td></td>
-<td>idDesc</td>
-<td>String</td>
-<td>收款人Description</td>
-</tr>
-<tr>
-<td></td>
-<td>idIssueDate</td>
-<td>String</td>
-<td>收款人证件生效时间</td>
-</tr>
-<tr>
-<td></td>
-<td>idExpDate</td>
-<td>String</td>
-<td>收款人证件失效时间</td>
-</tr>
-<tr>
-<td></td>
-<td>birthdate</td>
-<td>String</td>
-<td>收款人生日</td>
-</tr>
-<tr>
-<td></td>
-<td>sex</td>
-<td>String</td>
-<td>收款人性别</td>
-</tr>
-<tr>
-<td></td>
-<td>nationality</td>
-<td>String</td>
-<td>收款人国籍</td>
-</tr>
-<tr>
-<td></td>
-<td>accountNumber</td>
-<td>String</td>
-<td>收款人银行账号</td>
-</tr>
-<tr>
-<td></td>
-<td>sourceIncome</td>
-<td>String</td>
-<td>收款人收入来源</td>
-</tr>
-<tr>
-<td></td>
-<td>creatTime</td>
-<td>String</td>
-<td>收款人创建时间</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='getremitter'>GetRemitter</h2>
-<p>获取汇款人信息 </p>
-<h3 id='http-request-11'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/remitter</code></p>
+<p>This method allows the partner to Get Registered Remitter Profile.  </p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_REMITTER</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -2757,8 +1940,8 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
@@ -2770,17 +1953,28 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "GET_REMITTER",
          "entity": {
-             "clientRemitterNo": "RE1233112",
-             "remitterNo": "RP122141"
+             "clientRemitterNo": "TEST_B001",
+             "remitterNo": "JJ201A1131599873"
          }
      }'</span>
-</code></pre><h3 id='request-body-9'>Request Body</h3>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
+            <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
+            <span class="n">NextPlsGetRemitterRequest</span> <span class="n">remitterRequest</span> <span class="o">=</span> <span class="n">NextPlsGetRemitterRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h3 id='request-body-6'>Request Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 <th>O/M</th>
 </tr>
 </thead><tbody>
@@ -2788,29 +1982,29 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>代理方请求参数</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-<td>M</td>
+<td>String(20)</td>
+<td>Unique code for partner remitter</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-<td>M</td>
+<td>String(20)</td>
+<td>Unique code for NextPls remitter</td>
+<td>C</td>
 </tr>
 </tbody></table>
 
@@ -2821,8 +2015,8 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Last_Name"</span><span class="p">,</span><span class="w">
@@ -2840,187 +2034,722 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-9'>Response Body</h3>
+</span></code></pre><h3 id='response-body-6'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>clientRemitterNo</td>
 <td>String</td>
-<td>代理方汇款人唯一编号</td>
+<td>Unique code for partner remitter</td>
 </tr>
 <tr>
 <td></td>
 <td>remitterNo</td>
 <td>String</td>
-<td>NextPls汇款人唯一编号</td>
+<td>Unique code for NextPls remitter</td>
 </tr>
 <tr>
 <td></td>
 <td>firstName</td>
 <td>String</td>
-<td>汇款人名</td>
+<td>Remitter first name</td>
 </tr>
 <tr>
 <td></td>
 <td>middleName</td>
 <td>String</td>
-<td>汇款人中名</td>
+<td>Remitter middle name</td>
 </tr>
 <tr>
 <td></td>
 <td>lastName</td>
 <td>String</td>
-<td>汇款人姓</td>
+<td>Remitter last name</td>
 </tr>
 <tr>
 <td></td>
-<td>telephone</td>
+<td>mobile</td>
 <td>String</td>
-<td>汇款人手机号</td>
+<td>Remitter mobile number</td>
 </tr>
 <tr>
 <td></td>
 <td>email</td>
 <td>String</td>
-<td>汇款人邮箱</td>
+<td>The email id of remitter</td>
 </tr>
 <tr>
 <td></td>
 <td>address1</td>
 <td>String</td>
-<td>汇款人地址1</td>
+<td>Remitter Address1</td>
 </tr>
 <tr>
 <td></td>
 <td>address2</td>
 <td>String</td>
-<td>汇款人地址2</td>
+<td>Remitter Address2</td>
 </tr>
 <tr>
 <td></td>
 <td>address3</td>
 <td>String</td>
-<td>汇款人地址3</td>
+<td>Remitter Address3</td>
 </tr>
 <tr>
 <td></td>
 <td>idType</td>
 <td>int</td>
-<td>汇款人证件类型</td>
+<td>Remitter identity type</td>
 </tr>
 <tr>
 <td></td>
 <td>idNumber</td>
 <td>String</td>
-<td>汇款人证件号码</td>
+<td>ID number</td>
 </tr>
 <tr>
 <td></td>
 <td>idDesc</td>
 <td>String</td>
-<td>汇款人Description</td>
+<td>description</td>
 </tr>
 <tr>
 <td></td>
 <td>idIssueDate</td>
 <td>String</td>
-<td>汇款人证件生效时间</td>
+<td>ID issue date (MM/DD/YYYY)</td>
 </tr>
 <tr>
 <td></td>
 <td>idExpDate</td>
 <td>String</td>
-<td>汇款人证件失效时间</td>
+<td>ID expiry date (MM/DD/YYYY)</td>
 </tr>
 <tr>
 <td></td>
 <td>birthdate</td>
 <td>String</td>
-<td>汇款人生日</td>
+<td>Remitter date of birth (MM/DD/YYYY)</td>
 </tr>
 <tr>
 <td></td>
 <td>sex</td>
 <td>String</td>
-<td>汇款人性别</td>
+<td>Remitter gender</td>
 </tr>
 <tr>
 <td></td>
 <td>nationality</td>
 <td>String</td>
-<td>汇款人国籍</td>
+<td>Remitter Nationality</td>
 </tr>
 <tr>
 <td></td>
 <td>accountNumber</td>
 <td>String</td>
-<td>汇款人银行账号</td>
+<td>Remitter account number</td>
 </tr>
 <tr>
 <td></td>
 <td>sourceIncome</td>
 <td>String</td>
-<td>汇款人收入来源</td>
-</tr>
-<tr>
-<td></td>
-<td>creatTime</td>
-<td>String</td>
-<td>汇款人创建时间</td>
+<td>Remitter source of income</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
-<h1 id='dfe799947f'>交易</h1><h2 id='getbalance'>GetBalance</h2>
-<p>获取账户余额 </p>
-<h3 id='http-request-12'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/balance</code></p>
+<h2 id='getbeneficiary'>GetBeneficiary</h2>
+<p>This method allows the partner to Get Registered Beneficiary Profile by client Beneficiary No or Beneficiary No</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_BENEFICIARY</code></p>
 
-<p>The function is not open yet, Coming soon!</p>
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H ”Authorization:<span class="s2">"your authorization"</span>
+    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
+    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -d
+    <span class="s1">'{
+        "apiName": "GET_BENEFICIARY",
+        "entity": {
+            "clientBeneficiaryNo": "TEST_B002",
+            "beneficiaryNo": "XD201G0589941750"
+        } 
+     }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TESTB002"</span><span class="o">);</span>
+            <span class="n">NextPlsGetBeneficiaryRequest</span> <span class="n">beneficiaryRequest</span> <span class="o">=</span> <span class="n">NextPlsGetBeneficiaryRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h3 id='request-body-7'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>clientBeneficiaryNo</td>
+<td>String(20)</td>
+<td>Unique code for partner beneficiary</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryNo</td>
+<td>String(20)</td>
+<td>Unique code for NextPls beneficiary</td>
+<td>C</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-7'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>clientBeneficiaryNo</td>
+<td>String</td>
+<td>Unique code for agent beneficiary</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryNo</td>
+<td>String</td>
+<td>Unique code for NextPls</td>
+</tr>
+<tr>
+<td></td>
+<td>firstName</td>
+<td>String</td>
+<td>Beneficiary First Name</td>
+</tr>
+<tr>
+<td></td>
+<td>middleName</td>
+<td>String</td>
+<td>Beneficiary Middle Name</td>
+</tr>
+<tr>
+<td></td>
+<td>lastName</td>
+<td>String</td>
+<td>Beneficiary Last Name</td>
+</tr>
+<tr>
+<td></td>
+<td>telephone</td>
+<td>String</td>
+<td>Mobile phone Number of Beneficiary</td>
+</tr>
+<tr>
+<td></td>
+<td>email</td>
+<td>String</td>
+<td>Email of Beneficiary</td>
+</tr>
+<tr>
+<td></td>
+<td>address1</td>
+<td>String</td>
+<td>Beneficiary Address1</td>
+</tr>
+<tr>
+<td></td>
+<td>address2</td>
+<td>String</td>
+<td>Beneficiary Address2</td>
+</tr>
+<tr>
+<td></td>
+<td>address3</td>
+<td>String</td>
+<td>Beneficiary Address3</td>
+</tr>
+<tr>
+<td></td>
+<td>idType</td>
+<td>int</td>
+<td>Type of Beneficiary Id Proof</td>
+</tr>
+<tr>
+<td></td>
+<td>idNumber</td>
+<td>String</td>
+<td>Beneficiary ID Number</td>
+</tr>
+<tr>
+<td></td>
+<td>idDesc</td>
+<td>String</td>
+<td>Description</td>
+</tr>
+<tr>
+<td></td>
+<td>idIssueDate</td>
+<td>String</td>
+<td>Issue date(MM/DD/YYYY)</td>
+</tr>
+<tr>
+<td></td>
+<td>idExpDate</td>
+<td>String</td>
+<td>Expiry date(MM/DD/YYYY)</td>
+</tr>
+<tr>
+<td></td>
+<td>birthdate</td>
+<td>String</td>
+<td>Beneficiary BirthDate(MM/DD/YYYY)</td>
+</tr>
+<tr>
+<td></td>
+<td>sex</td>
+<td>String</td>
+<td>Gender</td>
+</tr>
+<tr>
+<td></td>
+<td>nationality</td>
+<td>String</td>
+<td>Nationality</td>
+</tr>
+<tr>
+<td></td>
+<td>relationship</td>
+<td>String</td>
+<td>The relationship with the remitter</td>
+</tr>
+<tr>
+<td></td>
+<td>bankCode</td>
+<td>String</td>
+<td>Bank code</td>
+</tr>
+<tr>
+<td></td>
+<td>accountNumber</td>
+<td>String</td>
+<td>Bank Account Number of Beneficiary</td>
+</tr>
+<tr>
+<td></td>
+<td>bankAccountName</td>
+<td>String</td>
+<td>Bank Account name of Beneficiary</td>
+</tr>
+<tr>
+<td></td>
+<td>bankAddress</td>
+<td>String</td>
+<td>Beneficiary Bank Address</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+</tbody></table>
+<h1 id='transaction'>Transaction</h1><h2 id='getbalance'>GetBalance</h2>
+<p>This method allows the partner to Get the Balance by currency. </p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_BALANCE</code></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BALANCE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H ”Authorization:<span class="s2">"your authorization"</span>
+    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
+    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "GET_BALANCE",
+         "entity": {
+             "currency": "HKD"
+         }
+     }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsBalanceDto</span> <span class="n">balanceDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBalanceDto</span><span class="o">();</span>
+            <span class="n">balanceDto</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+            <span class="n">NextPlsGetBalanceRequest</span> <span class="n">balanceRequest</span> <span class="o">=</span> <span class="n">NextPlsGetBalanceRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">balanceDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">balanceRequest</span><span class="o">);</span>             
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h3 id='request-body-8'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>currency</td>
+<td>String(3)</td>
+<td>currency</td>
+<td>M</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BALANCE_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"partnerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_client"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1999.33"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-8'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>partnerCode</td>
+<td>String</td>
+<td>Partner Code</td>
+</tr>
+<tr>
+<td></td>
+<td>currency</td>
+<td>String</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>balance</td>
+<td>String</td>
+<td>Balance</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+</tbody></table>
 <h2 id='getexrate'>GetExRate</h2>
-<p>获取汇率 </p>
-<h3 id='http-request-13'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/exRate</code></p>
+<p>This method allows the partner to Get the last rate and lock one hour. </p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_EX_RATE</code></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_EX_RATE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+    -H <span class="s2">"Content-Type: application/json"</span>
+    -H ”Authorization:<span class="s2">"your authorization"</span>
+    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
+    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "DO_TRANSACTION_PRE",
+         "entity": {
+             "payInCurrency": "HKD",
+             "payOutCurrency": "PHP"
+         }
+     }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-<p>The function is not open yet, Coming soon!</p>
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsExRateDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateDto</span><span class="o">();</span>
+            <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+            <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+            <span class="n">NextPlsGetExRateRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">exRateRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h3 id='request-body-9'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCurrency</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCurrency</td>
+<td>String(3)</td>
+<td>Pay Out Currency</td>
+<td>M</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-9'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>Name of Api</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCurrency</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCurrency</td>
+<td>String</td>
+<td>Pay Out Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>exRate</td>
+<td>String</td>
+<td>The exchange rate</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+</tbody></table>
 <h2 id='dotransactionpre'>DoTransactionPre</h2>
-<p>预创建订单 </p>
-<h3 id='http-request-14'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/transaction/pre</code></p>
+<p>This method allows the partner to preview the transfer details and keep the rate for some hours.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>DO_TRANSACTION_PRE</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -3028,6 +2757,7 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
@@ -3044,6 +2774,7 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
+             "clientTxnNo": "1000",
              "payInCurrency": "HKD",
              "payOutCurrency": "PHP",
              "transferCurrency": "HKD",
@@ -3051,64 +2782,78 @@ CEK is not a necessarily human readable ASCII string
              "paymentMode": "Bank"
          }
      }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPaymentMode</span><span class="o">(</span><span class="s">"Bank"</span><span class="o">);</span>
+            <span class="n">NextPlsDoTransactionPreRequest</span> <span class="n">preRequest</span> <span class="o">=</span> <span class="n">NextPlsDoTransactionPreRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">preRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">preRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre><h3 id='request-body-10'>Request Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
-<th>O/M</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
-<td>M</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String(20)</td>
+<td>Unique code for partner txn</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCurrency</td>
-<td>String</td>
-<td>存入币种</td>
-<td>M</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCurrency</td>
-<td>String</td>
-<td>到账币种</td>
-<td>M</td>
+<td>String(3)</td>
+<td>Pay Out Currency</td>
 </tr>
 <tr>
 <td></td>
 <td>transferCurrency</td>
-<td>String</td>
-<td>结算币种</td>
-<td>M</td>
+<td>String(3)</td>
+<td>Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency)</td>
 </tr>
 <tr>
 <td></td>
 <td>transferAmount</td>
-<td>String</td>
-<td>结算金额</td>
-<td>M</td>
+<td>String(18)</td>
+<td>Transfer Amount</td>
 </tr>
 <tr>
 <td></td>
 <td>paymentMode</td>
-<td>String</td>
-<td>支付方式</td>
-<td>M</td>
+<td>String(20)</td>
+<td>Payment Mode</td>
 </tr>
 </tbody></table>
 
@@ -3116,147 +2861,141 @@ CEK is not a necessarily human readable ASCII string
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.580162"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payoutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payoutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658.02"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalPayable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110.80"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"vatValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.80"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"vatPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"recommendAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payoutBranchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1117"</span><span class="w">
+        </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"736.97"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transferAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body-10'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
-<td>exchangeRate</td>
+<td>txnNo</td>
 <td>String</td>
-<td>汇率</td>
+<td>Unique code for NextPls txn</td>
 </tr>
 <tr>
 <td></td>
-<td>commission</td>
+<td>clientTxnNo</td>
 <td>String</td>
-<td>手续费</td>
+<td>Unique code for partner txn</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCurrency</td>
 <td>String</td>
-<td>存入币种</td>
+<td>Pay In Currency</td>
 </tr>
 <tr>
 <td></td>
-<td>payoutCurrency</td>
+<td>payOutCurrency</td>
 <td>String</td>
-<td>到账币种</td>
+<td>Pay Out Currency</td>
 </tr>
 <tr>
 <td></td>
-<td>payInAmount</td>
+<td>payOutAmount</td>
 <td>String</td>
-<td>预交金额</td>
+<td>Pay Out Amount</td>
 </tr>
 <tr>
 <td></td>
-<td>payoutAmount</td>
+<td>transferCurrency</td>
 <td>String</td>
-<td>到账金额</td>
+<td>Transfer Currency</td>
 </tr>
 <tr>
 <td></td>
-<td>totalPayable</td>
+<td>transferAmount</td>
 <td>String</td>
-<td>应支付金额</td>
+<td>Transfer Amount</td>
 </tr>
 <tr>
 <td></td>
-<td>vatValue</td>
+<td>paymentMode</td>
 <td>String</td>
-<td>增值税金额</td>
+<td>Payment Mode</td>
 </tr>
 <tr>
 <td></td>
-<td>vatPercentage</td>
+<td>exchangeRate</td>
 <td>String</td>
-<td>增值税税率</td>
+<td>Exchange Rate</td>
 </tr>
 <tr>
 <td></td>
-<td>recommendAgent</td>
+<td>commission</td>
 <td>String</td>
-<td></td>
+<td>commission</td>
 </tr>
 <tr>
 <td></td>
-<td>payoutBranchCode</td>
+<td>totalAmount</td>
 <td>String</td>
-<td>到账银行代码</td>
+<td>Total Amount to pay</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
-<h2 id='dotransactionadd'>DoTransactionAdd</h2>
-<p>创建订单 </p>
-<h3 id='http-request-15'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/do/transaction/add</code></p>
+<h2 id='dotransaction'>DoTransaction</h2>
+<p>This method allows the partner to initiate the transfer.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>DO_TRANSACTION</code></p>
 
 <blockquote>
 <p>Request Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXN141231"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settlementCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+       </span><span class="s2">"TxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
@@ -3266,30 +3005,41 @@ CEK is not a necessarily human readable ASCII string
     -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
     -d
     <span class="s1">'{
-         "apiName": "DO_TRANSACTION_ADD",
+         "apiName": "DO_TRANSACTION",
          "entity": {
-                       "clientTxnNo": "TXN141231",
-                       "payOutCurrency": "HKD",
-                       "payOutCountry": "PHP",
-                       "clientRemitterNo": "RE1233112",
-                       "remitterNo": "RP122141",
-                       "clientBeneficiaryNo": "BE1233112",
-                       "beneficiaryNo": "RP122141",
-                       "relationship": "Friend",
-                       "paymentMode": "BANK",
-                       "purposeCode": "3",
+                       "TxnNo": "IU201G0279816077",
+                       "clientTxnNo": "1000",
                        "payInCountry": "HKG",
-                       "payInCurrency": "HKD",
-                       "settlementCurrency": "HKD"
+                       "payOutCountry": "PHP",
+                       "remitterNo": "JJ201A1131599873",
+                       "beneficiaryNo": "RP122141",
+                       "purposeCode": "3"
                    }
      }'</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+            <span class="n">NextPlsTransactionRequestDto</span> <span class="n">txnRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionRequestDto</span><span class="o">();</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setTxnNo</span><span class="o">(</span><span class="s">"IU201G0279816077"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterNo</span><span class="o">(</span><span class="s">"JJ201A1131599873"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPurposeCode</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
+            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
+            <span class="n">NextPlsDoTransactionRequest</span> <span class="n">transactionAddRequest</span> <span class="o">=</span> <span class="n">NextPlsDoTransactionRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">txnRequestDto</span><span class="o">);</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">transactionAddRequest</span><span class="o">);</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre><h3 id='request-body-11'>Request Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 <th>O/M</th>
 </tr>
 </thead><tbody>
@@ -3297,105 +3047,63 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>代理方请求参数</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>TxnNo</td>
+<td>String(20)</td>
+<td>Unique code for NextPls txn</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>payOutCurrency</td>
-<td>String</td>
-<td>到账币种</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>payOutCountry</td>
-<td>String</td>
-<td>到账城市</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>beneficiaryNo</td>
-<td>String</td>
-<td>NextPls收款人唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>relationship</td>
-<td>String</td>
-<td>汇款人与收款人关系</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>paymentMode</td>
-<td>String</td>
-<td>支付方式</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>purposeCode</td>
-<td>String</td>
-<td>转账原因</td>
+<td>String(20)</td>
+<td>Unique code for partner txn</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCountry</td>
-<td>String</td>
-<td>发起转账城市</td>
+<td>String(3)</td>
+<td>Pay In Country</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>payInCurrency</td>
-<td>String</td>
-<td>发起转账币种</td>
+<td>payOutCountry</td>
+<td>String(3)</td>
+<td>Pay Out Country</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
-<td>settlementCurrency</td>
-<td>String</td>
-<td>结算币种</td>
+<td>remitterNo</td>
+<td>String(20)</td>
+<td>Unique code for NextPls remitter</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryNo</td>
+<td>String(20)</td>
+<td>Unique code for NextPls beneficiary</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>purposeCode</td>
+<td>String(2)</td>
+<td>Purpose Code for txn</td>
 <td>M</td>
 </tr>
 </tbody></table>
@@ -3404,64 +3112,71 @@ CEK is not a necessarily human readable ASCII string
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_ADD_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body-11'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>txnNo</td>
 <td>String</td>
-<td>NextPls订单唯一编号</td>
+<td>Unique code for NextPls txn</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String</td>
+<td>Unique code for partner txn</td>
+</tr>
+<tr>
+<td></td>
+<td>status</td>
+<td>String</td>
+<td>The Transaction status</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='gettransactionstatus'>GetTransactionStatus</h2>
-<p>检查交易状态</p>
-<h3 id='http-request-16'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/transaction/status</code></p>
+<p>This method allows the partner to check the Transaction status. </p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_TRANSACTION_STATUS</code></p>
 
 <blockquote>
 <p>Request Body:</p>
@@ -3469,8 +3184,8 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
@@ -3482,17 +3197,17 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "GET_TRANSACTION_STATUS",
          "entity": {
-             "clientTxnNo": "RE1233112",
-             "txnNo": "RP122141"
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000"
          }
      }'</span>
 </code></pre><h3 id='request-body-12'>Request Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 <th>O/M</th>
 </tr>
 </thead><tbody>
@@ -3500,28 +3215,28 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 <td>M</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
+<td>Parameter list</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>txnNo</td>
-<td>String</td>
-<td>NextPls订单唯一编号</td>
+<td>String(20)</td>
+<td>Unique code for NextPls txn</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String(20)</td>
+<td>Unique code for partner txn</td>
 <td>M</td>
 </tr>
 </tbody></table>
@@ -3533,284 +3248,62 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INIT"</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='response-body-12'>Response Body</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
 <th></th>
 <th>Type</th>
-<th>Description</th>
+<th>Describe</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>调用接口名称</td>
+<td>Name of Api</td>
 </tr>
 <tr>
 <td>code</td>
 <td></td>
 <td>String</td>
-<td>返回码</td>
+<td>Result Code</td>
 </tr>
 <tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
 <td>txnNo</td>
 <td>String</td>
-<td>NextPls订单唯一编号</td>
+<td>Unique code for NextPls txn</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String</td>
+<td>Unique code for partner txn</td>
 </tr>
 <tr>
 <td></td>
 <td>status</td>
 <td>String</td>
-<td>订单状态</td>
+<td>The Transaction status</td>
 </tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
-<td>返回消息</td>
-</tr>
-</tbody></table>
-<h2 id='gettransactionlist'>GetTransactionList</h2>
-<p>获取交易列表</p>
-<h3 id='http-request-17'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/transaction/list</code></p>
-
-<p>The function is not open yet, Coming soon!</p>
-<h2 id='gettransaction'>GetTransaction</h2>
-<p>获取指定交易信息 </p>
-<h3 id='http-request-18'>HTTP Request</h3>
-<p><span class="http-method post">POST</span> <code>/get/transaction</code></p>
-
-<blockquote>
-<p>Request Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
-    -H <span class="s2">"Content-Type: application/json"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
-    -d
-    <span class="s1">'{
-         "apiName": "GET_TRANSACTION",
-         "entity": {
-             "clientTxnNo": "RE1233112",
-             "txnNo": "RP122141"
-         }
-     }'</span>
-</code></pre><h3 id='request-body-13'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-<th>O/M</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-<td>M</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>代理方请求参数</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>txnNo</td>
-<td>String</td>
-<td>NextPls订单唯一编号</td>
-<td>M</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response Body:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_R"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXN141231"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122145"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settlementCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-13'>Response Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th></th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>apiName</td>
-<td></td>
-<td>String</td>
-<td>调用接口名称</td>
-</tr>
-<tr>
-<td>code</td>
-<td></td>
-<td>String</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>NextPls返回结果</td>
-</tr>
-<tr>
-<td></td>
-<td>clientTxnNo</td>
-<td>String</td>
-<td>代理方订单唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>txnNo</td>
-<td>String</td>
-<td>NextPls订单唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>payOutCurrency</td>
-<td>String</td>
-<td>到账币种</td>
-</tr>
-<tr>
-<td></td>
-<td>payOutCountry</td>
-<td>String</td>
-<td>到账城市</td>
-</tr>
-<tr>
-<td></td>
-<td>clientRemitterNo</td>
-<td>String</td>
-<td>代理方汇款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>remitterNo</td>
-<td>String</td>
-<td>NextPls汇款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>clientBeneficiaryNo</td>
-<td>String</td>
-<td>代理方收款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>beneficiaryNo</td>
-<td>String</td>
-<td>NextPls收款人唯一编号</td>
-</tr>
-<tr>
-<td></td>
-<td>relationship</td>
-<td>String</td>
-<td>汇款人与收款人关系</td>
-</tr>
-<tr>
-<td></td>
-<td>paymentMode</td>
-<td>String</td>
-<td>支付方式</td>
-</tr>
-<tr>
-<td></td>
-<td>purposeCode</td>
-<td>String</td>
-<td>转账原因</td>
-</tr>
-<tr>
-<td></td>
-<td>payInCountry</td>
-<td>String</td>
-<td>发起转账城市</td>
-</tr>
-<tr>
-<td></td>
-<td>payInCurrency</td>
-<td>String</td>
-<td>发起转账币种</td>
-</tr>
-<tr>
-<td></td>
-<td>settlementCurrency</td>
-<td>String</td>
-<td>结算币种</td>
-</tr>
-<tr>
-<td></td>
-<td>creatTime</td>
-<td>String</td>
-<td>订单创建时间</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>返回消息</td>
+<td>Result message</td>
 </tr>
 </tbody></table>
 <h1 id='reconciliation'>Reconciliation</h1>
