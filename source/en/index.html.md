@@ -1536,7 +1536,7 @@ msg | | String | Result message
 
 # Errors
 ## HTTP Error Codes
-### These are error codes that will be returned in the header of API responses
+### These are error codes that will be returned in the body of API responses
 
 Error Code | Description
 --------- | -------
@@ -1555,4 +1555,3 @@ Error Code | Description
 30006 | Transaction error: time out
 30007 | Transaction error: cancel already
 43004 | Balance error: asset insufficient
-# 500 | Internal Server Error -- We had a problem with our server. Try again later.
