@@ -160,7 +160,7 @@ To verify authenticity of NextPls server, Agent should calculate verification va
     }
 ```
 
-2. Deriving CEK
+### 2.Deriving CEK
 
 All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. 
 
@@ -203,7 +203,7 @@ CEK can be derived from ‘Content-Code’ field in response header.
     }
 ```
 
-3. Decrypting body part with CEK
+### 3.Decrypting body part with CEK
 
 Agent can extract plain JSON body with the CEK derived at above.
 
