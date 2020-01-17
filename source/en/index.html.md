@@ -1336,7 +1336,7 @@ entity | | Object | Parameter list
         "txnNo": "IU201G0279816077",
         "clientTxnNo": "1000",
         "payInCurrency": "HKD",
-        "payoutCurrency": "PHP",
+        "payOutCurrency": "PHP",
         "payOutAmount": "736.97",
         "transferCurrency": "HKD",
         "transferAmount": "100",

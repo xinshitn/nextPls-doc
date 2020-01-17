@@ -1311,7 +1311,7 @@ entity | | Object | 客户方请求参数 | M
         "txnNo": "IU201G0279816077",
         "clientTxnNo": "1000",
         "payInCurrency": "HKD",
-        "payoutCurrency": "PHP",
+        "payOutCurrency": "PHP",
         "payOutAmount": "736.97",
         "transferCurrency": "HKD",
         "transferAmount": "100",
@@ -1333,7 +1333,7 @@ entity | | Object | NextPls返回结果
 | | txnNo | String | 交易编号
 | | clientTxnNo | String | 客户方交易编号
 | | payInCurrency | String | 存入币种
-| | payoutCurrency | String | 到账币种
+| | payOutCurrency | String | 到账币种
 | | payOutAmount | String | 到账金额
 | | transferCurrency | String | 结算币种
 | | transferAmount | String | 结算金额
