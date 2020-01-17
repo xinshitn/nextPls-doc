@@ -284,7 +284,7 @@ This method allows the partner to Registered Remitter Profile.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -414,7 +414,7 @@ This method allows the partner to Edit Registered Remitter Profile.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -529,7 +529,7 @@ This method allows the partner to Get Registered Remitter Profile.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -669,7 +669,7 @@ This method allows the partner to Register New Beneficiary.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -809,7 +809,7 @@ This method allows the partner to Edit Registered Beneficiary Profile.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -930,7 +930,7 @@ This method allows the partner to Delete Registered beneficiary.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1008,7 +1008,7 @@ This method allows the partner to Get Registered Beneficiary Profile by client B
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1123,7 +1123,7 @@ This method allows the partner to Get the Balance by currency.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1198,7 +1198,7 @@ This method allows the partner to Get the last rate and lock one hour.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1282,7 +1282,7 @@ This method allows the partner to preview the transfer details and keep the rate
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1395,7 +1395,7 @@ This method allows the partner to initiate the transfer.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1490,7 +1490,7 @@ This method allows the partner to check the Transaction status.
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"

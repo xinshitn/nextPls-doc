@@ -276,7 +276,7 @@ C | string | 有前置条件的选填或必填字段
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -406,7 +406,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -540,7 +540,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -680,7 +680,7 @@ msg |  |String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -802,7 +802,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -875,7 +875,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -988,7 +988,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1103,7 +1103,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1178,7 +1178,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1262,7 +1262,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1375,7 +1375,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
@@ -1470,7 +1470,7 @@ msg | | String | 返回消息
 ```
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
+    -H "Content-Type: application/base64"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
     -H "Content-Code:"generated content-code"
