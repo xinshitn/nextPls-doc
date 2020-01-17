@@ -576,7 +576,7 @@ entity | | Object | Parameter list | M
         "firstName": "REMITTER_First_Name",
         "middleName": "REMITTER_Middle_Name",
         "lastName": "REMITTER_Last_Name",
-        "telephone": "12345678910",
+        "mobile": "12345678910",
         "sex": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",

@@ -922,7 +922,7 @@ entity | | Object | 客户方请求参数 | M
         "firstName": "REMITTER_First_Name",
         "middleName": "REMITTER_Middle_Name",
         "lastName": "REMITTER_Last_Name",
-        "telephone": "12345678910",
+        "mobile": "12345678910",
         "sex": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
@@ -953,7 +953,7 @@ entity | | Object | NextPls返回结果
 | | firstName | String | 汇款人名
 | | middleName | String | 汇款人中名
 | | lastName | String | 汇款人姓
-| | telephone | String | 汇款人手机号
+| | mobile | String | 汇款人手机号
 | | email | String | 汇款人邮箱
 | | address1 | String | 汇款人地址1
 | | address2 | String | 汇款人地址2
@@ -1035,7 +1035,7 @@ entity | | Object | 客户方请求参数 | M
         "firstName": "Beneficiary_First_Name",
         "middleName": "Beneficiary_Middle_Name",
         "lastName": "Beneficiary_Last_Name",
-        "telephone": "12345678910",
+        "mobile": "12345678910",
         "sex": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
