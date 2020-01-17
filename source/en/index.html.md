@@ -1540,10 +1540,19 @@ msg | | String | Result message
 
 Error Code | Description
 --------- | -------
-400 | Bad Request -- Generic invalid request
-401 | Unauthorized -- Your AuthToken is invalid or expired.
-403 | Forbidden -- Requested endpoint without Authentication.
-404 | Not Found -- The requested record could not be found.
-405 | Method Not Allowed -- Attempting to access a method that does not exist.
-422 | Unprocessable entity -- The request data is not valid.
-500 | Internal Server Error -- We had a problem with our server. Try again later.
+200 | Request Success
+500 | Request Fail
+1006 | Without API
+1007 | Invalid Signature
+1010 | Missing Parameters
+1011 | Wrong Parameters
+10003 | Access denied
+10102 | Business rate query error
+20011 | Remitter add error: client remitter number duplicate
+20051 | Beneficiary add error: client beneficiary number duplicate
+21052 | Beneficiary query error: beneficiary info not exist
+30001 | Transaction error: client txn number duplicate
+30006 | Transaction error: time out
+30007 | Transaction error: cancel already
+43004 | Balance error: asset insufficient
+# 500 | Internal Server Error -- We had a problem with our server. Try again later.
