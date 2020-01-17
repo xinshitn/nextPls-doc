@@ -600,17 +600,17 @@ entity | | Object | 客户方请求参数 | M
 | | address1 | String(35) | 收款人地址1 | M
 | | address2 | String(35) | 收款人地址2 | O
 | | address3 | String(35) | 收款人地址3 | O
-| | idType | int(2) | 收款人证件类型 | M
-| | idNumber | String(20) | 收款人证件号码 | M
+| | idType | int(2) | 收款人证件类型 | O
+| | idNumber | String(20) | 收款人证件号码 | O
 | | idDesc | String(20) | 收款人证件描述，当证件类型为6的时候为必填项 | C
 | | idIssueDate | String(10) | 收款人证件生效时间 | O
 | | idExpDate | String(10) | 收款人证件失效时间 | O
 | | birthdate | String(10) | 收款人生日 | O
 | | sex | String(1) | 收款人性别 | O
 | | nationality | String(3) | 收款人国籍(3位的国家ISO代码) | M
-| | bankCode | String(20) | 收款人账户银行编号 | M
-| | bankAccountNumber | String(30) | 收款人银行账户 | M
-| | bankAccountName | String(35) | 收款人账户银行名称 | M
+| | bankCode | String(20) | 收款人账户银行编号 | C
+| | bankAccountNumber | String(30) | 收款人银行账户 | C
+| | bankAccountName | String(35) | 收款人账户银行名称 | C
 | | bankAddress | String(35) | 收款人账户银行地址 | O
 
 > Response Body:
@@ -1343,7 +1343,7 @@ entity | | Object | NextPls返回结果
 | | totalAmount | String | 支付总额
 msg | | String | 返回消息
 
-## DoTransactionAdd
+## DoTransaction
 创建订单 
 ### HTTP Request
 <span class="http-method post">POST</span> `DO_TRANSACTION`
@@ -1438,8 +1438,9 @@ entity | | Object | 客户方请求参数 | M
 apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
-| | clientTxnNo | String | 客户方订单唯一编号
 | | txnNo | String | NextPls订单唯一编号
+| | clientTxnNo | String | 客户方订单唯一编号
+| | status | String | 订单状态
 msg | | String | 返回消息
 
 ## GetTransactionStatus
@@ -1453,8 +1454,8 @@ msg | | String | 返回消息
 {
     "apiName": "GET_TRANSACTION_STATUS",
     "entity": {
-        "clientTxnNo": "1000",
-        "txnNo": "IU201G0279816077"
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000"
     }
 }
 ```
@@ -1468,8 +1469,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "GET_TRANSACTION_STATUS",
          "entity": {
-             "clientTxnNo": "1000",
-             "txnNo": "IU201G0279816077"
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000"
          }
      }'
 ```
@@ -1479,8 +1480,8 @@ curl -X POST https://open.remitly.com/partner/customer/create
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | 调用接口名称 | M
 entity | | Object | 客户方请求参数 | M
-| | clientTxnNo | String(20) | 客户方订单唯一编号 | M
 | | txnNo | String(20) | NextPls订单唯一编号 | M
+| | clientTxnNo | String(20) | 客户方订单唯一编号 | M
 
 > Response Body:
 
@@ -1489,8 +1490,8 @@ entity | | Object | 客户方请求参数 | M
     "apiName": "GET_TRANSACTION_STATUS_R",
     "code": "200",
     "entity": {
-        "clientTxnNo": "1000",
         "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
         "status": "TRANSACTION_ING"
     },
     "msg": "success"
@@ -1503,8 +1504,8 @@ entity | | Object | 客户方请求参数 | M
 apiName | | String | 被调用接口名称
 code | | String | 返回码
 entity | | Object | NextPls返回结果
-| | clientTxnNo | String | 客户方订单唯一编号
 | | txnNo | String | NextPls订单唯一编号
+| | clientTxnNo | String | 客户方订单唯一编号
 | | status | String | 订单状态
 msg | | String | 返回消息
 

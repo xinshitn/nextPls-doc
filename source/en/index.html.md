@@ -31,7 +31,7 @@ All request body should be encrypted with AES128 algorithm before sending to the
   
 Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). 
   
-#### Example
+### Example
 item | ASCII_string 
 --------- | -------
 sKey | cek_tester_remit
@@ -124,7 +124,7 @@ Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base6
 
 With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  
   
-#### Example
+### Example
 
 Header |
 -------- |
@@ -222,7 +222,7 @@ Agent can extract plain JSON body with the CEK derived at above.
             byte[] original = cipher.doFinal(encrypted1);
             String encodingFormat = "UTF-8";
             String resBody = new String(original, encodingFormat);
-            System.out.println("解析获得响应数据为：" + resBody);
+            System.out.println("The result is：" + resBody);
           
         }
     }
@@ -249,7 +249,7 @@ The function is not open yet, Coming soon!
 # Customer Information
 
 ## DoRemitterAdd
-This method allows the partner to Registered Customer Profile. 
+This method allows the partner to Registered Remitter Profile. 
 ### HTTP Request
 <span class="http-method post">POST</span> `DO_REMITTER_ADD`
 
@@ -332,26 +332,26 @@ curl -X POST https://open.remitly.com/partner/customer/create
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | Name of Api | M
-entity | | Object | Params | M
-| | clientRemitterNo | String(20) | Remitter number of partner | M
-| | firstName | String(50) | Customer first name | M
-| | middleName | String(50) | Customer middle name | O
-| | lastName | String(50) | Customer last name | M
-| | mobile | String(20) | Customer mobile number | M
-| | email | String(50) | The email id of customer | O
-| | address1 | String(35) | Customer Address1 | M
-| | address2 | String(35) | Customer Address2 | O
-| | address3 | String(50) | Customer Address3 | O
-| | idType | int(3) | Customer identity type | M
+entity | | Object | Parameter list | M
+| | clientRemitterNo | String(20) | Unique code for partner remitter | M
+| | firstName | String(50) | Remitter first name | M
+| | middleName | String(50) | Remitter middle name | O
+| | lastName | String(50) | Remitter last name | M
+| | mobile | String(20) | Remitter mobile number | M
+| | email | String(50) | The email id of remitter | O
+| | address1 | String(35) | Remitter Address1 | M
+| | address2 | String(35) | Remitter Address2 | O
+| | address3 | String(50) | Remitter Address3 | O
+| | idType | int(3) | Remitter identity type | M
 | | idNumber | String(20) | ID number | M
 | | idDesc | String(30) | description when ID Type=6 | C
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
-| | birthdate | String(10) | Customer date of birth (MM/DD/YYYY) | O
-| | sex | String(1) | Customer gender. M=Male, F=Female | O
-| | nationality | String(3) | Customer Nationality(3 characters Country ISO code) | M
-| | accountNumber | String(30) | Customer account number | O
-| | sourceIncome | String(2) | Customer source of income | M
+| | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | sex | String(1) | Remitter gender. M=Male, F=Female | O
+| | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
+| | accountNumber | String(30) | Remitter account number | O
+| | sourceIncome | String(2) | Remitter source of income | M
 
 > Response Body:
 
@@ -372,13 +372,13 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | Name of Api
 code | | String | Result Code
-entity | | Object | Params
-| | clientRemitterNo | String | Remitter number of partner
-| | remitterNo | String | Remitter number of NextPls
+entity | | Object | Parameter list
+| | clientRemitterNo | String | Unique code for partner remitter
+| | remitterNo | String | Unique code for NextPls remitter
 msg | | String | Result message
 
 ## DoRemitterEdit
-This method allows the partner to Edit Registered Customer Profile.
+This method allows the partner to Edit Registered Remitter Profile.
 ### HTTP Request
 <span class="http-method post">POST</span> `DO_REMITTER_EDIT`
 
@@ -460,30 +460,30 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ```
 
 ### Request Body
-参数 |  | 类型 | 描述 | O/M
+Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 客户方请求参数 | M
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
 | | clientRemitterNo | String(20) | Remitter number of partner | M
 | | remitterNo | String(20) | Remitter number of NextPls | M
-| | firstName | String(50) | Customer first name | O
-| | middleName | String(50) | Customer middle name | O
-| | lastName | String(50) | Customer last name | O
-| | mobile | String(20) | Customer mobile number | O
-| | email | String(50) | The email id of customer | O
-| | address1 | String(35) | Customer Address1 | O
-| | address2 | String(35) | Customer Address2 | O
-| | address3 | String(50) | Customer Address3 | O
-| | idType | int(3) | Customer identity type | O
+| | firstName | String(50) | Remitter first name | O
+| | middleName | String(50) | Remitter middle name | O
+| | lastName | String(50) | Remitter last name | O
+| | mobile | String(20) | Remitter mobile number | O
+| | email | String(50) | The email id of remitter | O
+| | address1 | String(35) | Remitter Address1 | O
+| | address2 | String(35) | Remitter Address2 | O
+| | address3 | String(50) | Remitter Address3 | O
+| | idType | int(3) | Remitter identity type | O
 | | idNumber | String(20) | ID number | O
 | | idDesc | String(30) | description when ID Type=6 | O
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
-| | birthdate | String(10) | Customer date of birth (MM/DD/YYYY) | O
-| | sex | String(1) | Customer gender. M=Male, F=Female | O
-| | nationality | String(3) | Customer Nationality(3 characters Country ISO code) | O
-| | accountNumber | String(30) | Customer account number | O
-| | sourceIncome | String(2) | Customer source of income | O
+| | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | sex | String(1) | Remitter gender. M=Male, F=Female | O
+| | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | O
+| | accountNumber | String(30) | Remitter account number | O
+| | sourceIncome | String(2) | Remitter source of income | O
 
 > Response Body:
 
@@ -504,15 +504,15 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | Name of Api
 code | | String | Result Code
-entity | | Object | Params
-| | clientRemitterNo | String | Remitter number of partner
-| | remitterNo | String | Remitter number of NextPls
+entity | | Object | Parameter list
+| | clientRemitterNo | String | Unique code for partner remitter
+| | remitterNo | String | Unique code for NextPls remitter
 msg | | String | Result message
 
 ## DoBeneficiaryAdd
-添加收款人信息
+This method allows the partner to Register New Beneficiary.
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/beneficiary/add`
+<span class="http-method post">POST</span> `DO_BENEFICIARY_ADD`
 
 > Request Body:
 
@@ -520,11 +520,11 @@ msg | | String | Result message
 {
     "apiName": "DO_BENEFICIARY_ADD",
     "entity": {
-        "clientRemitterNo": "BE1231211",
+        "clientRemitterNo": "TEST_B001",
         "firstName": "Beneficiary_First_Name",
         "middleName": "Beneficiary_Middle_Name",
         "lastName": "Beneficiary_Last_Name",
-        "telephone": "12345678910",
+        "mobile": "12345678910",
         "email": "nextPls@nextPls.com",
         "address1": "Philippines",
         "address2": "",
@@ -537,6 +537,7 @@ msg | | String | Result message
         "birthdate": "01/01/1994",
         "sex": "M",
         "nationality": "HKG",
+        "relationship": "3",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
@@ -554,11 +555,11 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "DO_BENEFICIARY_ADD",
              "entity": {
-                 "clientRemitterNo": "BE1231211",
+                 "clientRemitterNo": "TEST_B001",
                  "firstName": "Beneficiary_First_Name",
                  "middleName": "Beneficiary_Middle_Name",
                  "lastName": "Beneficiary_Last_Name",
-                 "telephone": "12345678910",
+                 "mobile": "12345678910",
                  "email": "nextPls@nextPls.com",
                  "address1": "Philippines",
                  "address2": "",
@@ -571,6 +572,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
                  "birthdate": "01/01/1994",
                  "sex": "M",
                  "nationality": "HKG",
+                 "relationship": "4",
                  "bankCode": "11003544",
                  "bankAccountNumber": "4555556564564",
                  "bankAccountName": "Beneficiary_BankName",
@@ -578,33 +580,48 @@ curl -X POST https://open.remitly.com/partner/customer/create
              }
      }'
 ```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
+            // ...
+            NextPlsDoBeneficiaryAddRequest beneficiaryAddRequest = NextPlsDoBeneficiaryAddRequest.build(beneficiaryRequestDto);
+            client.execute(beneficiaryAddRequest);
+          
+        }
+    }
+```
 
 ### Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
-apiName | | String | The name of the invocation interface | M
-entity | | Object | Agent request parameter list | M
-| | clientBeneficiaryNo | String | Unique code for agent beneficiary | M
-| | firstName | String | Beneficiary First Name | M
-| | middleName | String | Beneficiary Middle Name | O
-| | lastName | String | Beneficiary Last Name | M
-| | telephone | String | Telephone Number of Beneficiary | M
-| | email | String | Email of Beneficiary | O
-| | address1 | String | Beneficiary Address line 1 | M
-| | address2 | String | Beneficiary Address line 2 | O
-| | address3 | String | Beneficiary Address line 3 | O
-| | idType | int | Type of Beneficiary Id Proof | M
-| | idNumber | String | Beneficiary ID Number | M
-| | idDesc | String | Description of Beneficiary ID,"M" only if IDType is 6 | C
-| | idIssueDate | String | Issue date of Beneficiary Id proof(MM/DD/YYYY) | O
-| | idExpDate | String | Expiry date of Beneficiary Id proof(MM/DD/YYYY) | O
-| | birthdate | String | Beneficiary BirthDate | O
-| | sex | String | Gender of Beneficiary | O
-| | nationality | String | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | bankCode | String | Bank code for Beneficiary | C
-| | bankAccountNumber | String | Bank Account Number of Beneficiary | M
-| | bankAccountName | String | Bank Account name of Beneficiary | M
-| | bankAddress | String | Beneficiary Bank Address | O
+apiName | | String | Name of api | M
+entity | | Object | Parameter list | M
+| | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
+| | firstName | String(50) | Beneficiary First Name | M
+| | middleName | String(50) | Beneficiary Middle Name | O
+| | lastName | String(50) | Beneficiary Last Name | M
+| | mobile | String(20) | Mobile phone Number of Beneficiary | M
+| | email | String(50) | Email of Beneficiary | O
+| | address1 | String(35) | Beneficiary Address1 | M
+| | address2 | String(35) | Beneficiary Address2 | O
+| | address3 | String(35) | Beneficiary Address3 | O
+| | idType | int(2) | Type of Beneficiary Id Proof | O
+| | idNumber | String(20) | Beneficiary ID Number | O
+| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
+| | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
+| | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | sex | String(1) | Gender of Beneficiary | O
+| | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
+| | relationship | String(3) | Relationship with the remitter | M
+| | bankCode | String(20) | Bank code for Beneficiary | C
+| | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
+| | bankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | bankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
 
@@ -614,40 +631,40 @@ entity | | Object | Agent request parameter list | M
     "code": "200",
     "entity": {
        "clientBeneficiaryNo": "BE1231211",
-       "beneficiaryNo": "BP123123"
+       "beneficiaryNo": "XD201G0589941750"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |   | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName |  | String | 调用接口名称
-code |  |String | 返回码
-entity | | Object | NextPls返回结果
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号
-| | beneficiaryNo | String | NextPls收款人唯一编号
-msg |  |String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | clientBeneficiaryNo | String | Unique code for partner beneficiary
+| | beneficiaryNo | String | Unique code for NextPls beneficiary
+msg | | String | Result message
 
 
 ## DoBeneficiaryEdit
-修改收款人信息
+This method allows the partner to Edit Registered Beneficiary Profile.
 ### HTTP Request
-<span class="http-method post">POST</span> `/do/beneficiary/edit`
+<span class="http-method post">POST</span> `DO_BENEFICIARY_EDIT`
 
 > Request Body:
 
 ```json
 {
-    "apiName": "DO_BENEFICIARY_ADD",
+    "apiName": "DO_BENEFICIARY_EDIT",
     "entity": {
-        "clientRemitterNo": "BE1231211",
-        "beneficiaryNo": "BP123123",
+        "clientRemitterNo": "TEST_B001",
+        "beneficiaryNo": "XD201G0589941750",
         "firstName": "Beneficiary_First_Name",
         "middleName": "Beneficiary_Middle_Name",
         "lastName": "Beneficiary_Last_Name",
-        "telephone": "12345678910",
+        "mobile": "12345678910",
         "email": "nextPls@nextPls.com",
         "address1": "Philippines",
         "address2": "",
@@ -677,12 +694,12 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "DO_BENEFICIARY_ADD",
          "entity": {
-             "clientRemitterNo": "BE1231211",
-             "beneficiaryNo": "BP123123",
+             "clientRemitterNo": "TEST_B001",
+             "beneficiaryNo": "XD201G0589941750",
              "firstName": "Beneficiary_First_Name",
              "middleName": "Beneficiary_Middle_Name",
              "lastName": "Beneficiary_Last_Name",
-             "telephone": "12345678910",
+             "mobile": "12345678910",
              "email": "nextPls@nextPls.com",
              "address1": "Philippines",
              "address2": "",
@@ -702,297 +719,78 @@ curl -X POST https://open.remitly.com/partner/customer/create
          }
      }'
 ```
-
-### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| |clientBeneficiaryNo | String | 代理方收款人唯一编号 | M
-| | beneficiaryNo | String | NextPls收款人唯一编号 | M
-| | firstName | String | Beneficiary First Name | O
-| | middleName | String | Beneficiary Middle Name | O
-| | lastName | String | Beneficiary Last Name | O
-| | telephone | String | Telephone Number of Beneficiary | O
-| | email | String | Email of Beneficiary | O
-| | address1 | String | Beneficiary Address line 1 | O
-| | address2 | String | Beneficiary Address line 2 | O
-| | address3 | String | Beneficiary Address line 3 | O
-| | idType | int | Type of Beneficiary Id Proof | O
-| | idNumber | String | Beneficiary ID Number | O
-| | idDesc | String | 收款人Description | O
-| | idIssueDate | String | 收款人证件生效时间 | O
-| | idExpDate | String | 收款人证件失效时间 | O
-| | birthdate | String | 收款人生日 | O
-| | sex | String | 收款人性别 | O
-| | nationality | String | 收款人国籍 | O
-| | bankCode | String | 收款人账户银行编号 | O
-| | bankAccountNumber | String | 收款人银行账户 | O
-| | bankAccountName | String | 收款人账户银行名称 | O
-| | bankAddress | String | 收款人账户银行地址 | O
-
-> Response Body:
-
-```json
-{
-    "apiName": "DO_BENEFICIARY_ADD_R",
-    "code": "200",
-    "entity": {
-       "clientBeneficiaryNo": "BE1231211",
-       "beneficiaryNo": "BP123123"
-    },
-    "msg": "success"
-}
-```
-
-### Response Body
-Parameter |   | Type | Description
---------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号
-| | beneficiaryNo | String | NextPls收款人唯一编号
-msg | | String | 返回消息
-
-## DoRemitterAdd
-添加汇款人信息
-### HTTP Request
-<span class="http-method post">POST</span> `/do/remitter/add`
-
-> Request Body:
-
-```json
-{
-    "apiName": "DO_REMITTER_ADD",
-    "entity": {
-        "clientRemitterNo": "RE1233112",
-        "firstName": "Remitter_First_Name",
-        "middleName": "Remitter_Middle_Name",
-        "lastName": "Remitter_Last_Name",
-        "telephone": "12345678910",
-        "sex": "M",
-        "birthdate": "01/01/1994",
-        "email": "nextPls@nextPls.com",
-        "address1": "Italy",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "nationality": "HKG",
-        "accountNumber": "",
-        "sourceIncome": "1"
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
+            // ...
+            NextPlsDoBeneficiaryEditRequest beneficiaryEditRequest = NextPlsDoBeneficiaryEditRequest.build(beneficiaryRequestDto);
+            client.execute(beneficiaryEditRequest);
+          
+        }
     }
-}
-```
-```shell
-curl -X POST https://open.remitly.com/partner/customer/create
-    -H "Content-Type: application/json"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "DO_REMITTER_ADD",
-         "entity": {
-             "clientRemitterNo": "RE1233112",
-             "firstName": "Remitter_First_Name",
-             "middleName": "Remitter_Middle_Name",
-             "lastName": "Remitter_Last_Name",
-             "telephone": "12345678910",
-             "sex": "M",
-             "birthdate": "01/01/1994",
-             "email": "nextPls@nextPls.com",
-             "address1": "Italy",
-             "address2": "",
-             "address3": "",
-             "idType": "0",
-             "idNumber": "PS256454165",
-             "idDesc": "",
-             "idIssueDate": "01/01/1994",
-             "idExpDate": "01/01/1994",
-             "nationality": "HKG",
-             "accountNumber": "",
-             "sourceIncome": "1"
-         }
-     }'
 ```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
-| | firstName | String | 汇款人名 | M
-| | middleName | String | 汇款人中名 | O
-| | lastName | String | 汇款人姓 | M
-| | telephone | String | 汇款人手机号 | M
-| | email | String | 汇款人邮箱 | O
-| | address1 | String | 汇款人地址1 | M
-| | address2 | String | 汇款人地址2 | O
-| | address3 | String | 汇款人地址3 | O
-| | idType | int | 汇款人证件类型 | M
-| | idNumber | String | 汇款人证件号码 | M
-| | idDesc | String | 汇款人Description | O
-| | idIssueDate | String | 汇款人证件生效时间 | O
-| | idExpDate | String | 汇款人证件失效时间 | O
-| | birthdate | String | 汇款人生日 | O
-| | sex | String | 汇款人性别 | O
-| | nationality | String | 汇款人国籍 | M
-| | accountNumber | String | 汇款人银行账号 | O
-| | sourceIncome | String | 汇款人收入来源 | M
+Parameter | | Type | Description | O/M
+--------- | :------- | ------- | ---------- | -------
+apiName | | String | Name of api | M
+entity | | Object | Parameter list | M
+| | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
+| | beneficiaryNo | String | Unique code for NextPls | M
+| | firstName | String(50) | Beneficiary First Name | O
+| | middleName | String(50) | Beneficiary Middle Name | O
+| | lastName | String(50) | Beneficiary Last Name | O
+| | mobile | String(20) | Mobile phone Number of Beneficiary | O
+| | email | String(50) | Email of Beneficiary | O
+| | address1 | String(35) | Beneficiary Address1 | O
+| | address2 | String(35) | Beneficiary Address2 | O
+| | address3 | String(35) | Beneficiary Address3 | O
+| | idType | int(2) | Type of Beneficiary Id Proof | O
+| | idNumber | String(20) | Beneficiary ID Number | O
+| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | O
+| | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
+| | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
+| | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | sex | String(1) | Gender of Beneficiary | O
+| | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | O
+| | bankCode | String(20) | Bank code for Beneficiary | O
+| | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | O
+| | bankAccountName | String(35) | Bank Account name of Beneficiary | O
+| | bankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_REMITTER_ADD",
+    "apiName": "DO_BENEFICIARY_EDIT_R",
     "code": "200",
     "entity": {
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141"
+       "clientBeneficiaryNo": "TEST_B001",
+       "beneficiaryNo": "XD201G0589941750"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |   | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
-msg | | String | 返回消息
-
-## DoRemitterEdit
-修改汇款人信息
-### HTTP Request
-<span class="http-method post">POST</span> `/do/remitter/edit`
-
-> Request Body:
-
-```json
-{
-    "apiName": "DO_REMITTER_EDIT",
-    "entity": {
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141",
-        "firstName": "Remitter_First_Name",
-        "middleName": "Remitter_Middle_Name",
-        "lastName": "Remitter_Last_Name",
-        "telephone": "12345678910",
-        "sex": "M",
-        "birthdate": "01/01/1994",
-        "email": "nextPls@nextPls.com",
-        "address1": "Philippines",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "nationality": "HKG",
-        "accountNumber": "",
-        "sourceIncome": "1"
-    }
-}
-```
-```shell
-curl -X POST https://open.remitly.com/partner/customer/create
-    -H "Content-Type: application/json"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "DO_REMITTER_EDIT",
-         "entity": {
-             "clientRemitterNo": "RE1233112",
-             "remitterNo": "RP122141",
-             "firstName": "Remitter_First_Name",
-             "middleName": "Remitter_Middle_Name",
-             "lastName": "Remitter_Last_Name",
-             "telephone": "12345678910",
-             "sex": "M",
-             "birthdate": "01/01/1994",
-             "email": "nextPls@nextPls.com",
-             "address1": "Philippines",
-             "address2": "",
-             "address3": "",
-             "idType": "0",
-             "idNumber": "PS256454165",
-             "idDesc": "",
-             "idIssueDate": "01/01/1994",
-             "idExpDate": "01/01/1994",
-             "nationality": "HKG",
-             "accountNumber": "",
-             "sourceIncome": "1"
-         }
-     }'
-```
-
-### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
-| | remitterNo | String | NextPls汇款人唯一编号 | M
-| | firstName | String | 汇款人名 | O
-| | middleName | String | 汇款人中名 | O
-| | lastName | String | 汇款人姓 | O
-| | telephone | String | 汇款人手机号 | O
-| | email | String | 汇款人邮箱 | O
-| | address1 | String | 汇款人地址1 | O
-| | address2 | String | 汇款人地址2 | O
-| | address3 | String | 汇款人地址3 | O
-| | idType | int | 汇款人证件类型 | O
-| | idNumber | String | 汇款人证件号码 | O
-| | idDesc | String | 汇款人Description | O
-| | idIssueDate | String | 汇款人证件生效时间 | O
-| | idExpDate | String | 汇款人证件失效时间 | O
-| | birthdate | String | 汇款人生日 | O
-| | sex | String | 汇款人性别 | O
-| | nationality | String | 汇款人国籍 | O
-| | accountNumber | String | 汇款人银行账号 | O
-| | sourceIncome | String | 汇款人收入来源 | O
-
-> Response Body:
-
-```json
-{
-    "apiName": "DO_REMITTER_EDIT",
-    "code": "200",
-    "entity": {
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141"
-    },
-    "msg": "success"
-}
-```
-
-### Response Body
-Parameter |   | Type | Description
---------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | clientBeneficiaryNo | String | Unique code for partner beneficiary
+| | beneficiaryNo | String | Unique code for NextPls beneficiary
+msg | | String | Result message
 
 
 ## DoBeneficiaryDel
-删除收款人 
+This method allows the partner to Delete Registered beneficiary.
 ### HTTP Request
-<span class="http-method post">POST</span> `/do/beneficiary/del`
+<span class="http-method post">POST</span> `DO_BENEFICIARY_DEL`
 
 > Request Body:
 
@@ -1000,8 +798,8 @@ msg | | String | 返回消息
 {
     "apiName": "DO_BENEFICIARY_DEL",
     "entity": {
-        "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122141"
+        "clientBeneficiaryNo": "TEST_B002",
+        "beneficiaryNo": "XD201G0589941750"
     }
 }
 ```
@@ -1015,19 +813,33 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "DO_BENEFICIARY_DEL",
          "entity": {
-             "clientBeneficiaryNo": "BE1233112",
-             "beneficiaryNo": "RP122141"
+             "clientBeneficiaryNo": "TEST_B002",
+             "beneficiaryNo": "XD201G0589941750"
          }
      }'
 ```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B002");
+            beneficiaryRequestDto.setBeneficiaryNo("XD201G0589941750");
+            NextPlsDoBeneficiaryDelRequest beneficiaryDelRequest = NextPlsDoBeneficiaryDelRequest.build(beneficiaryRequestDto);
+            client.execute(beneficiaryDelRequest);
+          
+        }
+    }
+```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
+Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号 | M
-| | BeneficiaryNo | String | NextPls收款人唯一编号 | M
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | clientBeneficiaryNo | String | Unique code for partner beneficiary
+| | beneficiaryNo | String | Unique code for NextPls beneficiary
 
 > Response Body:
 
@@ -1035,137 +847,31 @@ entity | | Object | 代理方请求参数 | M
 {
     "apiName": "DO_BENEFICIARY_DEL_R",
     "code": "200",
-    "entity": {
-        "clientBeneficiaryNo": "RE1233112",
-        "beneficiaryNo": "RP122141"
-    },
+    "entity": {},
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |   | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号
-| | beneficiaryNo | String | NextPls收款人唯一编号
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+msg | | String | Result message
 
-## GetBeneficiaryList
-获取收款人列表
-### HTTP Request
-<span class="http-method post">POST</span> `/get/beneficiary/list`
 
-The function is not open yet, Coming soon!
 
-## GetBeneficiary
-获取指定收款人信息 
-### HTTP Request
-<span class="http-method post">POST</span> `/get/beneficiary`
 
-> Request Body:
 
-```json
-{
-    "apiName": "GET_BENEFICIARY",
-    "entity": {
-        "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122141"
-    }
-}
-```
-```shell
-curl -X POST https://open.remitly.com/partner/customer/create
-    -H "Content-Type: application/json"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-        "apiName": "GET_BENEFICIARY",
-        "entity": {
-            "clientBeneficiaryNo": "BE1233112",
-            "beneficiaryNo": "RP122141"
-        } 
-     }'
-```
 
-### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号 | M
-| | BeneficiaryNo | String | NextPls收款人唯一编号 | M
 
-> Response Body:
 
-```json
-{
-    "apiName": "GET_BENEFICIARY_R",
-    "code": "200",
-    "entity": {
-        "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122141",
-        "firstName": "Beneficiary_First_Name",
-        "middleName": "Beneficiary_Middle_Name",
-        "lastName": "Beneficiary_Last_Name",
-        "telephone": "12345678910",
-        "sex": "M",
-        "birthdate": "01/01/1994",
-        "email": "nextPls@nextPls.com",
-        "address1": "Philippines",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "nationality": "HKG",
-        "accountNumber": "",
-        "sourceIncome": "1",
-        "creatTime": "2020-01-07 15:49:35"
-    },
-    "msg": "success"
-}
-```
-
-### Response Body
-Parameter |   | Type | Description
---------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号
-| | beneficiaryNo | String | NextPls收款人唯一编号
-| | firstName | String | Beneficiary First Name
-| | middleName | String | Beneficiary Middle Name
-| | lastName | String | Beneficiary Last Name
-| | telephone | String | Telephone Number of Beneficiary
-| | email | String | Email of Beneficiary
-| | address1 | String | Beneficiary Address line 1
-| | address2 | String | Beneficiary Address line 2
-| | address3 | String | Beneficiary Address line 3
-| | idType | int | Type of Beneficiary Id Proof
-| | idNumber | String | Beneficiary ID Number
-| | idDesc | String | 收款人Description
-| | idIssueDate | String | 收款人证件生效时间
-| | idExpDate | String | 收款人证件失效时间
-| | birthdate | String | 收款人生日
-| | sex | String | 收款人性别
-| | nationality | String | 收款人国籍 
-| | accountNumber | String | 收款人银行账号
-| | sourceIncome | String | 收款人收入来源
-| | creatTime | String | 收款人创建时间
-msg | | String | 返回消息
 
 ## GetRemitter
-获取汇款人信息 
+This method allows the partner to Get Registered Remitter Profile.  
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/remitter`
+<span class="http-method post">POST</span> `GET_REMITTER`
 
 > Request Body:
 
@@ -1173,8 +879,8 @@ msg | | String | 返回消息
 {
     "apiName": "GET_REMITTER",
     "entity": {
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141"
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873"
     }
 }
 ```
@@ -1188,19 +894,32 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "GET_REMITTER",
          "entity": {
-             "clientRemitterNo": "RE1233112",
-             "remitterNo": "RP122141"
+             "clientRemitterNo": "TEST_B001",
+             "remitterNo": "JJ201A1131599873"
          }
      }'
 ```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+            remitterRequestDto.setClientRemitterNo("TEST_B001");
+            NextPlsGetRemitterRequest remitterRequest = NextPlsGetRemitterRequest.build(remitterRequestDto);
+            client.execute(remitterRequest);
+          
+        }
+    }
+```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
+Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
-| | remitterNo | String | NextPls汇款人唯一编号 | M
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | clientRemitterNo | String(20) | Unique code for partner remitter | C
+| | remitterNo | String(20) | Unique code for NextPls remitter | C
 
 > Response Body:
 
@@ -1209,8 +928,8 @@ entity | | Object | 代理方请求参数 | M
     "apiName": "GET_REMITTER_R",
     "code": "200",
     "entity": {
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141",
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873",
         "firstName": "REMITTER_First_Name",
         "middleName": "REMITTER_Middle_Name",
         "lastName": "REMITTER_Last_Name",
@@ -1228,61 +947,319 @@ entity | | Object | 代理方请求参数 | M
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1",
-        "creatTime": "2020-01-07 15:49:35"
+        "sourceIncome": "1"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |   | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
-| | firstName | String | 汇款人名
-| | middleName | String | 汇款人中名
-| | lastName | String | 汇款人姓
-| | telephone | String | 汇款人手机号
-| | email | String | 汇款人邮箱
-| | address1 | String | 汇款人地址1
-| | address2 | String | 汇款人地址2
-| | address3 | String | 汇款人地址3
-| | idType | int | 汇款人证件类型
-| | idNumber | String | 汇款人证件号码
-| | idDesc | String | 汇款人Description
-| | idIssueDate | String | 汇款人证件生效时间
-| | idExpDate | String | 汇款人证件失效时间
-| | birthdate | String | 汇款人生日
-| | sex | String | 汇款人性别
-| | nationality | String | 汇款人国籍
-| | accountNumber | String | 汇款人银行账号
-| | sourceIncome | String | 汇款人收入来源
-| | creatTime | String | 汇款人创建时间
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | clientRemitterNo | String | Unique code for partner remitter 
+| | remitterNo | String | Unique code for NextPls remitter
+| | firstName | String | Remitter first name
+| | middleName | String | Remitter middle name
+| | lastName | String | Remitter last name
+| | mobile | String | Remitter mobile number
+| | email | String | The email id of remitter
+| | address1 | String | Remitter Address1
+| | address2 | String | Remitter Address2
+| | address3 | String | Remitter Address3
+| | idType | int | Remitter identity type
+| | idNumber | String | ID number
+| | idDesc | String | description
+| | idIssueDate | String | ID issue date (MM/DD/YYYY)
+| | idExpDate | String | ID expiry date (MM/DD/YYYY)
+| | birthdate | String | Remitter date of birth (MM/DD/YYYY)
+| | sex | String | Remitter gender
+| | nationality | String | Remitter Nationality
+| | accountNumber | String | Remitter account number
+| | sourceIncome | String | Remitter source of income
+msg | | String | Result message
 
-# 交易
-## GetBalance
-获取账户余额 
+
+
+
+
+## GetBeneficiary
+This method allows the partner to Get Registered Beneficiary Profile by client Beneficiary No or Beneficiary No
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/balance`
+<span class="http-method post">POST</span> `GET_BENEFICIARY`
 
-The function is not open yet, Coming soon!
+> Request Body:
+
+```json
+{
+    "apiName": "GET_BENEFICIARY",
+    "entity": {
+        "clientBeneficiaryNo": "TEST_B002",
+        "beneficiaryNo": "XD201G0589941750"
+    }
+}
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+        "apiName": "GET_BENEFICIARY",
+        "entity": {
+            "clientBeneficiaryNo": "TEST_B002",
+            "beneficiaryNo": "XD201G0589941750"
+        } 
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+            beneficiaryRequestDto.setClientBeneficiaryNo("TESTB002");
+            NextPlsGetBeneficiaryRequest beneficiaryRequest = NextPlsGetBeneficiaryRequest.build(beneficiaryRequestDto);
+            client.execute(beneficiaryRequest);
+          
+        }
+    }
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | clientBeneficiaryNo | String(20) | Unique code for partner beneficiary | C
+| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
+
+> Response Body:
+
+```json
+{
+    "apiName": "GET_BENEFICIARY_R",
+    "code": "200",
+    "entity": {
+        "clientBeneficiaryNo": "BE1233112",
+        "beneficiaryNo": "XD201G0589941750",
+        "firstName": "Beneficiary_First_Name",
+        "middleName": "Beneficiary_Middle_Name",
+        "lastName": "Beneficiary_Last_Name",
+        "mobile": "12345678910",
+        "sex": "M",
+        "birthdate": "01/01/1994",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "nationality": "HKG",
+        "relationship": "3",
+        "accountNumber": "",
+        "sourceIncome": "1"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | clientBeneficiaryNo | String | Unique code for agent beneficiary
+| | beneficiaryNo | String | Unique code for NextPls
+| | firstName | String | Beneficiary First Name
+| | middleName | String | Beneficiary Middle Name
+| | lastName | String | Beneficiary Last Name
+| | telephone | String | Mobile phone Number of Beneficiary
+| | email | String | Email of Beneficiary
+| | address1 | String | Beneficiary Address1
+| | address2 | String | Beneficiary Address2
+| | address3 | String | Beneficiary Address3
+| | idType | int | Type of Beneficiary Id Proof
+| | idNumber | String | Beneficiary ID Number
+| | idDesc | String | Description
+| | idIssueDate | String | Issue date(MM/DD/YYYY)
+| | idExpDate | String | Expiry date(MM/DD/YYYY)
+| | birthdate | String | Beneficiary BirthDate(MM/DD/YYYY)
+| | sex | String | Gender
+| | nationality | String | Nationality 
+| | relationship | String | The relationship with the remitter 
+| | bankCode | String | Bank code
+| | accountNumber | String | Bank Account Number of Beneficiary
+| | bankAccountName | String | Bank Account name of Beneficiary
+| | bankAddress | String | Beneficiary Bank Address
+msg | | String | Result message
+
+
+# Transaction
+## GetBalance
+This method allows the partner to Get the Balance by currency. 
+### HTTP Request
+<span class="http-method post">POST</span> `GET_BALANCE`
+
+```json
+{
+    "apiName": "GET_BALANCE",
+    "entity": {
+        "currency": "HKD"
+    }
+}
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "GET_BALANCE",
+         "entity": {
+             "currency": "HKD"
+         }
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsBalanceDto balanceDto = new NextPlsBalanceDto();
+            balanceDto.setCurrency("HKD");
+            NextPlsGetBalanceRequest balanceRequest = NextPlsGetBalanceRequest.build(balanceDto);
+            client.execute(balanceRequest);             
+          
+        }
+    }
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | currency | String(3) | currency | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "GET_BALANCE_R",
+    "code": "200",
+    "entity": {
+        "partnerCode": "test_client",
+        "currency": "HKD",
+        "balance": "1999.33"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | partnerCode | String | Partner Code
+| | currency | String | Currency
+| | balance | String | Balance
+msg | | String | Result message
 
 ## GetExRate
-获取汇率 
+This method allows the partner to Get the last rate and lock one hour. 
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/exRate`
+<span class="http-method post">POST</span> `GET_EX_RATE`
 
-The function is not open yet, Coming soon!
+```json
+{
+    "apiName": "GET_EX_RATE",
+    "entity": {
+        "payInCurrency": "HKD",
+        "payOutCurrency": "PHP"
+    }
+}
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "DO_TRANSACTION_PRE",
+         "entity": {
+             "payInCurrency": "HKD",
+             "payOutCurrency": "PHP"
+         }
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsExRateDto exRateDto = new NextPlsExRateDto();
+            exRateDto.setPayInCurrency("HKD");
+            exRateDto.setPayOutCurrency("PHP");
+            NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
+            client.execute(exRateRequest);
+          
+        }
+    }
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | payInCurrency | String(3) | Pay In Currency | M
+| | payOutCurrency | String(3) | Pay Out Currency | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "GET_REMITTER_R",
+    "code": "200",
+    "entity": {
+        "payInCurrency": "HKD",
+        "payOutCurrency": "PHP",
+        "exRate": "7.369781"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | payInCurrency | String | Pay In Currency
+| | payOutCurrency | String | Pay Out Currency
+| | exRate | String | The exchange rate
+msg | | String | Result message
 
 ## DoTransactionPre
-预创建订单 
+This method allows the partner to preview the transfer details and keep the rate for some hours.
 ### HTTP Request
-<span class="http-method post">POST</span> `/do/transaction/pre`
+<span class="http-method post">POST</span> `DO_TRANSACTION_PRE`
 
 > Request Body:
 
@@ -1290,6 +1267,7 @@ The function is not open yet, Coming soon!
 {
     "apiName": "DO_TRANSACTION_PRE",
     "entity": {
+        "clientTxnNo": "1000",
         "payInCurrency": "HKD",
         "payOutCurrency": "PHP",
         "transferCurrency": "HKD",
@@ -1308,6 +1286,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
+             "clientTxnNo": "1000",
              "payInCurrency": "HKD",
              "payOutCurrency": "PHP",
              "transferCurrency": "HKD",
@@ -1316,84 +1295,97 @@ curl -X POST https://open.remitly.com/partner/customer/create
          }
      }'
 ```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
+            preRequestDto.setClientTxnNo("1000");
+            preRequestDto.setPayInCurrency("HKD");
+            preRequestDto.setPayOutCurrency("PHP");
+            preRequestDto.setTransferCurrency("HKD");
+            preRequestDto.setTransferAmount("100");
+            preRequestDto.setPaymentMode("Bank");
+            NextPlsDoTransactionPreRequest preRequest = NextPlsDoTransactionPreRequest.build(preRequestDto);
+            client.execute(preRequest);
+          
+        }
+    }
+```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | payInCurrency | String | 存入币种 | M
-| | payOutCurrency | String | 到账币种 | M
-| | transferCurrency | String | 结算币种 | M
-| | transferAmount | String | 结算金额 | M
-| | paymentMode | String | 支付方式 | M
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+entity | | Object | Parameter list
+| | clientTxnNo | String(20) | Unique code for partner txn | M
+| | payInCurrency | String(3) | Pay In Currency | M
+| | payOutCurrency | String(3) | Pay Out Currency | M
+| | transferCurrency | String(3) | Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency) | M
+| | transferAmount | String(18) | Transfer Amount | M
+| | paymentMode | String(20) | Payment Mode | M
 
 > Response Body:
 
 ```json
 {
-    "apiName": "GET_REMITTER_R",
+    "apiName": "DO_TRANSACTION_PRE_R",
     "code": "200",
     "entity": {
-        "exchangeRate": "6.580162",
-        "commission": "10.00",
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
         "payInCurrency": "HKD",
         "payoutCurrency": "PHP",
-        "payInAmount": "100",
-        "payoutAmount": "658.02",
-        "totalPayable": "110.80",
-        "vatValue": "0.80",
-        "vatPercentage": "8",
-        "recommendAgent": "75",
-        "payoutBranchCode": "1117"
+        "payOutAmount": "736.97",
+        "transferCurrency": "HKD",
+        "transferAmount": "100",
+        "paymentMode": "Bank",
+        "exchangeRate": "7.369781",
+        "commission": "0.1000",
+        "totalAmount": "100.1000"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |   | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | exchangeRate | String | 汇率
-| | commission | String | 手续费
-| | payInCurrency | String | 存入币种
-| | payoutCurrency | String | 到账币种
-| | payInAmount | String | 预交金额
-| | payoutAmount | String | 到账金额
-| | totalPayable | String | 应支付金额
-| | vatValue | String | 增值税金额
-| | vatPercentage | String | 增值税税率
-| | recommendAgent | String | 
-| | payoutBranchCode | String | 到账银行代码
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | txnNo | String | Unique code for NextPls txn
+| | clientTxnNo | String | Unique code for partner txn
+| | payInCurrency | String | Pay In Currency
+| | payOutCurrency | String | Pay Out Currency
+| | payOutAmount | String | Pay Out Amount
+| | transferCurrency | String | Transfer Currency
+| | transferAmount | String | Transfer Amount
+| | paymentMode | String | Payment Mode
+| | exchangeRate | String | Exchange Rate
+| | commission | String | commission
+| | totalAmount | String | Total Amount to pay
+msg | | String | Result message
 
-## DoTransactionAdd
-创建订单 
+## DoTransaction
+This method allows the partner to initiate the transfer.
 ### HTTP Request
-<span class="http-method post">POST</span> `/do/transaction/add`
+<span class="http-method post">POST</span> `DO_TRANSACTION`
 
 > Request Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION_ADD",
+    "apiName": "DO_TRANSACTION",
     "entity": {
-        "clientTxnNo": "TXN141231",
-        "payOutCurrency": "HKD",
-        "payOutCountry": "PHP",
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141",
-        "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122141",
-        "relationship": "Friend",
-        "paymentMode": "BANK",
-        "purposeCode": "3",
-        "payInCountry": "HKG",
-        "payInCurrency": "HKD",
-        "settlementCurrency": "HKD"
+       "TxnNo": "IU201G0279816077",
+       "clientTxnNo": "1000",
+       "payInCountry": "HKG",
+       "payOutCountry": "PHP",
+       "remitterNo": "JJ201A1131599873",
+       "beneficiaryNo": "RP122141",
+       "purposeCode": "3"
     }
 }
 ```
@@ -1405,72 +1397,81 @@ curl -X POST https://open.remitly.com/partner/customer/create
     -H "Content-Code:"generated content-code"
     -d
     '{
-         "apiName": "DO_TRANSACTION_ADD",
+         "apiName": "DO_TRANSACTION",
          "entity": {
-                       "clientTxnNo": "TXN141231",
-                       "payOutCurrency": "HKD",
-                       "payOutCountry": "PHP",
-                       "clientRemitterNo": "RE1233112",
-                       "remitterNo": "RP122141",
-                       "clientBeneficiaryNo": "BE1233112",
-                       "beneficiaryNo": "RP122141",
-                       "relationship": "Friend",
-                       "paymentMode": "BANK",
-                       "purposeCode": "3",
+                       "TxnNo": "IU201G0279816077",
+                       "clientTxnNo": "1000",
                        "payInCountry": "HKG",
-                       "payInCurrency": "HKD",
-                       "settlementCurrency": "HKD"
+                       "payOutCountry": "PHP",
+                       "remitterNo": "JJ201A1131599873",
+                       "beneficiaryNo": "RP122141",
+                       "purposeCode": "3"
                    }
      }'
 ```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
+            txnRequestDto.setTxnNo("IU201G0279816077");
+            txnRequestDto.setClientTxnNo("1000");
+            txnRequestDto.setBeneficiaryNo("XD201G0589941750");
+            txnRequestDto.setRemitterNo("JJ201A1131599873");
+            txnRequestDto.setPurposeCode("3");
+            txnRequestDto.setPayInCountry("HKG");
+            txnRequestDto.setPayOutCountry("PHL");
+            NextPlsDoTransactionRequest transactionAddRequest = NextPlsDoTransactionRequest.build(txnRequestDto);
+            client.execute(transactionAddRequest);
+          
+        }
+    }
+```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
+Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientTxnNo | String | 代理方订单唯一编号 | M
-| | payOutCurrency | String | 到账币种 | M
-| | payOutCountry | String | 到账城市 | M
-| | clientRemitterNo | String | 代理方汇款人唯一编号 | M
-| | remitterNo | String | NextPls汇款人唯一编号 | M
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号 | M
-| | beneficiaryNo | String | NextPls收款人唯一编号 | M
-| | relationship | String | 汇款人与收款人关系 | M
-| | paymentMode | String | 支付方式 | M
-| | purposeCode | String | 转账原因 | M
-| | payInCountry | String | 发起转账城市 | M
-| | payInCurrency | String | 发起转账币种 | M
-| | settlementCurrency | String | 结算币种 | M
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | TxnNo | String(20) | Unique code for NextPls txn | M
+| | clientTxnNo | String(20) | Unique code for partner txn | M
+| | payInCountry | String(3) | Pay In Country | M
+| | payOutCountry | String(3) | Pay Out Country | M
+| | remitterNo | String(20) | Unique code for NextPls remitter | M
+| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | M
+| | purposeCode | String(2) | Purpose Code for txn | M
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION_ADD_R",
+    "apiName": "DO_TRANSACTION_R",
     "code": "200",
     "entity": {
-        "clientTxnNo": "RE1233112",
-        "txnNo": "RP122141"
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
+        "status": "TRANSACTION_ING"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |  | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientTxnNo | String | 代理方订单唯一编号
-| | txnNo | String | NextPls订单唯一编号
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | txnNo | String | Unique code for NextPls txn
+| | clientTxnNo | String | Unique code for partner txn
+| | status | String | The Transaction status
+msg | | String | Result message
 
 ## GetTransactionStatus
-检查交易状态
+This method allows the partner to check the Transaction status. 
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/transaction/status`
+<span class="http-method post">POST</span> `GET_TRANSACTION_STATUS`
 
 > Request Body:
 
@@ -1478,8 +1479,8 @@ msg | | String | 返回消息
 {
     "apiName": "GET_TRANSACTION_STATUS",
     "entity": {
-        "clientTxnNo": "RE1233112",
-        "txnNo": "RP122141"
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000"
     }
 }
 ```
@@ -1493,19 +1494,19 @@ curl -X POST https://open.remitly.com/partner/customer/create
     '{
          "apiName": "GET_TRANSACTION_STATUS",
          "entity": {
-             "clientTxnNo": "RE1233112",
-             "txnNo": "RP122141"
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000"
          }
      }'
 ```
 
 ### Request Body
-Parameter |  | Type | Description | O/M
+Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientTxnNo | String | 代理方订单唯一编号 | M
-| | txnNo | String | NextPls订单唯一编号 | M
+apiName | | String | Name of Api | M
+entity | | Object | Parameter list | M
+| | txnNo | String(20) | Unique code for NextPls txn | M
+| | clientTxnNo | String(20) | Unique code for partner txn | M
 
 > Response Body:
 
@@ -1514,120 +1515,25 @@ entity | | Object | 代理方请求参数 | M
     "apiName": "GET_TRANSACTION_STATUS_R",
     "code": "200",
     "entity": {
-        "clientTxnNo": "RE1233112",
-        "txnNo": "RP122141",
-        "status": "INIT"
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
+        "status": "TRANSACTION_ING"
     },
     "msg": "success"
 }
 ```
 
 ### Response Body
-Parameter |  | Type | Description
+Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | 调用接口名称
-code | | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientTxnNo | String | 代理方订单唯一编号
-| | txnNo | String | NextPls订单唯一编号
-| | status | String | 订单状态
-msg | | String | 返回消息
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Parameter list
+| | txnNo | String | Unique code for NextPls txn
+| | clientTxnNo | String | Unique code for partner txn
+| | status | String | The Transaction status
+msg | | String | Result message
 
-## GetTransactionList
-获取交易列表
-### HTTP Request
-<span class="http-method post">POST</span> `/get/transaction/list`
-
-The function is not open yet, Coming soon!
-
-## GetTransaction
-获取指定交易信息 
-### HTTP Request
-<span class="http-method post">POST</span> `/get/transaction`
-
-> Request Body:
-
-```json
-{
-    "apiName": "GET_TRANSACTION",
-    "entity": {
-        "clientTxnNo": "RE1233112",
-        "txnNo": "RP122141"
-    }
-}
-```
-```shell
-curl -X POST https://open.remitly.com/partner/customer/create
-    -H "Content-Type: application/json"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "GET_TRANSACTION",
-         "entity": {
-             "clientTxnNo": "RE1233112",
-             "txnNo": "RP122141"
-         }
-     }'
-```
-
-### Request Body
-Parameter |  | Type | Description | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
-entity | | Object | 代理方请求参数 | M
-| | clientTxnNo | String | 代理方订单唯一编号 | M
-| | txnNo | String | NextPls订单唯一编号 | M
-
-> Response Body:
-
-```json
-{
-    "apiName": "GET_TRANSACTION_R",
-    "code": "200",
-    "entity": {
-        "clientTxnNo": "TXN141231",
-        "txnNo": "RP122141",
-        "payOutCurrency": "HKD",
-        "payOutCountry": "PHP",
-        "clientRemitterNo": "RE1233112",
-        "remitterNo": "RP122141",
-        "clientBeneficiaryNo": "BE1233112",
-        "beneficiaryNo": "RP122145",
-        "relationship": "Friend",
-        "paymentMode": "BANK",
-        "purposeCode": "3",
-        "payInCountry": "HKG",
-        "payInCurrency": "HKD",
-        "settlementCurrency": "HKD",
-        "creatTime": "2020-01-07 15:49:35"
-    }
-}
-```
-
-### Response Body
-Parameter |   | Type | Description
---------- | ------- | ------- |-----------
-apiName |  | String | 调用接口名称
-code |  | String | 返回码
-entity | | Object | NextPls返回结果
-| | clientTxnNo | String | 代理方订单唯一编号
-| | txnNo | String | NextPls订单唯一编号
-| | payOutCurrency | String | 到账币种
-| | payOutCountry | String | 到账城市
-| | clientRemitterNo | String | 代理方汇款人唯一编号
-| | remitterNo | String | NextPls汇款人唯一编号
-| | clientBeneficiaryNo | String | 代理方收款人唯一编号
-| | beneficiaryNo | String | NextPls收款人唯一编号
-| | relationship | String | 汇款人与收款人关系
-| | paymentMode | String | 支付方式
-| | purposeCode | String | 转账原因
-| | payInCountry | String | 发起转账城市
-| | payInCurrency | String | 发起转账币种
-| | settlementCurrency | String | 结算币种
-| | creatTime | String | 订单创建时间
-msg | | String | 返回消息
 
 # Reconciliation
 
