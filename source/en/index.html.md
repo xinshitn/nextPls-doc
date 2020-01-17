@@ -247,7 +247,7 @@ This method allows the partner to Get Country based Payment Modes.
 
 The function is not open yet, Coming soon!
 
-# Customer Information
+# Remitter
 
 ## DoRemitterAdd
 This method allows the partner to Registered Remitter Profile. 
@@ -509,6 +509,127 @@ entity | | Object | Parameter list
 | | clientRemitterNo | String | Unique code for partner remitter
 | | remitterNo | String | Unique code for NextPls remitter
 msg | | String | Result message
+
+
+## GetRemitter
+This method allows the partner to Get Registered Remitter Profile.  
+### HTTP Request
+<span class="http-method post">POST</span> `GET_REMITTER`
+
+> Request Body:
+
+```json
+{
+    "apiName": "GET_REMITTER",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873"
+    }
+}
+```
+```shell
+curl -X POST http://staging.nextpls.com/v1/remittance
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "GET_REMITTER",
+         "entity": {
+             "clientRemitterNo": "TEST_B001",
+             "remitterNo": "JJ201A1131599873"
+         }
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+            remitterRequestDto.setClientRemitterNo("TEST_B001");
+            NextPlsGetRemitterRequest remitterRequest = NextPlsGetRemitterRequest.build(remitterRequestDto);
+            client.execute(remitterRequest);
+          
+        }
+    }
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | GET_REMITTER | M
+entity | | Object | Parameter list | M
+| | clientRemitterNo | String(20) | Unique code for partner remitter | C
+| | remitterNo | String(20) | Unique code for NextPls remitter | C
+
+> Response Body:
+
+```json
+{
+    "apiName": "GET_REMITTER_R",
+    "code": "200",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873",
+        "firstName": "REMITTER_First_Name",
+        "middleName": "REMITTER_Middle_Name",
+        "lastName": "REMITTER_Last_Name",
+        "telephone": "12345678910",
+        "sex": "M",
+        "birthdate": "01/01/1994",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "nationality": "HKG",
+        "accountNumber": "",
+        "sourceIncome": "1"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | GET_REMITTER_R
+code | | String | Result Code
+entity | | Object | Parameter list
+| | clientRemitterNo | String | Unique code for partner remitter 
+| | remitterNo | String | Unique code for NextPls remitter
+| | firstName | String | Remitter first name
+| | middleName | String | Remitter middle name
+| | lastName | String | Remitter last name
+| | mobile | String | Remitter mobile number
+| | email | String | The email id of remitter
+| | address1 | String | Remitter Address1
+| | address2 | String | Remitter Address2
+| | address3 | String | Remitter Address3
+| | idType | int | Remitter identity type
+| | idNumber | String | ID number
+| | idDesc | String | description
+| | idIssueDate | String | ID issue date (MM/DD/YYYY)
+| | idExpDate | String | ID expiry date (MM/DD/YYYY)
+| | birthdate | String | Remitter date of birth (MM/DD/YYYY)
+| | sex | String | Remitter gender
+| | nationality | String | Remitter Nationality
+| | accountNumber | String | Remitter account number
+| | sourceIncome | String | Remitter source of income
+msg | | String | Result message
+
+
+
+
+
+
+# Beneficiary
 
 ## DoBeneficiaryAdd
 This method allows the partner to Register New Beneficiary.
@@ -864,122 +985,6 @@ code | | String | Result Code
 entity | | Object | Parameter list
 msg | | String | Result message
 
-
-
-
-
-## GetRemitter
-This method allows the partner to Get Registered Remitter Profile.  
-### HTTP Request
-<span class="http-method post">POST</span> `GET_REMITTER`
-
-> Request Body:
-
-```json
-{
-    "apiName": "GET_REMITTER",
-    "entity": {
-        "clientRemitterNo": "TEST_B001",
-        "remitterNo": "JJ201A1131599873"
-    }
-}
-```
-```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/json"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "GET_REMITTER",
-         "entity": {
-             "clientRemitterNo": "TEST_B001",
-             "remitterNo": "JJ201A1131599873"
-         }
-     }'
-```
-```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
-            remitterRequestDto.setClientRemitterNo("TEST_B001");
-            NextPlsGetRemitterRequest remitterRequest = NextPlsGetRemitterRequest.build(remitterRequestDto);
-            client.execute(remitterRequest);
-          
-        }
-    }
-```
-
-### Request Body
-Field |  | Type | Describe | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | GET_REMITTER | M
-entity | | Object | Parameter list | M
-| | clientRemitterNo | String(20) | Unique code for partner remitter | C
-| | remitterNo | String(20) | Unique code for NextPls remitter | C
-
-> Response Body:
-
-```json
-{
-    "apiName": "GET_REMITTER_R",
-    "code": "200",
-    "entity": {
-        "clientRemitterNo": "TEST_B001",
-        "remitterNo": "JJ201A1131599873",
-        "firstName": "REMITTER_First_Name",
-        "middleName": "REMITTER_Middle_Name",
-        "lastName": "REMITTER_Last_Name",
-        "telephone": "12345678910",
-        "sex": "M",
-        "birthdate": "01/01/1994",
-        "email": "nextPls@nextPls.com",
-        "address1": "Philippines",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "nationality": "HKG",
-        "accountNumber": "",
-        "sourceIncome": "1"
-    },
-    "msg": "success"
-}
-```
-
-### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | GET_REMITTER_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | clientRemitterNo | String | Unique code for partner remitter 
-| | remitterNo | String | Unique code for NextPls remitter
-| | firstName | String | Remitter first name
-| | middleName | String | Remitter middle name
-| | lastName | String | Remitter last name
-| | mobile | String | Remitter mobile number
-| | email | String | The email id of remitter
-| | address1 | String | Remitter Address1
-| | address2 | String | Remitter Address2
-| | address3 | String | Remitter Address3
-| | idType | int | Remitter identity type
-| | idNumber | String | ID number
-| | idDesc | String | description
-| | idIssueDate | String | ID issue date (MM/DD/YYYY)
-| | idExpDate | String | ID expiry date (MM/DD/YYYY)
-| | birthdate | String | Remitter date of birth (MM/DD/YYYY)
-| | sex | String | Remitter gender
-| | nationality | String | Remitter Nationality
-| | accountNumber | String | Remitter account number
-| | sourceIncome | String | Remitter source of income
-msg | | String | Result message
 
 
 
