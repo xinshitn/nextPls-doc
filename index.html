@@ -311,9 +311,7 @@
 
 <p>如果想获取更多信息，可以访问我们的官方网站 <a href="https://www.nextpls.com">NextPls</a> 更多地了解我们。</p>
 <h1 id='79cc871ca9'>开始</h1><h2 id='nextpls-api'>NextPls API的加密方式</h2><h3 id='request'>Request</h3>
-<ol>
-<li>生成一个CEK</li>
-</ol>
+<p>1.生成一个CEK</p>
 
 <p>消息在发送到NextPls之前，所有的请求体都应该使用加密算法对请求体进行加密。因此，我们需要一个CEK(内容加密密钥),该密钥将被加密后放在请求头的Content-Code的字段中发送到NextPls服务器。</p>
 
@@ -344,9 +342,7 @@ CEK不需要有特殊含义，可以为随机的字符串
 </aside>
   
 
-<ol>
-<li>利用CEK对方法体进行加密</li>
-</ol>
+<p>2.利用CEK对方法体进行加密</p>
 
 <p>在将请求发送到NextPls之前，应使用CEK加密消息体部分</p>
 
@@ -370,9 +366,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="o">}</span>
     <span class="o">}</span>
 </code></pre>
-<ol>
-<li>利用NextPls公钥对CEK进行加密</li>
-</ol>
+<p>3.利用NextPls公钥对CEK进行加密</p>
 
 <p>在调用API前，必须将加密后的CEK放在请求头之中。应使用RSA算法对CEK进行加密，所有的客户都会获得由NextPls提供的一个用于CEK加密的专有公钥。</p>
 
@@ -392,9 +386,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="o">}</span>
     <span class="o">}</span>
 </code></pre>
-<ol>
-<li>生成签名</li>
-</ol>
+<p>4.生成签名</p>
 
 <p>在调用API前，还必须在请求头中附加签名值。签名值用于认证请求是否来自于客户方。</p>
 
@@ -417,9 +409,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="o">}</span>
     <span class="o">}</span>
 </code></pre>
-<ol>
-<li>生成请求头和请求体</li>
-</ol>
+<p>5.生成请求头和请求体</p>
 
 <p>使用加密的CEK、加密的方法体和签名便可组成一个完整的请求</p>
 <h3 id='30fd4ed55b-2'>示例</h3>
@@ -452,9 +442,7 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
-<ol>
-<li>验证签名</li>
-</ol>
+<p>1.验证签名</p>
 
 <p>为了验证NextPls服务器的真实性，客户方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验,如果结果不是true，这意味着无效的签名，响应主体的真实性得不到保证，客户方不应该进行进一步的处理</p>
 
@@ -473,9 +461,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="o">}</span>
     <span class="o">}</span>
 </code></pre>
-<ol>
-<li>CEK的获取</li>
-</ol>
+<p>2.CEK的获取</p>
 
 <p>所有的响应体在从NextPls服务器发送之前都使用AES/CBC/PKCS5Padding算法进行加密。因此，它需要首先从http报头中的Content-Code字段中解析CEK(通过内容加密密钥)</p>
 
@@ -519,9 +505,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="o">}</span>
     <span class="o">}</span>
 </code></pre>
-<ol>
-<li>用CEK解密响应体</li>
-</ol>
+<p>3.用CEK解密响应体</p>
 
 <p>您可以在响应体中通过获取的CEK解码，以获取响应的json对象</p>
 
@@ -2023,8 +2007,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2176,12 +2159,6 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>汇款人收入来源</td>
 </tr>
 <tr>
-<td></td>
-<td>creatTime</td>
-<td>String</td>
-<td>汇款人创建时间</td>
-</tr>
-<tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
@@ -2293,8 +2270,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creatTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-07 15:49:35"</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2444,12 +2420,6 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>sourceIncome</td>
 <td>String</td>
 <td>收款人收入来源</td>
-</tr>
-<tr>
-<td></td>
-<td>creatTime</td>
-<td>String</td>
-<td>收款人创建时间</td>
 </tr>
 <tr>
 <td>msg</td>
