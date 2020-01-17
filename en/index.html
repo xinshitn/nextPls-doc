@@ -3310,31 +3310,67 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Generic invalid request</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your AuthToken is invalid or expired.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- Requested endpoint without Authentication.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The requested record could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- Attempting to access a method that does not exist.</td>
-</tr>
-<tr>
-<td>422</td>
-<td>Unprocessable entity -- The request data is not valid.</td>
+<td>200</td>
+<td>Request Success</td>
 </tr>
 <tr>
 <td>500</td>
+<td>Request Fail</td>
+</tr>
+<tr>
+<td>1006</td>
+<td>Without API</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>Invalid Signature</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>Missing Parameters</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>Wrong Parameters</td>
+</tr>
+<tr>
+<td>10003</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>10102</td>
+<td>Business rate query error</td>
+</tr>
+<tr>
+<td>20011</td>
+<td>Remitter add error: client remitter number duplicate</td>
+</tr>
+<tr>
+<td>20051</td>
+<td>Beneficiary add error: client beneficiary number duplicate</td>
+</tr>
+<tr>
+<td>21052</td>
+<td>Beneficiary query error: beneficiary info not exist</td>
+</tr>
+<tr>
+<td>30001</td>
+<td>Transaction error: client txn number duplicate</td>
+</tr>
+<tr>
+<td>30006</td>
+<td>Transaction error: time out</td>
+</tr>
+<tr>
+<td>30007</td>
+<td>Transaction error: cancel already</td>
+</tr>
+<tr>
+<td>43004</td>
+<td>Balance error: asset insufficient</td>
+</tr>
+<tr>
+<td># 500</td>
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 </tbody></table>
