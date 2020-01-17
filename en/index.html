@@ -469,11 +469,7 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre>
-<ol>
-<li>Deriving CEK</li>
-</ol>
-
+</code></pre><h3 id='2-deriving-cek'>2.Deriving CEK</h3>
 <p>All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. </p>
 
 <p>CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. </p>
@@ -513,11 +509,7 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre>
-<ol>
-<li>Decrypting body part with CEK</li>
-</ol>
-
+</code></pre><h3 id='3-decrypting-body-part-with-cek'>3.Decrypting body part with CEK</h3>
 <p>Agent can extract plain JSON body with the CEK derived at above.</p>
 
 <blockquote>
