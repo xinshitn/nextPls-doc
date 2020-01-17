@@ -45,9 +45,9 @@ CEK不需要有特殊含义，可以为随机的字符串
   
 2.利用CEK对方法体进行加密
 
-在将请求发送到NextPls之前，应使用CEK加密消息体部分
+将请求发送到NextPls之前，应使用CEK加密消息体部分
 
-在对消息体进行加密时，应使用AES/CBC/PKCS5Padding算法，之后再使用BASE64对结果进行转码。
+对消息体进行加密时，应使用AES/CBC/PKCS5Padding算法，之后再使用BASE64对结果进行转码。
 
 >加密体加密示例:
 
@@ -70,7 +70,7 @@ CEK不需要有特殊含义，可以为随机的字符串
 
 3.利用NextPls公钥对CEK进行加密
 
-在调用API前，必须将加密后的CEK放在请求头之中。应使用RSA算法对CEK进行加密，所有的客户都会获得由NextPls提供的一个用于CEK加密的专有公钥。
+在调用API前，必须将加密后的CEK放在请求头的"Content-Code"参数中。应使用RSA算法对CEK进行加密，所有的客户都会获得由NextPls提供的一个用于CEK加密的专有公钥。
 
 >CEK加密示例：
 
@@ -133,7 +133,7 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
 ### Response
 1.验证签名
 
-为了验证NextPls服务器的真实性，客户方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验,如果结果不是true，这意味着无效的签名，响应主体的真实性得不到保证，客户方不应该进行进一步的处理
+为了验证NextPls服务器的真实性，客户方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验,如果结果不是true，这意味着无效的签名，响应主体的真实性得不到保证，客户不应该进行进一步的处理
 
 >验证签名示例：
 

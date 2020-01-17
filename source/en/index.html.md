@@ -16,37 +16,39 @@ search: true
 ---
 
 # Version 1.0.0
+[简体中文版](../)
 ## Introduction
 
-Welcome API for PandaRemit!
+Welcome the API document for NextPls!
 
 # Getting Started
-## Cryptography in QSRemit API 
+## Cryptography in NextPls API 
 ### Request
-1. Generating a CEK
 
-All request body should be encrypted with RSA algorithm before sending to the NextPls server.So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.
+### 1.Generating a CEK
+
+All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.
   
-Agent who wants to make a request API should generate an AES-128 key for the CEK,which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). 
+Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). 
   
-### example
+#### Example
 item | ASCII_string 
 --------- | -------
 sKey | cek_tester_remit
 ivParameter | initial_tester01
 CEK | cek_tester_remitinitial_tester01
-  
+
 <aside class="notice">
 CEK is not a necessarily human readable ASCII string
 </aside>
   
-2. Encrypting body part with the CEK
+### 2.Encrypting body part with the CEK
 
 Agent who wants to make a request API should encrypt the body part with CEK before sending to the NextPls server
 
-在对方法体进行加密时，应使用AES/CBC/PKCS5Padding算法对方法体进行加密，之后应使用BASE64对结果进行转码。
+When encrypt, you should use the algorithm of "AES/CBC/PKCS5Padding", then encoded of Base64.
 
->加密体加密示例:
+>An example of encrypting the body:
 
 ```java
     public class example{
@@ -59,40 +61,48 @@ Agent who wants to make a request API should encrypt the body part with CEK befo
             cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
             byte[] encrypted = cipher.doFinal(body.getBytes("UTF-8"));
             String encryptedBody = Base64.getEncoder().encodeToString(encrypted);
-            System.out.println("加密后的方法体为:" + encryptedBody);
+            System.out.println("The encrypted body:" + encryptedBody);
             
         }
     }
 ```
 
-2. Encrypting CEK with NextPls public key
+### 3.Encrypting CEK with NextPls public key
 
-想要请求API调用的代理方必须将加密后的CEK放在请求头之中。应使用RSA加密算法对CEK进行加密，所有的代理方都会获得由NextPls提供的一个用于CEK加密的公钥。
+Agent who wants to make request API call MUST attach the CEK in the http header("Content-Code") as encrypted one. 
 
->CEK加密示例：
+Encryption algorithm used for CEK protection is RSA-1024. Finally, the result needs to be encoded of Base64. 
+
+All Agent will receive a public key from NextPls, which is used for encryption of the CEK.
+
+>Example for CEK：
 
 ```java
     public class example{
         public static void main(String[] args){
-          
+            
             Cipher cipher = Cipher.getInstance("RSA");
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
             byte[] sbt = source.getBytes(ENCODING);
             byte[] epByte = cipher.doFinal(sbt);
             String encryptedCEK = Base64.getEncoder().encodeToString(epByte);
-            System.out.println("加密后的CEK值为:" + encryptedCEK);
+            System.out.println("The CEK(Content-Code) what be encrypted of RSA:" + encryptedCEK);
             
         }
     }
 ```
   
-3. Generating signature
+### 4.Generating signature
 
-想要请求API调用的代理方还必须在请求头中附加签名值。签名值用于认证请求是否来自于代理方。
-  
-签名为对方法体加密结果进行加密，签名算法为SHA256withRSA，之后仍需使用BASE64对结果进行转码。结果放在请求头的Signature的字段中。
+Agent who wants to make a request API call MUST attach a signature value of the encrypted body(The result in step 2) in the http header("Signature"). 
 
->签名生成示例：
+Signature is used for non-repudiation of the request body from an Agent. 
+
+Generate signed value with sender’s private key.
+
+Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. 
+
+>Example for Signature：
 
 ```java
     public class example{
@@ -110,11 +120,11 @@ Agent who wants to make a request API should encrypt the body part with CEK befo
     }
 ```
   
-4. Generating request header and body
+### 5.Generating request header and body
 
-使用加密的CEK、加密的方法体和签名便可组成一个完整的请求
+With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  
   
-### 示例
+#### Example
 
 Header |
 -------- |
@@ -128,11 +138,12 @@ Body |
 Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0Rja/2H87VLLmsQx7Bkbe0yah8ALIaCabwY30aG/FPsjY4Y7OhujaEAzOVRUrV21iYDL5nUg= |
 
 ### Response
-1. Verifying signature
 
-为了验证NextPls服务器的真实性，代理方需要将签名进行SHA256withRSA算法解密，并与加密请求体进行校验,如果结果不是true，这意味着无效的签名，响应主体的真实性得不到保证，合作伙伴不应该进行进一步的处理
+### 1.Verifying signature
 
->验证签名示例：
+To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.
+
+>Example for Verifying signature：
 
 ```java
     public class example{
@@ -142,7 +153,7 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
             signetcheck.initVerify(getPublicKey());
             signetcheck.update(data.getBytes(ENCODING));
             boolean result = signetcheck.verify(Base64.getDecoder().decode(sign));
-            System.out.println("签名是否通过验证：" + result);
+            System.out.println("Verifying signature：" + result);
             
         }
     }
@@ -150,19 +161,18 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
 
 2. Deriving CEK
 
-所有的响应体在从NextPls服务器发送之前都使用AES/CBC/PKCS5Padding算法进行加密。因此，它需要首先从http报头中的Content-Code字段中解析CEK(通过内容加密密钥)
+All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. 
 
-CEK由32字节的随机字符(初始向量为16字节，AES密钥为16字节)组成。它是用代理方的公钥(RSA)进行加密的。所以代理方需要准备好相应的私钥。
+CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. 
 
-CEK可以从响应头中的Content-Code字段中获得
+CEK can be derived from ‘Content-Code’ field in response header. 
 
->获取CEK示例
+>Example for Deriving CEK
 
 ```java
     public class example{
         public static void main(String[] args){
             
-            //解密块最大长度
             private int maxDecryptBlock = 256;
             byte[] encryptedData = Base64.getDecoder().decode(encryptText);
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -173,7 +183,6 @@ CEK可以从响应头中的Content-Code字段中获得
             int offSet = 0;
             byte[] cache;
             int i = 0;
-            // 对数据分段解密
             while (inputLen - offSet > 0) {
                 if (inputLen - offSet > maxDecryptBlock) {
                     cache = cipher.doFinal(encryptedData, offSet, maxDecryptBlock);
@@ -187,7 +196,7 @@ CEK可以从响应头中的Content-Code字段中获得
             byte[] decryptedData = out.toByteArray();
             out.close();
             String CEK = new String(decryptedData);
-            System.out.println("解析获得CEK为：" + CEK);
+            System.out.println("CEK is：" + CEK);
           
         }
     }
@@ -195,9 +204,9 @@ CEK可以从响应头中的Content-Code字段中获得
 
 3. Decrypting body part with CEK
 
-代理方可以在响应体中通过获取的CEK获取响应的json对象
+Agent can extract plain JSON body with the CEK derived at above.
 
->获取响应数据示例
+>Example for decrypting body part with CEK
 
 ```java
     public class example{
@@ -208,7 +217,7 @@ CEK可以从响应头中的Content-Code字段中获得
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
-            //先用base64解密
+
             byte[] encrypted1 = Base64.getDecoder().decode(sSrc);
             byte[] original = cipher.doFinal(encrypted1);
             String encodingFormat = "UTF-8";
@@ -231,13 +240,275 @@ C | string | The requirement for this field is conditional based on other field 
 
 # Basic Information
 ## GetCountryPayMode
-获取指定国家支持的支付模式 
+This method allows the partner to Get Country based Payment Modes.
 ### HTTP Request
-<span class="http-method post">POST</span> `/get/countryPayMode`
+<span class="http-method post">POST</span> `GET_COUNTRY_PAY_MODE`
 
 The function is not open yet, Coming soon!
 
-# 收汇款人信息
+# Customer Information
+
+## DoRemitterAdd
+This method allows the partner to Registered Customer Profile. 
+### HTTP Request
+<span class="http-method post">POST</span> `DO_REMITTER_ADD`
+
+> Request Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_ADD",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "firstName": "Remitter_First_Name",
+        "middleName": "Remitter_Middle_Name",
+        "lastName": "Remitter_Last_Name",
+        "mobile": "12345678910",
+        "sex": "M",
+        "birthdate": "01/01/1994",
+        "email": "nextPls@nextPls.com",
+        "address1": "Italy",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "nationality": "HKG",
+        "accountNumber": "",
+        "sourceIncome": "1"
+    }
+}
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "DO_REMITTER_ADD",
+         "entity": {
+             "clientRemitterNo": "TEST_B001",
+             "firstName": "Remitter_First_Name",
+             "middleName": "Remitter_Middle_Name",
+             "lastName": "Remitter_Last_Name",
+             "mobile": "12345678910",
+             "sex": "M",
+             "birthdate": "01/01/1994",
+             "email": "nextPls@nextPls.com",
+             "address1": "Italy",
+             "address2": "",
+             "address3": "",
+             "idType": "0",
+             "idNumber": "PS256454165",
+             "idDesc": "",
+             "idIssueDate": "01/01/1994",
+             "idExpDate": "01/01/1994",
+             "nationality": "HKG",
+             "accountNumber": "",
+             "sourceIncome": "1"
+         }
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+            remitterRequestDto.setClientRemitterNo("TEST_R001");
+            // ...
+            NextPlsDoRemitterAddRequest remitterAddRequest = NextPlsDoRemitterAddRequest.build(remitterRequestDto);
+            client.execute(remitterAddRequest);
+          
+        }
+    }
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | Name of Api | M
+entity | | Object | Params | M
+| | clientRemitterNo | String(20) | Remitter number of partner | M
+| | firstName | String(50) | Customer first name | M
+| | middleName | String(50) | Customer middle name | O
+| | lastName | String(50) | Customer last name | M
+| | mobile | String(20) | Customer mobile number | M
+| | email | String(50) | The email id of customer | O
+| | address1 | String(35) | Customer Address1 | M
+| | address2 | String(35) | Customer Address2 | O
+| | address3 | String(50) | Customer Address3 | O
+| | idType | int(3) | Customer identity type | M
+| | idNumber | String(20) | ID number | M
+| | idDesc | String(30) | description when ID Type=6 | C
+| | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
+| | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
+| | birthdate | String(10) | Customer date of birth (MM/DD/YYYY) | O
+| | sex | String(1) | Customer gender. M=Male, F=Female | O
+| | nationality | String(3) | Customer Nationality(3 characters Country ISO code) | M
+| | accountNumber | String(30) | Customer account number | O
+| | sourceIncome | String(2) | Customer source of income | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_ADD",
+    "code": "200",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Params
+| | clientRemitterNo | String | Remitter number of partner
+| | remitterNo | String | Remitter number of NextPls
+msg | | String | Result message
+
+## DoRemitterEdit
+This method allows the partner to Edit Registered Customer Profile.
+### HTTP Request
+<span class="http-method post">POST</span> `DO_REMITTER_EDIT`
+
+> Request Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_EDIT",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873",
+        "firstName": "Remitter_First_Name",
+        "middleName": "Remitter_Middle_Name",
+        "lastName": "Remitter_Last_Name",
+        "mobile": "12345678910",
+        "sex": "M",
+        "birthdate": "01/01/1994",
+        "email": "nextPls@nextPls.com",
+        "address1": "Philippines",
+        "address2": "",
+        "address3": "",
+        "idType": "0",
+        "idNumber": "PS256454165",
+        "idDesc": "",
+        "idIssueDate": "01/01/1994",
+        "idExpDate": "01/01/1994",
+        "nationality": "HKG",
+        "accountNumber": "",
+        "sourceIncome": "1"
+    }
+}
+```
+```shell
+curl -X POST https://open.remitly.com/partner/customer/create
+    -H "Content-Type: application/json"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "DO_REMITTER_EDIT",
+         "entity": {
+             "clientRemitterNo": "TEST_B001",
+             "remitterNo": "JJ201A1131599873",
+             "firstName": "Remitter_First_Name",
+             "middleName": "Remitter_Middle_Name",
+             "lastName": "Remitter_Last_Name",
+             "mobile": "12345678910",
+             "sex": "M",
+             "birthdate": "01/01/1994",
+             "email": "nextPls@nextPls.com",
+             "address1": "Philippines",
+             "address2": "",
+             "address3": "",
+             "idType": "0",
+             "idNumber": "PS256454165",
+             "idDesc": "",
+             "idIssueDate": "01/01/1994",
+             "idExpDate": "01/01/1994",
+             "nationality": "HKG",
+             "accountNumber": "",
+             "sourceIncome": "1"
+         }
+     }'
+```
+```java
+    public class example{
+        public static void main(String[] args){
+            
+            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
+            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+            remitterRequestDto.setClientRemitterNo("TEST_R001");
+            // ...
+            NextPlsDoRemitterEditRequest remitterEditRequest = NextPlsDoRemitterEditRequest.build(remitterRequestDto);
+            client.execute(remitterEditRequest);
+          
+        }
+    }
+```
+
+### Request Body
+参数 |  | 类型 | 描述 | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | 调用接口名称 | M
+entity | | Object | 客户方请求参数 | M
+| | clientRemitterNo | String(20) | Remitter number of partner | M
+| | remitterNo | String(20) | Remitter number of NextPls | M
+| | firstName | String(50) | Customer first name | O
+| | middleName | String(50) | Customer middle name | O
+| | lastName | String(50) | Customer last name | O
+| | mobile | String(20) | Customer mobile number | O
+| | email | String(50) | The email id of customer | O
+| | address1 | String(35) | Customer Address1 | O
+| | address2 | String(35) | Customer Address2 | O
+| | address3 | String(50) | Customer Address3 | O
+| | idType | int(3) | Customer identity type | O
+| | idNumber | String(20) | ID number | O
+| | idDesc | String(30) | description when ID Type=6 | O
+| | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
+| | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
+| | birthdate | String(10) | Customer date of birth (MM/DD/YYYY) | O
+| | sex | String(1) | Customer gender. M=Male, F=Female | O
+| | nationality | String(3) | Customer Nationality(3 characters Country ISO code) | O
+| | accountNumber | String(30) | Customer account number | O
+| | sourceIncome | String(2) | Customer source of income | O
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_REMITTER_EDIT",
+    "code": "200",
+    "entity": {
+        "clientRemitterNo": "TEST_B001",
+        "remitterNo": "JJ201A1131599873"
+    },
+    "msg": "success"
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | Name of Api
+code | | String | Result Code
+entity | | Object | Params
+| | clientRemitterNo | String | Remitter number of partner
+| | remitterNo | String | Remitter number of NextPls
+msg | | String | Result message
+
 ## DoBeneficiaryAdd
 添加收款人信息
 ### HTTP Request
