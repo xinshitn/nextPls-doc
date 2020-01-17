@@ -275,7 +275,7 @@ C | string | 有前置条件的选填或必填字段
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -324,7 +324,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_REMITTER_ADD | M
 entity | | Object | 客户方请求参数 | M
 | | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | M
 | | firstName | String(50) | 汇款人名 | M
@@ -350,7 +350,7 @@ entity | | Object | 客户方请求参数 | M
 
 ```json
 {
-    "apiName": "DO_REMITTER_ADD",
+    "apiName": "DO_REMITTER_ADD_R",
     "code": "200",
     "entity": {
         "clientRemitterNo": "TEST_B001",
@@ -363,7 +363,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_REMITTER_ADD_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 客户方汇款人唯一编号
@@ -405,7 +405,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -455,7 +455,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_REMITTER_EDIT | M
 entity | | Object | 客户方请求参数 | M
 | | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | M
 | | remitterNo | String(20) | NextPls汇款人唯一编号 | M
@@ -482,7 +482,7 @@ entity | | Object | 客户方请求参数 | M
 
 ```json
 {
-    "apiName": "DO_REMITTER_EDIT",
+    "apiName": "DO_REMITTER_EDIT_R",
     "code": "200",
     "entity": {
         "clientRemitterNo": "TEST_B001",
@@ -495,7 +495,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_REMITTER_EDIT_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 客户方汇款人唯一编号
@@ -538,7 +538,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -589,7 +589,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 | | 类型 | 描述 | O/M
 --------- | :------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_BENEFICIARY_ADD | M
 entity | | Object | 客户方请求参数 | M
 | | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
 | | firstName | String(50) | 收款人名 | M
@@ -630,7 +630,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName |  | String | 被调用接口名称
+apiName |  | String | DO_BENEFICIARY_ADD_R
 code |  |String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 客户方收款人唯一编号
@@ -675,7 +675,7 @@ msg |  |String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -727,7 +727,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_BENEFICIARY_EDIT | M
 entity | | Object | 客户方请求参数 | M
 | |clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
 | | beneficiaryNo | String(20) | NextPls收款人唯一编号 | M
@@ -769,7 +769,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_BENEFICIARY_EDIT_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo(20) | String | 客户方收款人唯一编号
@@ -795,7 +795,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -827,7 +827,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_BENEFICIARY_DEL | M
 entity | | Object | 客户方请求参数 | M
 | | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | M
 | | BeneficiaryNo | String(20) | NextPls收款人唯一编号 | M
@@ -846,7 +846,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_BENEFICIARY_DEL_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 msg | | String | 返回消息
@@ -868,7 +868,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -899,7 +899,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | GET_REMITTER | M
 entity | | Object | 客户方请求参数 | M
 | | clientRemitterNo | String(20) | 客户方汇款人唯一编号 | C
 | | remitterNo | String(20) | NextPls汇款人唯一编号 | C
@@ -939,7 +939,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | GET_REMITTER_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientRemitterNo | String | 客户方汇款人唯一编号
@@ -981,7 +981,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1012,7 +1012,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | GET_BENEFICIARY | M
 entity | | Object | 客户方请求参数 | M
 | | clientBeneficiaryNo | String(20) | 客户方收款人唯一编号 | C
 | | beneficiaryNo | String(20) | NextPls收款人唯一编号 | C
@@ -1052,7 +1052,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | GET_BENEFICIARY_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | clientBeneficiaryNo | String | 客户方收款人唯一编号
@@ -1093,7 +1093,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1123,7 +1123,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | GET_BALANCE | M
 entity | | Object | 客户方请求参数 | M
 | | currency | String(3) | 存款币种 | M
 
@@ -1145,7 +1145,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | GET_BALANCE_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | partnerCode | String | 客户编号
@@ -1168,7 +1168,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1200,7 +1200,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | GET_EX_RATE | M
 entity | | Object | 客户方请求参数 | M
 | | payInCurrency | String(3) | 存入币种 | M
 | | payOutCurrency | String(3) | 到账币种 | M
@@ -1223,7 +1223,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | GET_REMITTER_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | payInCurrency | String | 存入币种
@@ -1252,7 +1252,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1292,7 +1292,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_TRANSACTION_PRE | M
 entity | | Object | 客户方请求参数 | M
 | | clientTxnNo | String(20) | 客户方唯一编号 | M
 | | payInCurrency | String(3) | 存入币种 | M
@@ -1327,7 +1327,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |   | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_TRANSACTION_PRE_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | txnNo | String | 交易编号
@@ -1365,7 +1365,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1407,7 +1407,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | DO_TRANSACTION | M
 entity | | Object | 客户方请求参数 | M
 | | TxnNo | String(20) | 订单编号 | M
 | | clientTxnNo | String(20) | 客户方订单编号 | M
@@ -1435,7 +1435,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |  | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | DO_TRANSACTION_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | txnNo | String | NextPls订单唯一编号
@@ -1460,7 +1460,7 @@ msg | | String | 返回消息
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1478,7 +1478,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 参数 |  | 类型 | 描述 | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | 调用接口名称 | M
+apiName | | String | GET_TRANSACTION_STATUS | M
 entity | | Object | 客户方请求参数 | M
 | | txnNo | String(20) | NextPls订单唯一编号 | M
 | | clientTxnNo | String(20) | 客户方订单唯一编号 | M
@@ -1501,7 +1501,7 @@ entity | | Object | 客户方请求参数 | M
 ### Response Body
 参数 |  | 类型 | 描述
 --------- | ------- | ------- |-----------
-apiName | | String | 被调用接口名称
+apiName | | String | GET_TRANSACTION_STATUS_R
 code | | String | 返回码
 entity | | Object | NextPls返回结果
 | | txnNo | String | NextPls订单唯一编号

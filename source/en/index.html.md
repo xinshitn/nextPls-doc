@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='#'>Contact Us</a>
-  - <a href='https://www.pandaremit.com'>Powered by PandaRemit</a>
+  - <a href='https://www.nextpls.com'>Powered by NextPls</a>
 
 includes:
 
@@ -31,7 +31,7 @@ All request body should be encrypted with AES128 algorithm before sending to the
   
 Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). 
   
-### Example
+`Example`
 item | ASCII_string 
 --------- | -------
 sKey | cek_tester_remit
@@ -124,7 +124,7 @@ Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base6
 
 With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  
   
-### Example
+`Example`
 
 Header |
 -------- |
@@ -282,7 +282,7 @@ This method allows the partner to Registered Remitter Profile.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -331,7 +331,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | DO_REMITTER_ADD | M
 entity | | Object | Parameter list | M
 | | clientRemitterNo | String(20) | Unique code for partner remitter | M
 | | firstName | String(50) | Remitter first name | M
@@ -357,7 +357,7 @@ entity | | Object | Parameter list | M
 
 ```json
 {
-    "apiName": "DO_REMITTER_ADD",
+    "apiName": "DO_REMITTER_ADD_R",
     "code": "200",
     "entity": {
         "clientRemitterNo": "TEST_B001",
@@ -370,7 +370,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_REMITTER_ADD_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientRemitterNo | String | Unique code for partner remitter
@@ -412,7 +412,7 @@ This method allows the partner to Edit Registered Remitter Profile.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -462,7 +462,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | DO_REMITTER_EDIT | M
 entity | | Object | Parameter list | M
 | | clientRemitterNo | String(20) | Remitter number of partner | M
 | | remitterNo | String(20) | Remitter number of NextPls | M
@@ -489,7 +489,7 @@ entity | | Object | Parameter list | M
 
 ```json
 {
-    "apiName": "DO_REMITTER_EDIT",
+    "apiName": "DO_REMITTER_EDIT_R",
     "code": "200",
     "entity": {
         "clientRemitterNo": "TEST_B001",
@@ -502,7 +502,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_REMITTER_EDIT_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientRemitterNo | String | Unique code for partner remitter
@@ -546,7 +546,7 @@ This method allows the partner to Register New Beneficiary.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -598,7 +598,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
-apiName | | String | Name of api | M
+apiName | | String | DO_BENEFICIARY_ADD | M
 entity | | Object | Parameter list | M
 | | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
 | | firstName | String(50) | Beneficiary First Name | M
@@ -640,7 +640,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_BENEFICIARY_ADD_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for partner beneficiary
@@ -685,7 +685,7 @@ This method allows the partner to Edit Registered Beneficiary Profile.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -737,7 +737,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
-apiName | | String | Name of api | M
+apiName | | String | DO_BENEFICIARY_EDIT | M
 entity | | Object | Parameter list | M
 | | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
 | | beneficiaryNo | String | Unique code for NextPls | M
@@ -779,7 +779,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_BENEFICIARY_EDIT_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for partner beneficiary
@@ -804,7 +804,7 @@ This method allows the partner to Delete Registered beneficiary.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -836,7 +836,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | DO_BENEFICIARY_DEL | M
 entity | | Object | Parameter list | M
 | | clientBeneficiaryNo | String | Unique code for partner beneficiary
 | | beneficiaryNo | String | Unique code for NextPls beneficiary
@@ -855,7 +855,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_BENEFICIARY_DEL_R
 code | | String | Result Code
 entity | | Object | Parameter list
 msg | | String | Result message
@@ -885,7 +885,7 @@ This method allows the partner to Get Registered Remitter Profile.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -916,7 +916,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | GET_REMITTER | M
 entity | | Object | Parameter list | M
 | | clientRemitterNo | String(20) | Unique code for partner remitter | C
 | | remitterNo | String(20) | Unique code for NextPls remitter | C
@@ -956,7 +956,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | GET_REMITTER_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientRemitterNo | String | Unique code for partner remitter 
@@ -1002,7 +1002,7 @@ This method allows the partner to Get Registered Beneficiary Profile by client B
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1033,7 +1033,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | GET_BENEFICIARY | M
 entity | | Object | Parameter list | M
 | | clientBeneficiaryNo | String(20) | Unique code for partner beneficiary | C
 | | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
@@ -1074,7 +1074,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | GET_BENEFICIARY_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for agent beneficiary
@@ -1118,7 +1118,7 @@ This method allows the partner to Get the Balance by currency.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1148,7 +1148,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | GET_BALANCE | M
 entity | | Object | Parameter list | M
 | | currency | String(3) | currency | M
 
@@ -1170,7 +1170,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | GET_BALANCE_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | partnerCode | String | Partner Code
@@ -1193,7 +1193,7 @@ This method allows the partner to Get the last rate and lock one hour.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1225,7 +1225,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | GET_EX_RATE | M
 entity | | Object | Parameter list | M
 | | payInCurrency | String(3) | Pay In Currency | M
 | | payOutCurrency | String(3) | Pay Out Currency | M
@@ -1248,7 +1248,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | GET_REMITTER_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | payInCurrency | String | Pay In Currency
@@ -1277,7 +1277,7 @@ This method allows the partner to preview the transfer details and keep the rate
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1317,7 +1317,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_TRANSACTION_PRE
 entity | | Object | Parameter list
 | | clientTxnNo | String(20) | Unique code for partner txn | M
 | | payInCurrency | String(3) | Pay In Currency | M
@@ -1352,7 +1352,7 @@ entity | | Object | Parameter list
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_TRANSACTION_PRE_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
@@ -1390,7 +1390,7 @@ This method allows the partner to initiate the transfer.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1432,7 +1432,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | DO_TRANSACTION | M
 entity | | Object | Parameter list | M
 | | TxnNo | String(20) | Unique code for NextPls txn | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
@@ -1460,7 +1460,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | DO_TRANSACTION_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
@@ -1485,7 +1485,7 @@ This method allows the partner to check the Transaction status.
 }
 ```
 ```shell
-curl -X POST https://open.remitly.com/partner/customer/create
+curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/json"
     -H ”Authorization:"your authorization"
     -H "Signature:"generated signature"
@@ -1503,7 +1503,7 @@ curl -X POST https://open.remitly.com/partner/customer/create
 ### Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
-apiName | | String | Name of Api | M
+apiName | | String | GET_TRANSACTION_STATUS | M
 entity | | Object | Parameter list | M
 | | txnNo | String(20) | Unique code for NextPls txn | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
@@ -1526,7 +1526,7 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | Name of Api
+apiName | | String | GET_TRANSACTION_STATUS_R
 code | | String | Result Code
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
@@ -1534,70 +1534,6 @@ entity | | Object | Parameter list
 | | status | String | The Transaction status
 msg | | String | Result message
 
-
-# Reconciliation
-
-Pandaremit is using CSV file as reconciliation file, sent over SFTP.
-The SFTP is provided by Pandaremit, and will open a read-only account for partner. The reconciliation file will be stored on the following path: 
-`/report/[year]/[month]/[day]/yyyymmdd.csv`
-`Example, /report/2016/03/01/20160301.csv`
-
-The file will be created on early T+1 day morning(00:30 AM, Beijing time), and will contains the record that be processed completely on T day.
-
-### Columns Explanation
-Column name | Explanation
---------- | ------- 
-reference-id | Unique identifier of transaction, 12 digits, assigned by Partner
-transaction-id | Unique identifier of transaction, 12 digits, assigned by Pandaremint
-send-amount | Amount to be sent, in TranCurr currency
-send-currency | Transaction currency, this field only supports RMB
-cost-amount | Cost Amount of Partners
-cost-currency | Cost Currency of Partners
-fx-rate | Exchange Rate of Capital Conversion<br>C: present if locked exchange rate pattern <br>OR<br>C: present if unlocked exchange rate pattern and f rcv-status= RECEIVED
-rcv-account | Beneficiary's UnionPay Card account number
-rcv-amount | Amount of receiving remittance funds
-rcv-currency | Currency of receiving remittance funds, , this field only supports RMB
-rcv-status | The state of receiving remittance funds<br>RECEIVED<br>FAIL
-fee | The amount of Channel cost
-fee-currency | The currency of Channel cost
-send-time | Instruction creation time
-rcv-time | Time when the beneficiary receives the remittance
-
-
-# Appendix
-## Signature
-The addition of signature in the messages ensures that each received message is authentic and that the content was not altered.
-The signature for API is a hash based message authentication code, specifically HMAC-MD5. The signature is computed using the entire contents of the message and the Pandaremit Partner’s corresponding “Secret Key”.
-
-The procedure to compute the signature is as follows:
-1. Remove the signature field
-2. Sort field records into alphabetical order based on the field/parameter name.
-3. Concatenate the values of each field in the order from #2
-4. Compute the signature as the HMAC-MD5 of the result of #3 and key = “Secret Key”
-
-Example:
-Secret Key - testkey
-
-`Status request:`<br>
-&nbsp;&nbsp; MerchantId – 123456780012345<br>
-&nbsp;&nbsp; SearchStartDate – 201304230000<br>
-&nbsp;&nbsp; SearchEndDate – 201304240000<br>
-&nbsp;&nbsp; Signature – (to be computed)
-  
-`Step 1:` Remove the signature field<br>
-&nbsp;&nbsp; MerchantId – 123456780012345<br>
-&nbsp;&nbsp; SearchStartDate – 201304230000 S<br>
-&nbsp;&nbsp; earchEndDate – 201304240000<br>
-&nbsp;&nbsp; Signature
-
-`Step 2:` Sort field records into alphabetical order based on the field name.<br>
-&nbsp;&nbsp; MerchantId– 123456780012345<br>
-&nbsp;&nbsp; earchEndDate– 201304240000<br>
-&nbsp;&nbsp; SearchStartDate– 201304230000
-
-`Step 3:` Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000
-
-`Step 4:` Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED
 
 # Errors
 ## HTTP Error Codes
