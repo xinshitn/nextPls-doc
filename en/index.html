@@ -294,22 +294,6 @@
               </ul>
           </li>
           <li>
-            <a href="#reconciliation" class="toc-h1 toc-link" data-title="Reconciliation">Reconciliation</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#columns-explanation" class="toc-h2 toc-link" data-title="Columns Explanation">Columns Explanation</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#appendix" class="toc-h1 toc-link" data-title="Appendix">Appendix</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
               <ul class="toc-list-h2">
                   <li>
@@ -320,7 +304,7 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Contact Us</a></li>
-            <li><a href='https://www.pandaremit.com'>Powered by PandaRemit</a></li>
+            <li><a href='https://www.nextpls.com'>Powered by NextPls</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -334,26 +318,13 @@
 <p>All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.</p>
 
 <p>Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). </p>
-<h3 id='example'>Example</h3>
-<table><thead>
-<tr>
-<th>item</th>
-<th>ASCII_string</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>sKey</td>
-<td>cek_tester_remit</td>
-</tr>
-<tr>
-<td>ivParameter</td>
-<td>initial_tester01</td>
-</tr>
-<tr>
-<td>CEK</td>
-<td>cek_tester_remitinitial_tester01</td>
-</tr>
-</tbody></table>
+
+<p><code>Example</code>
+item | ASCII_string 
+--------- | -------
+sKey | cek_tester_remit
+ivParameter | initial_tester01
+CEK | cek_tester_remitinitial_tester01</p>
 
 <aside class="notice">
 CEK is not a necessarily human readable ASCII string
@@ -430,7 +401,9 @@ CEK is not a necessarily human readable ASCII string
     <span class="o">}</span>
 </code></pre><h3 id='5-generating-request-header-and-body'>5.Generating request header and body</h3>
 <p>With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  </p>
-<h3 id='example-2'>Example</h3>
+
+<p><code>Example</code></p>
+
 <table><thead>
 <tr>
 <th>Header</th>
@@ -611,7 +584,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -667,7 +640,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_REMITTER_ADD</td>
 <td>M</td>
 </tr>
 <tr>
@@ -816,7 +789,7 @@ CEK is not a necessarily human readable ASCII string
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_ADD_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
@@ -837,7 +810,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_REMITTER_ADD_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -903,7 +876,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -960,7 +933,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_REMITTER_EDIT</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1116,7 +1089,7 @@ CEK is not a necessarily human readable ASCII string
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_REMITTER_EDIT_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
@@ -1137,7 +1110,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_REMITTER_EDIT_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -1205,7 +1178,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -1264,7 +1237,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td style="text-align: left"></td>
 <td>String</td>
-<td>Name of api</td>
+<td>DO_BENEFICIARY_ADD</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1455,7 +1428,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_BENEFICIARY_ADD_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -1523,7 +1496,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"bankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_BankAddress"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -1582,7 +1555,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td style="text-align: left"></td>
 <td>String</td>
-<td>Name of api</td>
+<td>DO_BENEFICIARY_EDIT</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1773,7 +1746,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_BENEFICIARY_EDIT_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -1821,7 +1794,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -1860,7 +1833,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_BENEFICIARY_DEL</td>
 <td>M</td>
 </tr>
 <tr>
@@ -1908,7 +1881,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_BENEFICIARY_DEL_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -1944,7 +1917,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -1982,7 +1955,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_REMITTER</td>
 <td>M</td>
 </tr>
 <tr>
@@ -2051,7 +2024,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_REMITTER_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2207,7 +2180,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -2245,7 +2218,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_BENEFICIARY</td>
 <td>M</td>
 </tr>
 <tr>
@@ -2315,7 +2288,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_BENEFICIARY_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2484,7 +2457,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -2521,7 +2494,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_BALANCE</td>
 <td>M</td>
 </tr>
 <tr>
@@ -2566,7 +2539,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_BALANCE_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2616,7 +2589,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -2655,7 +2628,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_EX_RATE</td>
 <td>M</td>
 </tr>
 <tr>
@@ -2707,7 +2680,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_REMITTER_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2765,7 +2738,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -2811,7 +2784,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_TRANSACTION_PRE</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -2891,7 +2864,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_TRANSACTION_PRE_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2998,7 +2971,7 @@ CEK is not a necessarily human readable ASCII string
        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -3047,7 +3020,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_TRANSACTION</td>
 <td>M</td>
 </tr>
 <tr>
@@ -3134,7 +3107,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>DO_TRANSACTION_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -3188,7 +3161,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.remitly.com/partner/customer/create
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/json"</span>
     -H ”Authorization:<span class="s2">"your authorization"</span>
     -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
@@ -3215,7 +3188,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_TRANSACTION_STATUS</td>
 <td>M</td>
 </tr>
 <tr>
@@ -3267,7 +3240,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>Name of Api</td>
+<td>GET_TRANSACTION_STATUS_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -3306,114 +3279,6 @@ CEK is not a necessarily human readable ASCII string
 <td>Result message</td>
 </tr>
 </tbody></table>
-<h1 id='reconciliation'>Reconciliation</h1>
-<p>Pandaremit is using CSV file as reconciliation file, sent over SFTP.
-The SFTP is provided by Pandaremit, and will open a read-only account for partner. The reconciliation file will be stored on the following path: 
-<code>/report/[year]/[month]/[day]/yyyymmdd.csv</code>
-<code>Example, /report/2016/03/01/20160301.csv</code></p>
-
-<p>The file will be created on early T+1 day morning(00:30 AM, Beijing time), and will contains the record that be processed completely on T day.</p>
-<h3 id='columns-explanation'>Columns Explanation</h3>
-<table><thead>
-<tr>
-<th>Column name</th>
-<th>Explanation</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>reference-id</td>
-<td>Unique identifier of transaction, 12 digits, assigned by Partner</td>
-</tr>
-<tr>
-<td>transaction-id</td>
-<td>Unique identifier of transaction, 12 digits, assigned by Pandaremint</td>
-</tr>
-<tr>
-<td>send-amount</td>
-<td>Amount to be sent, in TranCurr currency</td>
-</tr>
-<tr>
-<td>send-currency</td>
-<td>Transaction currency, this field only supports RMB</td>
-</tr>
-<tr>
-<td>cost-amount</td>
-<td>Cost Amount of Partners</td>
-</tr>
-<tr>
-<td>cost-currency</td>
-<td>Cost Currency of Partners</td>
-</tr>
-<tr>
-<td>fx-rate</td>
-<td>Exchange Rate of Capital Conversion<br>C: present if locked exchange rate pattern <br>OR<br>C: present if unlocked exchange rate pattern and f rcv-status= RECEIVED</td>
-</tr>
-<tr>
-<td>rcv-account</td>
-<td>Beneficiary&#39;s UnionPay Card account number</td>
-</tr>
-<tr>
-<td>rcv-amount</td>
-<td>Amount of receiving remittance funds</td>
-</tr>
-<tr>
-<td>rcv-currency</td>
-<td>Currency of receiving remittance funds, , this field only supports RMB</td>
-</tr>
-<tr>
-<td>rcv-status</td>
-<td>The state of receiving remittance funds<br>RECEIVED<br>FAIL</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>The amount of Channel cost</td>
-</tr>
-<tr>
-<td>fee-currency</td>
-<td>The currency of Channel cost</td>
-</tr>
-<tr>
-<td>send-time</td>
-<td>Instruction creation time</td>
-</tr>
-<tr>
-<td>rcv-time</td>
-<td>Time when the beneficiary receives the remittance</td>
-</tr>
-</tbody></table>
-<h1 id='appendix'>Appendix</h1><h2 id='signature'>Signature</h2>
-<p>The addition of signature in the messages ensures that each received message is authentic and that the content was not altered.
-The signature for API is a hash based message authentication code, specifically HMAC-MD5. The signature is computed using the entire contents of the message and the Pandaremit Partner’s corresponding “Secret Key”.</p>
-
-<p>The procedure to compute the signature is as follows:
-1. Remove the signature field
-2. Sort field records into alphabetical order based on the field/parameter name.
-3. Concatenate the values of each field in the order from #2
-4. Compute the signature as the HMAC-MD5 of the result of #3 and key = “Secret Key”</p>
-
-<p>Example:
-Secret Key - testkey</p>
-
-<p><code>Status request:</code><br>
-&nbsp;&nbsp; MerchantId – 123456780012345<br>
-&nbsp;&nbsp; SearchStartDate – 201304230000<br>
-&nbsp;&nbsp; SearchEndDate – 201304240000<br>
-&nbsp;&nbsp; Signature – (to be computed)</p>
-
-<p><code>Step 1:</code> Remove the signature field<br>
-&nbsp;&nbsp; MerchantId – 123456780012345<br>
-&nbsp;&nbsp; SearchStartDate – 201304230000 S<br>
-&nbsp;&nbsp; earchEndDate – 201304240000<br>
-&nbsp;&nbsp; Signature</p>
-
-<p><code>Step 2:</code> Sort field records into alphabetical order based on the field name.<br>
-&nbsp;&nbsp; MerchantId– 123456780012345<br>
-&nbsp;&nbsp; earchEndDate– 201304240000<br>
-&nbsp;&nbsp; SearchStartDate– 201304230000</p>
-
-<p><code>Step 3:</code> Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000</p>
-
-<p><code>Step 4:</code> Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED</p>
 <h1 id='errors'>Errors</h1><h2 id='http-error-codes'>HTTP Error Codes</h2><h3 id='these-are-error-codes-that-will-be-returned-in-the-header-of-api-responses'>These are error codes that will be returned in the header of API responses</h3>
 <table><thead>
 <tr>
