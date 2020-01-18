@@ -351,10 +351,6 @@ CEK is not a necessarily human readable ASCII string
 </aside>
   
 <h3 id='2-encrypting-body-part-with-the-cek'>2.Encrypting body part with the CEK</h3>
-<p>Agent who wants to make a request API should encrypt the body part with CEK before sending to the NextPls server</p>
-
-<p>When encrypt, you should use the algorithm of &quot;AES/CBC/PKCS5Padding&quot;, then encoded of Base64.</p>
-
 <blockquote>
 <p>An example of encrypting the body:</p>
 </blockquote>
@@ -372,13 +368,11 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h3 id='3-encrypting-cek-with-nextpls-public-key'>3.Encrypting CEK with NextPls public key</h3>
-<p>Agent who wants to make request API call MUST attach the CEK in the http header(&quot;Content-Code&quot;) as encrypted one. </p>
+</code></pre>
+<p>Agent who wants to make a request API should encrypt the body part with CEK before sending to the NextPls server</p>
 
-<p>Encryption algorithm used for CEK protection is RSA-1024. Finally, the result needs to be encoded of Base64. </p>
-
-<p>All Agent will receive a public key from NextPls, which is used for encryption of the CEK.</p>
-
+<p>When encrypt, you should use the algorithm of &quot;AES/CBC/PKCS5Padding&quot;, then encoded of Base64.</p>
+<h3 id='3-encrypting-cek-with-nextpls-public-key'>3.Encrypting CEK with NextPls public key</h3>
 <blockquote>
 <p>Example for CEK：</p>
 </blockquote>
@@ -394,15 +388,13 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h3 id='4-generating-signature'>4.Generating signature</h3>
-<p>Agent who wants to make a request API call MUST attach a signature value of the encrypted body(The result in step 2) in the http header(&quot;Signature&quot;). </p>
+</code></pre>
+<p>Agent who wants to make request API call MUST attach the CEK in the http header(&quot;Content-Code&quot;) as encrypted one. </p>
 
-<p>Signature is used for non-repudiation of the request body from an Agent. </p>
+<p>Encryption algorithm used for CEK protection is RSA-1024. Finally, the result needs to be encoded of Base64. </p>
 
-<p>Generate signed value with sender’s private key.</p>
-
-<p>Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. </p>
-
+<p>All Agent will receive a public key from NextPls, which is used for encryption of the CEK.</p>
+<h3 id='4-generating-signature'>4.Generating signature</h3>
 <blockquote>
 <p>Example for Signature：</p>
 </blockquote>
@@ -419,7 +411,15 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h3 id='5-generating-request-header-and-body'>5.Generating request header and body</h3>
+</code></pre>
+<p>Agent who wants to make a request API call MUST attach a signature value of the encrypted body(The result in step 2) in the http header(&quot;Signature&quot;). </p>
+
+<p>Signature is used for non-repudiation of the request body from an Agent. </p>
+
+<p>Generate signed value with sender’s private key.</p>
+
+<p>Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. </p>
+<h3 id='5-generating-request-header-and-body'>5.Generating request header and body</h3>
 <p>With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  </p>
 
 <p><code>Example</code></p>
@@ -453,8 +453,6 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3><h3 id='1-verifying-signature'>1.Verifying signature</h3>
-<p>To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.</p>
-
 <blockquote>
 <p>Example for Verifying signature：</p>
 </blockquote>
@@ -469,13 +467,9 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h3 id='2-deriving-cek'>2.Deriving CEK</h3>
-<p>All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. </p>
-
-<p>CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. </p>
-
-<p>CEK can be derived from ‘Content-Code’ field in response header. </p>
-
+</code></pre>
+<p>To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.</p>
+<h3 id='2-deriving-cek'>2.Deriving CEK</h3>
 <blockquote>
 <p>Example for Deriving CEK</p>
 </blockquote>
@@ -509,9 +503,13 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h3 id='3-decrypting-body-part-with-cek'>3.Decrypting body part with CEK</h3>
-<p>Agent can extract plain JSON body with the CEK derived at above.</p>
+</code></pre>
+<p>All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. </p>
 
+<p>CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. </p>
+
+<p>CEK can be derived from ‘Content-Code’ field in response header. </p>
+<h3 id='3-decrypting-body-part-with-cek'>3.Decrypting body part with CEK</h3>
 <blockquote>
 <p>Example for decrypting body part with CEK</p>
 </blockquote>
@@ -532,7 +530,9 @@ CEK is not a necessarily human readable ASCII string
 
         <span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h2 id='keys'>Keys</h2>
+</code></pre>
+<p>Agent can extract plain JSON body with the CEK derived at above.</p>
+<h2 id='keys'>Keys</h2>
 <p>Definition of abbreviated values found in the documentation.</p>
 
 <table><thead>
