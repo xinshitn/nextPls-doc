@@ -45,10 +45,6 @@ CEK is not a necessarily human readable ASCII string
   
 ### 2.Encrypting body part with the CEK
 
-Agent who wants to make a request API should encrypt the body part with CEK before sending to the NextPls server
-
-When encrypt, you should use the algorithm of "AES/CBC/PKCS5Padding", then encoded of Base64.
-
 >An example of encrypting the body:
 
 ```java
@@ -68,13 +64,11 @@ When encrypt, you should use the algorithm of "AES/CBC/PKCS5Padding", then encod
     }
 ```
 
+Agent who wants to make a request API should encrypt the body part with CEK before sending to the NextPls server
+
+When encrypt, you should use the algorithm of "AES/CBC/PKCS5Padding", then encoded of Base64.
+
 ### 3.Encrypting CEK with NextPls public key
-
-Agent who wants to make request API call MUST attach the CEK in the http header("Content-Code") as encrypted one. 
-
-Encryption algorithm used for CEK protection is RSA-1024. Finally, the result needs to be encoded of Base64. 
-
-All Agent will receive a public key from NextPls, which is used for encryption of the CEK.
 
 >Example for CEK：
 
@@ -92,16 +86,14 @@ All Agent will receive a public key from NextPls, which is used for encryption o
         }
     }
 ```
+
+Agent who wants to make request API call MUST attach the CEK in the http header("Content-Code") as encrypted one. 
+
+Encryption algorithm used for CEK protection is RSA-1024. Finally, the result needs to be encoded of Base64. 
+
+All Agent will receive a public key from NextPls, which is used for encryption of the CEK.
   
 ### 4.Generating signature
-
-Agent who wants to make a request API call MUST attach a signature value of the encrypted body(The result in step 2) in the http header("Signature"). 
-
-Signature is used for non-repudiation of the request body from an Agent. 
-
-Generate signed value with sender’s private key.
-
-Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. 
 
 >Example for Signature：
 
@@ -120,6 +112,14 @@ Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base6
         }
     }
 ```
+
+Agent who wants to make a request API call MUST attach a signature value of the encrypted body(The result in step 2) in the http header("Signature"). 
+
+Signature is used for non-repudiation of the request body from an Agent. 
+
+Generate signed value with sender’s private key.
+
+Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. 
   
 ### 5.Generating request header and body
 
@@ -142,8 +142,6 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
 
 ### 1.Verifying signature
 
-To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.
-
 >Example for Verifying signature：
 
 ```java
@@ -160,13 +158,9 @@ To verify authenticity of NextPls server, Agent should calculate verification va
     }
 ```
 
+To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.
+
 ### 2.Deriving CEK
-
-All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. 
-
-CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. 
-
-CEK can be derived from ‘Content-Code’ field in response header. 
 
 >Example for Deriving CEK
 
@@ -203,9 +197,13 @@ CEK can be derived from ‘Content-Code’ field in response header.
     }
 ```
 
-### 3.Decrypting body part with CEK
+All response body is encrypted with AES128-CBC algorithm before sending from the NextPls server. So it needs to derive the CEK(Content Encryption Key) first from the Content-Code field in the http header. 
 
-Agent can extract plain JSON body with the CEK derived at above.
+CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). It is encrypted with Agent’s public key (RSA-1024). So Agent needs to prepare its corresponding private key. 
+
+CEK can be derived from ‘Content-Code’ field in response header. 
+
+### 3.Decrypting body part with CEK
 
 >Example for decrypting body part with CEK
 
@@ -228,6 +226,8 @@ Agent can extract plain JSON body with the CEK derived at above.
         }
     }
 ```
+
+Agent can extract plain JSON body with the CEK derived at above.
 
 ## Keys
 
