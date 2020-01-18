@@ -626,18 +626,23 @@ CEK is not a necessarily human readable ASCII string
              "sourceIncome": "1"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
-            <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_R001"</span><span class="o">);</span>
-            <span class="c1">// ...</span>
-            <span class="n">NextPlsDoRemitterAddRequest</span> <span class="n">remitterAddRequest</span> <span class="o">=</span> <span class="n">NextPlsDoRemitterAddRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterAddRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
+        <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_R001"</span><span class="o">);</span>
+        <span class="c1">// ...</span>
+        <span class="n">NextPlsDoRemitterAddRequest</span> <span class="n">remitterAddRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoRemitterAddRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterAddRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
@@ -919,18 +924,23 @@ CEK is not a necessarily human readable ASCII string
              "sourceIncome": "1"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
-            <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_R001"</span><span class="o">);</span>
-            <span class="c1">// ...</span>
-            <span class="n">NextPlsDoRemitterEditRequest</span> <span class="n">remitterEditRequest</span> <span class="o">=</span> <span class="n">NextPlsDoRemitterEditRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterEditRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span> 
+        <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
+        <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_R001"</span><span class="o">);</span>
+        <span class="c1">// ...</span>
+        <span class="n">NextPlsDoRemitterEditRequest</span> <span class="n">remitterEditRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoRemitterEditRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterEditRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
@@ -1183,17 +1193,22 @@ CEK is not a necessarily human readable ASCII string
              "remitterNo": "JJ201A1131599873"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
-            <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
-            <span class="n">NextPlsGetRemitterRequest</span> <span class="n">remitterRequest</span> <span class="o">=</span> <span class="n">NextPlsGetRemitterRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsRemitterRequestDto</span> <span class="n">remitterRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsRemitterRequestDto</span><span class="o">();</span>
+        <span class="n">remitterRequestDto</span><span class="o">.</span><span class="na">setClientRemitterNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
+        <span class="n">NextPlsGetRemitterRequest</span> <span class="n">remitterRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsGetRemitterRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">remitterRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">remitterRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
@@ -1806,18 +1821,23 @@ CEK is not a necessarily human readable ASCII string
              "bankAddress": "Beneficiary_BankAddress"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
-            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
-            <span class="c1">// ...</span>
-            <span class="n">NextPlsDoBeneficiaryEditRequest</span> <span class="n">beneficiaryEditRequest</span> <span class="o">=</span> <span class="n">NextPlsDoBeneficiaryEditRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryEditRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+        <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B001"</span><span class="o">);</span>
+        <span class="c1">// ...</span>
+        <span class="n">NextPlsDoBeneficiaryEditRequest</span> <span class="n">beneficiaryEditRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoBeneficiaryEditRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryEditRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-5'>Request Body</h3>
 <table><thead>
 <tr>
@@ -2091,18 +2111,23 @@ CEK is not a necessarily human readable ASCII string
              "beneficiaryNo": "XD201G0589941750"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
-            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B002"</span><span class="o">);</span>
-            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
-            <span class="n">NextPlsDoBeneficiaryDelRequest</span> <span class="n">beneficiaryDelRequest</span> <span class="o">=</span> <span class="n">NextPlsDoBeneficiaryDelRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryDelRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+        <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TEST_B002"</span><span class="o">);</span>
+        <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
+        <span class="n">NextPlsDoBeneficiaryDelRequest</span> <span class="n">beneficiaryDelRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoBeneficiaryDelRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryDelRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-6'>Request Body</h3>
 <table><thead>
 <tr>
@@ -2214,17 +2239,22 @@ CEK is not a necessarily human readable ASCII string
             "beneficiaryNo": "XD201G0589941750"
         } 
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
-            <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TESTB002"</span><span class="o">);</span>
-            <span class="n">NextPlsGetBeneficiaryRequest</span> <span class="n">beneficiaryRequest</span> <span class="o">=</span> <span class="n">NextPlsGetBeneficiaryRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsBeneficiaryRequestDto</span> <span class="n">beneficiaryRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBeneficiaryRequestDto</span><span class="o">();</span>
+        <span class="n">beneficiaryRequestDto</span><span class="o">.</span><span class="na">setClientBeneficiaryNo</span><span class="o">(</span><span class="s">"TESTB002"</span><span class="o">);</span>
+        <span class="n">NextPlsGetBeneficiaryRequest</span> <span class="n">beneficiaryRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsGetBeneficiaryRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">beneficiaryRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">beneficiaryRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-7'>Request Body</h3>
 <table><thead>
 <tr>
@@ -2489,17 +2519,22 @@ CEK is not a necessarily human readable ASCII string
              "currency": "HKD"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsBalanceRequestDto</span> <span class="n">balanceDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBalanceRequestDto</span><span class="o">();</span>
-            <span class="n">balanceDto</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
-            <span class="n">NextPlsGetBalanceRequest</span> <span class="n">balanceRequest</span> <span class="o">=</span> <span class="n">NextPlsGetBalanceRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">balanceDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">balanceRequest</span><span class="o">);</span>             
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsBalanceRequestDto</span> <span class="n">balanceDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsBalanceRequestDto</span><span class="o">();</span>
+        <span class="n">balanceDto</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">NextPlsGetBalanceRequest</span> <span class="n">balanceRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsGetBalanceRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">balanceDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">balanceRequest</span><span class="o">);</span>             
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-8'>Request Body</h3>
 <table><thead>
 <tr>
@@ -2622,18 +2657,22 @@ CEK is not a necessarily human readable ASCII string
              "payOutCurrency": "PHP"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsExRateRequestDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateRequestDto</span><span class="o">();</span>
-            <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
-            <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
-            <span class="n">NextPlsGetExRateRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">exRateRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsExRateRequestDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateRequestDto</span><span class="o">();</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+        <span class="n">NextPlsGetExRateRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">exRateRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-9'>Request Body</h3>
 <table><thead>
 <tr>
@@ -2775,22 +2814,27 @@ CEK is not a necessarily human readable ASCII string
              "paymentMode": "Bank"
          }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
-            <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPaymentMode</span><span class="o">(</span><span class="s">"Bank"</span><span class="o">);</span>
-            <span class="n">NextPlsDoTransactionPreRequest</span> <span class="n">preRequest</span> <span class="o">=</span> <span class="n">NextPlsDoTransactionPreRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">preRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">preRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPaymentMode</span><span class="o">(</span><span class="s">"Bank"</span><span class="o">);</span>
+        <span class="n">NextPlsDoTransactionPreRequest</span> <span class="n">preRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoTransactionPreRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">preRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">preRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-10'>Request Body</h3>
 <table><thead>
 <tr>
@@ -3009,23 +3053,28 @@ CEK is not a necessarily human readable ASCII string
                        "purposeCode": "3"
                    }
      }'</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-            <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultNextPlsClient</span><span class="o">(</span><span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-            <span class="n">NextPlsTransactionRequestDto</span> <span class="n">txnRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionRequestDto</span><span class="o">();</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setTxnNo</span><span class="o">(</span><span class="s">"IU201G0279816077"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterNo</span><span class="o">(</span><span class="s">"JJ201A1131599873"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPurposeCode</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
-            <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
-            <span class="n">NextPlsDoTransactionRequest</span> <span class="n">transactionAddRequest</span> <span class="o">=</span> <span class="n">NextPlsDoTransactionRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">txnRequestDto</span><span class="o">);</span>
-            <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">transactionAddRequest</span><span class="o">);</span>
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsTransactionRequestDto</span> <span class="n">txnRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionRequestDto</span><span class="o">();</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setTxnNo</span><span class="o">(</span><span class="s">"IU201G0279816077"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterNo</span><span class="o">(</span><span class="s">"JJ201A1131599873"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPurposeCode</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
+        <span class="n">NextPlsDoTransactionRequest</span> <span class="n">transactionAddRequest</span> <span class="o">=</span> 
+                <span class="n">NextPlsDoTransactionRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">txnRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">transactionAddRequest</span><span class="o">);</span>
 
-        <span class="o">}</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='request-body-11'>Request Body</h3>
 <table><thead>
 <tr>
