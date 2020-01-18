@@ -315,18 +315,23 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
-            remitterRequestDto.setClientRemitterNo("TEST_R001");
-            // ...
-            NextPlsDoRemitterAddRequest remitterAddRequest = NextPlsDoRemitterAddRequest.build(remitterRequestDto);
-            client.execute(remitterAddRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+        remitterRequestDto.setClientRemitterNo("TEST_R001");
+        // ...
+        NextPlsDoRemitterAddRequest remitterAddRequest = 
+                NextPlsDoRemitterAddRequest.build(remitterRequestDto);
+        client.execute(remitterAddRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -446,18 +451,23 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
-            remitterRequestDto.setClientRemitterNo("TEST_R001");
-            // ...
-            NextPlsDoRemitterEditRequest remitterEditRequest = NextPlsDoRemitterEditRequest.build(remitterRequestDto);
-            client.execute(remitterEditRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+       
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey); 
+        NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+        remitterRequestDto.setClientRemitterNo("TEST_R001");
+        // ...
+        NextPlsDoRemitterEditRequest remitterEditRequest = 
+                NextPlsDoRemitterEditRequest.build(remitterRequestDto);
+        client.execute(remitterEditRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -543,17 +553,22 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
-            remitterRequestDto.setClientRemitterNo("TEST_B001");
-            NextPlsGetRemitterRequest remitterRequest = NextPlsGetRemitterRequest.build(remitterRequestDto);
-            client.execute(remitterRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsRemitterRequestDto remitterRequestDto = new NextPlsRemitterRequestDto();
+        remitterRequestDto.setClientRemitterNo("TEST_B001");
+        NextPlsGetRemitterRequest remitterRequest = 
+                NextPlsGetRemitterRequest.build(remitterRequestDto);
+        client.execute(remitterRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -844,18 +859,23 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
-            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
-            // ...
-            NextPlsDoBeneficiaryEditRequest beneficiaryEditRequest = NextPlsDoBeneficiaryEditRequest.build(beneficiaryRequestDto);
-            client.execute(beneficiaryEditRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+        beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
+        // ...
+        NextPlsDoBeneficiaryEditRequest beneficiaryEditRequest = 
+                NextPlsDoBeneficiaryEditRequest.build(beneficiaryRequestDto);
+        client.execute(beneficiaryEditRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -944,18 +964,23 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
-            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B002");
-            beneficiaryRequestDto.setBeneficiaryNo("XD201G0589941750");
-            NextPlsDoBeneficiaryDelRequest beneficiaryDelRequest = NextPlsDoBeneficiaryDelRequest.build(beneficiaryRequestDto);
-            client.execute(beneficiaryDelRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+        beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B002");
+        beneficiaryRequestDto.setBeneficiaryNo("XD201G0589941750");
+        NextPlsDoBeneficiaryDelRequest beneficiaryDelRequest = 
+                NextPlsDoBeneficiaryDelRequest.build(beneficiaryRequestDto);
+        client.execute(beneficiaryDelRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -1022,17 +1047,22 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
-            beneficiaryRequestDto.setClientBeneficiaryNo("TESTB002");
-            NextPlsGetBeneficiaryRequest beneficiaryRequest = NextPlsGetBeneficiaryRequest.build(beneficiaryRequestDto);
-            client.execute(beneficiaryRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
+        beneficiaryRequestDto.setClientBeneficiaryNo("TESTB002");
+        NextPlsGetBeneficiaryRequest beneficiaryRequest = 
+                NextPlsGetBeneficiaryRequest.build(beneficiaryRequestDto);
+        client.execute(beneficiaryRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -1136,17 +1166,22 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBalanceRequestDto balanceDto = new NextPlsBalanceRequestDto();
-            balanceDto.setCurrency("HKD");
-            NextPlsGetBalanceRequest balanceRequest = NextPlsGetBalanceRequest.build(balanceDto);
-            client.execute(balanceRequest);             
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsBalanceRequestDto balanceDto = new NextPlsBalanceRequestDto();
+        balanceDto.setCurrency("HKD");
+        NextPlsGetBalanceRequest balanceRequest = 
+                NextPlsGetBalanceRequest.build(balanceDto);
+        client.execute(balanceRequest);             
+      
     }
+}
 ```
 
 ### Request Body
@@ -1212,18 +1247,22 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
-            exRateDto.setPayInCurrency("HKD");
-            exRateDto.setPayOutCurrency("PHP");
-            NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
-            client.execute(exRateRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
+        exRateDto.setPayInCurrency("HKD");
+        exRateDto.setPayOutCurrency("PHP");
+        NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
+        client.execute(exRateRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -1300,22 +1339,27 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
-            preRequestDto.setClientTxnNo("1000");
-            preRequestDto.setPayInCurrency("HKD");
-            preRequestDto.setPayOutCurrency("PHP");
-            preRequestDto.setTransferCurrency("HKD");
-            preRequestDto.setTransferAmount("100");
-            preRequestDto.setPaymentMode("Bank");
-            NextPlsDoTransactionPreRequest preRequest = NextPlsDoTransactionPreRequest.build(preRequestDto);
-            client.execute(preRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
+        preRequestDto.setClientTxnNo("1000");
+        preRequestDto.setPayInCurrency("HKD");
+        preRequestDto.setPayOutCurrency("PHP");
+        preRequestDto.setTransferCurrency("HKD");
+        preRequestDto.setTransferAmount("100");
+        preRequestDto.setPaymentMode("Bank");
+        NextPlsDoTransactionPreRequest preRequest = 
+                NextPlsDoTransactionPreRequest.build(preRequestDto);
+        client.execute(preRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -1414,23 +1458,28 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
-            txnRequestDto.setTxnNo("IU201G0279816077");
-            txnRequestDto.setClientTxnNo("1000");
-            txnRequestDto.setBeneficiaryNo("XD201G0589941750");
-            txnRequestDto.setRemitterNo("JJ201A1131599873");
-            txnRequestDto.setPurposeCode("3");
-            txnRequestDto.setPayInCountry("HKG");
-            txnRequestDto.setPayOutCountry("PHL");
-            NextPlsDoTransactionRequest transactionAddRequest = NextPlsDoTransactionRequest.build(txnRequestDto);
-            client.execute(transactionAddRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
+        txnRequestDto.setTxnNo("IU201G0279816077");
+        txnRequestDto.setClientTxnNo("1000");
+        txnRequestDto.setBeneficiaryNo("XD201G0589941750");
+        txnRequestDto.setRemitterNo("JJ201A1131599873");
+        txnRequestDto.setPurposeCode("3");
+        txnRequestDto.setPayInCountry("HKG");
+        txnRequestDto.setPayOutCountry("PHL");
+        NextPlsDoTransactionRequest transactionAddRequest = 
+                NextPlsDoTransactionRequest.build(txnRequestDto);
+        client.execute(transactionAddRequest);
+      
     }
+}
 ```
 
 ### Request Body
