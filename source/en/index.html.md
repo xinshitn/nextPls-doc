@@ -718,18 +718,24 @@ curl -X POST http://staging.nextpls.com/v1/remittance
      }'
 ```
 ```java
-    public class example{
-        public static void main(String[] args){
-            
-            NextPlsClient client = new DefaultNextPlsClient("http://staging.nextpls.com/v1/remittance", "test_client", "cek_tester_remit", "initial_tester01", publicKey, secretKey);
-            NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
-            beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
-            // ...
-            NextPlsDoBeneficiaryAddRequest beneficiaryAddRequest = NextPlsDoBeneficiaryAddRequest.build(beneficiaryRequestDto);
-            client.execute(beneficiaryAddRequest);
-          
-        }
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = 
+                                new NextPlsBeneficiaryRequestDto();
+        beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
+        // ...
+        NextPlsDoBeneficiaryAddRequest beneficiaryAddRequest = 
+                NextPlsDoBeneficiaryAddRequest.build(beneficiaryRequestDto);
+        client.execute(beneficiaryAddRequest);
+      
     }
+}
 ```
 
 ### Request Body
@@ -1551,6 +1557,25 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "clientTxnNo": "1000"
          }
      }'
+```
+```java
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
+        txnRequestDto.setTxnNo("IU201G0279816077");
+        txnRequestDto.setClientTxnNo("1000");
+        NextPlsGetTxnStatusRequest txnStatusRequest = 
+                    NextPlsGetTxnStatusRequest.build(txnRequestDto);
+        client.execute(txnStatusRequest);
+      
+    }
+}
 ```
 
 ### Request Body
