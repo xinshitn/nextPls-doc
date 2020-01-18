@@ -1,5 +1,5 @@
 ---
-title: API PandaRemit
+title: API NextPls
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - json
