@@ -21,6 +21,19 @@ search: true
 
 Welcome the API document for NextPls!
 
+
+>We suggest using SDK to start first:
+```java
+/**
+  <dependency>
+      <groupId>com.nextpls</groupId>
+      <artifactId>sdk</artifactId>
+      <version>1.0.5</version>
+  </dependency>
+*/
+```
+
+
 # Getting Started
 ## Cryptography in NextPls API 
 ### Request
@@ -1437,9 +1450,56 @@ This method allows the partner to initiate the transfer.
        "clientTxnNo": "1000",
        "payInCountry": "HKG",
        "payOutCountry": "PHP",
-       "remitterNo": "JJ201A1131599873",
-       "beneficiaryNo": "RP122141",
-       "purposeCode": "3"
+       "remitterNo": "",
+       "beneficiaryNo": "",
+       "purposeCode": "3",
+       
+        "remitterFirstName": "Remitter_First_Name",
+        "remitterMiddleName": "",
+        "remitterLastName": "Remitter_Last_Name",
+        "remitterFirstLocalName": "Remitter_First_Local_Name",
+        "remitterMiddleLocalName": "",
+        "remitterLastLocalName": "Remitter_Middle_Last_Name",
+        "remitterMobile": "12345678910",
+        "remitterSex": "M",
+        "remitterBirthdate": "01/01/1994",
+        "remitterEmail": "nextPls@nextPls.com",
+        "remitterAddress1": "Italy",
+        "remitterAddress2": "",
+        "remitterAddress3": "",
+        "remitterIdType": "0",
+        "remitterIdNumber": "PS256454165",
+        "remitterIdDesc": "",
+        "remitterIdIssueDate": "01/01/1994",
+        "remitterIdExpDate": "01/01/1994",
+        "remitterNationality": "HKG",
+        "remitterAccountNumber": "",
+        "sourceIncome": "1",
+        
+        "beneficiaryFirstName": "Beneficiary_First_Name",
+        "beneficiaryMiddleName": "",
+        "beneficiaryLastName": "Beneficiary_Last_Name",
+        "beneficiaryFirstLocalName": "Beneficiary_First_Local_Name",
+        "beneficiaryMiddleLocalName": "",
+        "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
+        "beneficiaryMobile": "12345678910",
+        "beneficiarySex": "",
+        "beneficiaryBirthdate": "",
+        "beneficiaryEmail": "",
+        "beneficiaryAddress1": "Philippines",
+        "beneficiaryAddress2": "",
+        "beneficiaryAddress3": "",
+        "beneficiaryIdType": "0",
+        "beneficiaryIdNumber": "",
+        "beneficiaryIdDesc": "",
+        "beneficiaryIdIssueDate": "",
+        "beneficiaryIdExpDate": "",
+        "beneficiaryNationality": "HKG",
+        "beneficiaryRelationship": "3",
+        "beneficiaryBankCode": "11003544",
+        "beneficiaryBankAccountNumber": "4555556564564",
+        "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+        "beneficiaryBankAddress": ""
     }
 }
 ```
@@ -1497,9 +1557,56 @@ entity | | Object | Parameter list | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
 | | payInCountry | String(3) | Pay In Country | M
 | | payOutCountry | String(3) | Pay Out Country | M
-| | remitterNo | String(20) | Unique code for NextPls remitter | M
-| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | M
+| | remitterNo | String(20) | Unique code for NextPls remitter | C
+| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
 | | purposeCode | String(2) | Purpose Code for txn | M
+
+| | remitterFirstName | String(50) | Remitter first name | M
+| | remitterMiddleName | String(50) | Remitter middle name | O
+| | remitterLastName | String(50) | Remitter last name | M
+| | remitterFirstLocalName | String(50) | Remitter first name | M
+| | remitterMiddleLocalName | String(50) | Remitter middle name | O
+| | remitterLastLocalName | String(50) | Remitter last name | M
+| | remitterMobile | String(20) | Remitter mobile number | M
+| | remitterEmail | String(50) | The email id of remitter | O
+| | remitterAddress1 | String(35) | Remitter Address1 | M
+| | remitterAddress2 | String(35) | Remitter Address2 | O
+| | remitterAddress3 | String(50) | Remitter Address3 | O
+| | remitterIdType | int(3) | Remitter identity type | M
+| | remitterIdNumber | String(20) | ID number | M
+| | remitterIdDesc | String(30) | description when ID Type=6 | C
+| | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
+| | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
+| | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | remitterSex | String(1) | Remitter gender. M=Male, F=Female | O
+| | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
+| | remitterAccountNumber | String(30) | Remitter account number | O
+| | sourceIncome | String(2) | Remitter source of income | M
+
+| | beneficiaryFirstName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastName | String(50) | Beneficiary Last Name | M
+| | beneficiaryFirstLocalName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleLocalName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastLocalName | String(50) | Beneficiary Last Name | M
+| | beneficiaryMobile | String(20) | Mobile phone Number of Beneficiary | M
+| | beneficiaryEmail | String(50) | Email of Beneficiary | O
+| | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
+| | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
+| | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
+| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
+| | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
+| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
+| | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
+| | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | beneficiarySex | String(1) | Gender of Beneficiary | O
+| | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
+| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
+| | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
+| | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
+| | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
 
