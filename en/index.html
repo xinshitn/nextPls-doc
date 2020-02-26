@@ -319,6 +319,19 @@
 <p><a href="../">简体中文版</a></p>
 <h2 id='introduction'>Introduction</h2>
 <p>Welcome the API document for NextPls!</p>
+
+<blockquote>
+<p>We suggest using SDK to start first:
+<code>java
+/**
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
+      &lt;artifactId&gt;sdk&lt;/artifactId&gt;
+      &lt;version&gt;1.0.5&lt;/version&gt;
+  &lt;/dependency&gt;
+*/
+</code></p>
+</blockquote>
 <h1 id='getting-started'>Getting Started</h1><h2 id='cryptography-in-nextpls-api'>Cryptography in NextPls API</h2><h3 id='request'>Request</h3><h3 id='1-generating-a-cek'>1.Generating a CEK</h3>
 <p>All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.</p>
 
@@ -3036,9 +3049,56 @@ CEK is not a necessarily human readable ASCII string
        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP122141"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+       </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+
+        </span><span class="s2">"remitterFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterFirstLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterSex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+
+        </span><span class="s2">"beneficiaryFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryFirstLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiarySex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryRelationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Benificiary_BankAccountName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
@@ -3138,14 +3198,14 @@ CEK is not a necessarily human readable ASCII string
 <td>remitterNo</td>
 <td>String(20)</td>
 <td>Unique code for NextPls remitter</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td>beneficiaryNo</td>
 <td>String(20)</td>
 <td>Unique code for NextPls beneficiary</td>
-<td>M</td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
@@ -3155,6 +3215,53 @@ CEK is not a necessarily human readable ASCII string
 <td>M</td>
 </tr>
 </tbody></table>
+
+<p>| | remitterFirstName | String(50) | Remitter first name | M
+| | remitterMiddleName | String(50) | Remitter middle name | O
+| | remitterLastName | String(50) | Remitter last name | M
+| | remitterFirstLocalName | String(50) | Remitter first name | M
+| | remitterMiddleLocalName | String(50) | Remitter middle name | O
+| | remitterLastLocalName | String(50) | Remitter last name | M
+| | remitterMobile | String(20) | Remitter mobile number | M
+| | remitterEmail | String(50) | The email id of remitter | O
+| | remitterAddress1 | String(35) | Remitter Address1 | M
+| | remitterAddress2 | String(35) | Remitter Address2 | O
+| | remitterAddress3 | String(50) | Remitter Address3 | O
+| | remitterIdType | int(3) | Remitter identity type | M
+| | remitterIdNumber | String(20) | ID number | M
+| | remitterIdDesc | String(30) | description when ID Type=6 | C
+| | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
+| | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
+| | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | remitterSex | String(1) | Remitter gender. M=Male, F=Female | O
+| | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
+| | remitterAccountNumber | String(30) | Remitter account number | O
+| | sourceIncome | String(2) | Remitter source of income | M</p>
+
+<p>| | beneficiaryFirstName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastName | String(50) | Beneficiary Last Name | M
+| | beneficiaryFirstLocalName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleLocalName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastLocalName | String(50) | Beneficiary Last Name | M
+| | beneficiaryMobile | String(20) | Mobile phone Number of Beneficiary | M
+| | beneficiaryEmail | String(50) | Email of Beneficiary | O
+| | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
+| | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
+| | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
+| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
+| | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
+| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,&quot;M&quot; only if IDType is 6 | C
+| | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
+| | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
+| | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | beneficiarySex | String(1) | Gender of Beneficiary | O
+| | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
+| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
+| | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
+| | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
+| | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O</p>
 
 <blockquote>
 <p>Response Body:</p>
