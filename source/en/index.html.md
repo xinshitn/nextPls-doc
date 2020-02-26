@@ -22,18 +22,15 @@ search: true
 Welcome the API document for NextPls!
 
 
->We suggest using SDK to start first:
+>We suggest using SDK to start first (Example in Java):
 
 ```json
-
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
       <version>1.0.5</version>
   </dependency>
-  
 ```
-
 ```shell
 
   <dependency>
@@ -43,7 +40,6 @@ Welcome the API document for NextPls!
   </dependency>
 
 ```
-
 ```java
 /**
   <dependency>
@@ -79,22 +75,16 @@ CEK is not a necessarily human readable ASCII string
   
 ### 2.Encrypting body part with the CEK
 
->An example of encrypting the body:
+>An example of encrypting the body (Example in Java):
 
 ```json
-
   {
     "Example":"Please move to java"
   }
-  
 ```
-
 ```shell
-
     Please find the example in java
-  
 ```
-
 ```java
     public class example{
         public static void main(String[] args){
