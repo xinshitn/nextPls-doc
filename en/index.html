@@ -323,7 +323,21 @@
 <blockquote>
 <p>We suggest using SDK to start first:</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="cm">/**
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="err">&lt;dependency&gt;</span><span class="w">
+      </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
+      </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">5</span><span class="err">&lt;/version&gt;</span><span class="w">
+  </span><span class="err">&lt;/dependency&gt;</span><span class="w">
+
+</span></code></pre><pre class="highlight shell tab-shell"><code>
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
+      &lt;artifactId&gt;sdk&lt;/artifactId&gt;
+      &lt;version&gt;1.0.5&lt;/version&gt;
+  &lt;/dependency&gt;
+
+</code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
@@ -365,7 +379,15 @@ CEK is not a necessarily human readable ASCII string
 <blockquote>
 <p>An example of encrypting the body:</p>
 </blockquote>
-<pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Example"</span><span class="p">:</span><span class="s2">"Please move to java"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre><pre class="highlight shell tab-shell"><code>
+    Please find the example <span class="k">in </span>java
+
+</code></pre><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
         <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
             <span class="n">Cipher</span> <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"AES/CBC/PKCS5Padding"</span><span class="o">);</span>
