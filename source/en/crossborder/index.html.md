@@ -1019,7 +1019,7 @@ page-size |  | number | The size of each page , default 20
 total-page |  | number | Total pages of results
 total-size |  | number | Total number of results
 list | | Array | Parameter list
-| | update-time | string | asset update time
+| | update-time | string | Asset update time
 | | new-avail-amount | decimal | Available amount after operation
 | | new-hold-amount | decimal | Hold amount after updating
 | | origin-avail-amount | decimal | Available amount before updating
@@ -1054,15 +1054,13 @@ SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
 Signature – (to be computed) <br/>
 
-Step 1: <br/>
-Remove the signature field <br/>
+Step 1: Remove the signature field <br/>
 MerchantId – 123456780012345 <br/>
 SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
 Signature 
 
-Step 2: <br/>
-Sort field records into alphabetical order based on the field name.<br/>
+Step 2: Sort field records into alphabetical order based on the field name.<br/>
 MerchantId – 123456780012345<br/>
 SearchEndDate – 202003060000<br/>
 SearchStartDate – 202003030000
@@ -1083,7 +1081,7 @@ Consumer goods | Consumer goods, merchandise and retail consumptions
 Donations | Donations/Gifts
 
 # Errors
-### These are error codes that will be returned in the body of API responses
+These error codes would be returned in the body of API responses.
 
 Error Code | Description
 --------- | -------
