@@ -30,6 +30,8 @@ A corresponding "Secret Key" will be assigned for each Merchant Id. The "Secret 
 # Data Structure
 All responses from PandaRemit is formatted with fixed structure.
 
+> Data structure:
+
 ```json
 {
   "code": 0,
@@ -81,6 +83,7 @@ This api allows partner doing customer registration in NextPls.
 <span class="http-method post">POST</span> `customer`
 
 > Request Body:
+
 ```json
 {
   "data":{
@@ -460,6 +463,7 @@ Validating remittance and get exchange rate from NextPls. This API includes cust
 <span class="http-method post">POST</span> `validate/v2`
 
 > Request Body:
+
 ```json
 {
     "data":{
@@ -720,6 +724,8 @@ cost-amount | number(14,2)) | Money cost in cost-currency
 This method allows the partner to get transaction status from NextPls by . 
 ### HTTP Request
 <span class="http-method post">POST</span> `status`
+
+> Request body:
 
 ```json
 {
@@ -1024,7 +1030,7 @@ list | | Array | Parameter list
 | | merchant-id | string | The partner unique merchant id
 
 # Reconciliation
-Opening soon...
+Coming soon...
 
 # Appendix
 ## Signature
@@ -1042,52 +1048,58 @@ The procedure to compute the signature is as follows:
 Example:
 Secret Key - testkey 
 
-Status request: 
+Status request: <br/>
+MerchantId – 123456780012345<br/>
+SearchStartDate – 202003030000<br/>
+SearchEndDate – 202003060000<br/>
+Signature – (to be computed) <br/>
 
-MerchantId – 123456780012345 
-SearchStartDate – 201304230 000 
-SearchEndDate – 201304240000 
-Signature – (to be computed) 
-
-Step 1: 
-Remove the signature field 
-MerchantId – 123456780012345 
-SearchStartDate – 201304230000 S
-SearchEndDate – 201304240000 
+Step 1: <br/>
+Remove the signature field <br/>
+MerchantId – 123456780012345 <br/>
+SearchStartDate – 202003030000<br/>
+SearchEndDate – 202003060000<br/>
 Signature 
 
-Step 2: 
-Sort field records into alphabetical order based on the field name. 
-MerchantId– 123456780012345 
-SearchEndDate– 201304240000 
-SearchStartDate– 201304230000 
+Step 2: <br/>
+Sort field records into alphabetical order based on the field name.<br/>
+MerchantId – 123456780012345<br/>
+SearchEndDate – 202003060000<br/>
+SearchStartDate – 202003030000
 
-Step 3: Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000
+Step 3: Concatenate the values of each field in the order from Step 2 123456780012345 + 202003060000 + 202003030000 = 123456780012345202003060000202003030000
 
-Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED 
+Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345202003060000202003030000 and testkey, signature is e1afc0223c539b24b2ff6947702ebe0f, 
+after transfer upper case then Signature = E1AFC0223C539B24B2FF6947702EBE0F.
 
 ## Constants
 
 ### Purpose
-
+Value | Description
+-------- | --------
+Salary | Customer's salary
+Family Support | Support for family
+Consumer goods | Consumer goods, merchandise and retail consumptions
+Donations | Donations/Gifts
 
 # Errors
 ### These are error codes that will be returned in the body of API responses
 
 Error Code | Description
 --------- | -------
-200 | Request Success
-500 | Request Fail
-1006 | Without API
-1007 | Invalid Signature
-1010 | Missing Parameters
-1011 | Wrong Parameters
-10003 | Access denied
-10102 | Business rate query error
-20011 | Remitter add error: client remitter number duplicate
-20051 | Beneficiary add error: client beneficiary number duplicate
-21052 | Beneficiary query error: beneficiary info not exist
-30001 | Transaction error: client txn number duplicate
-30006 | Transaction error: time out
-30007 | Transaction error: cancel already
-43004 | Balance error: asset insufficient
+199 | Signature does not match.
+500 | Request fail
+5013 | Missing Parameters
+5014 | Wrong Parameters
+10005 | Registration Error.
+10109 | Rate query failed.
+20014 | Sender creation failed.
+21007 | The bank account already exist.
+21008 | Adding receiver bank account failed.
+43001 | Validation error.
+43002 | Remittance hasn't been validated，or has been processed.
+43003 | Remittance error.
+43004 | Insufficient funds of partner account.
+43005 | Inquiry account balance failed.
+43006 | Inquiry transaction status failed.
+43007 | Inquiry asset journals failed.
