@@ -328,6 +328,10 @@
 <p>A corresponding &quot;Secret Key&quot; will be assigned for each Merchant Id. The &quot;Secret Key&quot; will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <strong><a href="#signature">Signature</a></strong>. </p>
 <h1 id='data-structure'>Data Structure</h1>
 <p>All responses from PandaRemit is formatted with fixed structure.</p>
+
+<blockquote>
+<p>Data structure:</p>
+</blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -432,37 +436,35 @@
 <p><span class="http-method post">POST</span> <code>customer</code></p>
 
 <blockquote>
-<p>Request Body:
-<code>json
-{
-  &quot;data&quot;:{
-          &quot;timestamp&quot;:&quot;1583308706625&quot;,
-          &quot;first-name&quot;:&quot;SAN&quot;,
-          &quot;last-name&quot;:&quot;ZHANG &quot;,
-          &quot;id-number&quot;:&quot;E3242339&quot;,
-          &quot;id-type&quot;:1,
-          &quot;expire-date&quot;:&quot;2021-01-01&quot;,
-          &quot;phone-number&quot;:&quot;18909871123&quot;,
-          &quot;area-code&quot;:&quot;+86&quot;,
-          &quot;date-of-birth&quot;:&quot;1989-10-12&quot;,
-          &quot;gender&quot;:&quot;M&quot;,
-          &quot;occupation&quot;:&quot;Engineer&quot;,
-          &quot;email&quot;:&quot;max@pandaremit.com&quot;,
-          &quot;country&quot;:&quot;Australia&quot;,
-          &quot;state&quot;:&quot;NSW&quot;,
-          &quot;city&quot;:&quot;Sydney&quot;,
-          &quot;district&quot;:&quot;boxhill&quot;,
-          &quot;street&quot;:&quot;Oxford St&quot;,
-          &quot;door-number&quot;:&quot;12-Unit4-102&quot;,
-          &quot;postcode&quot;:&quot;1023&quot;,
-          &quot;id-image-a&quot;:&quot;QWERTYUIOPOIUYTRGHJJHBVBKL....&quot;,
-          &quot;id-image-b&quot;:&quot;WIIUEIWIEJOIUYTJIWUUIIIUIL....&quot;
-      },
-      &quot;signature&quot;:&quot;877CA84B66CA50234464F660B0DB51ED&quot;
-}
-</code></p>
+<p>Request Body:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://open.fft.com/register
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1583308706625"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"first-name"</span><span class="p">:</span><span class="s2">"SAN"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last-name"</span><span class="p">:</span><span class="s2">"ZHANG "</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id-number"</span><span class="p">:</span><span class="s2">"E3242339"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id-type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expire-date"</span><span class="p">:</span><span class="s2">"2021-01-01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"phone-number"</span><span class="p">:</span><span class="s2">"18909871123"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"area-code"</span><span class="p">:</span><span class="s2">"+86"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"date-of-birth"</span><span class="p">:</span><span class="s2">"1989-10-12"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gender"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"occupation"</span><span class="p">:</span><span class="s2">"Engineer"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"max@pandaremit.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"NSW"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Sydney"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="s2">"boxhill"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Oxford St"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"door-number"</span><span class="p">:</span><span class="s2">"12-Unit4-102"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postcode"</span><span class="p">:</span><span class="s2">"1023"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id-image-a"</span><span class="p">:</span><span class="s2">"QWERTYUIOPOIUYTRGHJJHBVBKL...."</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id-image-b"</span><span class="p">:</span><span class="s2">"WIIUEIWIEJOIUYTJIWUUIIIUIL...."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"signature"</span><span class="p">:</span><span class="s2">"877CA84B66CA50234464F660B0DB51ED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST https://open.fft.com/register
     -H <span class="s2">"merchant-id:10192012192"</span>
     -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
     -d
@@ -1164,34 +1166,32 @@
 <p><span class="http-method post">POST</span> <code>validate/v2</code></p>
 
 <blockquote>
-<p>Request Body:
-<code>json
-{
-    &quot;data&quot;:{
-        &quot;reference-id&quot;:&quot;11223347&quot;,
-        &quot;sender-first-name&quot;:&quot;Sheng&quot;,
-        &quot;sender-last-name&quot;:&quot;Ma&quot;,
-        &quot;sender-id-type&quot;:&quot;1&quot;,
-        &quot;sender-id-number&quot;:&quot;ED1223345&quot;,
-        &quot;expire-date&quot;:&quot;2022-11-01&quot;,
-        &quot;sender-phone-number&quot;:&quot;123187723&quot;,
-        &quot;sender-area-code&quot;:&quot;+1&quot;,
-        &quot;email&quot;:&quot;12338798@qq02.com&quot;,
-        &quot;country&quot;:&quot;United States&quot;,
-        &quot;country_code&quot;:&quot;USA&quot;,
-        &quot;receiver-name&quot;:&quot;叶渊砾&quot;,
-        &quot;rcv-account&quot;:&quot;6212261202042853144&quot;,
-        &quot;receiver-id-number&quot;:&quot;331003199602160050&quot;,
-        &quot;receiver-phone-number&quot;:&quot;17764525250&quot;,
-        &quot;purpose&quot;:&quot;Support for family&quot;,
-        &quot;trans-amount&quot;:10000.00,
-        &quot;send-currency&quot;:&quot;USD&quot;
-    },
-    &quot;signature&quot;:&quot;811075DB6D5CDF6F4BBC218119EFB008&quot;
-}
-</code></p>
+<p>Request Body:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST http://qa.wotransfer.com/portal/api/validate/v2
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"reference-id"</span><span class="p">:</span><span class="s2">"11223347"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-first-name"</span><span class="p">:</span><span class="s2">"Sheng"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-last-name"</span><span class="p">:</span><span class="s2">"Ma"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-id-type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-id-number"</span><span class="p">:</span><span class="s2">"ED1223345"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expire-date"</span><span class="p">:</span><span class="s2">"2022-11-01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-phone-number"</span><span class="p">:</span><span class="s2">"123187723"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender-area-code"</span><span class="p">:</span><span class="s2">"+1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"12338798@qq02.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_code"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"receiver-name"</span><span class="p">:</span><span class="s2">"叶渊砾"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rcv-account"</span><span class="p">:</span><span class="s2">"6212261202042853144"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"receiver-id-number"</span><span class="p">:</span><span class="s2">"331003199602160050"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"receiver-phone-number"</span><span class="p">:</span><span class="s2">"17764525250"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purpose"</span><span class="p">:</span><span class="s2">"Support for family"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trans-amount"</span><span class="p">:</span><span class="mf">10000.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send-currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="s2">"811075DB6D5CDF6F4BBC218119EFB008"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://qa.wotransfer.com/portal/api/validate/v2
     -H <span class="s2">"merchant-id:10192012192"</span>
     -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
     -d
@@ -1784,6 +1784,10 @@
 <p>This method allows the partner to get transaction status from NextPls by . </p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>status</code></p>
+
+<blockquote>
+<p>Request body:</p>
+</blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"transaction-id"</span><span class="p">:</span><span class="s2">"685146609809362944"</span><span class="w">
@@ -2343,7 +2347,7 @@
 </tr>
 </tbody></table>
 <h1 id='reconciliation'>Reconciliation</h1>
-<p>Opening soon...</p>
+<p>Coming soon...</p>
 <h1 id='appendix'>Appendix</h1><h2 id='signature'>Signature</h2>
 <p>The addition of signature in the messages ensures that each received message is authentic and that the content was not altered. </p>
 
@@ -2361,30 +2365,54 @@
 <p>Example:
 Secret Key - testkey </p>
 
-<p>Status request: </p>
+<p>Status request: <br/>
+MerchantId – 123456780012345<br/>
+SearchStartDate – 202003030000<br/>
+SearchEndDate – 202003060000<br/>
+Signature – (to be computed) <br/></p>
 
-<p>MerchantId – 123456780012345 
-SearchStartDate – 201304230 000 
-SearchEndDate – 201304240000 
-Signature – (to be computed) </p>
-
-<p>Step 1: 
-Remove the signature field 
-MerchantId – 123456780012345 
-SearchStartDate – 201304230000 S
-SearchEndDate – 201304240000 
+<p>Step 1: <br/>
+Remove the signature field <br/>
+MerchantId – 123456780012345 <br/>
+SearchStartDate – 202003030000<br/>
+SearchEndDate – 202003060000<br/>
 Signature </p>
 
-<p>Step 2: 
-Sort field records into alphabetical order based on the field name. 
-MerchantId– 123456780012345 
-SearchEndDate– 201304240000 
-SearchStartDate– 201304230000 </p>
+<p>Step 2: <br/>
+Sort field records into alphabetical order based on the field name.<br/>
+MerchantId – 123456780012345<br/>
+SearchEndDate – 202003060000<br/>
+SearchStartDate – 202003030000</p>
 
-<p>Step 3: Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000</p>
+<p>Step 3: Concatenate the values of each field in the order from Step 2 123456780012345 + 202003060000 + 202003030000 = 123456780012345202003060000202003030000</p>
 
-<p>Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED </p>
-<h2 id='constants'>Constants</h2><h3 id='purpose'>Purpose</h3><h1 id='errors'>Errors</h1><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
+<p>Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345202003060000202003030000 and testkey, signature is e1afc0223c539b24b2ff6947702ebe0f, 
+after transfer upper case then Signature = E1AFC0223C539B24B2FF6947702EBE0F.</p>
+<h2 id='constants'>Constants</h2><h3 id='purpose'>Purpose</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Salary</td>
+<td>Customer&#39;s salary</td>
+</tr>
+<tr>
+<td>Family Support</td>
+<td>Support for family</td>
+</tr>
+<tr>
+<td>Consumer goods</td>
+<td>Consumer goods, merchandise and retail consumptions</td>
+</tr>
+<tr>
+<td>Donations</td>
+<td>Donations/Gifts</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -2392,64 +2420,68 @@ SearchStartDate– 201304230000 </p>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td>Request Success</td>
+<td>199</td>
+<td>Signature does not match.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Request Fail</td>
+<td>Request fail</td>
 </tr>
 <tr>
-<td>1006</td>
-<td>Without API</td>
-</tr>
-<tr>
-<td>1007</td>
-<td>Invalid Signature</td>
-</tr>
-<tr>
-<td>1010</td>
+<td>5013</td>
 <td>Missing Parameters</td>
 </tr>
 <tr>
-<td>1011</td>
+<td>5014</td>
 <td>Wrong Parameters</td>
 </tr>
 <tr>
-<td>10003</td>
-<td>Access denied</td>
+<td>10005</td>
+<td>Registration Error.</td>
 </tr>
 <tr>
-<td>10102</td>
-<td>Business rate query error</td>
+<td>10109</td>
+<td>Rate query failed.</td>
 </tr>
 <tr>
-<td>20011</td>
-<td>Remitter add error: client remitter number duplicate</td>
+<td>20014</td>
+<td>Sender creation failed.</td>
 </tr>
 <tr>
-<td>20051</td>
-<td>Beneficiary add error: client beneficiary number duplicate</td>
+<td>21007</td>
+<td>The bank account already exist.</td>
 </tr>
 <tr>
-<td>21052</td>
-<td>Beneficiary query error: beneficiary info not exist</td>
+<td>21008</td>
+<td>Adding receiver bank account failed.</td>
 </tr>
 <tr>
-<td>30001</td>
-<td>Transaction error: client txn number duplicate</td>
+<td>43001</td>
+<td>Validation error.</td>
 </tr>
 <tr>
-<td>30006</td>
-<td>Transaction error: time out</td>
+<td>43002</td>
+<td>Remittance hasn&#39;t been validated，or has been processed.</td>
 </tr>
 <tr>
-<td>30007</td>
-<td>Transaction error: cancel already</td>
+<td>43003</td>
+<td>Remittance error.</td>
 </tr>
 <tr>
 <td>43004</td>
-<td>Balance error: asset insufficient</td>
+<td>Insufficient funds of partner account.</td>
+</tr>
+<tr>
+<td>43005</td>
+<td>Inquiry account balance failed.</td>
+</tr>
+<tr>
+<td>43006</td>
+<td>Inquiry transaction status failed.</td>
+</tr>
+<tr>
+<td>43007</td>
+<td>Inquiry asset journals failed.</td>
 </tr>
 </tbody></table>
 
