@@ -1,5 +1,5 @@
 ---
-title: CrossBorder API NextPls
+title: CrossBorder API | NextPls
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - json
@@ -18,7 +18,7 @@ search: true
 
 ## Introduction
 
-NextPls CrossBorder API provide a solution for worldwide remit partners to distribution CNY in China.
+NextPls CrossBorder API provides a solution for worldwide remit partners to distribution CNY in China.
 
 
 # Authentication
@@ -75,7 +75,7 @@ Get Balance | Inquiry partner account balance
 Quote | Inquiry realtime exchange rate
 Asset Journal | Inquiry journals of partner account
 
-# Full-Integrate API
+# Full-Integration API
 Full-integrate allows partner doing pre-registration of customer(sender) and beneficiary(receiver). Thus customer and beneficiary data are not necessary to pass to NextPls every time.
 ## Create Customer
 This api allows partner doing customer registration in NextPls.
@@ -455,7 +455,7 @@ fx-rate | number | Exchange rate
 cost-currency | string | Currency of transaction cost
 cost-amount | string | Amount of transaction cost
 
-# Half-Integrate API
+# Half-Integration API
 
 ## Validate
 Validating remittance and get exchange rate from NextPls. This API includes customer and beneficiary data with request.
