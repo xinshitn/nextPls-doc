@@ -54,6 +54,7 @@ Signature only includes fields in ‘data’ object, but except ‘id-image-a’
 # CrossBorder API Instruction
 ## Keys
 Definition of abbreviated values found in the documentation
+
 Abbreviation | Description
 -------- | --------
 R | value for this field is required
@@ -74,7 +75,6 @@ Asset Journal | Inquiry journals of partner account
 
 # Full-Integrate API
 Full-integrate allows partner doing pre-registration of customer(sender) and beneficiary(receiver). Thus customer and beneficiary data are not necessary to pass to NextPls every time.
-
 ## Create Customer
 This api allows partner doing customer registration in NextPls.
 ### HTTP Request
@@ -109,6 +109,7 @@ This api allows partner doing customer registration in NextPls.
       "signature":"877CA84B66CA50234464F660B0DB51ED"
 }
 ```
+
 ```shell
 curl -X POST https://open.fft.com/register
     -H "merchant-id:10192012192"
@@ -152,7 +153,7 @@ id-number | string(20) | Identity number | R
 id-type | number(2) | ID Type（1:Passport，2:Driver License 3:ID Card | R
 expire-date | yyyy-MM-dd | ID expiration date | O
 phone-number | string(20) | Phone number of customer | R
-area-code | string(6) | International telephone code ｜ R
+area-code | string(6) | International telephone code | R
 date-of-birth | yyyy-MM-dd | Date of birth of customer | O
 gender | string{1) | Gender: M male, F female | O
 occupation | string(50) | Occupation | O
@@ -190,7 +191,6 @@ first-name | string(32) | Sender first name
 last-name | string(32) | Sender last name
 phone-number | string(20) | Phone number of customer
 
-
 ## Create Beneficiary
 This api allows partner doing beneficiary registration in NextPls.
 ### HTTP Request
@@ -200,23 +200,27 @@ This api allows partner doing beneficiary registration in NextPls.
 
 ```json
 {
-    "timestamp": "1546054496345",
-    "customer-id": "1001011",
-    "bankcard": "6222600260001072444",
-    "name": "李四/LISI",
-    "id-number": "330424198710213219",
-    "expire-date": "2025-10-10",
-    "phone-number": "18909871123",
-    "area-code": "+86",
-    "date-of-birth": "1989-10-12",
-    "occupation": "Engineer",
-    "country": "中国",
-    "state": "山东省",
-    "city": "青岛市",
-    "district": "崂山区",
-    "street":"北京东路121号东山花园2-1-101"
+  "data":{
+        "timestamp": "1546054496345",
+        "customer-id": "1001011",
+        "bankcard": "6222600260001072444",
+        "name": "李四/LISI",
+        "id-number": "330424198710213219",
+        "expire-date": "2025-10-10",
+        "phone-number": "18909871123",
+        "area-code": "+86",
+        "date-of-birth": "1989-10-12",
+        "occupation": "Engineer",
+        "country": "中国",
+        "state": "山东省",
+        "city": "青岛市",
+        "district": "崂山区",
+        "street":"北京东路121号东山花园2-1-101"
+    },
+  "signature": "54C622FD5791097B6825D0D75898B015"
 }
 ```
+
 ```shell
 curl -X POST https://open.fft.com/register
     -H "merchant-id:10192012192"
@@ -303,6 +307,7 @@ This api is used for remit params validation and get an exchange rate.
     "signature":"0EB34CBCDFF711C540DEE3D9565A7EF1"
 }
 ```
+
 ```shell
 curl -X POST http://qa.wotransfer.com/portal/api/validate
     -H "merchant-id:10192012192"
@@ -360,7 +365,6 @@ rcv-account | string | Beneficiary's Bank Card account number
 bankcard-id | number | Unique identification number of the bankCard in NextPls
 fx-rate | number(12,4) | Exchange rate
 
-
 ## Remit
 This api used for doing Remittance.
 ### HTTP Request
@@ -382,12 +386,11 @@ This api used for doing Remittance.
 	"signature":"B5FE506DBDE252BB70E23112DEBF7CFE"
 }
 ```
+
 ```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+curl -X POST http://qa.wotransfer.com/portal/api/remit
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
     -d
     '{
          "data":{
@@ -404,10 +407,10 @@ curl -X POST http://staging.nextpls.com/v1/remittance
 ```
 
 ### Request Body
-Field | Type | Describe | O/M
+Field | Type | Description | Required
 --------- | ------- | ------- | ---------
 reference-id | string(25) | Unique pipeline number of request, assigned by Partner  | R
-validate-id | string(25) | Unique Number of Pre-processing created by Validate，valid for 30 minutes after generation | R
+validate-id | string(50) | Unique Number of Pre-processing created by Validate，valid for 30 minutes after generation | R
 send-amount | number(14,2) | Amount to be sent in send currency(exclusive with trans-amount) | C
 trans-amount | number(14,2) | Amount customer receives, CNY amount only(exclusive with send-amount) | C
 send-currency | string(3) | Transaction currency, currency of the merchant asset account | R
@@ -437,7 +440,7 @@ purpose | string | Sender’s purpose of remittance. Predefined, see **[Purpose]
 ```
 
 ### Response Body
-Field |   | Type | Description
+Field | Type | Description
 --------- | ------- | ------- 
 validate-id | string | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
 transaction-id | string | Unique identifier of transaction, generated by NextPls
@@ -449,787 +452,623 @@ fx-rate | number | Exchange rate
 cost-currency | string | Currency of transaction cost
 cost-amount | string | Amount of transaction cost
 
-
 # Half-Integrate API
 
 ## Validate
-This method allows the partner to Register New Beneficiary.
+Validating remittance and get exchange rate from NextPls. This API includes customer and beneficiary data with request.
 ### HTTP Request
-<span class="http-method post">POST</span> `DO_BENEFICIARY_ADD`
+<span class="http-method post">POST</span> `validate/v2`
 
 > Request Body:
-
 ```json
 {
-    "apiName": "DO_BENEFICIARY_ADD",
-    "entity": {
-        "clientRemitterNo": "TEST_B001",
-        "firstName": "Beneficiary_First_Name",
-        "middleName": "Beneficiary_Middle_Name",
-        "lastName": "Beneficiary_Last_Name",
-        "mobile": "12345678910",
-        "email": "nextPls@nextPls.com",
-        "address1": "Philippines",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "birthdate": "01/01/1994",
-        "sex": "M",
-        "nationality": "HKG",
-        "relationship": "3",
-        "bankCode": "11003544",
-        "bankAccountNumber": "4555556564564",
-        "bankAccountName": "Beneficiary_BankName",
-        "bankAddress": "Beneficiary_BankAddress"
-    }
+    "data":{
+    	"reference-id":"11223347",
+    	"sender-first-name":"Sheng",
+    	"sender-last-name":"Ma",
+    	"sender-id-type":"1",
+    	"sender-id-number":"ED1223345",
+    	"expire-date":"2022-11-01",
+    	"sender-phone-number":"123187723",
+    	"sender-area-code":"+1",
+    	"email":"12338798@qq02.com",
+    	"country":"United States",
+    	"country_code":"USA",
+    	"receiver-name":"叶渊砾",
+        "rcv-account":"6212261202042853144",
+        "receiver-id-number":"331003199602160050",
+        "receiver-phone-number":"17764525250",
+        "purpose":"Support for family",
+        "trans-amount":10000.00,
+        "send-currency":"USD"
+    },
+    "signature":"811075DB6D5CDF6F4BBC218119EFB008"
 }
 ```
+
 ```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+curl -X POST http://qa.wotransfer.com/portal/api/validate/v2
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
     -d
     '{
-         "apiName": "DO_BENEFICIARY_ADD",
-             "entity": {
-                 "clientRemitterNo": "TEST_B001",
-                 "firstName": "Beneficiary_First_Name",
-                 "middleName": "Beneficiary_Middle_Name",
-                 "lastName": "Beneficiary_Last_Name",
-                 "mobile": "12345678910",
-                 "email": "nextPls@nextPls.com",
-                 "address1": "Philippines",
-                 "address2": "",
-                 "address3": "",
-                 "idType": "0",
-                 "idNumber": "PS256454165",
-                 "idDesc": "",
-                 "idIssueDate": "01/01/1994",
-                 "idExpDate": "01/01/1994",
-                 "birthdate": "01/01/1994",
-                 "sex": "M",
-                 "nationality": "HKG",
-                 "relationship": "4",
-                 "bankCode": "11003544",
-                 "bankAccountNumber": "4555556564564",
-                 "bankAccountName": "Beneficiary_BankName",
-                 "bankAddress": "Beneficiary_BankAddress"
-             }
+         "data":{
+         	"reference-id":"11223347",
+         	"sender-first-name":"Sheng",
+         	"sender-last-name":"Ma",
+         	"sender-id-type":"1",
+         	"sender-id-number":"ED1223345",
+         	"expire-date":"2022-11-01",
+         	"sender-phone-number":"123187723",
+         	"sender-area-code":"+1",
+         	"email":"12338798@qq02.com",
+         	"country":"United States",
+         	"country_code":"USA",
+         	"receiver-name":"叶渊砾",
+             "rcv-account":"6212261202042853144",
+             "receiver-id-number":"331003199602160050",
+             "receiver-phone-number":"17764525250",
+             "purpose":"Support for family",
+             "trans-amount":10000.00,
+             "send-currency":"USD"
+         },
+         "signature":"811075DB6D5CDF6F4BBC218119EFB008"
      }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = 
-                                new NextPlsBeneficiaryRequestDto();
-        beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
-        // ...
-        NextPlsDoBeneficiaryAddRequest beneficiaryAddRequest = 
-                NextPlsDoBeneficiaryAddRequest.build(beneficiaryRequestDto);
-        client.execute(beneficiaryAddRequest);
-      
-    }
-}
 ```
 
 ### Request Body
-Parameter | | Type | Description | O/M
---------- | :------- | ------- | ---------- | -------
-apiName | | String | DO_BENEFICIARY_ADD | M
-entity | | Object | Parameter list | M
-| | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
-| | firstName | String(50) | Beneficiary First Name | M
-| | middleName | String(50) | Beneficiary Middle Name | O
-| | lastName | String(50) | Beneficiary Last Name | M
-| | mobile | String(20) | Mobile phone Number of Beneficiary | M
-| | email | String(50) | Email of Beneficiary | O
-| | address1 | String(35) | Beneficiary Address1 | M
-| | address2 | String(35) | Beneficiary Address2 | O
-| | address3 | String(35) | Beneficiary Address3 | O
-| | idType | int(2) | Type of Beneficiary Id Proof | O
-| | idNumber | String(20) | Beneficiary ID Number | O
-| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
-| | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
-| | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
-| | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | sex | String(1) | Gender of Beneficiary | O
-| | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | relationship | String(3) | Relationship with the remitter | M
-| | bankCode | String(20) | Bank code for Beneficiary | C
-| | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
-| | bankAccountName | String(35) | Bank Account name of Beneficiary | C
-| | bankAddress | String(35) | Beneficiary Bank Address | O
+Field | Type | Description | Required
+--------- | ------- | ------- | ---------- 
+reference-id | string(25) | Unique pipeline number of request, assigned by Partner  | R
+sender-first-name | string(32) | Sender first name | R
+sender-last-name | string(32) | Sender last name | R
+sender-id-number | string(20) | Sender identity number | R
+sender-id-type | number(2) | Sender ID Type（1:Passport，2:Driver License 3:ID Card 4:Others | R
+expire-date | yyyy-MM-dd | ID expiration date | O
+sender-phone-number | string(20) | Phone number of customer | R
+sender-area-code | string(6) | International telephone code | R
+date-of-birth | yyyy-MM-dd | Date of birth of customer | O
+gender | string{1) | Gender: M male, F female | O
+occupation | string(50) | Occupation | O
+email | string(50) | Email address | O
+country | string(20) | Customer country | O
+state | string(50) | Customer state/province | O
+city | string(50) | Customer city | O
+district | string(50) | District of the city| O
+street | string(200) | Street | O
+country-code | string(3) | Country code of country , e.g. USA, AUS | R
+receiver-name | string(32) | Receiver full name | R
+rcv-account | string(20) | Receiver bank account | R
+receiver-id-number | string(20) | Receiver ID card no. | R
+receiver-phone-number | string(20) | Receiver phone number | R
+send-amount | number(14,2) | Amount to be sent in send currency(exclusive with trans-amount) | C
+trans-amount | number(14,2) | Amount customer receives, CNY amount only(exclusive with send-amount) | C
+send-currency | string(3) | Transaction currency, currency of the merchant asset account | R
+purpose | string | Purpose of remittance. Predefined, see **[Purpose](#purpose)** | R
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_BENEFICIARY_ADD_R",
-    "code": "200",
-    "entity": {
-       "clientBeneficiaryNo": "BE1231211",
-       "beneficiaryNo": "XD201G0589941750"
-    },
-    "msg": "success"
+  "data": {
+    "purpose": "Support for family",
+    "receiver-name": "叶渊砾",
+    "fx-rate": "7.0531",
+    "send-currency": "USD",
+    "sender-last-name": "Ma",
+    "validate-id": "aecaabd7-22a0-4d8f-a636-7a1794549d4c",
+    "sender-first-name": "Sheng",
+    "rcv-account": "6212261202042853144",
+    "reference-id": "11223347"
+  },
+  "signature": "B7B8054D9E9DFD2C0E87E17345435B68",
+  "code": 0
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | DO_BENEFICIARY_ADD_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | clientBeneficiaryNo | String | Unique code for partner beneficiary
-| | beneficiaryNo | String | Unique code for NextPls beneficiary
-msg | | String | Result message
+Field | Type | Describe
+--------- | ------- | --------
+validate-id | string | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
+reference-id | string | Unique identifier of transaction, assigned by Partner 
+send-currency | string | Transaction currency
+rcv-account | string | Beneficiary's Bank Card account number 
+sender-last-name | string | Sender last name
+sender-first-name | string | Sender first name
+receiver-name | string | Receiver's full name
+fx-rate | number(12,4) | Exchange rate
+purpose | string | Purpose of remittance
 
 
 ## Remit
-This method allows the partner to Edit Registered Beneficiary Profile.
+This api is for doing remittance. The API includes customer and beneficiary data with request.
 ### HTTP Request
-<span class="http-method post">POST</span> `DO_BENEFICIARY_EDIT`
+<span class="http-method post">POST</span> `remit/v2`
 
 > Request Body:
 
 ```json
 {
-    "apiName": "DO_BENEFICIARY_EDIT",
-    "entity": {
-        "clientRemitterNo": "TEST_B001",
-        "beneficiaryNo": "XD201G0589941750",
-        "firstName": "Beneficiary_First_Name",
-        "middleName": "Beneficiary_Middle_Name",
-        "lastName": "Beneficiary_Last_Name",
-        "mobile": "12345678910",
-        "email": "nextPls@nextPls.com",
-        "address1": "Philippines",
-        "address2": "",
-        "address3": "",
-        "idType": "0",
-        "idNumber": "PS256454165",
-        "idDesc": "",
-        "idIssueDate": "01/01/1994",
-        "idExpDate": "01/01/1994",
-        "birthdate": "01/01/1994",
-        "sex": "M",
-        "nationality": "HKG",
-        "relationship": "3",
-        "bankCode": "11003544",
-        "bankAccountNumber": "4555556564564",
-        "bankAccountName": "Beneficiary_BankName",
-        "bankAddress": "Beneficiary_BankAddress"
-    }
-}
-```
-```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "DO_BENEFICIARY_ADD",
-         "entity": {
-             "clientRemitterNo": "TEST_B001",
-             "beneficiaryNo": "XD201G0589941750",
-             "firstName": "Beneficiary_First_Name",
-             "middleName": "Beneficiary_Middle_Name",
-             "lastName": "Beneficiary_Last_Name",
-             "mobile": "12345678910",
-             "email": "nextPls@nextPls.com",
-             "address1": "Philippines",
-             "address2": "",
-             "address3": "",
-             "idType": "0",
-             "idNumber": "PS256454165",
-             "idDesc": "",
-             "idIssueDate": "01/01/1994",
-             "idExpDate": "01/01/1994",
-             "birthdate": "01/01/1994",
-             "sex": "M",
-             "nationality": "HKG",
-             "relationship": "3",
-             "bankCode": "11003544",
-             "bankAccountNumber": "4555556564564",
-             "bankAccountName": "Beneficiary_BankName",
-             "bankAddress": "Beneficiary_BankAddress"
-         }
-     }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsBeneficiaryRequestDto beneficiaryRequestDto = new NextPlsBeneficiaryRequestDto();
-        beneficiaryRequestDto.setClientBeneficiaryNo("TEST_B001");
-        // ...
-        NextPlsDoBeneficiaryEditRequest beneficiaryEditRequest = 
-                NextPlsDoBeneficiaryEditRequest.build(beneficiaryRequestDto);
-        client.execute(beneficiaryEditRequest);
-      
-    }
+    "data":{
+        	"reference-id":"11223345",
+        	"validate-id":"fd938d40-d02e-4f75-9f08-671cb37c3006",
+        	"sender-first-name":"Sheng",
+        	"sender-last-name":"Ma",
+        	"sender-id-type":"1",
+        	"sender-id-number":"ED1223345",
+        	"expire-date":"2022-11-01",
+        	"sender-phone-number":"123187723",
+        	"sender-area-code":"+1",
+        	"email":"12338798@qq02.com",
+        	"country":"United States",
+        	"country_code":"USA",
+        	"receiver-name":"叶渊砾",
+            "rcv-account":"6212261202042853144",
+            "receiver-id-number":"331003199602160050",
+            "receiver-phone-number":"17764525250",
+            "purpose":"Support for family",
+            "trans-amount":10000.0,
+            "send-currency":"USD"
+        },
+        "signature":"BE77A8AA1B2FC469149EC46B9089DFEB"
 }
 ```
 
+```shell
+curl -X POST http://qa.wotransfer.com/portal/api/remit/v2
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
+    -d
+    '{
+         "data":{
+            "reference-id":"11223345",
+            "validate-id":"fd938d40-d02e-4f75-9f08-671cb37c3006",
+            "sender-first-name":"Sheng",
+            "sender-last-name":"Ma",
+            "sender-id-type":"1",
+            "sender-id-number":"ED1223345",
+            "expire-date":"2022-11-01",
+            "sender-phone-number":"123187723",
+            "sender-area-code":"+1",
+            "email":"12338798@qq02.com",
+            "country":"United States",
+            "country_code":"USA",
+            "receiver-name":"叶渊砾",
+             "rcv-account":"6212261202042853144",
+             "receiver-id-number":"331003199602160050",
+             "receiver-phone-number":"17764525250",
+             "purpose":"Support for family",
+             "trans-amount":10000.0,
+             "send-currency":"USD"
+         },
+         "signature":"BE77A8AA1B2FC469149EC46B9089DFEB"
+     }'
+```
+
 ### Request Body
-Parameter | | Type | Description | O/M
---------- | :------- | ------- | ---------- | -------
-apiName | | String | DO_BENEFICIARY_EDIT | M
-entity | | Object | Parameter list | M
-| | clientBeneficiaryNo | String(20) | Unique code for agent beneficiary | M
-| | beneficiaryNo | String(20) | Unique code for NextPls | M
-| | firstName | String(50) | Beneficiary First Name | O
-| | middleName | String(50) | Beneficiary Middle Name | O
-| | lastName | String(50) | Beneficiary Last Name | O
-| | mobile | String(20) | Mobile phone Number of Beneficiary | O
-| | email | String(50) | Email of Beneficiary | O
-| | address1 | String(35) | Beneficiary Address1 | O
-| | address2 | String(35) | Beneficiary Address2 | O
-| | address3 | String(35) | Beneficiary Address3 | O
-| | idType | int(2) | Type of Beneficiary Id Proof | O
-| | idNumber | String(20) | Beneficiary ID Number | O
-| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | O
-| | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
-| | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
-| | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | sex | String(1) | Gender of Beneficiary | O
-| | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | O
-| | relationship | String(3) | Relationship with the remitter | M
-| | bankCode | String(20) | Bank code for Beneficiary | O
-| | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | O
-| | bankAccountName | String(35) | Bank Account name of Beneficiary | O
-| | bankAddress | String(35) | Beneficiary Bank Address | O
+Parameter | Type | Description | Required
+--------- | ------- | ------- | ----------
+reference-id | string(25) | Unique pipeline number of request, assigned by Partner  | R
+validate-id | string(50) | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
+sender-first-name | string(32) | Sender first name | R
+sender-last-name | string(32) | Sender last name | R
+sender-id-number | string(20) | Sender identity number | R
+sender-id-type | number(2) | Sender ID Type（1:Passport，2:Driver License 3:ID Card 4:Others | R
+expire-date | yyyy-MM-dd | ID expiration date | O
+sender-phone-number | string(20) | Phone number of customer | R
+sender-area-code | string(6) | International telephone code | R
+date-of-birth | yyyy-MM-dd | Date of birth of customer | O
+gender | string{1) | Gender: M male, F female | O
+occupation | string(50) | Occupation | O
+email | string(50) | Email address | O
+country | string(20) | Customer country | O
+state | string(50) | Customer state/province | O
+city | string(50) | Customer city | O
+district | string(50) | District of the city| O
+street | string(200) | Street | O
+country-code | string(3) | Country code of country , e.g. USA, AUS | R
+receiver-name | string(32) | Receiver full name | R
+rcv-account | string(20) | Receiver bank account | R
+receiver-id-number | string(20) | Receiver ID card no. | R
+receiver-phone-number | string(20) | Receiver phone number | R
+send-amount | number(14,2) | Amount to be sent in send currency(exclusive with trans-amount) | C
+trans-amount | number(14,2) | Amount customer receives, CNY amount only(exclusive with send-amount) | C
+send-currency | string(3) | Transaction currency, currency of the merchant asset account | R
+purpose | string | Purpose of remittance. Predefined, see **[Purpose](#purpose)** | R
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_BENEFICIARY_EDIT_R",
-    "code": "200",
-    "entity": {
-       "clientBeneficiaryNo": "TEST_B001",
-       "beneficiaryNo": "XD201G0589941750"
-    },
-    "msg": "success"
+    "data": {
+        "purpose": "Support for family",
+        "receiver-name": "叶渊砾",
+        "fx-rate": "7.0531",
+        "send-currency": "USD",
+        "sender-last-name": "Ma",
+        "validate-id": "e42d91f4-b0a6-46a5-9481-e7da0d226cc5",
+        "sender-first-name": "Sheng",
+        "transaction-id": "685146609809362944",
+        "rcv-account": "6212261202042853144",
+        "reference-id": "11223345",
+        "cost-currency": "USD",
+        "cost-amount": "1417.82"
+      },
+      "signature": "818CBD838FA4A1CD60A83003D3344568",
+      "code": 0
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | DO_BENEFICIARY_EDIT_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | clientBeneficiaryNo | String | Unique code for partner beneficiary
-| | beneficiaryNo | String | Unique code for NextPls beneficiary
-msg | | String | Result message
-
+Field | Type | Describe
+--------- | ------- | --------
+validate-id | string | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
+transaction-id | string | Unique identifier of transaction, generated by NextPls
+reference-id | string | Unique identifier of transaction, assigned by Partner 
+send-currency | string | Transaction currency
+rcv-account | string | Beneficiary's Bank Card account number 
+sender-last-name | string | Sender last name
+sender-first-name | string | Sender first name
+receiver-name | string | Receiver's full name
+fx-rate | number(12,4) | Exchange rate
+purpose | string | Purpose of remittance
+cost-currency | string(3) | The currency of money deducted from partner's account
+cost-amount | number(14,2)) | Money cost in cost-currency
 
 # Inquiry API
 ## Status
-This method allows the partner to Get the Balance by currency. 
+This method allows the partner to get transaction status from NextPls by . 
 ### HTTP Request
-<span class="http-method post">POST</span> `GET_BALANCE`
+<span class="http-method post">POST</span> `status`
 
 ```json
 {
-    "apiName": "GET_BALANCE",
-    "entity": {
-        "currency": "HKD"
-    }
-}
-```
-```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "GET_BALANCE",
-         "entity": {
-             "currency": "HKD"
-         }
-     }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsBalanceRequestDto balanceDto = new NextPlsBalanceRequestDto();
-        balanceDto.setCurrency("HKD");
-        NextPlsGetBalanceRequest balanceRequest = 
-                NextPlsGetBalanceRequest.build(balanceDto);
-        client.execute(balanceRequest);             
-      
-    }
+    "data":{
+    	"transaction-id":"685146609809362944"
+    },
+    "signature":"952FA0D6C0AC79F2E2AFDAC4531DBFBE"
 }
 ```
 
+```shell
+curl -X POST http://qa.wotransfer.com/portal/api/remit/v2
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
+    -d
+    '{
+        "data":{
+            "transaction-id":"685146609809362944"
+        },
+        "signature":"952FA0D6C0AC79F2E2AFDAC4531DBFBE"
+     }'
+```
+
 ### Request Body
-Field |  | Type | Describe | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | GET_BALANCE | M
-entity | | Object | Parameter list | M
-| | currency | String(3) | currency | M
+Field | Type | Describe | O/M
+--------- | ------- | ------- | ----------
+transaction-id | string | Transaction id of NextPls returned by *Remit* API.
 
 > Response Body:
 
 ```json
 {
-    "apiName": "GET_BALANCE_R",
-    "code": "200",
-    "entity": {
-        "partnerCode": "test_client",
-        "currency": "HKD",
-        "balance": "1999.33"
-    },
-    "msg": "success"
+  "data": {
+    "purpose": "Support for family",
+    "fee": "0.00",
+    "receiver-name": "叶渊砾",
+    "create-time": "2020-03-05 15:28:01",
+    "fx-rate": "7.0531",
+    "send-currency": "USD",
+    "sender-last-name": "Ma",
+    "sender-first-name": "Sheng",
+    "transaction-id": "685146609809362944",
+    "rcv-account": "6212***********3144",
+    "reference-id": "11223345",
+    "trans-amount": "10000.00",
+    "fee-currency": "USD",
+    "cost-currency": "USD",
+    "send-amount": "1417.82",
+    "cost-amount": "1417.82",
+    "status": "TRANSACTION_ING"
+  },
+  "signature": "8E99EB087D3ADE23BBC6A793F5BA8E3D",
+  "code": 0
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | GET_BALANCE_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | partnerCode | String | Partner Code
-| | currency | String | Currency
-| | balance | String | Balance
-msg | | String | Result message
+Field | Type | Describe
+--------- | ------- | --------
+validate-id | string | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
+transaction-id | string | Unique identifier of transaction, generated by NextPls
+reference-id | string | Unique identifier of transaction, assigned by Partner 
+send-currency | string | Transaction currency
+send-amount | decimal | The amount in send currency
+trans-amount | decimal | The amount that receiver receives in CNY
+rcv-account | string | Beneficiary's Bank Card account number 
+sender-last-name | string | Sender last name
+sender-first-name | string | Sender first name
+receiver-name | string | Receiver's full name
+fx-rate | decimal | Exchange rate
+purpose | string | Purpose of remittance
+cost-currency | string | The currency of money deducted from partner's account
+cost-amount | decimal | Money cost in cost-currency
+fee | decimal | Fee amount of the transaction
+fee-currency | string | Currency of fee
+status | string | Status of transaction
+create-time | string | The creation time of the txn in format *yyyy-MM-dd HH:mm:ss*
+remit-time | string | Time of remittance finished in format *yyyy-MM-dd HH:mm:ss*
 
 ## GetBalance
-This method allows the partner to Get the last rate and lock one hour. 
+This method allows partners to Get Balance of their account in NextPls. 
+
+This API has no mandatory parameter in request actually, but **merchant-id** in Http Header is required.
 ### HTTP Request
-<span class="http-method post">POST</span> `GET_EX_RATE`
+<span class="http-method post">POST</span> `getbalance`
 
 ```json
 {
-    "apiName": "GET_EX_RATE",
-    "entity": {
-        "payInCurrency": "HKD",
-        "payOutCurrency": "PHP"
-    }
+	"data":{
+        "timestamp":1574116548000
+    },
+	"signature":"D5F0E729C11E508CDD3646DA2A7E1EF9"
 }
 ```
 ```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+curl -X POST http://qa.wotransfer.com/portal/api/getbalance
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
     -d
     '{
-         "apiName": "DO_TRANSACTION_PRE",
-         "entity": {
-             "payInCurrency": "HKD",
-             "payOutCurrency": "PHP"
-         }
+         "data":{
+             "timestamp":1574116548000
+         },
+         "signature":"D5F0E729C11E508CDD3646DA2A7E1EF9"
      }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
-        exRateDto.setPayInCurrency("HKD");
-        exRateDto.setPayOutCurrency("PHP");
-        NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
-        client.execute(exRateRequest);
-      
-    }
-}
 ```
 
 ### Request Body
-Field |  | Type | Describe | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | GET_EX_RATE | M
-entity | | Object | Parameter list | M
-| | payInCurrency | String(3) | Pay In Currency | M
-| | payOutCurrency | String(3) | Pay Out Currency | M
+Field | Type | Description | Required
+--------- | ------- | ------- | -------
+timestamp | number(13) | Milliseconds of the request, only used for signature | R
 
 > Response Body:
 
 ```json
 {
-    "apiName": "GET_REMITTER_R",
-    "code": "200",
-    "entity": {
-        "payInCurrency": "HKD",
-        "payOutCurrency": "PHP",
-        "exRate": "7.369781"
-    },
-    "msg": "success"
+  "data": {
+    "assets": [
+      {
+        "amount": "67.5900",
+        "amount-hold": "30.2300",
+        "currency": "NZD",
+        "total-amount": "100.0000",
+        "timestamp": 1581996524000
+      },
+      {
+        "amount": "0.0000",
+        "amount-hold": "0.0000",
+        "currency": "USD",
+        "total-amount": "0.0000",
+        "timestamp": 1575616600000
+      }
+    ]
+  },
+  "signature": "C31ADC820A944219582EB9B08F50DC5E",
+  "code": 0
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | GET_REMITTER_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | payInCurrency | String | Pay In Currency
-| | payOutCurrency | String | Pay Out Currency
-| | exRate | String | The exchange rate
-msg | | String | Result message
+Field |   | Type | Description
+--------- | ------- | ------- |--------
+assets | | Array | Asset list in different currency
+| | amount | decimal | Available amount of the account in corresponding currency
+| | amount-hold | decimal | Hold amount of the account in corresponding currency
+| | total-amount | decimal | Total amount of the account in corresponding currency
+| | currency | string | Account currency
+| | timestamp | number | Milliseconds of the response
 
 ## Quote
-This method allows the partner to preview the transfer details and keep the rate for some hours.
+This method allows the partner to get latest exchange rate in specific currency.
 ### HTTP Request
-<span class="http-method post">POST</span> `DO_TRANSACTION_PRE`
+<span class="http-method post">POST</span> `quote`
 
 > Request Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION_PRE",
-    "entity": {
-        "clientTxnNo": "1000",
-        "payInCurrency": "HKD",
-        "payOutCurrency": "PHP",
-        "transferCurrency": "HKD",
-        "transferAmount": "100",
-        "paymentMode": "Bank"
-    }
-}
-```
-```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
-    -d
-    '{
-         "apiName": "DO_TRANSACTION_PRE",
-         "entity": {
-             "clientTxnNo": "1000",
-             "payInCurrency": "HKD",
-             "payOutCurrency": "PHP",
-             "transferCurrency": "HKD",
-             "transferAmount": "100",
-             "paymentMode": "Bank"
-         }
-     }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
-        preRequestDto.setClientTxnNo("1000");
-        preRequestDto.setPayInCurrency("HKD");
-        preRequestDto.setPayOutCurrency("PHP");
-        preRequestDto.setTransferCurrency("HKD");
-        preRequestDto.setTransferAmount("100");
-        preRequestDto.setPaymentMode("Bank");
-        NextPlsDoTransactionPreRequest preRequest = 
-                NextPlsDoTransactionPreRequest.build(preRequestDto);
-        client.execute(preRequest);
-      
-    }
+    "data":{
+        "sourceCurrency":"NZD"
+    },
+    "signature":"532ACF0372BD9DECE481BEFF4E5BCBBD"
 }
 ```
 
+```shell
+curl -X POST http://qa.wotransfer.com/portal/api/quote
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
+    -d
+    '{
+         "data":{
+             "source-currency":"NZD"
+         },
+         "signature":"532ACF0372BD9DECE481BEFF4E5BCBBD"
+     }'
+```
+
 ### Request Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | DO_TRANSACTION_PRE
-entity | | Object | Parameter list
-| | clientTxnNo | String(20) | Unique code for partner txn | M
-| | payInCurrency | String(3) | Pay In Currency | M
-| | payOutCurrency | String(3) | Pay Out Currency | M
-| | transferCurrency | String(3) | Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency) | M
-| | transferAmount | String(18) | Transfer Amount | M
-| | paymentMode | String(20) | Payment Mode | M
+Field | Type | Description
+--------- | ------- | --------
+source-currency | string(3) | The currency of fxRate that queried
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION_PRE_R",
-    "code": "200",
-    "entity": {
-        "txnNo": "IU201G0279816077",
-        "clientTxnNo": "1000",
-        "payInCurrency": "HKD",
-        "payOutCurrency": "PHP",
-        "payOutAmount": "736.97",
-        "transferCurrency": "HKD",
-        "transferAmount": "100",
-        "paymentMode": "Bank",
-        "exchangeRate": "7.369781",
-        "commission": "0.1000",
-        "totalAmount": "100.1000"
-    },
-    "msg": "success"
+  "data": {
+    "update-time": 1583398474176,
+    "rate": "4.3663",
+    "source-currency": "NZD",
+    "usd-rate": "6.9195"
+  },
+  "signature": "19A56F3BAFF884C387CF93EA2D3DAB4C",
+  "code": 0
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | DO_TRANSACTION_PRE_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | txnNo | String | Unique code for NextPls txn
-| | clientTxnNo | String | Unique code for partner txn
-| | payInCurrency | String | Pay In Currency
-| | payOutCurrency | String | Pay Out Currency
-| | payOutAmount | String | Pay Out Amount
-| | transferCurrency | String | Transfer Currency
-| | transferAmount | String | Transfer Amount
-| | paymentMode | String | Payment Mode
-| | exchangeRate | String | Exchange Rate
-| | commission | String | commission
-| | totalAmount | String | Total Amount to pay
-msg | | String | Result message
+Field | Type | Description
+--------- | ------- | -------
+rate | decimal(12,4) | Latest exchange rate
+source-currency | string | currency
+usd-rate | decimal(12,4) | Base USD to CNY exchange rate
+update-time | number | Exchange rate last updated time in milliseconds
 
 ## AssetJournal
-This method allows the partner to initiate the transfer.
+This method allows the partners to retrieve the asset journals of their account with pagination.
 ### HTTP Request
-<span class="http-method post">POST</span> `DO_TRANSACTION`
+<span class="http-method post">POST</span> `asset/journal`
 
 > Request Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION",
-    "entity": {
-       "TxnNo": "IU201G0279816077",
-       "clientTxnNo": "1000",
-       "payInCountry": "HKG",
-       "payOutCountry": "PHP",
-       "remitterNo": "",
-       "beneficiaryNo": "",
-       "purposeCode": "3",
-       
-        "remitterFirstName": "Remitter_First_Name",
-        "remitterMiddleName": "",
-        "remitterLastName": "Remitter_Last_Name",
-        "remitterFirstLocalName": "Remitter_First_Local_Name",
-        "remitterMiddleLocalName": "",
-        "remitterLastLocalName": "Remitter_Middle_Last_Name",
-        "remitterMobile": "12345678910",
-        "remitterSex": "M",
-        "remitterBirthdate": "01/01/1994",
-        "remitterEmail": "nextPls@nextPls.com",
-        "remitterAddress1": "Italy",
-        "remitterAddress2": "",
-        "remitterAddress3": "",
-        "remitterIdType": "0",
-        "remitterIdNumber": "PS256454165",
-        "remitterIdDesc": "",
-        "remitterIdIssueDate": "01/01/1994",
-        "remitterIdExpDate": "01/01/1994",
-        "remitterNationality": "HKG",
-        "remitterAccountNumber": "",
-        "sourceIncome": "1",
-        
-        "beneficiaryFirstName": "Beneficiary_First_Name",
-        "beneficiaryMiddleName": "",
-        "beneficiaryLastName": "Beneficiary_Last_Name",
-        "beneficiaryFirstLocalName": "Beneficiary_First_Local_Name",
-        "beneficiaryMiddleLocalName": "",
-        "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
-        "beneficiaryMobile": "12345678910",
-        "beneficiarySex": "",
-        "beneficiaryBirthdate": "",
-        "beneficiaryEmail": "",
-        "beneficiaryAddress1": "Philippines",
-        "beneficiaryAddress2": "",
-        "beneficiaryAddress3": "",
-        "beneficiaryIdType": "0",
-        "beneficiaryIdNumber": "",
-        "beneficiaryIdDesc": "",
-        "beneficiaryIdIssueDate": "",
-        "beneficiaryIdExpDate": "",
-        "beneficiaryNationality": "HKG",
-        "beneficiaryRelationship": "3",
-        "beneficiaryBankCode": "11003544",
-        "beneficiaryBankAccountNumber": "4555556564564",
-        "beneficiaryBankAccountName": "Benificiary_BankAccountName",
-        "beneficiaryBankAddress": ""
-    }
+	"data":{
+		"start-date":"2020-03-04",
+		"end-date":"2020-03-05"
+	},
+	"signature":"12C6E2B588347338DFB58A534CDA4E0B"
 }
 ```
 ```shell
-curl -X POST http://staging.nextpls.com/v1/remittance
-    -H "Content-Type: application/base64"
-    -H "Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+curl -X POST http://qa.wotransfer.com/portal/api/asset/journal
+    -H "merchant-id:10192012192"
+    -H "Content-Type: application/vnd.api+json"
     -d
     '{
-         "apiName": "DO_TRANSACTION",
-         "entity": {
-                       "TxnNo": "IU201G0279816077",
-                       "clientTxnNo": "1000",
-                       "payInCountry": "HKG",
-                       "payOutCountry": "PHP",
-                       "remitterNo": "JJ201A1131599873",
-                       "beneficiaryNo": "RP122141",
-                       "purposeCode": "3"
-                   }
+     	"data":{
+     		"start-date":"2020-03-04",
+     		"end-date":"2020-03-05"
+     	},
+     	"signature":"12C6E2B588347338DFB58A534CDA4E0B"
      }'
-```
-```java
-public class example{
-    public static void main(String[] args){
-        
-        NextPlsClient client = 
-            new DefaultNextPlsClient(
-                "http://staging.nextpls.com/v1/remittance", 
-                "test_client", "cek_tester_remit", "initial_tester01", 
-                publicKey, secretKey);
-        NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
-        txnRequestDto.setTxnNo("IU201G0279816077");
-        txnRequestDto.setClientTxnNo("1000");
-        txnRequestDto.setBeneficiaryNo("XD201G0589941750");
-        txnRequestDto.setRemitterNo("JJ201A1131599873");
-        txnRequestDto.setPurposeCode("3");
-        txnRequestDto.setPayInCountry("HKG");
-        txnRequestDto.setPayOutCountry("PHL");
-        NextPlsDoTransactionRequest transactionAddRequest = 
-                NextPlsDoTransactionRequest.build(txnRequestDto);
-        client.execute(transactionAddRequest);
-      
-    }
-}
 ```
 
 ### Request Body
-Field |  | Type | Describe | O/M
---------- | ------- | ------- | ---------- | -------
-apiName | | String | DO_TRANSACTION | M
-entity | | Object | Parameter list | M
-| | TxnNo | String(20) | Unique code for NextPls txn | M
-| | clientTxnNo | String(20) | Unique code for partner txn | M
-| | payInCountry | String(3) | Pay In Country | M
-| | payOutCountry | String(3) | Pay Out Country | M
-| | remitterNo | String(20) | Unique code for NextPls remitter | C
-| | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
-| | purposeCode | String(2) | Purpose Code for txn | M
-
-| | remitterFirstName | String(50) | Remitter first name | M
-| | remitterMiddleName | String(50) | Remitter middle name | O
-| | remitterLastName | String(50) | Remitter last name | M
-| | remitterFirstLocalName | String(50) | Remitter first name | M
-| | remitterMiddleLocalName | String(50) | Remitter middle name | O
-| | remitterLastLocalName | String(50) | Remitter last name | M
-| | remitterMobile | String(20) | Remitter mobile number | M
-| | remitterEmail | String(50) | The email id of remitter | O
-| | remitterAddress1 | String(35) | Remitter Address1 | M
-| | remitterAddress2 | String(35) | Remitter Address2 | O
-| | remitterAddress3 | String(50) | Remitter Address3 | O
-| | remitterIdType | int(3) | Remitter identity type | M
-| | remitterIdNumber | String(20) | ID number | M
-| | remitterIdDesc | String(30) | description when ID Type=6 | C
-| | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
-| | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
-| | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
-| | remitterSex | String(1) | Remitter gender. M=Male, F=Female | O
-| | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
-| | remitterAccountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(2) | Remitter source of income | M
-
-| | beneficiaryFirstName | String(50) | Beneficiary First Name | M
-| | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
-| | beneficiaryLastName | String(50) | Beneficiary Last Name | M
-| | beneficiaryFirstLocalName | String(50) | Beneficiary First Name | M
-| | beneficiaryMiddleLocalName | String(50) | Beneficiary Middle Name | O
-| | beneficiaryLastLocalName | String(50) | Beneficiary Last Name | M
-| | beneficiaryMobile | String(20) | Mobile phone Number of Beneficiary | M
-| | beneficiaryEmail | String(50) | Email of Beneficiary | O
-| | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
-| | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
-| | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
-| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
-| | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
-| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
-| | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
-| | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
-| | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | beneficiarySex | String(1) | Gender of Beneficiary | O
-| | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
-| | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
-| | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
-| | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
-| | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
+Field | Type | Description | Required
+--------- | ------- | ------- | ---------
+start-date | string | Query journal start date in yyyy-MM-dd format | O
+end-date | string | Query journal end date in yyyy-MM-dd format | O
+page-num | number | Current inquiry page number, default 1 | O
+page-size | number | The size of each page , default 20 | O
 
 > Response Body:
 
 ```json
 {
-    "apiName": "DO_TRANSACTION_R",
-    "code": "200",
-    "entity": {
-        "txnNo": "IU201G0279816077",
-        "clientTxnNo": "1000",
-        "status": "TRANSACTION_ING"
-    },
-    "msg": "success"
+  "code": 0,
+  "data": {
+    "page-num": 1,
+    "end-date": "2020-03-05",
+    "page-size": 20,
+    "total-size": 5,
+    "start-date": "2020-03-04",
+    "total-page": 1,
+    "list": [
+      {
+        "update-time": "2020-03-04 10:22:40",
+        "new-avail-amount": 99640.7200,
+        "origin-hold-amount": 179.6400,
+        "merchant-id": "11000005",
+        "origin-avail-amount": 99820.3600,
+        "new-hold-amount": 359.2800,
+        "operation": "CREATE",
+        "total-amount": "100000.0000",
+        "trade-amount": 179.6400
+      },
+      {
+        "update-time": "2020-03-04 10:29:34",
+        "new-avail-amount": 92439.5000,
+        "origin-hold-amount": 359.2800,
+        "merchant-id": "11000005",
+        "origin-avail-amount": 99640.7200,
+        "new-hold-amount": 7560.5000,
+        "operation": "CREATE",
+        "total-amount": "100000.0000",
+        "trade-amount": 7201.2200
+      }]
+  }
 }
 ```
 
 ### Response Body
-Field |   | Type | Describe
---------- | ------- | ------- |-----------
-apiName | | String | DO_TRANSACTION_R
-code | | String | Result Code
-entity | | Object | Parameter list
-| | txnNo | String | Unique code for NextPls txn
-| | clientTxnNo | String | Unique code for partner txn
-| | status | String | The Transaction status
-msg | | String | Result message
+Field |   | Type | Description
+--------- | ------- | ------- |--------
+start-date |  | string | Query journal start date in yyyy-MM-dd format
+end-date |  | string | Query journal end date in yyyy-MM-dd format
+page-num |  | number | Current inquiry page number, default 1
+page-size |  | number | The size of each page , default 20
+total-page |  | number | Total pages of results
+total-size |  | number | Total number of results
+list | | Array | Parameter list
+| | update-time | string | asset update time
+| | new-avail-amount | decimal | Available amount after operation
+| | new-hold-amount | decimal | Hold amount after updating
+| | origin-avail-amount | decimal | Available amount before updating
+| | origin-hold-amount | decimal | Hold amount before updating
+| | operation | string | The action which caused asset updating
+| | total-amount | decimal | Total amount, equivalent avail-amount plus hold amount
+| | trade-amount | decimal | The amount of transaction
+| | merchant-id | string | The partner unique merchant id
 
 # Reconciliation
+Opening soon...
 
 # Appendix
 ## Signature
+The addition of signature in the messages ensures that each received message is authentic and that the content was not altered. 
 
-# Constants
+The signature for API is a hash based message authentication code, specifically HMAC-MD5. The signature is computed using the entire contents of the message and the NextPls Partner’s corresponding “Secret Key”. 
 
-## Purpose
+The procedure to compute the signature is as follows: 
+
+1. Remove the signature field
+2. Sort field records into alphabetical order based on the field/parameter name. 
+3. Concatenate the values of each field in the order from #2
+4. Compute the signature as the HMAC-MD5 of the result of #3 and key = “Secret Key” 
+
+Example:
+Secret Key - testkey 
+
+Status request: 
+
+MerchantId – 123456780012345 
+SearchStartDate – 201304230 000 
+SearchEndDate – 201304240000 
+Signature – (to be computed) 
+
+Step 1: 
+Remove the signature field 
+MerchantId – 123456780012345 
+SearchStartDate – 201304230000 S
+SearchEndDate – 201304240000 
+Signature 
+
+Step 2: 
+Sort field records into alphabetical order based on the field name. 
+MerchantId– 123456780012345 
+SearchEndDate– 201304240000 
+SearchStartDate– 201304230000 
+
+Step 3: Concatenate the values of each field in the order from Step 2 123456780012345 + 201304240000 + 201304230000 = 123456780012345201304240000201304230000
+
+Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = testkey Signature = HMAC-MD5 of 123456780012345201304240000201304230000 and testkey Signature = 877CA84B66CA50234464F660B0DB51ED 
+
+## Constants
+
+### Purpose
 
 
 # Errors
