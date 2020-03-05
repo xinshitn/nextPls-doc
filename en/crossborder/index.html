@@ -305,11 +305,6 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses" class="toc-h2 toc-link" data-title="These are error codes that will be returned in the body of API responses">These are error codes that will be returned in the body of API responses</a>
-                  </li>
-              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -2295,7 +2290,7 @@
 <td></td>
 <td>update-time</td>
 <td>string</td>
-<td>asset update time</td>
+<td>Asset update time</td>
 </tr>
 <tr>
 <td></td>
@@ -2371,15 +2366,13 @@ SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
 Signature – (to be computed) <br/></p>
 
-<p>Step 1: <br/>
-Remove the signature field <br/>
+<p>Step 1: Remove the signature field <br/>
 MerchantId – 123456780012345 <br/>
 SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
 Signature </p>
 
-<p>Step 2: <br/>
-Sort field records into alphabetical order based on the field name.<br/>
+<p>Step 2: Sort field records into alphabetical order based on the field name.<br/>
 MerchantId – 123456780012345<br/>
 SearchEndDate – 202003060000<br/>
 SearchStartDate – 202003030000</p>
@@ -2412,7 +2405,9 @@ after transfer upper case then Signature = E1AFC0223C539B24B2FF6947702EBE0F.</p>
 <td>Donations/Gifts</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
+<h1 id='errors'>Errors</h1>
+<p>These error codes would be returned in the body of API responses.</p>
+
 <table><thead>
 <tr>
 <th>Error Code</th>
