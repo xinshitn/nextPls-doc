@@ -322,7 +322,7 @@
 
 <p>A corresponding &quot;Secret Key&quot; will be assigned for each Merchant Id. The &quot;Secret Key&quot; will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <strong><a href="#signature">Signature</a></strong>. </p>
 <h1 id='data-structure'>Data Structure</h1>
-<p>All responses from NextPls is formatted with fixed structure.</p>
+<p>All responses from NextPls are formatted with fixed structure.</p>
 
 <blockquote>
 <p>Data structure:</p>
@@ -2370,7 +2370,7 @@ Signature – (to be computed) <br/></p>
 MerchantId – 123456780012345 <br/>
 SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
-Signature </p>
+<del>Signature</del></p>
 
 <p>Step 2: Sort field records into alphabetical order based on the field name.<br/>
 MerchantId – 123456780012345<br/>
@@ -2406,8 +2406,6 @@ after transfer upper case then Signature = E1AFC0223C539B24B2FF6947702EBE0F.</p>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<p>These error codes would be returned in the body of API responses.</p>
-
 <table><thead>
 <tr>
 <th>Error Code</th>
