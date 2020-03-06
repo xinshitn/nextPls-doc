@@ -28,7 +28,7 @@ Any NextPls Partner which use the API will be provided with a Merchant Id. This 
 A corresponding "Secret Key" will be assigned for each Merchant Id. The "Secret Key" will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in **[Signature](#signature)**. 
 
 # Data Structure
-All responses from PandaRemit is formatted with fixed structure.
+All responses from NextPls is formatted with fixed structure.
 
 > Data structure:
 
@@ -50,7 +50,7 @@ signature | string
 
 Signature only includes fields in ‘data’ object, but except ‘id-image-a’/’id-image-b’ in Create Customer. For signature algorithm please refer Appendix-Signature for details.
 
-'message' may not present if code=0, that means the request responded successfully. Once error occurred, code would be greater than 0, and error msg would show the error description. For more Error Code please refer **[Appendix-Errors](#errors)**.
+'message' may not present if code=0, that means the request responded successfully. Once error occurred, code would be greater than 0, and error msg would show the error description. For more Error Code please refer **[Errors](#errors)**.
 
 
 # CrossBorder API Instruction
@@ -458,7 +458,7 @@ cost-amount | string | Amount of transaction cost
 # Half-Integration API
 
 ## Validate
-Validating remittance and get exchange rate from NextPls. This API includes customer and beneficiary data with request.
+Validating remittance and get an exchange rate from NextPls. This API includes customer and beneficiary data with request.
 ### HTTP Request
 <span class="http-method post">POST</span> `validate/v2`
 
@@ -653,7 +653,7 @@ curl -X POST http://qa.wotransfer.com/portal/api/remit/v2
 Parameter | Type | Description | Required
 --------- | ------- | ------- | ----------
 reference-id | string(25) | Unique pipeline number of request, assigned by Partner  | R
-validate-id | string(50) | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.
+validate-id | string(50) | This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once. | R
 sender-first-name | string(32) | Sender first name | R
 sender-last-name | string(32) | Sender last name | R
 sender-id-number | string(20) | Sender identity number | R
@@ -1071,7 +1071,6 @@ Step 4: Compute the signature as the HMAC-MD5 of the result of Step 3 and key = 
 after transfer upper case then Signature = E1AFC0223C539B24B2FF6947702EBE0F.
 
 ## Constants
-
 ### Purpose
 Value | Description
 -------- | --------
