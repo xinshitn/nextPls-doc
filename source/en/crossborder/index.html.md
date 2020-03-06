@@ -28,7 +28,7 @@ Any NextPls Partner which use the API will be provided with a Merchant Id. This 
 A corresponding "Secret Key" will be assigned for each Merchant Id. The "Secret Key" will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in **[Signature](#signature)**. 
 
 # Data Structure
-All responses from NextPls is formatted with fixed structure.
+All responses from NextPls are formatted with fixed structure.
 
 > Data structure:
 
@@ -1058,7 +1058,7 @@ Step 1: Remove the signature field <br/>
 MerchantId – 123456780012345 <br/>
 SearchStartDate – 202003030000<br/>
 SearchEndDate – 202003060000<br/>
-Signature 
+~~Signature~~
 
 Step 2: Sort field records into alphabetical order based on the field name.<br/>
 MerchantId – 123456780012345<br/>
@@ -1080,7 +1080,6 @@ Consumer goods | Consumer goods, merchandise and retail consumptions
 Donations | Donations/Gifts
 
 # Errors
-These error codes would be returned in the body of API responses.
 
 Error Code | Description
 --------- | -------
