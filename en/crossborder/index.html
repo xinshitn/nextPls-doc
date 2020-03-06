@@ -322,7 +322,7 @@
 
 <p>A corresponding &quot;Secret Key&quot; will be assigned for each Merchant Id. The &quot;Secret Key&quot; will be used to sign each message sent to/received from the API to ensure its integrity. The signing process is detailed in <strong><a href="#signature">Signature</a></strong>. </p>
 <h1 id='data-structure'>Data Structure</h1>
-<p>All responses from PandaRemit is formatted with fixed structure.</p>
+<p>All responses from NextPls is formatted with fixed structure.</p>
 
 <blockquote>
 <p>Data structure:</p>
@@ -360,7 +360,7 @@
 
 <p>Signature only includes fields in ‘data’ object, but except ‘id-image-a’/’id-image-b’ in Create Customer. For signature algorithm please refer Appendix-Signature for details.</p>
 
-<p>&#39;message&#39; may not present if code=0, that means the request responded successfully. Once error occurred, code would be greater than 0, and error msg would show the error description. For more Error Code please refer <strong><a href="#errors">Appendix-Errors</a></strong>.</p>
+<p>&#39;message&#39; may not present if code=0, that means the request responded successfully. Once error occurred, code would be greater than 0, and error msg would show the error description. For more Error Code please refer <strong><a href="#errors">Errors</a></strong>.</p>
 <h1 id='crossborder-api-instruction'>CrossBorder API Instruction</h1><h2 id='keys'>Keys</h2>
 <p>Definition of abbreviated values found in the documentation</p>
 
@@ -1156,7 +1156,7 @@
 </tr>
 </tbody></table>
 <h1 id='half-integration-api'>Half-Integration API</h1><h2 id='validate-2'>Validate</h2>
-<p>Validating remittance and get exchange rate from NextPls. This API includes customer and beneficiary data with request.</p>
+<p>Validating remittance and get an exchange rate from NextPls. This API includes customer and beneficiary data with request.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>validate/v2</code></p>
 
@@ -1531,7 +1531,7 @@
 <td>validate-id</td>
 <td>string(50)</td>
 <td>This value is returned after passed validation. The validate-id is valid in 30 minutes and only supports use once.</td>
-<td></td>
+<td>R</td>
 </tr>
 <tr>
 <td>sender-first-name</td>
