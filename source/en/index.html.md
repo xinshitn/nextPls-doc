@@ -16,7 +16,7 @@ search: true
 ---
 
 # Version 1.0.0
-[简体中文版](../)
+
 ## Introduction
 
 Welcome the API document for NextPls!
@@ -1585,7 +1585,6 @@ entity | | Object | Parameter list | M
 | | remitterNo | String(20) | Unique code for NextPls remitter | C
 | | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
 | | purposeCode | String(2) | Purpose Code for txn | M
-
 | | remitterFirstName | String(50) | Remitter first name | M
 | | remitterMiddleName | String(50) | Remitter middle name | O
 | | remitterLastName | String(50) | Remitter last name | M
@@ -1607,7 +1606,6 @@ entity | | Object | Parameter list | M
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
 | | sourceIncome | String(2) | Remitter source of income | M
-
 | | beneficiaryFirstName | String(50) | Beneficiary First Name | M
 | | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
 | | beneficiaryLastName | String(50) | Beneficiary Last Name | M
