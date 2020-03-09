@@ -161,7 +161,7 @@ Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base6
   
 ### 5.Generating request header and body
 
-With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  
+With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, the Authorization is partner code. Agent can generate a http header like followings;  
   
 `Example`
 
@@ -303,7 +303,7 @@ This method allows the partner to Registered Remitter Profile.
         "middleName": "Remitter_Middle_Name",
         "lastName": "Remitter_Last_Name",
         "mobile": "12345678910",
-        "sex": "M",
+        "gender": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
         "address1": "Italy",
@@ -335,7 +335,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "middleName": "Remitter_Middle_Name",
              "lastName": "Remitter_Last_Name",
              "mobile": "12345678910",
-             "sex": "M",
+             "gender": "M",
              "birthdate": "01/01/1994",
              "email": "nextPls@nextPls.com",
              "address1": "Italy",
@@ -392,7 +392,7 @@ entity | | Object | Parameter list | M
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
-| | sex | String(1) | Remitter gender. M=Male, F=Female | O
+| | gender | String(1) | Remitter gender. M=Male, F=Female | O
 | | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | accountNumber | String(30) | Remitter account number | O
 | | sourceIncome | String(2) | Remitter source of income | M
@@ -438,7 +438,7 @@ This method allows the partner to Edit Registered Remitter Profile.
         "middleName": "Remitter_Middle_Name",
         "lastName": "Remitter_Last_Name",
         "mobile": "12345678910",
-        "sex": "M",
+        "gender": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
         "address1": "Philippines",
@@ -471,7 +471,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "middleName": "Remitter_Middle_Name",
              "lastName": "Remitter_Last_Name",
              "mobile": "12345678910",
-             "sex": "M",
+             "gender": "M",
              "birthdate": "01/01/1994",
              "email": "nextPls@nextPls.com",
              "address1": "Philippines",
@@ -529,7 +529,7 @@ entity | | Object | Parameter list | M
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
-| | sex | String(1) | Remitter gender. M=Male, F=Female | O
+| | gender | String(1) | Remitter gender. M=Male, F=Female | O
 | | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | O
 | | accountNumber | String(30) | Remitter account number | O
 | | sourceIncome | String(2) | Remitter source of income | O
@@ -630,7 +630,7 @@ entity | | Object | Parameter list | M
         "middleName": "REMITTER_Middle_Name",
         "lastName": "REMITTER_Last_Name",
         "mobile": "12345678910",
-        "sex": "M",
+        "gender": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
         "address1": "Philippines",
@@ -671,7 +671,7 @@ entity | | Object | Parameter list
 | | idIssueDate | String | ID issue date (MM/DD/YYYY)
 | | idExpDate | String | ID expiry date (MM/DD/YYYY)
 | | birthdate | String | Remitter date of birth (MM/DD/YYYY)
-| | sex | String | Remitter gender
+| | gender | String | Remitter gender
 | | nationality | String | Remitter Nationality
 | | accountNumber | String | Remitter account number
 | | sourceIncome | String | Remitter source of income
@@ -710,7 +710,7 @@ This method allows the partner to Register New Beneficiary.
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "birthdate": "01/01/1994",
-        "sex": "M",
+        "gender": "M",
         "nationality": "HKG",
         "relationship": "3",
         "bankCode": "11003544",
@@ -745,7 +745,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
                  "idIssueDate": "01/01/1994",
                  "idExpDate": "01/01/1994",
                  "birthdate": "01/01/1994",
-                 "sex": "M",
+                 "gender": "M",
                  "nationality": "HKG",
                  "relationship": "4",
                  "bankCode": "11003544",
@@ -796,7 +796,7 @@ entity | | Object | Parameter list | M
 | | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | sex | String(1) | Gender of Beneficiary | O
+| | gender | String(1) | Gender of Beneficiary | O
 | | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
 | | relationship | String(3) | Relationship with the remitter | M
 | | bankCode | String(20) | Bank code for Beneficiary | C
@@ -856,7 +856,7 @@ This method allows the partner to Edit Registered Beneficiary Profile.
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "birthdate": "01/01/1994",
-        "sex": "M",
+        "gender": "M",
         "nationality": "HKG",
         "relationship": "3",
         "bankCode": "11003544",
@@ -892,7 +892,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "idIssueDate": "01/01/1994",
              "idExpDate": "01/01/1994",
              "birthdate": "01/01/1994",
-             "sex": "M",
+             "gender": "M",
              "nationality": "HKG",
              "relationship": "3",
              "bankCode": "11003544",
@@ -943,7 +943,7 @@ entity | | Object | Parameter list | M
 | | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | sex | String(1) | Gender of Beneficiary | O
+| | gender | String(1) | Gender of Beneficiary | O
 | | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | O
 | | relationship | String(3) | Relationship with the remitter | M
 | | bankCode | String(20) | Bank code for Beneficiary | O
@@ -1130,7 +1130,7 @@ entity | | Object | Parameter list | M
         "middleName": "Beneficiary_Middle_Name",
         "lastName": "Beneficiary_Last_Name",
         "mobile": "12345678910",
-        "sex": "M",
+        "gender": "M",
         "birthdate": "01/01/1994",
         "email": "nextPls@nextPls.com",
         "address1": "Philippines",
@@ -1171,7 +1171,7 @@ entity | | Object | Parameter list
 | | idIssueDate | String | Issue date(MM/DD/YYYY)
 | | idExpDate | String | Expiry date(MM/DD/YYYY)
 | | birthdate | String | Beneficiary BirthDate(MM/DD/YYYY)
-| | sex | String | Gender
+| | gender | String | Gender
 | | nationality | String | Nationality 
 | | relationship | String | The relationship with the remitter 
 | | bankCode | String | Bank code
@@ -1270,7 +1270,9 @@ This method allows the partner to Get the last rate and lock one hour.
 {
     "apiName": "GET_EX_RATE",
     "entity": {
+        "payInCountry": "HKG",
         "payInCurrency": "HKD",
+        "payOutCountry": "PHL",
         "payOutCurrency": "PHP"
     }
 }
@@ -1283,9 +1285,11 @@ curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Code:"generated content-code"
     -d
     '{
-         "apiName": "DO_TRANSACTION_PRE",
+         "apiName": "GET_EX_RATE",
          "entity": {
+             "payInCountry": "HKG",
              "payInCurrency": "HKD",
+             "payOutCountry": "PHL",
              "payOutCurrency": "PHP"
          }
      }'
@@ -1300,7 +1304,9 @@ public class example{
                 "test_client", "cek_tester_remit", "initial_tester01", 
                 publicKey, secretKey);
         NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
+        exRateDto.setPayInCountry("HKG");
         exRateDto.setPayInCurrency("HKD");
+        exRateDto.setPayOutCountry("PHL");
         exRateDto.setPayOutCurrency("PHP");
         NextPlsGetExRateRequest exRateRequest = NextPlsGetExRateRequest.build(exRateDto);
         client.execute(exRateRequest);
@@ -1314,7 +1320,9 @@ Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_EX_RATE | M
 entity | | Object | Parameter list | M
+| | payInCountry | String(3) | Pay In Currency | M
 | | payInCurrency | String(3) | Pay In Currency | M
+| | payOutCountry | String(3) | Pay In Currency | M
 | | payOutCurrency | String(3) | Pay Out Currency | M
 
 > Response Body:
@@ -1324,7 +1332,9 @@ entity | | Object | Parameter list | M
     "apiName": "GET_REMITTER_R",
     "code": "200",
     "entity": {
+        "payInCountry": "HKG",
         "payInCurrency": "HKD",
+        "payOutCountry": "PHL",
         "payOutCurrency": "PHP",
         "exRate": "7.369781"
     },
@@ -1335,13 +1345,114 @@ entity | | Object | Parameter list | M
 ### Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
-apiName | | String | GET_REMITTER_R
+apiName | | String | GET_EX_RATE_R
 code | | String | Result Code
 entity | | Object | Parameter list
+| | payInCountry | String | Pay In Currency
 | | payInCurrency | String | Pay In Currency
+| | payOutCountry | String | Pay In Currency
 | | payOutCurrency | String | Pay Out Currency
 | | exRate | String | The exchange rate
 msg | | String | Result message
+
+
+## GetExRateLock
+This method allows the partner to Get the last rate and locked
+### HTTP Request
+<span class="http-method post">POST</span> `GET_EX_RATE_LOCK`
+
+```json
+{
+    "apiName": "GET_EX_RATE_LOCK",
+    "entity": {
+        "payInCountry": "HKG",
+        "payInCurrency": "HKD",
+        "payOutCountry": "PHL",
+        "payOutCurrency": "PHP"
+    }
+}
+```
+```shell
+curl -X POST http://staging.nextpls.com/v1/remittance
+    -H "Content-Type: application/base64"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "GET_EX_RATE_LOCK",
+         "entity": {
+             "payInCountry": "HKG",
+             "payInCurrency": "HKD",
+             "payOutCountry": "PHL",
+             "payOutCurrency": "PHP"
+         }
+     }'
+```
+```java
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsExRateRequestDto exRateDto = new NextPlsExRateRequestDto();
+        exRateDto.setPayInCountry("HKG");
+        exRateDto.setPayInCurrency("HKD");
+        exRateDto.setPayOutCountry("PHL");
+        exRateDto.setPayOutCurrency("PHP");
+        NextPlsGetExRateLockRequest exRateRequest = NextPlsGetExRateLockRequest.build(exRateDto);
+        client.execute(exRateRequest);
+      
+    }
+}
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | GET_EX_RATE_LOCK | M
+entity | | Object | Parameter list | M
+| | payInCountry | String(3) | Pay In Currency | M
+| | payInCurrency | String(3) | Pay In Currency | M
+| | payOutCountry | String(3) | Pay In Currency | M
+| | payOutCurrency | String(3) | Pay Out Currency | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "GET_EX_RATE_LOCK_R",
+    "code": "200",
+    "msg": "success",
+    "entity": {
+        "payInCountry": "HKG",
+        "payInCurrency": "HKD",
+        "payOutCountry": "PHL",
+        "payOutCurrency": "PHP",
+        "exRate": "7.369781",
+        "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca"
+    }
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | GET_EX_RATE_LOCK_R
+code | | String | Result Code
+msg | | String | Result message
+entity | | Object | Parameter list
+| | payInCountry | String | Pay In Currency
+| | payInCurrency | String | Pay In Currency
+| | payOutCountry | String | Pay In Currency
+| | payOutCurrency | String | Pay Out Currency
+| | exRate | String | The exchange rate
+| | token | String | The token for locked
+
+
 
 ## DoTransactionPre
 This method allows the partner to preview the transfer details and keep the rate for some hours.
@@ -1355,10 +1466,13 @@ This method allows the partner to preview the transfer details and keep the rate
     "apiName": "DO_TRANSACTION_PRE",
     "entity": {
         "clientTxnNo": "1000",
+        "payInCountry": "HKG",
         "payInCurrency": "HKD",
+        "payInAmount": "13.57",
+        "payOutCountry": "PHL",
         "payOutCurrency": "PHP",
-        "transferCurrency": "HKD",
-        "transferAmount": "100",
+        "payOutAmount": "100",
+        "transferCurrency": "PHP",
         "paymentMode": "Bank"
     }
 }
@@ -1374,10 +1488,13 @@ curl -X POST http://staging.nextpls.com/v1/remittance
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "payInCountry": "HKG",
              "payInCurrency": "HKD",
+             "payInAmount": "13.57",
+             "payOutCountry": "PHL",
              "payOutCurrency": "PHP",
-             "transferCurrency": "HKD",
-             "transferAmount": "100",
+             "payOutAmount": "100",
+             "transferCurrency": "PHP",
              "paymentMode": "Bank"
          }
      }'
@@ -1393,10 +1510,13 @@ public class example{
                 publicKey, secretKey);
         NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
         preRequestDto.setClientTxnNo("1000");
+        preRequestDto.setPayInCountry("HKG");
         preRequestDto.setPayInCurrency("HKD");
+        preRequestDto.setPayInAmount("13.57");
+        preRequestDto.setPayOutCountry("PHL");
         preRequestDto.setPayOutCurrency("PHP");
-        preRequestDto.setTransferCurrency("HKD");
-        preRequestDto.setTransferAmount("100");
+        preRequestDto.setPayOutAmount("100");
+        preRequestDto.setTransferCurrency("PHP");
         preRequestDto.setPaymentMode("Bank");
         NextPlsDoTransactionPreRequest preRequest = 
                 NextPlsDoTransactionPreRequest.build(preRequestDto);
@@ -1412,10 +1532,13 @@ Field |   | Type | Describe
 apiName | | String | DO_TRANSACTION_PRE
 entity | | Object | Parameter list
 | | clientTxnNo | String(20) | Unique code for partner txn | M
+| | payInCountry | String(3) | Pay In Country Code | M
 | | payInCurrency | String(3) | Pay In Currency | M
+| | payInAmount | String(18) | Pay In Amount | C
+| | payOutCountry | String(3) | Pay Out Country Code | M
 | | payOutCurrency | String(3) | Pay Out Currency | M
+| | payOutAmount | String(18) | Pay Out Currency | C
 | | transferCurrency | String(3) | Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency) | M
-| | transferAmount | String(18) | Transfer Amount | M
 | | paymentMode | String(20) | Payment Mode | M
 
 > Response Body:
@@ -1429,13 +1552,12 @@ entity | | Object | Parameter list
         "clientTxnNo": "1000",
         "payInCurrency": "HKD",
         "payOutCurrency": "PHP",
-        "payOutAmount": "736.97",
+        "payOutAmount": "100",
         "transferCurrency": "HKD",
-        "transferAmount": "100",
         "paymentMode": "Bank",
         "exchangeRate": "7.369781",
         "commission": "0.1000",
-        "totalAmount": "100.1000"
+        "totalAmount": "13.67"
     },
     "msg": "success"
 }
@@ -1446,6 +1568,7 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_PRE_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
@@ -1453,12 +1576,10 @@ entity | | Object | Parameter list
 | | payOutCurrency | String | Pay Out Currency
 | | payOutAmount | String | Pay Out Amount
 | | transferCurrency | String | Transfer Currency
-| | transferAmount | String | Transfer Amount
 | | paymentMode | String | Payment Mode
 | | exchangeRate | String | Exchange Rate
 | | commission | String | commission
 | | totalAmount | String | Total Amount to pay
-msg | | String | Result message
 
 ## DoTransaction
 This method allows the partner to initiate the transfer.
@@ -1471,10 +1592,8 @@ This method allows the partner to initiate the transfer.
 {
     "apiName": "DO_TRANSACTION",
     "entity": {
-       "TxnNo": "IU201G0279816077",
+       "txnNo": "IU201G0279816077",
        "clientTxnNo": "1000",
-       "payInCountry": "HKG",
-       "payOutCountry": "PHP",
        "remitterNo": "",
        "beneficiaryNo": "",
        "purposeCode": "3",
@@ -1486,7 +1605,7 @@ This method allows the partner to initiate the transfer.
         "remitterMiddleLocalName": "",
         "remitterLastLocalName": "Remitter_Middle_Last_Name",
         "remitterMobile": "12345678910",
-        "remitterSex": "M",
+        "remitterGender": "M",
         "remitterBirthdate": "01/01/1994",
         "remitterEmail": "nextPls@nextPls.com",
         "remitterAddress1": "Italy",
@@ -1508,7 +1627,7 @@ This method allows the partner to initiate the transfer.
         "beneficiaryMiddleLocalName": "",
         "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
         "beneficiaryMobile": "12345678910",
-        "beneficiarySex": "",
+        "beneficiaryGender": "",
         "beneficiaryBirthdate": "",
         "beneficiaryEmail": "",
         "beneficiaryAddress1": "Philippines",
@@ -1538,10 +1657,8 @@ curl -X POST http://staging.nextpls.com/v1/remittance
     '{
          "apiName": "DO_TRANSACTION",
          "entity": {
-                       "TxnNo": "IU201G0279816077",
+                       "txnNo": "IU201G0279816077",
                        "clientTxnNo": "1000",
-                       "payInCountry": "HKG",
-                       "payOutCountry": "PHP",
                        "remitterNo": "JJ201A1131599873",
                        "beneficiaryNo": "RP122141",
                        "purposeCode": "3"
@@ -1563,8 +1680,6 @@ public class example{
         txnRequestDto.setBeneficiaryNo("XD201G0589941750");
         txnRequestDto.setRemitterNo("JJ201A1131599873");
         txnRequestDto.setPurposeCode("3");
-        txnRequestDto.setPayInCountry("HKG");
-        txnRequestDto.setPayOutCountry("PHL");
         NextPlsDoTransactionRequest transactionAddRequest = 
                 NextPlsDoTransactionRequest.build(txnRequestDto);
         client.execute(transactionAddRequest);
@@ -1578,10 +1693,8 @@ Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_TRANSACTION | M
 entity | | Object | Parameter list | M
-| | TxnNo | String(20) | Unique code for NextPls txn | M
+| | txnNo | String(20) | Unique code for NextPls txn | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
-| | payInCountry | String(3) | Pay In Country | M
-| | payOutCountry | String(3) | Pay Out Country | M
 | | remitterNo | String(20) | Unique code for NextPls remitter | C
 | | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
 | | purposeCode | String(2) | Purpose Code for txn | M
@@ -1602,7 +1715,7 @@ entity | | Object | Parameter list | M
 | | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
-| | remitterSex | String(1) | Remitter gender. M=Male, F=Female | O
+| | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
 | | sourceIncome | String(2) | Remitter source of income | M
@@ -1623,7 +1736,7 @@ entity | | Object | Parameter list | M
 | | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
-| | beneficiarySex | String(1) | Gender of Beneficiary | O
+| | beneficiaryGender | String(1) | Gender of Beneficiary | O
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
 | | beneficiaryRelationship | String(3) | Relationship with the remitter | M
 | | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
@@ -1637,12 +1750,12 @@ entity | | Object | Parameter list | M
 {
     "apiName": "DO_TRANSACTION_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "txnNo": "IU201G0279816077",
         "clientTxnNo": "1000",
         "status": "TRANSACTION_ING"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -1651,11 +1764,320 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
+
+
+## DoTokenTransaction
+This method allows the partner to initiate the transfer by a rate token.
+Before using this method, you must request the 'GetExRateLock'
+### HTTP Request
+<span class="http-method post">POST</span> `DO_TOKEN_TRANSACTION`
+
+> Request Body:
+
+```json
+{
+    "apiName": "DO_TOKEN_TRANSACTION",
+    "entity": {
+       "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca",
+       "clientTxnNo": "1000",
+       "purposeCode": "3",
+       "paymentMode": "Bank",
+       "payInCountry": "HKG",
+       "payInCurrency": "HKD",
+       "payInAmount": "13.57",
+       "payOutCountry": "PHL",
+       "payOutCurrency": "PHP",
+       "payOutAmount": "100",
+       "transferCurrency": "PHP",
+       
+        "remitterFirstName": "Remitter_First_Name",
+        "remitterMiddleName": "",
+        "remitterLastName": "Remitter_Last_Name",
+        "remitterFirstLocalName": "Remitter_First_Local_Name",
+        "remitterMiddleLocalName": "",
+        "remitterLastLocalName": "Remitter_Middle_Last_Name",
+        "remitterMobile": "12345678910",
+        "remitterGender": "M",
+        "remitterBirthdate": "01/01/1994",
+        "remitterEmail": "nextPls@nextPls.com",
+        "remitterAddress1": "Italy",
+        "remitterAddress2": "",
+        "remitterAddress3": "",
+        "remitterIdType": "0",
+        "remitterIdNumber": "PS256454165",
+        "remitterIdDesc": "",
+        "remitterIdIssueDate": "01/01/1994",
+        "remitterIdExpDate": "01/01/1994",
+        "remitterNationality": "HKG",
+        "remitterAccountNumber": "",
+        "sourceIncome": "1",
+        
+        "beneficiaryFirstName": "Beneficiary_First_Name",
+        "beneficiaryMiddleName": "",
+        "beneficiaryLastName": "Beneficiary_Last_Name",
+        "beneficiaryFirstLocalName": "Beneficiary_First_Local_Name",
+        "beneficiaryMiddleLocalName": "",
+        "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
+        "beneficiaryMobile": "12345678910",
+        "beneficiaryGender": "",
+        "beneficiaryBirthdate": "",
+        "beneficiaryEmail": "",
+        "beneficiaryAddress1": "Philippines",
+        "beneficiaryAddress2": "",
+        "beneficiaryAddress3": "",
+        "beneficiaryIdType": "0",
+        "beneficiaryIdNumber": "",
+        "beneficiaryIdDesc": "",
+        "beneficiaryIdIssueDate": "",
+        "beneficiaryIdExpDate": "",
+        "beneficiaryNationality": "PHL",
+        "beneficiaryRelationship": "3",
+        "beneficiaryBankCode": "11003544",
+        "beneficiaryBankAccountNumber": "4555556564564",
+        "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+        "beneficiaryBankAddress": ""
+    }
+}
+```
+```shell
+curl -X POST http://staging.nextpls.com/v1/remittance
+    -H "Content-Type: application/base64"
+    -H ”Authorization:"your authorization"
+    -H "Signature:"generated signature"
+    -H "Content-Code:"generated content-code"
+    -d
+    '{
+         "apiName": "DO_TOKEN_TRANSACTION",
+         "entity": {
+            "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca",
+            "clientTxnNo": "1000",
+            "purposeCode": "3",
+            "paymentMode": "Bank",
+            "payInCountry": "HKG",
+            "payInCurrency": "HKD",
+            "payInAmount": "13.57",
+            "payOutCountry": "PHL",
+            "payOutCurrency": "PHP",
+            "payOutAmount": "100",
+            "transferCurrency": "PHP",
+            
+             "remitterFirstName": "Remitter_First_Name",
+             "remitterMiddleName": "",
+             "remitterLastName": "Remitter_Last_Name",
+             "remitterFirstLocalName": "Remitter_First_Local_Name",
+             "remitterMiddleLocalName": "",
+             "remitterLastLocalName": "Remitter_Middle_Last_Name",
+             "remitterMobile": "12345678910",
+             "remitterGender": "M",
+             "remitterBirthdate": "01/01/1994",
+             "remitterEmail": "nextPls@nextPls.com",
+             "remitterAddress1": "Italy",
+             "remitterAddress2": "",
+             "remitterAddress3": "",
+             "remitterIdType": "0",
+             "remitterIdNumber": "PS256454165",
+             "remitterIdDesc": "",
+             "remitterIdIssueDate": "01/01/1994",
+             "remitterIdExpDate": "01/01/1994",
+             "remitterNationality": "HKG",
+             "remitterAccountNumber": "",
+             "sourceIncome": "1",
+             
+             "beneficiaryFirstName": "Beneficiary_First_Name",
+             "beneficiaryMiddleName": "",
+             "beneficiaryLastName": "Beneficiary_Last_Name",
+             "beneficiaryFirstLocalName": "Beneficiary_First_Local_Name",
+             "beneficiaryMiddleLocalName": "",
+             "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
+             "beneficiaryMobile": "12345678910",
+             "beneficiaryGender": "",
+             "beneficiaryBirthdate": "",
+             "beneficiaryEmail": "",
+             "beneficiaryAddress1": "Philippines",
+             "beneficiaryAddress2": "",
+             "beneficiaryAddress3": "",
+             "beneficiaryIdType": "0",
+             "beneficiaryIdNumber": "",
+             "beneficiaryIdDesc": "",
+             "beneficiaryIdIssueDate": "",
+             "beneficiaryIdExpDate": "",
+             "beneficiaryNationality": "PHL",
+             "beneficiaryRelationship": "3",
+             "beneficiaryBankCode": "11003544",
+             "beneficiaryBankAccountNumber": "4555556564564",
+             "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+             "beneficiaryBankAddress": ""
+         }
+     }'
+```
+```java
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
+        txnRequestDto.setToken("dfb14532-ca6d-4f43-a5bc-045163b045ca");
+        txnRequestDto.setClientTxnNo("1000");
+        txnRequestDto.setPurposeCode("3");
+        txnRequestDto.setPaymentMode("Bank");
+        txnRequestDto.setPayInCountry("HKG");
+        txnRequestDto.setPayInCurrency("HKD");
+        txnRequestDto.setPayInAmount("");
+        txnRequestDto.setPayOutCountry("PHL");
+        txnRequestDto.setPayOutCurrency("PHP");
+        txnRequestDto.setPayOutAmount("1000");
+        txnRequestDto.setTransferCurrency("PHP");
+        
+        txnRequestDto.setRemitterFirstName("ming");
+        txnRequestDto.setRemitterMiddleName("");
+        txnRequestDto.setRemitterLastName("xiao");
+        txnRequestDto.setRemitterFirstLocalName("");
+        txnRequestDto.setRemitterMiddleLocalName("");
+        txnRequestDto.setRemitterLastLocalName("");
+        txnRequestDto.setRemitterMobile("1234567890");
+        txnRequestDto.setRemitterGender("F");
+        txnRequestDto.setRemitterBirthdate("01/01/1994");
+        txnRequestDto.setRemitterEmail("PandaRemit@gmail.com");
+        txnRequestDto.setRemitterIdIssueDate("01/01/2020");
+        txnRequestDto.setRemitterIdExpDate("10/10/2025");
+        txnRequestDto.setRemitterNationality("HKG");
+        txnRequestDto.setRemitterAddress1("HONG KONG");
+        txnRequestDto.setRemitterAddress2("");
+        txnRequestDto.setRemitterAddress3("");
+        txnRequestDto.setRemitterIdType("1");
+        txnRequestDto.setRemitterIdNumber("PS256454165");
+        txnRequestDto.setRemitterIdDesc("");
+        txnRequestDto.setRemitterAccountNumber("");
+        txnRequestDto.setSourceOfIncome("3");
+        
+        txnRequestDto.setBeneficiaryFirstName("hong");
+        txnRequestDto.setBeneficiaryMiddleName("");
+        txnRequestDto.setBeneficiaryLastName("xiao");
+        txnRequestDto.setBeneficiaryFirstLocalName("");
+        txnRequestDto.setBeneficiaryMiddleLocalName("");
+        txnRequestDto.setBeneficiaryLastLocalName("");
+        txnRequestDto.setBeneficiaryMobile("46176767667");
+        txnRequestDto.setBeneficiaryEmail("");
+        txnRequestDto.setBeneficiaryAddress1("Philippines");
+        txnRequestDto.setBeneficiaryAddress2("");
+        txnRequestDto.setBeneficiaryAddress3("");
+        txnRequestDto.setBeneficiaryIdType("0");
+        txnRequestDto.setBeneficiaryIdNumber("");
+        txnRequestDto.setBeneficiaryIdDesc("");
+        txnRequestDto.setBeneficiaryIdIssueDate("");
+        txnRequestDto.setBeneficiaryIdExpDate("");
+        txnRequestDto.setBeneficiaryBirthdate("");
+        txnRequestDto.setBeneficiaryGender("");
+        txnRequestDto.setBeneficiaryNationality("PHL");
+        txnRequestDto.setBeneficiaryRelationship("parents");
+        txnRequestDto.setBeneficiaryBankCode("11003544");
+        txnRequestDto.setBeneficiaryBankAccountNumber("4555556564564");
+        txnRequestDto.setBeneficiaryBankAccountName("Benificiary_BankName");
+        txnRequestDto.setBeneficiaryBankAddress("");
+        NextPlsDoSimpleTxnRequest simpleTxnRequest = NextPlsDoSimpleTxnRequest.build(txnRequestDto);
+        client.execute(simpleTxnRequest);
+      
+    }
+}
+```
+
+### Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | DO_TOKEN_TRANSACTION | M
+entity | | Object | Parameter list | M
+| | token | String(36) | Unique token for locked rate | M
+| | clientTxnNo | String(20) | Unique code for partner txn | M
+| | purposeCode | String(2) | Purpose Code for txn | M
+| | paymentMode | String(20) | Payment Mode
+| | payInCountry | String(3) | Pay In Country
+| | payInCurrency | String(3) | Pay In Currency
+| | payInAmount | String(18) | Pay In Amount
+| | payOutCountry | String(3) | Pay Out Country
+| | payOutCurrency | String(3) | Pay Out Currency
+| | payOutAmount | String(18) | Pay Out Amount
+| | transferCurrency | String(3) | Transfer Currency
+| | remitterFirstName | String(50) | Remitter first name | M
+| | remitterMiddleName | String(50) | Remitter middle name | O
+| | remitterLastName | String(50) | Remitter last name | M
+| | remitterFirstLocalName | String(50) | Remitter first name | M
+| | remitterMiddleLocalName | String(50) | Remitter middle name | O
+| | remitterLastLocalName | String(50) | Remitter last name | M
+| | remitterMobile | String(20) | Remitter mobile number | M
+| | remitterEmail | String(50) | The email id of remitter | O
+| | remitterAddress1 | String(35) | Remitter Address1 | M
+| | remitterAddress2 | String(35) | Remitter Address2 | O
+| | remitterAddress3 | String(50) | Remitter Address3 | O
+| | remitterIdType | int(3) | Remitter identity type | M
+| | remitterIdNumber | String(20) | ID number | M
+| | remitterIdDesc | String(30) | description when ID Type=6 | C
+| | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
+| | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
+| | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
+| | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
+| | remitterAccountNumber | String(30) | Remitter account number | O
+| | sourceIncome | String(2) | Remitter source of income | M
+| | beneficiaryFirstName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastName | String(50) | Beneficiary Last Name | M
+| | beneficiaryFirstLocalName | String(50) | Beneficiary First Name | M
+| | beneficiaryMiddleLocalName | String(50) | Beneficiary Middle Name | O
+| | beneficiaryLastLocalName | String(50) | Beneficiary Last Name | M
+| | beneficiaryMobile | String(20) | Mobile phone Number of Beneficiary | M
+| | beneficiaryEmail | String(50) | Email of Beneficiary | O
+| | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
+| | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
+| | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
+| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
+| | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
+| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
+| | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
+| | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | beneficiaryGender | String(1) | Gender of Beneficiary | O
+| | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
+| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
+| | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
+| | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
+| | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_TOKEN_TRANSACTION_R",
+    "code": "200",
+    "msg": "success",
+    "entity": {
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
+        "status": "TRANSACTION_ING"
+    }
+}
+```
+
+### Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | DO_TOKEN_TRANSACTION_R
+code | | String | Result Code
 msg | | String | Result message
+entity | | Object | Parameter list
+| | txnNo | String | Unique code for NextPls txn
+| | clientTxnNo | String | Unique code for partner txn
+| | status | String | The Transaction status
+
 
 ## GetTransactionStatus
 This method allows the partner to check the Transaction status. 
@@ -1722,12 +2144,13 @@ entity | | Object | Parameter list | M
 {
     "apiName": "GET_TRANSACTION_STATUS_R",
     "code": "200",
+    "msg": "success",
     "entity": {
+        "reference": "FRTR1001349991",
         "txnNo": "IU201G0279816077",
         "clientTxnNo": "1000",
         "status": "TRANSACTION_ING"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -1736,11 +2159,12 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_TRANSACTION_STATUS_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
+| | reference | String | Unique code for cash withdrawal
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
-msg | | String | Result message
 
 
 # Errors
@@ -1751,16 +2175,52 @@ Error Code | Description
 --------- | -------
 200 | Request Success
 500 | Request Fail
-1006 | Without API
-1007 | Invalid Signature
-1010 | Missing Parameters
-1011 | Wrong Parameters
-10003 | Access denied
-10102 | Business rate query error
-20011 | Remitter add error: client remitter number duplicate
-20051 | Beneficiary add error: client beneficiary number duplicate
-21052 | Beneficiary query error: beneficiary info not exist
-30001 | Transaction error: client txn number duplicate
-30006 | Transaction error: time out
-30007 | Transaction error: cancel already
-43004 | Balance error: asset insufficient
+10000 | The system is busy, please try again later
+10006 | No this Method
+10007 | Invalid Signature
+10010 | Missing Parameters
+10011 | Wrong Parameters
+10012 | Interface is not open
+|
+10101 | Fee amount query error
+10102 | The rate query failed
+10103 | Please get the rate first
+10104 | The target country error or unsupported
+10105 | The source country error or unsupported
+10106 | The target currency error or unsupported
+10107 | The source currency error or unsupported
+|
+20010 | The remitter add failed
+20011 | The clientRemitterNo already exists
+20013 | The remitter query failed
+20014 | The remitter update failed
+20050 | The beneficiary add failed
+20051 | The clientBeneficiaryNo already exists
+21052 | The beneficiary detail doesn't exist
+20053 | The beneficiary query failed
+20054 | The beneficiary update failed
+|
+30001 | The clientTxnNo already exists
+30002 | The transaction query failed
+30003 | The transaction create failed
+30004 | The transaction amount is empty
+30005 | The amount received and remitted does not match
+30006 | The transaction had time out
+30007 | The transaction has been cancelled
+30008 | The transaction cancellation failed
+30009 | The transaction doesn't exist
+30010 | The transaction status query failed
+30011 | The token of rate doesn't exist or time out
+30012 | The target amount error
+30013 | This payment mode unsupported
+30014 | Suspected duplicate transaction
+30015 | It is not supported that source and settlement currency are different
+|
+50000 | High risk interception
+50011 | The amount exceeds the single limit
+50012 | The amount exceeds the daily limit
+50013 | The amount exceeds the monthly limit
+|
+88001 | No account opened in this currency
+88002 | Insufficient balance of account/credit
+
