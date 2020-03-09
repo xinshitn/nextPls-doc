@@ -322,14 +322,6 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version-1-0-0'>Version 1.0.0</h1><h2 id='introduction'>Introduction</h2>
-<p>Welcome the API document for NextPls!</p>
-
-<p>Fueled by a fundamental belief that having access to financial services creates opportunity,
-Nextpls is committed to democratizing financial services and empowering people and businesses 
-to join and thrive in the global economy. Since 2017 we&#39;ve been driven by a simple goal - 
-to build a digital network connecting people and business in all corners of the globe,
-always striving to create opportunities for our clients. No exceptions.</p>
-
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
@@ -352,7 +344,15 @@ always striving to create opportunities for our clients. No exceptions.</p>
       &lt;version&gt;1.0.8&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
-</code></pre><h1 id='getting-started'>Getting Started</h1><h2 id='cryptography-in-nextpls-api'>Cryptography in NextPls API</h2><h3 id='request'>Request</h3><h3 id='1-generating-a-cek'>1.Generating a CEK</h3>
+</code></pre>
+<p>Welcome the API document for NextPls!</p>
+
+<p>Fueled by a fundamental belief that having access to financial services creates opportunity,
+Nextpls is committed to democratizing financial services and empowering people and businesses 
+to join and thrive in the global economy. Since 2017 we&#39;ve been driven by a simple goal - 
+to build a digital network connecting people and business in all corners of the globe,
+always striving to create opportunities for our clients. No exceptions.</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='cryptography-in-nextpls-api'>Cryptography in NextPls API</h2><h3 id='request'>Request</h3><h3 id='1-generating-a-cek'>1.Generating a CEK</h3>
 <p>All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.</p>
 
 <p>Agent who wants to make a request API should generate an AES-128 key for the CEK, which is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 bytes for AES key). </p>
