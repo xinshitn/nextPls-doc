@@ -628,6 +628,7 @@ entity | | Object | Parameter list | M
 {
     "apiName": "GET_REMITTER_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "clientRemitterNo": "TEST_B001",
         "remitterNo": "JJ201A1131599873",
@@ -649,8 +650,7 @@ entity | | Object | Parameter list | M
         "nationality": "HKG",
         "accountNumber": "",
         "sourceIncome": "1"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -659,6 +659,7 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_REMITTER_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | clientRemitterNo | String | Unique code for partner remitter 
 | | remitterNo | String | Unique code for NextPls remitter
@@ -680,10 +681,6 @@ entity | | Object | Parameter list
 | | nationality | String | Remitter Nationality
 | | accountNumber | String | Remitter account number
 | | sourceIncome | String | Remitter source of income
-msg | | String | Result message
-
-
-
 
 
 
@@ -815,11 +812,11 @@ entity | | Object | Parameter list | M
 {
     "apiName": "DO_BENEFICIARY_ADD_R",
     "code": "200",
+    "msg": "success",
     "entity": {
        "clientBeneficiaryNo": "BE1231211",
        "beneficiaryNo": "XD201G0589941750"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -828,10 +825,10 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_ADD_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for partner beneficiary
 | | beneficiaryNo | String | Unique code for NextPls beneficiary
-msg | | String | Result message
 
 
 ## 5.2.DoBeneficiaryEdit
@@ -962,11 +959,11 @@ entity | | Object | Parameter list | M
 {
     "apiName": "DO_BENEFICIARY_EDIT_R",
     "code": "200",
+    "msg": "success",
     "entity": {
        "clientBeneficiaryNo": "TEST_B001",
        "beneficiaryNo": "XD201G0589941750"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -975,10 +972,10 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_EDIT_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for partner beneficiary
 | | beneficiaryNo | String | Unique code for NextPls beneficiary
-msg | | String | Result message
 
 
 ## 5.3.DoBeneficiaryDel
@@ -1046,8 +1043,8 @@ entity | | Object | Parameter list | M
 {
     "apiName": "DO_BENEFICIARY_DEL_R",
     "code": "200",
-    "entity": {},
-    "msg": "success"
+    "msg": "success",
+    "entity": {}
 }
 ```
 
@@ -1056,10 +1053,8 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_DEL_R
 code | | String | Result Code
-entity | | Object | Parameter list
 msg | | String | Result message
-
-
+entity | | Object | Parameter list
 
 
 
@@ -1128,6 +1123,7 @@ entity | | Object | Parameter list | M
 {
     "apiName": "GET_BENEFICIARY_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "clientBeneficiaryNo": "BE1233112",
         "beneficiaryNo": "XD201G0589941750",
@@ -1149,8 +1145,7 @@ entity | | Object | Parameter list | M
         "nationality": "HKG",
         "relationship": "3",
         "accountNumber": ""
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -1159,6 +1154,7 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_BENEFICIARY_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | clientBeneficiaryNo | String | Unique code for agent beneficiary
 | | beneficiaryNo | String | Unique code for NextPls
@@ -1183,7 +1179,6 @@ entity | | Object | Parameter list
 | | accountNumber | String | Bank Account Number of Beneficiary
 | | bankAccountName | String | Bank Account name of Beneficiary
 | | bankAddress | String | Beneficiary Bank Address
-msg | | String | Result message
 
 
 # Transaction
@@ -1246,12 +1241,12 @@ entity | | Object | Parameter list | M
 {
     "apiName": "GET_BALANCE_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "partnerCode": "test_client",
         "currency": "HKD",
         "balance": "1999.33"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -1260,11 +1255,11 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_BALANCE_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | partnerCode | String | Partner Code
 | | currency | String | Currency
 | | balance | String | Balance
-msg | | String | Result message
 
 ## 6.2.GetExRate
 This method allows the partner to Get the last rate and lock one hour. 
@@ -1336,14 +1331,14 @@ entity | | Object | Parameter list | M
 {
     "apiName": "GET_REMITTER_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "payInCountry": "HKG",
         "payInCurrency": "HKD",
         "payOutCountry": "PHL",
         "payOutCurrency": "PHP",
         "exRate": "7.369781"
-    },
-    "msg": "success"
+    }
 }
 ```
 
@@ -1352,13 +1347,13 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_EX_RATE_R
 code | | String | Result Code
+msg | | String | Result message
 entity | | Object | Parameter list
 | | payInCountry | String | Pay In Currency
 | | payInCurrency | String | Pay In Currency
 | | payOutCountry | String | Pay In Currency
 | | payOutCurrency | String | Pay Out Currency
 | | exRate | String | The exchange rate
-msg | | String | Result message
 
 
 ## 6.3.GetExRateLock
@@ -1552,6 +1547,7 @@ entity | | Object | Parameter list
 {
     "apiName": "DO_TRANSACTION_PRE_R",
     "code": "200",
+    "msg": "success",
     "entity": {
         "txnNo": "IU201G0279816077",
         "clientTxnNo": "1000",
@@ -1563,8 +1559,7 @@ entity | | Object | Parameter list
         "exchangeRate": "7.369781",
         "commission": "0.1000",
         "totalAmount": "13.67"
-    },
-    "msg": "success"
+    }
 }
 ```
 
