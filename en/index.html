@@ -330,20 +330,20 @@
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">5</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">8</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.5&lt;/version&gt;
+      &lt;version&gt;1.0.8&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.5&lt;/version&gt;
+      &lt;version&gt;1.0.8&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre><h1 id='getting-started'>Getting Started</h1><h2 id='cryptography-in-nextpls-api'>Cryptography in NextPls API</h2><h3 id='request'>Request</h3><h3 id='1-generating-a-cek'>1.Generating a CEK</h3>
@@ -629,9 +629,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_REMITTER_ADD",
@@ -926,9 +926,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_REMITTER_EDIT",
@@ -1213,9 +1213,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "GET_REMITTER",
@@ -1501,9 +1501,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_ADD",
@@ -1826,9 +1826,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_ADD",
@@ -2137,9 +2137,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_BENEFICIARY_DEL",
@@ -2265,9 +2265,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
         "apiName": "GET_BENEFICIARY",
@@ -2546,9 +2546,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "GET_BALANCE",
@@ -2685,9 +2685,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "GET_EX_RATE",
@@ -2864,9 +2864,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "GET_EX_RATE_LOCK",
@@ -3059,9 +3059,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_TRANSACTION_PRE",
@@ -3359,9 +3359,9 @@ CEK is not a necessarily human readable ASCII string
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_TRANSACTION",
@@ -3908,9 +3908,9 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "DO_TOKEN_TRANSACTION",
@@ -4097,56 +4097,56 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 <td>paymentMode</td>
 <td>String(20)</td>
 <td>Payment Mode</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCountry</td>
 <td>String(3)</td>
 <td>Pay In Country</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCurrency</td>
 <td>String(3)</td>
 <td>Pay In Currency</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInAmount</td>
 <td>String(18)</td>
 <td>Pay In Amount</td>
-<td></td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCountry</td>
 <td>String(3)</td>
 <td>Pay Out Country</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCurrency</td>
 <td>String(3)</td>
 <td>Pay Out Currency</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutAmount</td>
 <td>String(18)</td>
 <td>Pay Out Amount</td>
-<td></td>
+<td>C</td>
 </tr>
 <tr>
 <td></td>
 <td>transferCurrency</td>
 <td>String(3)</td>
 <td>Transfer Currency</td>
-<td></td>
+<td>M</td>
 </tr>
 <tr>
 <td></td>
@@ -4547,9 +4547,9 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
     -H <span class="s2">"Content-Type: application/base64"</span>
-    -H ”Authorization:<span class="s2">"your authorization"</span>
-    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
-    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
     -d
     <span class="s1">'{
          "apiName": "GET_TRANSACTION_STATUS",
