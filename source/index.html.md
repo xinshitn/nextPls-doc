@@ -13,9 +13,9 @@ toc_footers:
 search: true
 ---
 
-# 欢迎访问NextPls开放接口文档
+# Welcome
 
-## 简介
+## 欢迎访问NextPls开放接口文档
 
 Fueled by a fundamental belief that having access to financial services creates opportunity,
 Nextpls is committed to democratizing financial services and empowering people and businesses 
