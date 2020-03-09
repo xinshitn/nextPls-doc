@@ -1292,6 +1292,7 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientRemitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJ201A1131599873"</span><span class="p">,</span><span class="w">
@@ -1313,8 +1314,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='4-3-3-response-body'>4.3.3.Response Body</h3>
 <table><thead>
@@ -1336,6 +1336,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -1462,12 +1468,6 @@ CEK is not a necessarily human readable ASCII string
 <td>sourceIncome</td>
 <td>String</td>
 <td>Remitter source of income</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
 </tr>
 </tbody></table>
 <h1 id='beneficiary'>Beneficiary</h1><h2 id='5-1-dobeneficiaryadd'>5.1.DoBeneficiaryAdd</h2>
@@ -1742,11 +1742,11 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_ADD_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1231211"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='5-1-3-response-body'>5.1.3.Response Body</h3>
 <table><thead>
@@ -1770,6 +1770,12 @@ CEK is not a necessarily human readable ASCII string
 <td>Result Code</td>
 </tr>
 <tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+<tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
@@ -1786,12 +1792,6 @@ CEK is not a necessarily human readable ASCII string
 <td>beneficiaryNo</td>
 <td>String</td>
 <td>Unique code for NextPls beneficiary</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='5-2-dobeneficiaryedit'>5.2.DoBeneficiaryEdit</h2>
@@ -2074,11 +2074,11 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_EDIT_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
        </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_B001"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='5-2-3-response-body'>5.2.3.Response Body</h3>
 <table><thead>
@@ -2102,6 +2102,12 @@ CEK is not a necessarily human readable ASCII string
 <td>Result Code</td>
 </tr>
 <tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+<tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
@@ -2118,12 +2124,6 @@ CEK is not a necessarily human readable ASCII string
 <td>beneficiaryNo</td>
 <td>String</td>
 <td>Unique code for NextPls beneficiary</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='5-3-dobeneficiarydel'>5.3.DoBeneficiaryDel</h2>
@@ -2217,8 +2217,8 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_BENEFICIARY_DEL_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='5-3-3-response-body'>5.3.3.Response Body</h3>
 <table><thead>
@@ -2242,16 +2242,16 @@ CEK is not a necessarily human readable ASCII string
 <td>Result Code</td>
 </tr>
 <tr>
-<td>entity</td>
-<td></td>
-<td>Object</td>
-<td>Parameter list</td>
-</tr>
-<tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
 <td>Result message</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
 </tr>
 </tbody></table>
 <h2 id='5-4-getbeneficiary'>5.4.GetBeneficiary</h2>
@@ -2344,6 +2344,7 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BENEFICIARY_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientBeneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BE1233112"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XD201G0589941750"</span><span class="p">,</span><span class="w">
@@ -2365,8 +2366,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='5-4-3-response-body'>5.4.3.Response Body</h3>
 <table><thead>
@@ -2388,6 +2388,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -2533,12 +2539,6 @@ CEK is not a necessarily human readable ASCII string
 <td>String</td>
 <td>Beneficiary Bank Address</td>
 </tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
-</tr>
 </tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='6-1-getbalance'>6.1.GetBalance</h2>
 <p>This method allows the partner to Get the Balance by currency. </p>
@@ -2617,12 +2617,12 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_BALANCE_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"partnerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_client"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1999.33"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='6-1-3-response-body'>6.1.3.Response Body</h3>
 <table><thead>
@@ -2644,6 +2644,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -2668,12 +2674,6 @@ CEK is not a necessarily human readable ASCII string
 <td>balance</td>
 <td>String</td>
 <td>Balance</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='6-2-getexrate'>6.2.GetExRate</h2>
@@ -2782,14 +2782,14 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"exRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='6-2-3-response-body'>6.2.3.Response Body</h3>
 <table><thead>
@@ -2811,6 +2811,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -2847,12 +2853,6 @@ CEK is not a necessarily human readable ASCII string
 <td>exRate</td>
 <td>String</td>
 <td>The exchange rate</td>
-</tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
 </tr>
 </tbody></table>
 <h2 id='6-3-getexratelock'>6.3.GetExRateLock</h2>
@@ -3190,6 +3190,7 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
@@ -3201,8 +3202,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.67"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='6-4-3-response-body'>6.4.3.Response Body</h3>
 <table><thead>
