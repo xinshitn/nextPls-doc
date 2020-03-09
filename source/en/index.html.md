@@ -21,6 +21,12 @@ search: true
 
 Welcome the API document for NextPls!
 
+Fueled by a fundamental belief that having access to financial services creates opportunity,
+Nextpls is committed to democratizing financial services and empowering people and businesses 
+to join and thrive in the global economy. Since 2017 we've been driven by a simple goal - 
+to build a digital network connecting people and business in all corners of the globe,
+always striving to create opportunities for our clients. No exceptions.
+
 
 >We suggest using SDK to start first (Example in Java):
 
