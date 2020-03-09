@@ -288,10 +288,16 @@
                     <a href="#getexrate" class="toc-h2 toc-link" data-title="GetExRate">GetExRate</a>
                   </li>
                   <li>
+                    <a href="#getexratelock" class="toc-h2 toc-link" data-title="GetExRateLock">GetExRateLock</a>
+                  </li>
+                  <li>
                     <a href="#dotransactionpre" class="toc-h2 toc-link" data-title="DoTransactionPre">DoTransactionPre</a>
                   </li>
                   <li>
                     <a href="#dotransaction" class="toc-h2 toc-link" data-title="DoTransaction">DoTransaction</a>
+                  </li>
+                  <li>
+                    <a href="#dotokentransaction" class="toc-h2 toc-link" data-title="DoTokenTransaction">DoTokenTransaction</a>
                   </li>
                   <li>
                     <a href="#gettransactionstatus" class="toc-h2 toc-link" data-title="GetTransactionStatus">GetTransactionStatus</a>
@@ -445,7 +451,7 @@ CEK is not a necessarily human readable ASCII string
 
 <p>Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. </p>
 <h3 id='5-generating-request-header-and-body'>5.Generating request header and body</h3>
-<p>With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, Agent can generate a http header like followings;  </p>
+<p>With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, the Authorization is partner code. Agent can generate a http header like followings;  </p>
 
 <p><code>Example</code></p>
 
@@ -605,7 +611,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
@@ -635,7 +641,7 @@ CEK is not a necessarily human readable ASCII string
              "middleName": "Remitter_Middle_Name",
              "lastName": "Remitter_Last_Name",
              "mobile": "12345678910",
-             "sex": "M",
+             "gender": "M",
              "birthdate": "01/01/1994",
              "email": "nextPls@nextPls.com",
              "address1": "Italy",
@@ -799,7 +805,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>sex</td>
+<td>gender</td>
 <td>String(1)</td>
 <td>Remitter gender. M=Male, F=Female</td>
 <td>O</td>
@@ -902,7 +908,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
@@ -933,7 +939,7 @@ CEK is not a necessarily human readable ASCII string
              "middleName": "Remitter_Middle_Name",
              "lastName": "Remitter_Last_Name",
              "mobile": "12345678910",
-             "sex": "M",
+             "gender": "M",
              "birthdate": "01/01/1994",
              "email": "nextPls@nextPls.com",
              "address1": "Philippines",
@@ -1104,7 +1110,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>sex</td>
+<td>gender</td>
 <td>String(1)</td>
 <td>Remitter gender. M=Male, F=Female</td>
 <td>O</td>
@@ -1287,7 +1293,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REMITTER_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
@@ -1429,7 +1435,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>sex</td>
+<td>gender</td>
 <td>String</td>
 <td>Remitter gender</td>
 </tr>
@@ -1484,7 +1490,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
@@ -1517,7 +1523,7 @@ CEK is not a necessarily human readable ASCII string
                  "idIssueDate": "01/01/1994",
                  "idExpDate": "01/01/1994",
                  "birthdate": "01/01/1994",
-                 "sex": "M",
+                 "gender": "M",
                  "nationality": "HKG",
                  "relationship": "4",
                  "bankCode": "11003544",
@@ -1675,7 +1681,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td style="text-align: left">sex</td>
+<td style="text-align: left">gender</td>
 <td>String(1)</td>
 <td>Gender of Beneficiary</td>
 <td>O</td>
@@ -1809,7 +1815,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"idIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"idExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
@@ -1843,7 +1849,7 @@ CEK is not a necessarily human readable ASCII string
              "idIssueDate": "01/01/1994",
              "idExpDate": "01/01/1994",
              "birthdate": "01/01/1994",
-             "sex": "M",
+             "gender": "M",
              "nationality": "HKG",
              "relationship": "3",
              "bankCode": "11003544",
@@ -2007,7 +2013,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td style="text-align: left">sex</td>
+<td style="text-align: left">gender</td>
 <td>String(1)</td>
 <td>Gender of Beneficiary</td>
 <td>O</td>
@@ -2339,7 +2345,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Middle_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
@@ -2481,7 +2487,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>sex</td>
+<td>gender</td>
 <td>String</td>
 <td>Gender</td>
 </tr>
@@ -2671,7 +2677,9 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_EX_RATE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2682,9 +2690,11 @@ CEK is not a necessarily human readable ASCII string
     -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
     -d
     <span class="s1">'{
-         "apiName": "DO_TRANSACTION_PRE",
+         "apiName": "GET_EX_RATE",
          "entity": {
+             "payInCountry": "HKG",
              "payInCurrency": "HKD",
+             "payOutCountry": "PHL",
              "payOutCurrency": "PHP"
          }
      }'</span>
@@ -2697,7 +2707,9 @@ CEK is not a necessarily human readable ASCII string
                 <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
                 <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
         <span class="n">NextPlsExRateRequestDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateRequestDto</span><span class="o">();</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
         <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
         <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
         <span class="n">NextPlsGetExRateRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
         <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">exRateRequest</span><span class="o">);</span>
@@ -2730,7 +2742,21 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>payInCountry</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
 <td>payInCurrency</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
 <td>String(3)</td>
 <td>Pay In Currency</td>
 <td>M</td>
@@ -2751,7 +2777,9 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_REMITTER_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"exRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2770,7 +2798,7 @@ CEK is not a necessarily human readable ASCII string
 <td>apiName</td>
 <td></td>
 <td>String</td>
-<td>GET_REMITTER_R</td>
+<td>GET_EX_RATE_R</td>
 </tr>
 <tr>
 <td>code</td>
@@ -2786,7 +2814,19 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>payInCountry</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
 <td>payInCurrency</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
 <td>String</td>
 <td>Pay In Currency</td>
 </tr>
@@ -2809,9 +2849,195 @@ CEK is not a necessarily human readable ASCII string
 <td>Result message</td>
 </tr>
 </tbody></table>
+<h2 id='getexratelock'>GetExRateLock</h2>
+<p>This method allows the partner to Get the last rate and locked</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>GET_EX_RATE_LOCK</code></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_EX_RATE_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
+    -H <span class="s2">"Content-Type: application/base64"</span>
+    -H ”Authorization:<span class="s2">"your authorization"</span>
+    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
+    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "GET_EX_RATE_LOCK",
+         "entity": {
+             "payInCountry": "HKG",
+             "payInCurrency": "HKD",
+             "payOutCountry": "PHL",
+             "payOutCurrency": "PHP"
+         }
+     }'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsExRateRequestDto</span> <span class="n">exRateDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsExRateRequestDto</span><span class="o">();</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
+        <span class="n">exRateDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+        <span class="n">NextPlsGetExRateLockRequest</span> <span class="n">exRateRequest</span> <span class="o">=</span> <span class="n">NextPlsGetExRateLockRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">exRateDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">exRateRequest</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='request-body-10'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>GET_EX_RATE_LOCK</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCountry</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCurrency</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCurrency</td>
+<td>String(3)</td>
+<td>Pay Out Currency</td>
+<td>M</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_EX_RATE_LOCK_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dfb14532-ca6d-4f43-a5bc-045163b045ca"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-10'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>GET_EX_RATE_LOCK_R</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCountry</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payInCurrency</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
+<td>String</td>
+<td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCurrency</td>
+<td>String</td>
+<td>Pay Out Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>exRate</td>
+<td>String</td>
+<td>The exchange rate</td>
+</tr>
+<tr>
+<td></td>
+<td>token</td>
+<td>String</td>
+<td>The token for locked</td>
+</tr>
+</tbody></table>
 <h2 id='dotransactionpre'>DoTransactionPre</h2>
 <p>This method allows the partner to preview the transfer details and keep the rate for some hours.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>DO_TRANSACTION_PRE</code></p>
 
 <blockquote>
@@ -2821,10 +3047,13 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"transferAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2838,10 +3067,13 @@ CEK is not a necessarily human readable ASCII string
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "payInCountry": "HKG",
              "payInCurrency": "HKD",
+             "payInAmount": "13.57",
+             "payOutCountry": "PHL",
              "payOutCurrency": "PHP",
-             "transferCurrency": "HKD",
-             "transferAmount": "100",
+             "payOutAmount": "100",
+             "transferCurrency": "PHP",
              "paymentMode": "Bank"
          }
      }'</span>
@@ -2855,10 +3087,13 @@ CEK is not a necessarily human readable ASCII string
                 <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
         <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInAmount</span><span class="o">(</span><span class="s">"13.57"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
-        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
-        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayOutAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPaymentMode</span><span class="o">(</span><span class="s">"Bank"</span><span class="o">);</span>
         <span class="n">NextPlsDoTransactionPreRequest</span> <span class="n">preRequest</span> <span class="o">=</span> 
                 <span class="n">NextPlsDoTransactionPreRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">preRequestDto</span><span class="o">);</span>
@@ -2866,7 +3101,7 @@ CEK is not a necessarily human readable ASCII string
 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='request-body-10'>Request Body</h3>
+</code></pre><h3 id='request-body-11'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2895,9 +3130,27 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>payInCountry</td>
+<td>String(3)</td>
+<td>Pay In Country Code</td>
+</tr>
+<tr>
+<td></td>
 <td>payInCurrency</td>
 <td>String(3)</td>
 <td>Pay In Currency</td>
+</tr>
+<tr>
+<td></td>
+<td>payInAmount</td>
+<td>String(18)</td>
+<td>Pay In Amount</td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
+<td>String(3)</td>
+<td>Pay Out Country Code</td>
 </tr>
 <tr>
 <td></td>
@@ -2907,15 +3160,15 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>transferCurrency</td>
-<td>String(3)</td>
-<td>Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency)</td>
+<td>payOutAmount</td>
+<td>String(18)</td>
+<td>Pay Out Currency</td>
 </tr>
 <tr>
 <td></td>
-<td>transferAmount</td>
-<td>String(18)</td>
-<td>Transfer Amount</td>
+<td>transferCurrency</td>
+<td>String(3)</td>
+<td>Transfer Currency(The Fixed End, it must be payInCurrency or payOutCurrency)</td>
 </tr>
 <tr>
 <td></td>
@@ -2936,17 +3189,16 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"736.97"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"transferAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000"</span><span class="w">
+        </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.67"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-10'>Response Body</h3>
+</span></code></pre><h3 id='response-body-11'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2966,6 +3218,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -3011,12 +3269,6 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>transferAmount</td>
-<td>String</td>
-<td>Transfer Amount</td>
-</tr>
-<tr>
-<td></td>
 <td>paymentMode</td>
 <td>String</td>
 <td>Payment Mode</td>
@@ -3039,16 +3291,10 @@ CEK is not a necessarily human readable ASCII string
 <td>String</td>
 <td>Total Amount to pay</td>
 </tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
-</tr>
 </tbody></table>
 <h2 id='dotransaction'>DoTransaction</h2>
 <p>This method allows the partner to initiate the transfer.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>DO_TRANSACTION</code></p>
 
 <blockquote>
@@ -3057,10 +3303,8 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="s2">"TxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"remitterNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
        </span><span class="s2">"beneficiaryNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
@@ -3072,7 +3316,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"remitterMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Last_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remitterSex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterGender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
@@ -3094,7 +3338,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"beneficiaryMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Local_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"beneficiarySex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryGender"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
@@ -3122,10 +3366,8 @@ CEK is not a necessarily human readable ASCII string
     <span class="s1">'{
          "apiName": "DO_TRANSACTION",
          "entity": {
-                       "TxnNo": "IU201G0279816077",
+                       "txnNo": "IU201G0279816077",
                        "clientTxnNo": "1000",
-                       "payInCountry": "HKG",
-                       "payOutCountry": "PHP",
                        "remitterNo": "JJ201A1131599873",
                        "beneficiaryNo": "RP122141",
                        "purposeCode": "3"
@@ -3145,15 +3387,13 @@ CEK is not a necessarily human readable ASCII string
         <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNo</span><span class="o">(</span><span class="s">"XD201G0589941750"</span><span class="o">);</span>
         <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterNo</span><span class="o">(</span><span class="s">"JJ201A1131599873"</span><span class="o">);</span>
         <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPurposeCode</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
-        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
-        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
         <span class="n">NextPlsDoTransactionRequest</span> <span class="n">transactionAddRequest</span> <span class="o">=</span> 
                 <span class="n">NextPlsDoTransactionRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">txnRequestDto</span><span class="o">);</span>
         <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">transactionAddRequest</span><span class="o">);</span>
 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='request-body-11'>Request Body</h3>
+</code></pre><h3 id='request-body-12'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3179,7 +3419,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>TxnNo</td>
+<td>txnNo</td>
 <td>String(20)</td>
 <td>Unique code for NextPls txn</td>
 <td>M</td>
@@ -3189,20 +3429,6 @@ CEK is not a necessarily human readable ASCII string
 <td>clientTxnNo</td>
 <td>String(20)</td>
 <td>Unique code for partner txn</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>payInCountry</td>
-<td>String(3)</td>
-<td>Pay In Country</td>
-<td>M</td>
-</tr>
-<tr>
-<td></td>
-<td>payOutCountry</td>
-<td>String(3)</td>
-<td>Pay Out Country</td>
 <td>M</td>
 </tr>
 <tr>
@@ -3347,7 +3573,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>remitterSex</td>
+<td>remitterGender</td>
 <td>String(1)</td>
 <td>Remitter gender. M=Male, F=Female</td>
 <td>O</td>
@@ -3494,7 +3720,7 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
-<td>beneficiarySex</td>
+<td>beneficiaryGender</td>
 <td>String(1)</td>
 <td>Gender of Beneficiary</td>
 <td>O</td>
@@ -3549,14 +3775,14 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-11'>Response Body</h3>
+</span></code></pre><h3 id='response-body-12'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3576,6 +3802,12 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>String</td>
 <td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
 </tr>
 <tr>
 <td>entity</td>
@@ -3601,16 +3833,706 @@ CEK is not a necessarily human readable ASCII string
 <td>String</td>
 <td>The Transaction status</td>
 </tr>
+</tbody></table>
+<h2 id='dotokentransaction'>DoTokenTransaction</h2>
+<p>This method allows the partner to initiate the transfer by a rate token.
+Before using this method, you must request the &#39;GetExRateLock&#39;</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>DO_TOKEN_TRANSACTION</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TOKEN_TRANSACTION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dfb14532-ca6d-4f43-a5bc-045163b045ca"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payOutCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"transferCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+
+        </span><span class="s2">"remitterFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterFirstLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_First_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remitter_Middle_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterGender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPls@nextPls.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256454165"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterIdExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterNationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remitterAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+
+        </span><span class="s2">"beneficiaryFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryFirstLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMiddleLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryLastLocalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_Last_Local_Name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryGender"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBirthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryAddress3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryIdExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryNationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryRelationship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11003544"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4555556564564"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Benificiary_BankAccountName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"beneficiaryBankAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
+    -H <span class="s2">"Content-Type: application/base64"</span>
+    -H ”Authorization:<span class="s2">"your authorization"</span>
+    -H <span class="s2">"Signature:"</span>generated signature<span class="s2">"
+    -H "</span>Content-Code:<span class="s2">"generated content-code"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "DO_TOKEN_TRANSACTION",
+         "entity": {
+            "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca",
+            "clientTxnNo": "1000",
+            "purposeCode": "3",
+            "paymentMode": "Bank",
+            "payInCountry": "HKG",
+            "payInCurrency": "HKD",
+            "payInAmount": "13.57",
+            "payOutCountry": "PHL",
+            "payOutCurrency": "PHP",
+            "payOutAmount": "100",
+            "transferCurrency": "PHP",
+
+             "remitterFirstName": "Remitter_First_Name",
+             "remitterMiddleName": "",
+             "remitterLastName": "Remitter_Last_Name",
+             "remitterFirstLocalName": "Remitter_First_Local_Name",
+             "remitterMiddleLocalName": "",
+             "remitterLastLocalName": "Remitter_Middle_Last_Name",
+             "remitterMobile": "12345678910",
+             "remitterGender": "M",
+             "remitterBirthdate": "01/01/1994",
+             "remitterEmail": "nextPls@nextPls.com",
+             "remitterAddress1": "Italy",
+             "remitterAddress2": "",
+             "remitterAddress3": "",
+             "remitterIdType": "0",
+             "remitterIdNumber": "PS256454165",
+             "remitterIdDesc": "",
+             "remitterIdIssueDate": "01/01/1994",
+             "remitterIdExpDate": "01/01/1994",
+             "remitterNationality": "HKG",
+             "remitterAccountNumber": "",
+             "sourceIncome": "1",
+
+             "beneficiaryFirstName": "Beneficiary_First_Name",
+             "beneficiaryMiddleName": "",
+             "beneficiaryLastName": "Beneficiary_Last_Name",
+             "beneficiaryFirstLocalName": "Beneficiary_First_Local_Name",
+             "beneficiaryMiddleLocalName": "",
+             "beneficiaryLastLocalName": "Beneficiary_Last_Local_Name",
+             "beneficiaryMobile": "12345678910",
+             "beneficiaryGender": "",
+             "beneficiaryBirthdate": "",
+             "beneficiaryEmail": "",
+             "beneficiaryAddress1": "Philippines",
+             "beneficiaryAddress2": "",
+             "beneficiaryAddress3": "",
+             "beneficiaryIdType": "0",
+             "beneficiaryIdNumber": "",
+             "beneficiaryIdDesc": "",
+             "beneficiaryIdIssueDate": "",
+             "beneficiaryIdExpDate": "",
+             "beneficiaryNationality": "PHL",
+             "beneficiaryRelationship": "3",
+             "beneficiaryBankCode": "11003544",
+             "beneficiaryBankAccountNumber": "4555556564564",
+             "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+             "beneficiaryBankAddress": ""
+         }
+     }'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsTransactionRequestDto</span> <span class="n">txnRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionRequestDto</span><span class="o">();</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setToken</span><span class="o">(</span><span class="s">"dfb14532-ca6d-4f43-a5bc-045163b045ca"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPurposeCode</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPaymentMode</span><span class="o">(</span><span class="s">"Bank"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayInAmount</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCountry</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setPayOutAmount</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setTransferCurrency</span><span class="o">(</span><span class="s">"PHP"</span><span class="o">);</span>
+
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterFirstName</span><span class="o">(</span><span class="s">"ming"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterMiddleName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterLastName</span><span class="o">(</span><span class="s">"xiao"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterFirstLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterMiddleLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterLastLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterMobile</span><span class="o">(</span><span class="s">"1234567890"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterGender</span><span class="o">(</span><span class="s">"F"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterBirthdate</span><span class="o">(</span><span class="s">"01/01/1994"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterEmail</span><span class="o">(</span><span class="s">"PandaRemit@gmail.com"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterIdIssueDate</span><span class="o">(</span><span class="s">"01/01/2020"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterIdExpDate</span><span class="o">(</span><span class="s">"10/10/2025"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterNationality</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterAddress1</span><span class="o">(</span><span class="s">"HONG KONG"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterAddress2</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterAddress3</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterIdType</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterIdNumber</span><span class="o">(</span><span class="s">"PS256454165"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterIdDesc</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setRemitterAccountNumber</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setSourceOfIncome</span><span class="o">(</span><span class="s">"3"</span><span class="o">);</span>
+
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryFirstName</span><span class="o">(</span><span class="s">"hong"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryMiddleName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryLastName</span><span class="o">(</span><span class="s">"xiao"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryFirstLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryMiddleLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryLastLocalName</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryMobile</span><span class="o">(</span><span class="s">"46176767667"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryEmail</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryAddress1</span><span class="o">(</span><span class="s">"Philippines"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryAddress2</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryAddress3</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryIdType</span><span class="o">(</span><span class="s">"0"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryIdNumber</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryIdDesc</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryIdIssueDate</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryIdExpDate</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryBirthdate</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryGender</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryNationality</span><span class="o">(</span><span class="s">"PHL"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryRelationship</span><span class="o">(</span><span class="s">"parents"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryBankCode</span><span class="o">(</span><span class="s">"11003544"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryBankAccountNumber</span><span class="o">(</span><span class="s">"4555556564564"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryBankAccountName</span><span class="o">(</span><span class="s">"Benificiary_BankName"</span><span class="o">);</span>
+        <span class="n">txnRequestDto</span><span class="o">.</span><span class="na">setBeneficiaryBankAddress</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">NextPlsDoSimpleTxnRequest</span> <span class="n">simpleTxnRequest</span> <span class="o">=</span> <span class="n">NextPlsDoSimpleTxnRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">txnRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">simpleTxnRequest</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='request-body-13'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>DO_TOKEN_TRANSACTION</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>token</td>
+<td>String(36)</td>
+<td>Unique token for locked rate</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String(20)</td>
+<td>Unique code for partner txn</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>purposeCode</td>
+<td>String(2)</td>
+<td>Purpose Code for txn</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>paymentMode</td>
+<td>String(20)</td>
+<td>Payment Mode</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payInCountry</td>
+<td>String(3)</td>
+<td>Pay In Country</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payInCurrency</td>
+<td>String(3)</td>
+<td>Pay In Currency</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payInAmount</td>
+<td>String(18)</td>
+<td>Pay In Amount</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCountry</td>
+<td>String(3)</td>
+<td>Pay Out Country</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payOutCurrency</td>
+<td>String(3)</td>
+<td>Pay Out Currency</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>payOutAmount</td>
+<td>String(18)</td>
+<td>Pay Out Amount</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>transferCurrency</td>
+<td>String(3)</td>
+<td>Transfer Currency</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>remitterFirstName</td>
+<td>String(50)</td>
+<td>Remitter first name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterMiddleName</td>
+<td>String(50)</td>
+<td>Remitter middle name</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterLastName</td>
+<td>String(50)</td>
+<td>Remitter last name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterFirstLocalName</td>
+<td>String(50)</td>
+<td>Remitter first name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterMiddleLocalName</td>
+<td>String(50)</td>
+<td>Remitter middle name</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterLastLocalName</td>
+<td>String(50)</td>
+<td>Remitter last name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterMobile</td>
+<td>String(20)</td>
+<td>Remitter mobile number</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterEmail</td>
+<td>String(50)</td>
+<td>The email id of remitter</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterAddress1</td>
+<td>String(35)</td>
+<td>Remitter Address1</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterAddress2</td>
+<td>String(35)</td>
+<td>Remitter Address2</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterAddress3</td>
+<td>String(50)</td>
+<td>Remitter Address3</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterIdType</td>
+<td>int(3)</td>
+<td>Remitter identity type</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterIdNumber</td>
+<td>String(20)</td>
+<td>ID number</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterIdDesc</td>
+<td>String(30)</td>
+<td>description when ID Type=6</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterIdIssueDate</td>
+<td>String(10)</td>
+<td>ID issue date (MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterIdExpDate</td>
+<td>String(10)</td>
+<td>ID expiry date (MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterBirthdate</td>
+<td>String(10)</td>
+<td>Remitter date of birth (MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterGender</td>
+<td>String(1)</td>
+<td>Remitter gender. M=Male, F=Female</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterNationality</td>
+<td>String(3)</td>
+<td>Remitter Nationality(3 characters Country ISO code)</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>remitterAccountNumber</td>
+<td>String(30)</td>
+<td>Remitter account number</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>sourceIncome</td>
+<td>String(2)</td>
+<td>Remitter source of income</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryFirstName</td>
+<td>String(50)</td>
+<td>Beneficiary First Name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryMiddleName</td>
+<td>String(50)</td>
+<td>Beneficiary Middle Name</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryLastName</td>
+<td>String(50)</td>
+<td>Beneficiary Last Name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryFirstLocalName</td>
+<td>String(50)</td>
+<td>Beneficiary First Name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryMiddleLocalName</td>
+<td>String(50)</td>
+<td>Beneficiary Middle Name</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryLastLocalName</td>
+<td>String(50)</td>
+<td>Beneficiary Last Name</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryMobile</td>
+<td>String(20)</td>
+<td>Mobile phone Number of Beneficiary</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryEmail</td>
+<td>String(50)</td>
+<td>Email of Beneficiary</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryAddress1</td>
+<td>String(35)</td>
+<td>Beneficiary Address1</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryAddress2</td>
+<td>String(35)</td>
+<td>Beneficiary Address2</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryAddress3</td>
+<td>String(35)</td>
+<td>Beneficiary Address3</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIdType</td>
+<td>int(2)</td>
+<td>Type of Beneficiary Id Proof</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIdNumber</td>
+<td>String(20)</td>
+<td>Beneficiary ID Number</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIdDesc</td>
+<td>String(20)</td>
+<td>Description of Beneficiary ID,&quot;M&quot; only if IDType is 6</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIdIssueDate</td>
+<td>String(10)</td>
+<td>Issue date(MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIdExpDate</td>
+<td>String(10)</td>
+<td>Expiry date(MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBirthdate</td>
+<td>String(10)</td>
+<td>Beneficiary BirthDate(MM/DD/YYYY)</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryGender</td>
+<td>String(1)</td>
+<td>Gender of Beneficiary</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryNationality</td>
+<td>String(3)</td>
+<td>Nationality of Beneficiary(3 Character Country ISO Code)</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryRelationship</td>
+<td>String(3)</td>
+<td>Relationship with the remitter</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBankCode</td>
+<td>String(20)</td>
+<td>Bank code for Beneficiary</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBankAccountNumber</td>
+<td>String(30)</td>
+<td>Bank Account Number of Beneficiary</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBankAccountName</td>
+<td>String(35)</td>
+<td>Bank Account name of Beneficiary</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBankAddress</td>
+<td>String(35)</td>
+<td>Beneficiary Bank Address</td>
+<td>O</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TOKEN_TRANSACTION_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-body-13'>Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>DO_TOKEN_TRANSACTION_R</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
 <tr>
 <td>msg</td>
 <td></td>
 <td>String</td>
 <td>Result message</td>
 </tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>txnNo</td>
+<td>String</td>
+<td>Unique code for NextPls txn</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String</td>
+<td>Unique code for partner txn</td>
+</tr>
+<tr>
+<td></td>
+<td>status</td>
+<td>String</td>
+<td>The Transaction status</td>
+</tr>
 </tbody></table>
 <h2 id='gettransactionstatus'>GetTransactionStatus</h2>
 <p>This method allows the partner to check the Transaction status. </p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>GET_TRANSACTION_STATUS</code></p>
 
 <blockquote>
@@ -3653,7 +4575,7 @@ CEK is not a necessarily human readable ASCII string
 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='request-body-12'>Request Body</h3>
+</code></pre><h3 id='request-body-14'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3699,14 +4621,15 @@ CEK is not a necessarily human readable ASCII string
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET_TRANSACTION_STATUS_R"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRTR1001349991"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACTION_ING"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-body-12'>Response Body</h3>
+</span></code></pre><h3 id='response-body-14'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3728,10 +4651,22 @@ CEK is not a necessarily human readable ASCII string
 <td>Result Code</td>
 </tr>
 <tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+<tr>
 <td>entity</td>
 <td></td>
 <td>Object</td>
 <td>Parameter list</td>
+</tr>
+<tr>
+<td></td>
+<td>reference</td>
+<td>String</td>
+<td>Unique code for cash withdrawal</td>
 </tr>
 <tr>
 <td></td>
@@ -3751,12 +4686,6 @@ CEK is not a necessarily human readable ASCII string
 <td>String</td>
 <td>The Transaction status</td>
 </tr>
-<tr>
-<td>msg</td>
-<td></td>
-<td>String</td>
-<td>Result message</td>
-</tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1><h2 id='http-error-codes'>HTTP Error Codes</h2><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
 <table><thead>
@@ -3774,56 +4703,196 @@ CEK is not a necessarily human readable ASCII string
 <td>Request Fail</td>
 </tr>
 <tr>
-<td>1006</td>
-<td>Without API</td>
+<td>10000</td>
+<td>The system is busy, please try again later</td>
 </tr>
 <tr>
-<td>1007</td>
+<td>10006</td>
+<td>No this Method</td>
+</tr>
+<tr>
+<td>10007</td>
 <td>Invalid Signature</td>
 </tr>
 <tr>
-<td>1010</td>
+<td>10010</td>
 <td>Missing Parameters</td>
 </tr>
 <tr>
-<td>1011</td>
+<td>10011</td>
 <td>Wrong Parameters</td>
 </tr>
 <tr>
-<td>10003</td>
-<td>Access denied</td>
+<td>10012</td>
+<td>Interface is not open</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10101</td>
+<td>Fee amount query error</td>
 </tr>
 <tr>
 <td>10102</td>
-<td>Business rate query error</td>
+<td>The rate query failed</td>
+</tr>
+<tr>
+<td>10103</td>
+<td>Please get the rate first</td>
+</tr>
+<tr>
+<td>10104</td>
+<td>The target country error or unsupported</td>
+</tr>
+<tr>
+<td>10105</td>
+<td>The source country error or unsupported</td>
+</tr>
+<tr>
+<td>10106</td>
+<td>The target currency error or unsupported</td>
+</tr>
+<tr>
+<td>10107</td>
+<td>The source currency error or unsupported</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>20010</td>
+<td>The remitter add failed</td>
 </tr>
 <tr>
 <td>20011</td>
-<td>Remitter add error: client remitter number duplicate</td>
+<td>The clientRemitterNo already exists</td>
+</tr>
+<tr>
+<td>20013</td>
+<td>The remitter query failed</td>
+</tr>
+<tr>
+<td>20014</td>
+<td>The remitter update failed</td>
+</tr>
+<tr>
+<td>20050</td>
+<td>The beneficiary add failed</td>
 </tr>
 <tr>
 <td>20051</td>
-<td>Beneficiary add error: client beneficiary number duplicate</td>
+<td>The clientBeneficiaryNo already exists</td>
 </tr>
 <tr>
 <td>21052</td>
-<td>Beneficiary query error: beneficiary info not exist</td>
+<td>The beneficiary detail doesn&#39;t exist</td>
+</tr>
+<tr>
+<td>20053</td>
+<td>The beneficiary query failed</td>
+</tr>
+<tr>
+<td>20054</td>
+<td>The beneficiary update failed</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>30001</td>
-<td>Transaction error: client txn number duplicate</td>
+<td>The clientTxnNo already exists</td>
+</tr>
+<tr>
+<td>30002</td>
+<td>The transaction query failed</td>
+</tr>
+<tr>
+<td>30003</td>
+<td>The transaction create failed</td>
+</tr>
+<tr>
+<td>30004</td>
+<td>The transaction amount is empty</td>
+</tr>
+<tr>
+<td>30005</td>
+<td>The amount received and remitted does not match</td>
 </tr>
 <tr>
 <td>30006</td>
-<td>Transaction error: time out</td>
+<td>The transaction had time out</td>
 </tr>
 <tr>
 <td>30007</td>
-<td>Transaction error: cancel already</td>
+<td>The transaction has been cancelled</td>
 </tr>
 <tr>
-<td>43004</td>
-<td>Balance error: asset insufficient</td>
+<td>30008</td>
+<td>The transaction cancellation failed</td>
+</tr>
+<tr>
+<td>30009</td>
+<td>The transaction doesn&#39;t exist</td>
+</tr>
+<tr>
+<td>30010</td>
+<td>The transaction status query failed</td>
+</tr>
+<tr>
+<td>30011</td>
+<td>The token of rate doesn&#39;t exist or time out</td>
+</tr>
+<tr>
+<td>30012</td>
+<td>The target amount error</td>
+</tr>
+<tr>
+<td>30013</td>
+<td>This payment mode unsupported</td>
+</tr>
+<tr>
+<td>30014</td>
+<td>Suspected duplicate transaction</td>
+</tr>
+<tr>
+<td>30015</td>
+<td>It is not supported that source and settlement currency are different</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>50000</td>
+<td>High risk interception</td>
+</tr>
+<tr>
+<td>50011</td>
+<td>The amount exceeds the single limit</td>
+</tr>
+<tr>
+<td>50012</td>
+<td>The amount exceeds the daily limit</td>
+</tr>
+<tr>
+<td>50013</td>
+<td>The amount exceeds the monthly limit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>88001</td>
+<td>No account opened in this currency</td>
+</tr>
+<tr>
+<td>88002</td>
+<td>Insufficient balance of account/credit</td>
 </tr>
 </tbody></table>
 
