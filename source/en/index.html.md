@@ -28,7 +28,7 @@ Welcome the API document for NextPls!
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.8</version>
   </dependency>
 ```
 ```shell
@@ -36,7 +36,7 @@ Welcome the API document for NextPls!
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.8</version>
   </dependency>
 
 ```
@@ -45,7 +45,7 @@ Welcome the API document for NextPls!
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.8</version>
   </dependency>
 */
 ```
@@ -323,9 +323,9 @@ This method allows the partner to Registered Remitter Profile.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_REMITTER_ADD",
@@ -458,9 +458,9 @@ This method allows the partner to Edit Registered Remitter Profile.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_REMITTER_EDIT",
@@ -578,9 +578,9 @@ This method allows the partner to Get Registered Remitter Profile.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "GET_REMITTER",
@@ -723,9 +723,9 @@ This method allows the partner to Register New Beneficiary.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_BENEFICIARY_ADD",
@@ -869,9 +869,9 @@ This method allows the partner to Edit Registered Beneficiary Profile.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_BENEFICIARY_ADD",
@@ -995,9 +995,9 @@ This method allows the partner to Delete Registered beneficiary.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_BENEFICIARY_DEL",
@@ -1078,9 +1078,9 @@ This method allows the partner to Get Registered Beneficiary Profile by client B
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
         "apiName": "GET_BENEFICIARY",
@@ -1198,9 +1198,9 @@ This method allows the partner to Get the Balance by currency.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "GET_BALANCE",
@@ -1280,9 +1280,9 @@ This method allows the partner to Get the last rate and lock one hour.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "GET_EX_RATE",
@@ -1375,9 +1375,9 @@ This method allows the partner to Get the last rate and locked
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "GET_EX_RATE_LOCK",
@@ -1480,9 +1480,9 @@ This method allows the partner to preview the transfer details and keep the rate
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_TRANSACTION_PRE",
@@ -1650,9 +1650,9 @@ This method allows the partner to initiate the transfer.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_TRANSACTION",
@@ -1847,9 +1847,9 @@ Before using this method, you must request the 'GetExRateLock'
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "DO_TOKEN_TRANSACTION",
@@ -1998,14 +1998,14 @@ entity | | Object | Parameter list | M
 | | token | String(36) | Unique token for locked rate | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
 | | purposeCode | String(2) | Purpose Code for txn | M
-| | paymentMode | String(20) | Payment Mode
-| | payInCountry | String(3) | Pay In Country
-| | payInCurrency | String(3) | Pay In Currency
-| | payInAmount | String(18) | Pay In Amount
-| | payOutCountry | String(3) | Pay Out Country
-| | payOutCurrency | String(3) | Pay Out Currency
-| | payOutAmount | String(18) | Pay Out Amount
-| | transferCurrency | String(3) | Transfer Currency
+| | paymentMode | String(20) | Payment Mode | M
+| | payInCountry | String(3) | Pay In Country | M
+| | payInCurrency | String(3) | Pay In Currency | M
+| | payInAmount | String(18) | Pay In Amount | C
+| | payOutCountry | String(3) | Pay Out Country | M
+| | payOutCurrency | String(3) | Pay Out Currency | M
+| | payOutAmount | String(18) | Pay Out Amount | C
+| | transferCurrency | String(3) | Transfer Currency | M
 | | remitterFirstName | String(50) | Remitter first name | M
 | | remitterMiddleName | String(50) | Remitter middle name | O
 | | remitterLastName | String(50) | Remitter last name | M
@@ -2098,9 +2098,9 @@ This method allows the partner to check the Transaction status.
 ```shell
 curl -X POST http://staging.nextpls.com/v1/remittance
     -H "Content-Type: application/base64"
-    -H ”Authorization:"your authorization"
-    -H "Signature:"generated signature"
-    -H "Content-Code:"generated content-code"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
     -d
     '{
          "apiName": "GET_TRANSACTION_STATUS",
