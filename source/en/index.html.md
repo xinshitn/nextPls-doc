@@ -57,10 +57,10 @@ always striving to create opportunities for our clients. No exceptions.
 
 
 # Getting Started
-## Cryptography in NextPls API 
-### Request
+## 1.Cryptography in NextPls API 
+### 1.1.Request
 
-### 1.Generating a CEK
+### 1.1.1.Generating a CEK
 
 All request body should be encrypted with AES128 algorithm before sending to the NextPls server. So it needs a CEK(Content Encryption Key) which will be delivered to NextPls server as described in the Content-Code field in the http header.
   
@@ -78,7 +78,7 @@ CEK | cek_tester_remitinitial_tester01
 CEK is not a necessarily human readable ASCII string
 </aside>
   
-### 2.Encrypting body part with the CEK
+### 1.1.2.Encrypting body part with the CEK
 
 >An example of encrypting the body (Example in Java):
 
@@ -111,7 +111,7 @@ Agent who wants to make a request API should encrypt the body part with CEK befo
 
 When encrypt, you should use the algorithm of "AES/CBC/PKCS5Padding", then encoded of Base64.
 
-### 3.Encrypting CEK with NextPls public key
+### 1.1.3.Encrypting CEK with NextPls public key
 
 >Example for CEK：
 
@@ -136,7 +136,7 @@ Encryption algorithm used for CEK protection is RSA-1024. Finally, the result ne
 
 All Agent will receive a public key from NextPls, which is used for encryption of the CEK.
   
-### 4.Generating signature
+### 1.1.4.Generating signature
 
 >Example for Signature：
 
@@ -164,7 +164,7 @@ Generate signed value with sender’s private key.
 
 Signature algorithm is Sha256WithRSA, And then also needs to be encoded of Base64. 
   
-### 5.Generating request header and body
+### 1.1.5.Generating request header and body
 
 With encrypted CEK(step.3), encrypted body(step.2) and HMAC(step.4) values, the Authorization is partner code. Agent can generate a http header like followings;  
   
@@ -181,9 +181,9 @@ Body |
 ------ |
 Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0Rja/2H87VLLmsQx7Bkbe0yah8ALIaCabwY30aG/FPsjY4Y7OhujaEAzOVRUrV21iYDL5nUg= |
 
-### Response
+### 1.2.Response
 
-### 1.Verifying signature
+### 1.2.1.Verifying signature
 
 >Example for Verifying signature：
 
@@ -203,7 +203,7 @@ Deo7f9su8hdo0PCCKxyjuCRVCKAotP01jgfDJd82jrLQAvEyXK+hwNMF2mLKidCERaS604yzdQ2REQ0R
 
 To verify authenticity of NextPls server, Agent should calculate verification value from the encrypted body and compare with what received signed value described in the http header.
 
-### 2.Deriving CEK
+### 1.2.2.Deriving CEK
 
 >Example for Deriving CEK
 
@@ -246,7 +246,7 @@ CEK is comprised of 32 bytes random digits (16 bytes for initial vectors and 16 
 
 CEK can be derived from ‘Content-Code’ field in response header. 
 
-### 3.Decrypting body part with CEK
+### 1.2.3.Decrypting body part with CEK
 
 >Example for decrypting body part with CEK
 
@@ -272,7 +272,7 @@ CEK can be derived from ‘Content-Code’ field in response header.
 
 Agent can extract plain JSON body with the CEK derived at above.
 
-## Keys
+## 2.1.Keys
 
 Definition of abbreviated values found in the documentation.
 
@@ -283,7 +283,7 @@ O | string | value for this field is optional
 C | string | The requirement for this field is conditional based on other field values
 
 # Basic Information
-## GetCountryPayMode
+## 3.1.GetCountryPayMode
 This method allows the partner to Get Country based Payment Modes.
 ### HTTP Request
 <span class="http-method post">POST</span> `GET_COUNTRY_PAY_MODE`
@@ -292,9 +292,9 @@ The function is not open yet, Coming soon!
 
 # Remitter
 
-## DoRemitterAdd
+## 4.1.DoRemitterAdd
 This method allows the partner to Registered Remitter Profile. 
-### HTTP Request
+### 4.1.1.HTTP Request
 <span class="http-method post">POST</span> `DO_REMITTER_ADD`
 
 > Request Body:
@@ -377,7 +377,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 4.1.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_REMITTER_ADD | M
@@ -416,7 +416,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 4.1.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_REMITTER_ADD_R
@@ -426,9 +426,9 @@ entity | | Object | Parameter list
 | | remitterNo | String | Unique code for NextPls remitter
 msg | | String | Result message
 
-## DoRemitterEdit
+## 4.2.DoRemitterEdit
 This method allows the partner to Edit Registered Remitter Profile.
-### HTTP Request
+### 4.2.1.HTTP Request
 <span class="http-method post">POST</span> `DO_REMITTER_EDIT`
 
 > Request Body:
@@ -513,7 +513,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 4.2.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_REMITTER_EDIT | M
@@ -553,7 +553,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 4.2.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_REMITTER_EDIT_R
@@ -564,9 +564,9 @@ entity | | Object | Parameter list
 msg | | String | Result message
 
 
-## GetRemitter
+## 4.3.GetRemitter
 This method allows the partner to Get Registered Remitter Profile.  
-### HTTP Request
+### 4.3.1.HTTP Request
 <span class="http-method post">POST</span> `GET_REMITTER`
 
 > Request Body:
@@ -614,7 +614,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 4.3.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_REMITTER | M
@@ -654,7 +654,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 4.3.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_REMITTER_R
@@ -689,9 +689,9 @@ msg | | String | Result message
 
 # Beneficiary
 
-## DoBeneficiaryAdd
+## 5.1.DoBeneficiaryAdd
 This method allows the partner to Register New Beneficiary.
-### HTTP Request
+### 5.1.1.HTTP Request
 <span class="http-method post">POST</span> `DO_BENEFICIARY_ADD`
 
 > Request Body:
@@ -781,7 +781,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 5.1.2.Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
 apiName | | String | DO_BENEFICIARY_ADD | M
@@ -823,7 +823,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 5.1.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_ADD_R
@@ -834,9 +834,9 @@ entity | | Object | Parameter list
 msg | | String | Result message
 
 
-## DoBeneficiaryEdit
+## 5.2.DoBeneficiaryEdit
 This method allows the partner to Edit Registered Beneficiary Profile.
-### HTTP Request
+### 5.2.1.HTTP Request
 <span class="http-method post">POST</span> `DO_BENEFICIARY_EDIT`
 
 > Request Body:
@@ -927,7 +927,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 5.2.2.Request Body
 Parameter | | Type | Description | O/M
 --------- | :------- | ------- | ---------- | -------
 apiName | | String | DO_BENEFICIARY_EDIT | M
@@ -970,7 +970,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 5.2.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_EDIT_R
@@ -981,9 +981,9 @@ entity | | Object | Parameter list
 msg | | String | Result message
 
 
-## DoBeneficiaryDel
+## 5.3.DoBeneficiaryDel
 This method allows the partner to Delete Registered beneficiary.
-### HTTP Request
+### 5.3.1.HTTP Request
 <span class="http-method post">POST</span> `DO_BENEFICIARY_DEL`
 
 > Request Body:
@@ -1032,7 +1032,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 5.3.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_BENEFICIARY_DEL | M
@@ -1051,7 +1051,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 5.3.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_BENEFICIARY_DEL_R
@@ -1064,9 +1064,9 @@ msg | | String | Result message
 
 
 
-## GetBeneficiary
+## 5.4.GetBeneficiary
 This method allows the partner to Get Registered Beneficiary Profile by client Beneficiary No or Beneficiary No
-### HTTP Request
+### 5.4.1.HTTP Request
 <span class="http-method post">POST</span> `GET_BENEFICIARY`
 
 > Request Body:
@@ -1114,7 +1114,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 5.4.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_BENEFICIARY | M
@@ -1154,7 +1154,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 5.4.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_BENEFICIARY_R
@@ -1187,9 +1187,9 @@ msg | | String | Result message
 
 
 # Transaction
-## GetBalance
+## 6.1.GetBalance
 This method allows the partner to Get the Balance by currency. 
-### HTTP Request
+### 6.1.1.HTTP Request
 <span class="http-method post">POST</span> `GET_BALANCE`
 
 ```json
@@ -1233,7 +1233,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.1.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_BALANCE | M
@@ -1255,7 +1255,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.1.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_BALANCE_R
@@ -1266,9 +1266,9 @@ entity | | Object | Parameter list
 | | balance | String | Balance
 msg | | String | Result message
 
-## GetExRate
+## 6.2.GetExRate
 This method allows the partner to Get the last rate and lock one hour. 
-### HTTP Request
+### 6.2.1.HTTP Request
 <span class="http-method post">POST</span> `GET_EX_RATE`
 
 ```json
@@ -1320,7 +1320,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.2.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_EX_RATE | M
@@ -1347,7 +1347,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.2.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_EX_RATE_R
@@ -1361,9 +1361,9 @@ entity | | Object | Parameter list
 msg | | String | Result message
 
 
-## GetExRateLock
+## 6.3.GetExRateLock
 This method allows the partner to Get the last rate and locked
-### HTTP Request
+### 6.3.1.HTTP Request
 <span class="http-method post">POST</span> `GET_EX_RATE_LOCK`
 
 ```json
@@ -1415,7 +1415,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.3.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_EX_RATE_LOCK | M
@@ -1443,7 +1443,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.3.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_EX_RATE_LOCK_R
@@ -1459,9 +1459,9 @@ entity | | Object | Parameter list
 
 
 
-## DoTransactionPre
+## 6.4.DoTransactionPre
 This method allows the partner to preview the transfer details and keep the rate for some hours.
-### HTTP Request
+### 6.4.1.HTTP Request
 <span class="http-method post">POST</span> `DO_TRANSACTION_PRE`
 
 > Request Body:
@@ -1531,7 +1531,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.4.2.Request Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_PRE
@@ -1568,7 +1568,7 @@ entity | | Object | Parameter list
 }
 ```
 
-### Response Body
+### 6.4.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_PRE_R
@@ -1586,9 +1586,9 @@ entity | | Object | Parameter list
 | | commission | String | commission
 | | totalAmount | String | Total Amount to pay
 
-## DoTransaction
+## 6.5.DoTransaction
 This method allows the partner to initiate the transfer.
-### HTTP Request
+### 6.5.1.HTTP Request
 <span class="http-method post">POST</span> `DO_TRANSACTION`
 
 > Request Body:
@@ -1693,7 +1693,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.5.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_TRANSACTION | M
@@ -1764,7 +1764,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.5.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_R
@@ -1776,10 +1776,10 @@ entity | | Object | Parameter list
 | | status | String | The Transaction status
 
 
-## DoTokenTransaction
+## 6.6.DoTokenTransaction
 This method allows the partner to initiate the transfer by a rate token.
 Before using this method, you must request the 'GetExRateLock'
-### HTTP Request
+### 6.6.1.HTTP Request
 <span class="http-method post">POST</span> `DO_TOKEN_TRANSACTION`
 
 > Request Body:
@@ -1995,7 +1995,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.6.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | DO_TOKEN_TRANSACTION | M
@@ -2072,7 +2072,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.6.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TOKEN_TRANSACTION_R
@@ -2084,9 +2084,9 @@ entity | | Object | Parameter list
 | | status | String | The Transaction status
 
 
-## GetTransactionStatus
+## 6.7.GetTransactionStatus
 This method allows the partner to check the Transaction status. 
-### HTTP Request
+### 6.7.1.HTTP Request
 <span class="http-method post">POST</span> `GET_TRANSACTION_STATUS`
 
 > Request Body:
@@ -2135,7 +2135,7 @@ public class example{
 }
 ```
 
-### Request Body
+### 6.7.2.Request Body
 Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_TRANSACTION_STATUS | M
@@ -2159,7 +2159,7 @@ entity | | Object | Parameter list | M
 }
 ```
 
-### Response Body
+### 6.7.3.Response Body
 Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | GET_TRANSACTION_STATUS_R
@@ -2173,7 +2173,7 @@ entity | | Object | Parameter list
 
 
 # Errors
-## HTTP Error Codes
+## 7.1.HTTP Error Codes
 ### These are error codes that will be returned in the body of API responses
 
 Error Code | Description
