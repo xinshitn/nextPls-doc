@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-8" class="toc-h1 toc-link" data-title="Version 1.0.8">Version 1.0.8</a>
+            <a href="#version-1-0-9" class="toc-h1 toc-link" data-title="Version 1.0.9">Version 1.0.9</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -302,6 +302,9 @@
                   <li>
                     <a href="#6-7-gettransactionstatus" class="toc-h2 toc-link" data-title="6.7.GetTransactionStatus">6.7.GetTransactionStatus</a>
                   </li>
+                  <li>
+                    <a href="#6-8-dotransactioncancel" class="toc-h2 toc-link" data-title="6.8.DoTransactionCancel">6.8.DoTransactionCancel</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -321,27 +324,27 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-8'>Version 1.0.8</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-9'>Version 1.0.9</h1><h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">8</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">9</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.8&lt;/version&gt;
+      &lt;version&gt;1.0.9&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.8&lt;/version&gt;
+      &lt;version&gt;1.0.9&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -4673,6 +4676,165 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 <td>reference</td>
 <td>String</td>
 <td>Unique code for cash withdrawal</td>
+</tr>
+<tr>
+<td></td>
+<td>txnNo</td>
+<td>String</td>
+<td>Unique code for NextPls txn</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String</td>
+<td>Unique code for partner txn</td>
+</tr>
+<tr>
+<td></td>
+<td>status</td>
+<td>String</td>
+<td>The Transaction status</td>
+</tr>
+</tbody></table>
+<h2 id='6-8-dotransactioncancel'>6.8.DoTransactionCancel</h2>
+<p>This method allows the partner to chancel the Transaction, but just support the cash transaction. </p>
+<h3 id='6-8-1-http-request'>6.8.1.HTTP Request</h3>
+<p><span class="http-method post">POST</span> <code>DO_TRANSACTION_CANCEL</code></p>
+
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_CANCEL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I don't want to remit anymore."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -X POST http://staging.nextpls.com/v1/remittance
+    -H <span class="s2">"Content-Type: application/base64"</span>
+    -H <span class="s2">"Authorization: your authorization"</span>
+    -H <span class="s2">"Signature: generated signature"</span>
+    -H <span class="s2">"Content-Code: generated content-code"</span>
+    -d
+    <span class="s1">'{
+         "apiName": "DO_TRANSACTION_CANCEL",
+         "entity": {
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000",
+             "reason": "I don'</span>t want to remit anymore.<span class="s2">"
+         }
+     }'
+</span></code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">example</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="n">NextPlsClient</span> <span class="n">client</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nf">DefaultNextPlsClient</span><span class="o">(</span>
+                <span class="s">"http://staging.nextpls.com/v1/remittance"</span><span class="o">,</span> 
+                <span class="s">"test_client"</span><span class="o">,</span> <span class="s">"cek_tester_remit"</span><span class="o">,</span> <span class="s">"initial_tester01"</span><span class="o">,</span> 
+                <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">NextPlsTransactionCancelRequestDto</span> <span class="n">cancelRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionCancelRequestDto</span><span class="o">();</span>
+        <span class="n">cancelRequestDto</span><span class="o">.</span><span class="na">setTxnNo</span><span class="o">(</span><span class="s">"IU201G0279816077"</span><span class="o">);</span>
+        <span class="n">cancelRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">cancelRequestDto</span><span class="o">.</span><span class="na">setReason</span><span class="o">(</span><span class="s">"I don't want to remit anymore."</span><span class="o">);</span>
+        <span class="n">NextPlsDoTransactionCancelRequest</span> <span class="n">txnCancelRequest</span> <span class="o">=</span> <span class="n">NextPlsDoTransactionCancelRequest</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">cancelRequestDto</span><span class="o">);</span>
+        <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">txnCancelRequest</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='6-8-2-request-body'>6.8.2.Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+<th>O/M</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>DO_TRANSACTION_CANCEL</td>
+<td>M</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>txnNo</td>
+<td>String(20)</td>
+<td>Unique code for NextPls txn</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>clientTxnNo</td>
+<td>String(20)</td>
+<td>Unique code for partner txn</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>reason</td>
+<td>String(64)</td>
+<td>the reason for refund</td>
+<td>M</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_CANCEL_R"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSING_CANCELING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='6-8-3-response-body'>6.8.3.Response Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th></th>
+<th>Type</th>
+<th>Describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiName</td>
+<td></td>
+<td>String</td>
+<td>GET_TRANSACTION_STATUS_R</td>
+</tr>
+<tr>
+<td>code</td>
+<td></td>
+<td>String</td>
+<td>Result Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td></td>
+<td>String</td>
+<td>Result message</td>
+</tr>
+<tr>
+<td>entity</td>
+<td></td>
+<td>Object</td>
+<td>Parameter list</td>
 </tr>
 <tr>
 <td></td>
