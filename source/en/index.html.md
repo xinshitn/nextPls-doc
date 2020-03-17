@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.8
+# Version 1.0.9
 
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.8</version>
+      <version>1.0.9</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.8</version>
+      <version>1.0.9</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.8</version>
+      <version>1.0.9</version>
   </dependency>
 */
 ```
@@ -2165,6 +2165,97 @@ entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
+
+
+
+## 6.8.DoTransactionCancel
+This method allows the partner to chancel the Transaction, but just support the cash transaction. 
+### 6.8.1.HTTP Request
+<span class="http-method post">POST</span> `DO_TRANSACTION_CANCEL`
+
+> Request Body:
+
+```json
+{
+    "apiName": "DO_TRANSACTION_CANCEL",
+    "entity": {
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
+        "reason": "I don't want to remit anymore."
+    }
+}
+```
+```shell
+curl -X POST http://staging.nextpls.com/v1/remittance
+    -H "Content-Type: application/base64"
+    -H "Authorization: your authorization"
+    -H "Signature: generated signature"
+    -H "Content-Code: generated content-code"
+    -d
+    '{
+         "apiName": "DO_TRANSACTION_CANCEL",
+         "entity": {
+             "txnNo": "IU201G0279816077",
+             "clientTxnNo": "1000",
+             "reason": "I don't want to remit anymore."
+         }
+     }'
+```
+```java
+public class example{
+    public static void main(String[] args){
+        
+        NextPlsClient client = 
+            new DefaultNextPlsClient(
+                "http://staging.nextpls.com/v1/remittance", 
+                "test_client", "cek_tester_remit", "initial_tester01", 
+                publicKey, secretKey);
+        NextPlsTransactionCancelRequestDto cancelRequestDto = new NextPlsTransactionCancelRequestDto();
+        cancelRequestDto.setTxnNo("IU201G0279816077");
+        cancelRequestDto.setClientTxnNo("1000");
+        cancelRequestDto.setReason("I don't want to remit anymore.");
+        NextPlsDoTransactionCancelRequest txnCancelRequest = NextPlsDoTransactionCancelRequest.build(cancelRequestDto);
+        client.execute(txnCancelRequest);
+      
+    }
+}
+```
+
+### 6.8.2.Request Body
+Field |  | Type | Describe | O/M
+--------- | ------- | ------- | ---------- | -------
+apiName | | String | DO_TRANSACTION_CANCEL | M
+entity | | Object | Parameter list | M
+| | txnNo | String(20) | Unique code for NextPls txn | M
+| | clientTxnNo | String(20) | Unique code for partner txn | M
+| | reason | String(64) | the reason for refund | M
+
+> Response Body:
+
+```json
+{
+    "apiName": "DO_TRANSACTION_CANCEL_R",
+    "code": "200",
+    "msg": "success",
+    "entity": {
+        "txnNo": "IU201G0279816077",
+        "clientTxnNo": "1000",
+        "status": "PROCESSING_CANCELING"
+    }
+}
+```
+
+### 6.8.3.Response Body
+Field |   | Type | Describe
+--------- | ------- | ------- |-----------
+apiName | | String | GET_TRANSACTION_STATUS_R
+code | | String | Result Code
+msg | | String | Result message
+entity | | Object | Parameter list
+| | txnNo | String | Unique code for NextPls txn
+| | clientTxnNo | String | Unique code for partner txn
+| | status | String | The Transaction status
+
 
 
 # Errors
