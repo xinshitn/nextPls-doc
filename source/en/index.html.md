@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.9
+# Version 1.0.12
 
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.9</version>
+      <version>1.0.12</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.9</version>
+      <version>1.0.12</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.9</version>
+      <version>1.0.12</version>
   </dependency>
 */
 ```
@@ -314,14 +314,16 @@ This method allows the partner to Registered Remitter Profile.
         "address1": "Italy",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1"
+        "sourceIncome": "SALARY"
     }
 }
 ```
@@ -346,14 +348,16 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "address1": "Italy",
              "address2": "",
              "address3": "",
-             "idType": "0",
+             "postalCode": "",
+             "occupation": "",
+             "idType": "PASSPORT",
              "idNumber": "PS256454165",
              "idDesc": "",
              "idIssueDate": "01/01/1994",
              "idExpDate": "01/01/1994",
              "nationality": "HKG",
              "accountNumber": "",
-             "sourceIncome": "1"
+             "sourceIncome": "SALARY"
          }
      }'
 ```
@@ -391,16 +395,18 @@ entity | | Object | Parameter list | M
 | | address1 | String(35) | Remitter Address1 | M
 | | address2 | String(35) | Remitter Address2 | O
 | | address3 | String(50) | Remitter Address3 | O
-| | idType | int(3) | Remitter identity type | M
+| | postalCode | String(16) | Remitter PostalCode | C
+| | occupation | String(64) | Remitter Occupation | C
+| | idType | String(16) | Remitter identity type | M
 | | idNumber | String(20) | ID number | M
-| | idDesc | String(30) | description when ID Type=6 | C
+| | idDesc | String(30) | description for id | C
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
 | | gender | String(1) | Remitter gender. M=Male, F=Female | O
 | | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | accountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(2) | Remitter source of income | M
+| | sourceIncome | String(16) | Remitter source of income | M
 
 > Response Body:
 
@@ -449,14 +455,16 @@ This method allows the partner to Edit Registered Remitter Profile.
         "address1": "Philippines",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1"
+        "sourceIncome": "SALARY"
     }
 }
 ```
@@ -482,14 +490,16 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "address1": "Philippines",
              "address2": "",
              "address3": "",
-             "idType": "0",
+             "postalCode": "",
+             "occupation": "",
+             "idType": "PASSPORT",
              "idNumber": "PS256454165",
              "idDesc": "",
              "idIssueDate": "01/01/1994",
              "idExpDate": "01/01/1994",
              "nationality": "HKG",
              "accountNumber": "",
-             "sourceIncome": "1"
+             "sourceIncome": "SALARY"
          }
      }'
 ```
@@ -528,16 +538,18 @@ entity | | Object | Parameter list | M
 | | address1 | String(35) | Remitter Address1 | O
 | | address2 | String(35) | Remitter Address2 | O
 | | address3 | String(50) | Remitter Address3 | O
-| | idType | int(3) | Remitter identity type | O
+| | postalCode | String(16) | Remitter PostalCode | C
+| | occupation | String(64) | Remitter Occupation | C
+| | idType | String(16) | Remitter identity type | O
 | | idNumber | String(20) | ID number | O
-| | idDesc | String(30) | description when ID Type=6 | O
+| | idDesc | String(30) | description for id | C
 | | idIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | idExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | birthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
 | | gender | String(1) | Remitter gender. M=Male, F=Female | O
 | | nationality | String(3) | Remitter Nationality(3 characters Country ISO code) | O
 | | accountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(2) | Remitter source of income | O
+| | sourceIncome | String(16) | Remitter source of income | O
 
 > Response Body:
 
@@ -642,14 +654,16 @@ entity | | Object | Parameter list | M
         "address1": "Philippines",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
         "accountNumber": "",
-        "sourceIncome": "1"
+        "sourceIncome": "SALARY"
     }
 }
 ```
@@ -671,7 +685,9 @@ entity | | Object | Parameter list
 | | address1 | String | Remitter Address1
 | | address2 | String | Remitter Address2
 | | address3 | String | Remitter Address3
-| | idType | int | Remitter identity type
+| | postalCode | String | Remitter PostalCode
+| | occupation | String | Remitter Occupation
+| | idType | String | Remitter identity type
 | | idNumber | String | ID number
 | | idDesc | String | description
 | | idIssueDate | String | ID issue date (MM/DD/YYYY)
@@ -706,7 +722,9 @@ This method allows the partner to Register New Beneficiary.
         "address1": "Philippines",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
@@ -714,10 +732,11 @@ This method allows the partner to Register New Beneficiary.
         "birthdate": "01/01/1994",
         "gender": "M",
         "nationality": "HKG",
-        "relationship": "3",
+        "relationship": "BROTHER",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
+        "account": "",
         "bankAddress": "Beneficiary_BankAddress"
     }
 }
@@ -741,7 +760,9 @@ curl -X POST http://staging.nextpls.com/v1/remittance
                  "address1": "Philippines",
                  "address2": "",
                  "address3": "",
-                 "idType": "0",
+                 "postalCode": "",
+                 "occupation": "",
+                 "idType": "PASSPORT",
                  "idNumber": "PS256454165",
                  "idDesc": "",
                  "idIssueDate": "01/01/1994",
@@ -749,10 +770,11 @@ curl -X POST http://staging.nextpls.com/v1/remittance
                  "birthdate": "01/01/1994",
                  "gender": "M",
                  "nationality": "HKG",
-                 "relationship": "4",
+                 "relationship": "BROTHER",
                  "bankCode": "11003544",
                  "bankAccountNumber": "4555556564564",
                  "bankAccountName": "Beneficiary_BankName",
+                 "account": "",
                  "bankAddress": "Beneficiary_BankAddress"
              }
      }'
@@ -792,18 +814,21 @@ entity | | Object | Parameter list | M
 | | address1 | String(35) | Beneficiary Address1 | M
 | | address2 | String(35) | Beneficiary Address2 | O
 | | address3 | String(35) | Beneficiary Address3 | O
-| | idType | int(2) | Type of Beneficiary Id Proof | O
+| | postalCode | String(16) | Beneficiary Postal Code | C
+| | occupation | String(64) | Beneficiary Occupation | C
+| | idType | String(16) | Type of Beneficiary Id Proof | O
 | | idNumber | String(20) | Beneficiary ID Number | O
-| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | idDesc | String(20) | Description of Beneficiary ID | C
 | | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
 | | gender | String(1) | Gender of Beneficiary | O
 | | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | relationship | String(3) | Relationship with the remitter | M
+| | relationship | String(16) | Relationship with the remitter | M
 | | bankCode | String(20) | Bank code for Beneficiary | C
 | | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | bankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | account | String(35) | Account of Beneficiary | C
 | | bankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
@@ -852,7 +877,9 @@ This method allows the partner to Edit Registered Beneficiary Profile.
         "address1": "Philippines",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
@@ -860,10 +887,11 @@ This method allows the partner to Edit Registered Beneficiary Profile.
         "birthdate": "01/01/1994",
         "gender": "M",
         "nationality": "HKG",
-        "relationship": "3",
+        "relationship": "BROTHER",
         "bankCode": "11003544",
         "bankAccountNumber": "4555556564564",
         "bankAccountName": "Beneficiary_BankName",
+        "account": "",
         "bankAddress": "Beneficiary_BankAddress"
     }
 }
@@ -888,7 +916,9 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "address1": "Philippines",
              "address2": "",
              "address3": "",
-             "idType": "0",
+             "postalCode": "",
+             "occupation": "",
+             "idType": "PASSPORT",
              "idNumber": "PS256454165",
              "idDesc": "",
              "idIssueDate": "01/01/1994",
@@ -896,10 +926,11 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "birthdate": "01/01/1994",
              "gender": "M",
              "nationality": "HKG",
-             "relationship": "3",
+             "relationship": "BROTHER",
              "bankCode": "11003544",
              "bankAccountNumber": "4555556564564",
              "bankAccountName": "Beneficiary_BankName",
+             "account": "",
              "bankAddress": "Beneficiary_BankAddress"
          }
      }'
@@ -939,18 +970,21 @@ entity | | Object | Parameter list | M
 | | address1 | String(35) | Beneficiary Address1 | O
 | | address2 | String(35) | Beneficiary Address2 | O
 | | address3 | String(35) | Beneficiary Address3 | O
-| | idType | int(2) | Type of Beneficiary Id Proof | O
+| | postalCode | String(16) | Beneficiary Postal Code | C
+| | occupation | String(64) | Beneficiary Occupation | C
+| | idType | String(16) | Type of Beneficiary Id Proof | O
 | | idNumber | String(20) | Beneficiary ID Number | O
-| | idDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | O
+| | idDesc | String(20) | Description of Beneficiary ID | O
 | | idIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | idExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | birthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
 | | gender | String(1) | Gender of Beneficiary | O
 | | nationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | O
-| | relationship | String(3) | Relationship with the remitter | M
+| | relationship | String(16) | Relationship with the remitter | M
 | | bankCode | String(20) | Bank code for Beneficiary | O
 | | bankAccountNumber | String(30) | Bank Account Number of Beneficiary | O
 | | bankAccountName | String(35) | Bank Account name of Beneficiary | O
+| | account | String(35) | Account of Beneficiary | C
 | | bankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
@@ -1137,14 +1171,17 @@ entity | | Object | Parameter list | M
         "address1": "Philippines",
         "address2": "",
         "address3": "",
-        "idType": "0",
+        "postalCode": "",
+        "occupation": "",
+        "idType": "PASSPORT",
         "idNumber": "PS256454165",
         "idDesc": "",
         "idIssueDate": "01/01/1994",
         "idExpDate": "01/01/1994",
         "nationality": "HKG",
-        "relationship": "3",
-        "accountNumber": ""
+        "relationship": "BROTHER",
+        "accountNumber": "",
+        "account": ""
     }
 }
 ```
@@ -1166,7 +1203,9 @@ entity | | Object | Parameter list
 | | address1 | String | Beneficiary Address1
 | | address2 | String | Beneficiary Address2
 | | address3 | String | Beneficiary Address3
-| | idType | int | Type of Beneficiary Id Proof
+| | postalCode | String | Beneficiary Postal Code
+| | occupation | String | Beneficiary Occupation
+| | idType | String | Type of Beneficiary Id Proof
 | | idNumber | String | Beneficiary ID Number
 | | idDesc | String | Description
 | | idIssueDate | String | Issue date(MM/DD/YYYY)
@@ -1178,6 +1217,7 @@ entity | | Object | Parameter list
 | | bankCode | String | Bank code
 | | accountNumber | String | Bank Account Number of Beneficiary
 | | bankAccountName | String | Bank Account name of Beneficiary
+| | account | String | Account of Beneficiary
 | | bankAddress | String | Beneficiary Bank Address
 
 
@@ -1596,7 +1636,7 @@ This method allows the partner to initiate the transfer.
        "clientTxnNo": "1000",
        "remitterNo": "",
        "beneficiaryNo": "",
-       "purposeCode": "3",
+       "purposeCode": "EDUCATION",
        
         "remitterFirstName": "Remitter_First_Name",
         "remitterMiddleName": "",
@@ -1611,14 +1651,16 @@ This method allows the partner to initiate the transfer.
         "remitterAddress1": "Italy",
         "remitterAddress2": "",
         "remitterAddress3": "",
-        "remitterIdType": "0",
+        "remitterPostalCode": "",
+        "remitterOccupation": "",
+        "remitterIdType": "PASSPORT",
         "remitterIdNumber": "PS256454165",
         "remitterIdDesc": "",
         "remitterIdIssueDate": "01/01/1994",
         "remitterIdExpDate": "01/01/1994",
         "remitterNationality": "HKG",
         "remitterAccountNumber": "",
-        "sourceIncome": "1",
+        "sourceIncome": "SALARY",
         
         "beneficiaryFirstName": "Beneficiary_First_Name",
         "beneficiaryMiddleName": "",
@@ -1633,16 +1675,19 @@ This method allows the partner to initiate the transfer.
         "beneficiaryAddress1": "Philippines",
         "beneficiaryAddress2": "",
         "beneficiaryAddress3": "",
-        "beneficiaryIdType": "0",
+        "beneficiaryPostalCode": "",
+        "beneficiaryOccupation": "",
+        "beneficiaryIdType": "PASSPORT",
         "beneficiaryIdNumber": "",
         "beneficiaryIdDesc": "",
         "beneficiaryIdIssueDate": "",
         "beneficiaryIdExpDate": "",
         "beneficiaryNationality": "HKG",
-        "beneficiaryRelationship": "3",
+        "beneficiaryRelationship": "BROTHER",
         "beneficiaryBankCode": "11003544",
         "beneficiaryBankAccountNumber": "4555556564564",
         "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+        "beneficiaryAccount": "",
         "beneficiaryBankAddress": ""
     }
 }
@@ -1661,7 +1706,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
                        "clientTxnNo": "1000",
                        "remitterNo": "JJ201A1131599873",
                        "beneficiaryNo": "RP122141",
-                       "purposeCode": "3"
+                       "purposeCode": "EDUCATION"
                    }
      }'
 ```
@@ -1679,7 +1724,7 @@ public class example{
         txnRequestDto.setClientTxnNo("1000");
         txnRequestDto.setBeneficiaryNo("XD201G0589941750");
         txnRequestDto.setRemitterNo("JJ201A1131599873");
-        txnRequestDto.setPurposeCode("3");
+        txnRequestDto.setPurposeCode("EDUCATION");
         NextPlsDoTransactionRequest transactionAddRequest = 
                 NextPlsDoTransactionRequest.build(txnRequestDto);
         client.execute(transactionAddRequest);
@@ -1697,7 +1742,7 @@ entity | | Object | Parameter list | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
 | | remitterNo | String(20) | Unique code for NextPls remitter | C
 | | beneficiaryNo | String(20) | Unique code for NextPls beneficiary | C
-| | purposeCode | String(2) | Purpose Code for txn | M
+| | purposeCode | String(16) | Purpose Code for txn | M
 | | remitterFirstName | String(50) | Remitter first name | M
 | | remitterMiddleName | String(50) | Remitter middle name | O
 | | remitterLastName | String(50) | Remitter last name | M
@@ -1709,16 +1754,18 @@ entity | | Object | Parameter list | M
 | | remitterAddress1 | String(35) | Remitter Address1 | M
 | | remitterAddress2 | String(35) | Remitter Address2 | O
 | | remitterAddress3 | String(50) | Remitter Address3 | O
-| | remitterIdType | int(3) | Remitter identity type | M
+| | remitterPostalCode | String(16) | Remitter PostalCode | C
+| | remitterOccupation | String(64) | Remitter Occupation | C
+| | remitterIdType | String(16) | Remitter identity type | M
 | | remitterIdNumber | String(20) | ID number | M
-| | remitterIdDesc | String(30) | description when ID Type=6 | C
+| | remitterIdDesc | String(30) | description for id | C
 | | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
 | | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(2) | Remitter source of income | M
+| | sourceIncome | String(16) | Remitter source of income | M
 | | beneficiaryFirstName | String(50) | Beneficiary First Name | M
 | | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
 | | beneficiaryLastName | String(50) | Beneficiary Last Name | M
@@ -1730,18 +1777,21 @@ entity | | Object | Parameter list | M
 | | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
 | | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
 | | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
-| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
+| | beneficiaryPostalCode | String(16) | Beneficiary PostalCode | C
+| | beneficiaryOccupation | String(64) | Beneficiary Occupation | C
+| | beneficiaryIdType | String(16) | Type of Beneficiary Id Proof | O
 | | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
-| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID | C
 | | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
 | | beneficiaryGender | String(1) | Gender of Beneficiary | O
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
+| | beneficiaryRelationship | String(16) | Relationship with the remitter | M
 | | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
 | | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | beneficiaryAccount | String(35) | Account of Beneficiary | C
 | | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
@@ -1785,7 +1835,7 @@ Before using this method, you must request the 'GetExRateLock'
     "entity": {
        "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca",
        "clientTxnNo": "1000",
-       "purposeCode": "3",
+       "purposeCode": "EDUCATION",
        "paymentMode": "Bank",
        "payInCountry": "HKG",
        "payInCurrency": "HKD",
@@ -1808,14 +1858,16 @@ Before using this method, you must request the 'GetExRateLock'
         "remitterAddress1": "Italy",
         "remitterAddress2": "",
         "remitterAddress3": "",
-        "remitterIdType": "0",
+        "remitterPostalCode": "",
+        "remitterOccupation": "",
+        "remitterIdType": "PASSPORT",
         "remitterIdNumber": "PS256454165",
         "remitterIdDesc": "",
         "remitterIdIssueDate": "01/01/1994",
         "remitterIdExpDate": "01/01/1994",
         "remitterNationality": "HKG",
         "remitterAccountNumber": "",
-        "sourceIncome": "1",
+        "sourceIncome": "SALARY",
         
         "beneficiaryFirstName": "Beneficiary_First_Name",
         "beneficiaryMiddleName": "",
@@ -1830,16 +1882,19 @@ Before using this method, you must request the 'GetExRateLock'
         "beneficiaryAddress1": "Philippines",
         "beneficiaryAddress2": "",
         "beneficiaryAddress3": "",
-        "beneficiaryIdType": "0",
+        "beneficiaryPostalCode": "",
+        "beneficiaryOccupation": "",
+        "beneficiaryIdType": "PASSPORT",
         "beneficiaryIdNumber": "",
         "beneficiaryIdDesc": "",
         "beneficiaryIdIssueDate": "",
         "beneficiaryIdExpDate": "",
         "beneficiaryNationality": "PHL",
-        "beneficiaryRelationship": "3",
+        "beneficiaryRelationship": "BROTHER",
         "beneficiaryBankCode": "11003544",
         "beneficiaryBankAccountNumber": "4555556564564",
         "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+        "beneficiaryAccount": "",
         "beneficiaryBankAddress": ""
     }
 }
@@ -1856,7 +1911,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
          "entity": {
             "token": "dfb14532-ca6d-4f43-a5bc-045163b045ca",
             "clientTxnNo": "1000",
-            "purposeCode": "3",
+            "purposeCode": "EDUCATION",
             "paymentMode": "Bank",
             "payInCountry": "HKG",
             "payInCurrency": "HKD",
@@ -1879,14 +1934,16 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "remitterAddress1": "Italy",
              "remitterAddress2": "",
              "remitterAddress3": "",
-             "remitterIdType": "0",
+             "remitterPostalCode": "",
+             "remitterOccupation": "",
+             "remitterIdType": "PASSPORT",
              "remitterIdNumber": "PS256454165",
              "remitterIdDesc": "",
              "remitterIdIssueDate": "01/01/1994",
              "remitterIdExpDate": "01/01/1994",
              "remitterNationality": "HKG",
              "remitterAccountNumber": "",
-             "sourceIncome": "1",
+             "sourceIncome": "SALARY",
              
              "beneficiaryFirstName": "Beneficiary_First_Name",
              "beneficiaryMiddleName": "",
@@ -1901,16 +1958,19 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "beneficiaryAddress1": "Philippines",
              "beneficiaryAddress2": "",
              "beneficiaryAddress3": "",
-             "beneficiaryIdType": "0",
+             "beneficiaryPostalCode": "",
+             "beneficiaryOccupation": "",
+             "beneficiaryIdType": "PASSPORT",
              "beneficiaryIdNumber": "",
              "beneficiaryIdDesc": "",
              "beneficiaryIdIssueDate": "",
              "beneficiaryIdExpDate": "",
              "beneficiaryNationality": "PHL",
-             "beneficiaryRelationship": "3",
+             "beneficiaryRelationship": "BROTHER",
              "beneficiaryBankCode": "11003544",
              "beneficiaryBankAccountNumber": "4555556564564",
              "beneficiaryBankAccountName": "Benificiary_BankAccountName",
+             "beneficiaryAccount": "",
              "beneficiaryBankAddress": ""
          }
      }'
@@ -1927,7 +1987,7 @@ public class example{
         NextPlsTransactionRequestDto txnRequestDto = new NextPlsTransactionRequestDto();
         txnRequestDto.setToken("dfb14532-ca6d-4f43-a5bc-045163b045ca");
         txnRequestDto.setClientTxnNo("1000");
-        txnRequestDto.setPurposeCode("3");
+        txnRequestDto.setPurposeCode("EDUCATION");
         txnRequestDto.setPaymentMode("Bank");
         txnRequestDto.setPayInCountry("HKG");
         txnRequestDto.setPayInCurrency("HKD");
@@ -1953,11 +2013,13 @@ public class example{
         txnRequestDto.setRemitterAddress1("HONG KONG");
         txnRequestDto.setRemitterAddress2("");
         txnRequestDto.setRemitterAddress3("");
-        txnRequestDto.setRemitterIdType("1");
+        txnRequestDto.setRemitterPostalCode("");
+        txnRequestDto.setRemitterOccupation("");
+        txnRequestDto.setRemitterIdType("PASSPORT");
         txnRequestDto.setRemitterIdNumber("PS256454165");
         txnRequestDto.setRemitterIdDesc("");
         txnRequestDto.setRemitterAccountNumber("");
-        txnRequestDto.setSourceOfIncome("3");
+        txnRequestDto.setSourceOfIncome("SALARY");
         
         txnRequestDto.setBeneficiaryFirstName("hong");
         txnRequestDto.setBeneficiaryMiddleName("");
@@ -1970,7 +2032,9 @@ public class example{
         txnRequestDto.setBeneficiaryAddress1("Philippines");
         txnRequestDto.setBeneficiaryAddress2("");
         txnRequestDto.setBeneficiaryAddress3("");
-        txnRequestDto.setBeneficiaryIdType("0");
+        txnRequestDto.setBeneficiaryPostalCode("");
+        txnRequestDto.setBeneficiaryOccupation("");
+        txnRequestDto.setBeneficiaryIdType("PASSPORT");
         txnRequestDto.setBeneficiaryIdNumber("");
         txnRequestDto.setBeneficiaryIdDesc("");
         txnRequestDto.setBeneficiaryIdIssueDate("");
@@ -1978,10 +2042,11 @@ public class example{
         txnRequestDto.setBeneficiaryBirthdate("");
         txnRequestDto.setBeneficiaryGender("");
         txnRequestDto.setBeneficiaryNationality("PHL");
-        txnRequestDto.setBeneficiaryRelationship("parents");
+        txnRequestDto.setBeneficiaryRelationship("BROTHER");
         txnRequestDto.setBeneficiaryBankCode("11003544");
         txnRequestDto.setBeneficiaryBankAccountNumber("4555556564564");
         txnRequestDto.setBeneficiaryBankAccountName("Benificiary_BankName");
+        txnRequestDto.setBeneficiaryAccount("");
         txnRequestDto.setBeneficiaryBankAddress("");
         NextPlsDoSimpleTxnRequest simpleTxnRequest = NextPlsDoSimpleTxnRequest.build(txnRequestDto);
         client.execute(simpleTxnRequest);
@@ -1997,7 +2062,7 @@ apiName | | String | DO_TOKEN_TRANSACTION | M
 entity | | Object | Parameter list | M
 | | token | String(36) | Unique token for locked rate | M
 | | clientTxnNo | String(20) | Unique code for partner txn | M
-| | purposeCode | String(2) | Purpose Code for txn | M
+| | purposeCode | String(16) | Purpose Code for txn | M
 | | paymentMode | String(20) | Payment Mode | M
 | | payInCountry | String(3) | Pay In Country | M
 | | payInCurrency | String(3) | Pay In Currency | M
@@ -2017,16 +2082,18 @@ entity | | Object | Parameter list | M
 | | remitterAddress1 | String(35) | Remitter Address1 | M
 | | remitterAddress2 | String(35) | Remitter Address2 | O
 | | remitterAddress3 | String(50) | Remitter Address3 | O
-| | remitterIdType | int(3) | Remitter identity type | M
+| | remitterPostalCode | String(16) | Remitter PostalCode | C
+| | remitterOccupation | String(64) | Remitter Occupation | C
+| | remitterIdType | String(16) | Remitter identity type | M
 | | remitterIdNumber | String(20) | ID number | M
-| | remitterIdDesc | String(30) | description when ID Type=6 | C
+| | remitterIdDesc | String(30) | description for id | C
 | | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
 | | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(2) | Remitter source of income | M
+| | sourceIncome | String(16) | Remitter source of income | M
 | | beneficiaryFirstName | String(50) | Beneficiary First Name | M
 | | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
 | | beneficiaryLastName | String(50) | Beneficiary Last Name | M
@@ -2038,18 +2105,21 @@ entity | | Object | Parameter list | M
 | | beneficiaryAddress1 | String(35) | Beneficiary Address1 | M
 | | beneficiaryAddress2 | String(35) | Beneficiary Address2 | O
 | | beneficiaryAddress3 | String(35) | Beneficiary Address3 | O
-| | beneficiaryIdType | int(2) | Type of Beneficiary Id Proof | O
+| | beneficiaryPostalCode | String(16) | Beneficiary PostalCode | C
+| | beneficiaryOccupation | String(64) | Beneficiary Occupation | C
+| | beneficiaryIdType | String(16) | Type of Beneficiary Id Proof | O
 | | beneficiaryIdNumber | String(20) | Beneficiary ID Number | O
-| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID,"M" only if IDType is 6 | C
+| | beneficiaryIdDesc | String(20) | Description of Beneficiary ID | C
 | | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
 | | beneficiaryGender | String(1) | Gender of Beneficiary | O
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
-| | beneficiaryRelationship | String(3) | Relationship with the remitter | M
+| | beneficiaryRelationship | String(16) | Relationship with the remitter | M
 | | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
 | | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
+| | beneficiaryAccount | String(35) | Account of Beneficiary | C
 | | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
 
 > Response Body:
