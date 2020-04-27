@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-12" class="toc-h1 toc-link" data-title="Version 1.0.12">Version 1.0.12</a>
+            <a href="#version-1-0-14" class="toc-h1 toc-link" data-title="Version 1.0.14">Version 1.0.14</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -324,27 +324,27 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-12'>Version 1.0.12</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-14'>Version 1.0.14</h1><h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">12</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">14</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.12&lt;/version&gt;
+      &lt;version&gt;1.0.14&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.12&lt;/version&gt;
+      &lt;version&gt;1.0.14&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -1814,6 +1814,27 @@ CEK is not a necessarily human readable ASCII string
 <td>Beneficiary Bank Address</td>
 <td>O</td>
 </tr>
+<tr>
+<td></td>
+<td style="text-align: left">iban</td>
+<td>String(35)</td>
+<td>Beneficiary IBAN</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">swiftCode</td>
+<td>String(16)</td>
+<td>Beneficiary Swift Code</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">routingCode</td>
+<td>String(16)</td>
+<td>Beneficiary Routing Code</td>
+<td>C</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -2172,6 +2193,27 @@ CEK is not a necessarily human readable ASCII string
 <td>String(35)</td>
 <td>Beneficiary Bank Address</td>
 <td>O</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">iban</td>
+<td>String(35)</td>
+<td>Beneficiary IBAN</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">swiftCode</td>
+<td>String(16)</td>
+<td>Beneficiary Swift Code</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: left">routingCode</td>
+<td>String(16)</td>
+<td>Beneficiary Routing Code</td>
+<td>C</td>
 </tr>
 </tbody></table>
 
@@ -2666,6 +2708,24 @@ CEK is not a necessarily human readable ASCII string
 <td>bankAddress</td>
 <td>String</td>
 <td>Beneficiary Bank Address</td>
+</tr>
+<tr>
+<td></td>
+<td>iban</td>
+<td>String</td>
+<td>Beneficiary IBAN</td>
+</tr>
+<tr>
+<td></td>
+<td>swiftCode</td>
+<td>String</td>
+<td>Beneficiary Swift Code</td>
+</tr>
+<tr>
+<td></td>
+<td>routingCode</td>
+<td>String</td>
+<td>Beneficiary Routing Code</td>
 </tr>
 </tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='6-1-getbalance'>6.1.GetBalance</h2>
@@ -3941,6 +4001,27 @@ CEK is not a necessarily human readable ASCII string
 <td>Beneficiary Bank Address</td>
 <td>O</td>
 </tr>
+<tr>
+<td></td>
+<td>beneficiaryIban</td>
+<td>String(35)</td>
+<td>Beneficiary IBAN</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiarySwiftCode</td>
+<td>String(16)</td>
+<td>Beneficiary Swift Code</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryRoutingCode</td>
+<td>String(16)</td>
+<td>Beneficiary Routing Code</td>
+<td>C</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -4686,6 +4767,27 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 <td>String(35)</td>
 <td>Beneficiary Bank Address</td>
 <td>O</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryIban</td>
+<td>String(35)</td>
+<td>Beneficiary IBAN</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiarySwiftCode</td>
+<td>String(16)</td>
+<td>Beneficiary Swift Code</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryRoutingCode</td>
+<td>String(16)</td>
+<td>Beneficiary Routing Code</td>
+<td>C</td>
 </tr>
 </tbody></table>
 
