@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.12
+# Version 1.0.14
 
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.12</version>
+      <version>1.0.14</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.12</version>
+      <version>1.0.14</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.12</version>
+      <version>1.0.14</version>
   </dependency>
 */
 ```
@@ -830,6 +830,9 @@ entity | | Object | Parameter list | M
 | | bankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | account | String(35) | Account of Beneficiary | C
 | | bankAddress | String(35) | Beneficiary Bank Address | O
+| | iban | String(35) | Beneficiary IBAN | C
+| | swiftCode | String(16) | Beneficiary Swift Code | C
+| | routingCode | String(16) | Beneficiary Routing Code | C
 
 > Response Body:
 
@@ -986,6 +989,9 @@ entity | | Object | Parameter list | M
 | | bankAccountName | String(35) | Bank Account name of Beneficiary | O
 | | account | String(35) | Account of Beneficiary | C
 | | bankAddress | String(35) | Beneficiary Bank Address | O
+| | iban | String(35) | Beneficiary IBAN | C
+| | swiftCode | String(16) | Beneficiary Swift Code | C
+| | routingCode | String(16) | Beneficiary Routing Code | C
 
 > Response Body:
 
@@ -1219,6 +1225,9 @@ entity | | Object | Parameter list
 | | bankAccountName | String | Bank Account name of Beneficiary
 | | account | String | Account of Beneficiary
 | | bankAddress | String | Beneficiary Bank Address
+| | iban | String | Beneficiary IBAN
+| | swiftCode | String | Beneficiary Swift Code
+| | routingCode | String | Beneficiary Routing Code
 
 
 # Transaction
@@ -1793,6 +1802,9 @@ entity | | Object | Parameter list | M
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | beneficiaryAccount | String(35) | Account of Beneficiary | C
 | | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
+| | beneficiaryIban | String(35) | Beneficiary IBAN | C
+| | beneficiarySwiftCode | String(16) | Beneficiary Swift Code | C
+| | beneficiaryRoutingCode | String(16) | Beneficiary Routing Code | C
 
 > Response Body:
 
@@ -2121,6 +2133,9 @@ entity | | Object | Parameter list | M
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | beneficiaryAccount | String(35) | Account of Beneficiary | C
 | | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
+| | beneficiaryIban | String(35) | Beneficiary IBAN | C
+| | beneficiarySwiftCode | String(16) | Beneficiary Swift Code | C
+| | beneficiaryRoutingCode | String(16) | Beneficiary Routing Code | C
 
 > Response Body:
 
