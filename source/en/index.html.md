@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.14
+# Version 1.0.15
 
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.14</version>
+      <version>1.0.15</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.14</version>
+      <version>1.0.15</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.14</version>
+      <version>1.0.15</version>
   </dependency>
 */
 ```
@@ -285,7 +285,7 @@ C | string | The requirement for this field is conditional based on other field 
 # Basic Information
 ## 3.1.GetCountryPayMode
 This method allows the partner to Get Country based Payment Modes.
-### HTTP Request
+### 3.1.1.HTTP Request
 <span class="http-method post">POST</span> `GET_COUNTRY_PAY_MODE`
 
 The function is not open yet, Coming soon!
@@ -1369,9 +1369,9 @@ Field |  | Type | Describe | O/M
 --------- | ------- | ------- | ---------- | -------
 apiName | | String | GET_EX_RATE | M
 entity | | Object | Parameter list | M
-| | payInCountry | String(3) | Pay In Currency | M
+| | payInCountry | String(3) | Pay In Country | M
 | | payInCurrency | String(3) | Pay In Currency | M
-| | payOutCountry | String(3) | Pay In Currency | M
+| | payOutCountry | String(3) | Pay Out Country | M
 | | payOutCurrency | String(3) | Pay Out Currency | M
 
 > Response Body:
@@ -1398,9 +1398,9 @@ apiName | | String | GET_EX_RATE_R
 code | | String | Result Code
 msg | | String | Result message
 entity | | Object | Parameter list
-| | payInCountry | String | Pay In Currency
+| | payInCountry | String | Pay In Country
 | | payInCurrency | String | Pay In Currency
-| | payOutCountry | String | Pay In Currency
+| | payOutCountry | String | Pay Out Country
 | | payOutCurrency | String | Pay Out Currency
 | | exRate | String | The exchange rate
 
@@ -1580,7 +1580,7 @@ Field |   | Type | Describe
 --------- | ------- | ------- |-----------
 apiName | | String | DO_TRANSACTION_PRE
 entity | | Object | Parameter list
-| | clientTxnNo | String(20) | Unique code for partner txn | M
+| | clientTxnNo | String(20) | Unique code for partner's txn | M
 | | payInCountry | String(3) | Pay In Country Code | M
 | | payInCurrency | String(3) | Pay In Currency | M
 | | payInAmount | String(18) | Pay In Amount | C
@@ -1620,7 +1620,7 @@ code | | String | Result Code
 msg | | String | Result message
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
-| | clientTxnNo | String | Unique code for partner txn
+| | clientTxnNo | String | Unique code for partner's txn
 | | payInCurrency | String | Pay In Currency
 | | payOutCurrency | String | Pay Out Currency
 | | payOutAmount | String | Pay Out Amount
@@ -1771,6 +1771,7 @@ entity | | Object | Parameter list | M
 | | remitterIdIssueDate | String(10) | ID issue date (MM/DD/YYYY) | O
 | | remitterIdExpDate | String(10) | ID expiry date (MM/DD/YYYY)  | O
 | | remitterBirthdate | String(10) | Remitter date of birth (MM/DD/YYYY) | O
+| | remitterCountryOfBirth | String(10) | Birth country of Remitter | O
 | | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
@@ -1794,6 +1795,7 @@ entity | | Object | Parameter list | M
 | | beneficiaryIdIssueDate | String(10) | Issue date(MM/DD/YYYY) | O
 | | beneficiaryIdExpDate | String(10) | Expiry date(MM/DD/YYYY) | O
 | | beneficiaryBirthdate | String(10) | Beneficiary BirthDate(MM/DD/YYYY) | O
+| | beneficiaryCountryOfBirth | String(3) | Birth country of Beneficiary | O
 | | beneficiaryGender | String(1) | Gender of Beneficiary | O
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
 | | beneficiaryRelationship | String(16) | Relationship with the remitter | M
@@ -1801,6 +1803,7 @@ entity | | Object | Parameter list | M
 | | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | beneficiaryAccount | String(35) | Account of Beneficiary | C
+| | beneficiaryAccountType | String(35) | Account Type of Beneficiary | C
 | | beneficiaryBankAddress | String(35) | Beneficiary Bank Address | O
 | | beneficiaryIban | String(35) | Beneficiary IBAN | C
 | | beneficiarySwiftCode | String(16) | Beneficiary Swift Code | C
