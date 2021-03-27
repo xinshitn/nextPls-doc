@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-14" class="toc-h1 toc-link" data-title="Version 1.0.14">Version 1.0.14</a>
+            <a href="#version-1-0-15" class="toc-h1 toc-link" data-title="Version 1.0.15">Version 1.0.15</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -324,27 +324,27 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-14'>Version 1.0.14</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-15'>Version 1.0.15</h1><h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">14</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">15</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.14&lt;/version&gt;
+      &lt;version&gt;1.0.15&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.14&lt;/version&gt;
+      &lt;version&gt;1.0.15&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -600,7 +600,7 @@ CEK is not a necessarily human readable ASCII string
 </tbody></table>
 <h1 id='basic-information'>Basic Information</h1><h2 id='3-1-getcountrypaymode'>3.1.GetCountryPayMode</h2>
 <p>This method allows the partner to Get Country based Payment Modes.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='3-1-1-http-request'>3.1.1.HTTP Request</h3>
 <p><span class="http-method post">POST</span> <code>GET_COUNTRY_PAY_MODE</code></p>
 
 <p>The function is not open yet, Coming soon!</p>
@@ -2938,7 +2938,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>payInCountry</td>
 <td>String(3)</td>
-<td>Pay In Currency</td>
+<td>Pay In Country</td>
 <td>M</td>
 </tr>
 <tr>
@@ -2952,7 +2952,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>payOutCountry</td>
 <td>String(3)</td>
-<td>Pay In Currency</td>
+<td>Pay Out Country</td>
 <td>M</td>
 </tr>
 <tr>
@@ -3016,7 +3016,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>payInCountry</td>
 <td>String</td>
-<td>Pay In Currency</td>
+<td>Pay In Country</td>
 </tr>
 <tr>
 <td></td>
@@ -3028,7 +3028,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>payOutCountry</td>
 <td>String</td>
-<td>Pay In Currency</td>
+<td>Pay Out Country</td>
 </tr>
 <tr>
 <td></td>
@@ -3320,7 +3320,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>clientTxnNo</td>
 <td>String(20)</td>
-<td>Unique code for partner txn</td>
+<td>Unique code for partner&#39;s txn</td>
 </tr>
 <tr>
 <td></td>
@@ -3435,7 +3435,7 @@ CEK is not a necessarily human readable ASCII string
 <td></td>
 <td>clientTxnNo</td>
 <td>String</td>
-<td>Unique code for partner txn</td>
+<td>Unique code for partner&#39;s txn</td>
 </tr>
 <tr>
 <td></td>
@@ -3786,6 +3786,13 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>remitterCountryOfBirth</td>
+<td>String(10)</td>
+<td>Birth country of Remitter</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
 <td>remitterGender</td>
 <td>String(1)</td>
 <td>Remitter gender. M=Male, F=Female</td>
@@ -3947,6 +3954,13 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>beneficiaryCountryOfBirth</td>
+<td>String(3)</td>
+<td>Birth country of Beneficiary</td>
+<td>O</td>
+</tr>
+<tr>
+<td></td>
 <td>beneficiaryGender</td>
 <td>String(1)</td>
 <td>Gender of Beneficiary</td>
@@ -3992,6 +4006,13 @@ CEK is not a necessarily human readable ASCII string
 <td>beneficiaryAccount</td>
 <td>String(35)</td>
 <td>Account of Beneficiary</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryAccountType</td>
+<td>String(35)</td>
+<td>Account Type of Beneficiary</td>
 <td>C</td>
 </tr>
 <tr>
