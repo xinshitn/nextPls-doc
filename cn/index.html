@@ -360,12 +360,27 @@
 
 <p>我们希望一个CEK由两个16位字符串拼接而成(16位的初始向量ivParameter和16位的AES密钥sKey)</p>
 
-<p><code>示例</code>
-item | ASCII_string 
---------- | -------
-sKey | cek_tester_remit
-ivParameter | initial_tester01
-CEK | cek_tester_remitinitial_tester01</p>
+<p><code>示例</code></p>
+
+<table><thead>
+<tr>
+<th>item</th>
+<th>ASCII_string</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sKey</td>
+<td>cek_tester_remit</td>
+</tr>
+<tr>
+<td>ivParameter</td>
+<td>initial_tester01</td>
+</tr>
+<tr>
+<td>CEK</td>
+<td>cek_tester_remitinitial_tester01</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 CEK不需要有特殊含义，可以为随机的字符串
