@@ -62,7 +62,8 @@ search: true
 我们希望一个CEK由两个16位字符串拼接而成(16位的初始向量ivParameter和16位的AES密钥sKey)
 
 `示例`
-item | ASCII_string 
+
+item | ASCII_string
 --------- | -------
 sKey | cek_tester_remit
 ivParameter | initial_tester01
