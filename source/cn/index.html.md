@@ -51,6 +51,8 @@ search: true
 
 如果想获取更多信息，可以访问我们的官方网站 [NextPls](https://www.nextpls.com) 更多地了解我们。
 
+![avatar](/images/sequenceDiagram.jpeg)
+
 # 开始
 ## 1.NextPls API的加密方式
 ### 1.1.Request
