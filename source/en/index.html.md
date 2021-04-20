@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.15</version>
+      <version>1.0.16</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.15</version>
+      <version>1.0.16</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.15</version>
+      <version>1.0.16</version>
   </dependency>
 */
 ```
