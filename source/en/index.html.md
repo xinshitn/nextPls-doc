@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.15
+# Version 1.0.16
 
 ## Introduction
 
@@ -1599,7 +1599,8 @@ entity | | Object | Parameter list
     "msg": "success",
     "entity": {
         "txnNo": "IU201G0279816077",
-        "clientTxnNo": "1000",
+        "clientTxnNo": "1000", 
+        "payInAmount": "13.57",
         "payInCurrency": "HKD",
         "payOutCurrency": "PHP",
         "payOutAmount": "100",
@@ -1607,6 +1608,7 @@ entity | | Object | Parameter list
         "paymentMode": "Bank",
         "exchangeRate": "7.369781",
         "commission": "0.1000",
+        "commissionCurrency": "HKD",
         "totalAmount": "13.67"
     }
 }
@@ -1622,12 +1624,14 @@ entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner's txn
 | | payInCurrency | String | Pay In Currency
+| | payInAmount | String | Pay In Amount
 | | payOutCurrency | String | Pay Out Currency
 | | payOutAmount | String | Pay Out Amount
 | | transferCurrency | String | Transfer Currency
 | | paymentMode | String | Payment Mode
 | | exchangeRate | String | Exchange Rate
 | | commission | String | commission
+| | commissionCurrency | String | currency of commission
 | | totalAmount | String | Total Amount to pay
 
 ## 6.5.DoTransaction

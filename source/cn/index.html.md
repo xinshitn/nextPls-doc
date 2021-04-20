@@ -13,7 +13,7 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.15 
+# 接口版本 v1.0.16 
 [For English](/en)
 ## 简介
 
@@ -583,12 +583,12 @@ public class example{
 apiName | | String | DO_TRANSACTION_PRE | M
 entity | | Object | 客户方请求参数 | M
 | | clientTxnNo | String(20) | 客户方唯一编号 | M
-| | payInCountry | String(3) | 汇款国家 | M
-| | payInCurrency | String(3) | 汇款币种 | M
-| | payInAmount | String(18) | 汇款金额 | C
-| | payOutCountry | String(3) | 到账国家 | M
-| | payOutCurrency | String(3) | 到账币种 | M
-| | payOutAmount | String(18) | 到账金额 | C
+| | payInCountry | String(3) | 汇款(源)国家 | M
+| | payInCurrency | String(3) | 汇款(源)币种 | M
+| | payInAmount | String(18) | 汇款(源)金额 | C
+| | payOutCountry | String(3) | 到账(目标)国家 | M
+| | payOutCurrency | String(3) | 到账(目标)币种 | M
+| | payOutAmount | String(18) | 到账(目标)金额 | C
 | | transferCurrency | String(3) | 交易币种(固定侧, 必须是汇款或到账币种) | M
 | | paymentMode | String(20) | 支付方式 | M
 
@@ -602,6 +602,7 @@ entity | | Object | 客户方请求参数 | M
   "entity": {
     "txnNo": "IU201G0279816077",
     "clientTxnNo": "1000",
+    "payInAmount": "13.57",
     "payInCurrency": "HKD",
     "payOutCurrency": "PHP",
     "payOutAmount": "100",
@@ -609,6 +610,7 @@ entity | | Object | 客户方请求参数 | M
     "paymentMode": "Bank",
     "exchangeRate": "7.369781",
     "commission": "0.1000",
+    "commissionCurrency": "HKD",
     "totalAmount": "13.67"
   }
 }
@@ -623,14 +625,15 @@ msg | | String | 返回消息
 entity | | Object | NextPls返回结果
 | | txnNo | String | 交易编号
 | | clientTxnNo | String | 客户方交易编号
-| | payInCurrency | String | 存入币种
-| | payOutCurrency | String | 到账币种
-| | payOutAmount | String | 到账金额
-| | transferCurrency | String | 结算币种
-| | transferAmount | String | 结算金额
+| | payInAmount | String | 汇款(源)金额
+| | payInCurrency | String | 汇款(源)币种
+| | payOutCurrency | String | 到账(目标)币种
+| | payOutAmount | String | 到账(目标)金额
+| | transferCurrency | String | 交易币种
 | | paymentMode | String | 支付方式
 | | exchangeRate | String | 汇率
 | | commission | String | 手续费
+| | commissionCurrency | String | 手续费币种
 | | totalAmount | String | 支付总额
 
 ## 6.5.DoTransaction
