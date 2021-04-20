@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-0-15" class="toc-h1 toc-link" data-title="接口版本 v1.0.15">接口版本 v1.0.15</a>
+            <a href="#v1-0-16" class="toc-h1 toc-link" data-title="接口版本 v1.0.16">接口版本 v1.0.16</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
@@ -324,7 +324,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='v1-0-15'>接口版本 v1.0.15</h1>
+        <h1 id='v1-0-16'>接口版本 v1.0.16</h1>
 <p><a href="/en">For English</a></p>
 <h2 id='5ea2e0cde2'>简介</h2>
 <blockquote>
@@ -1046,42 +1046,42 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td></td>
 <td>payInCountry</td>
 <td>String(3)</td>
-<td>汇款国家</td>
+<td>汇款(源)国家</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInCurrency</td>
 <td>String(3)</td>
-<td>汇款币种</td>
+<td>汇款(源)币种</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payInAmount</td>
 <td>String(18)</td>
-<td>汇款金额</td>
+<td>汇款(源)金额</td>
 <td>C</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCountry</td>
 <td>String(3)</td>
-<td>到账国家</td>
+<td>到账(目标)国家</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCurrency</td>
 <td>String(3)</td>
-<td>到账币种</td>
+<td>到账(目标)币种</td>
 <td>M</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutAmount</td>
 <td>String(18)</td>
-<td>到账金额</td>
+<td>到账(目标)金额</td>
 <td>C</td>
 </tr>
 <tr>
@@ -1110,6 +1110,7 @@ CEK不需要有特殊含义，可以为随机的字符串
   </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
@@ -1117,6 +1118,7 @@ CEK不需要有特殊含义，可以为随机的字符串
     </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"commissionCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.67"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1167,33 +1169,33 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 <tr>
 <td></td>
+<td>payInAmount</td>
+<td>String</td>
+<td>汇款(源)金额</td>
+</tr>
+<tr>
+<td></td>
 <td>payInCurrency</td>
 <td>String</td>
-<td>存入币种</td>
+<td>汇款(源)币种</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutCurrency</td>
 <td>String</td>
-<td>到账币种</td>
+<td>到账(目标)币种</td>
 </tr>
 <tr>
 <td></td>
 <td>payOutAmount</td>
 <td>String</td>
-<td>到账金额</td>
+<td>到账(目标)金额</td>
 </tr>
 <tr>
 <td></td>
 <td>transferCurrency</td>
 <td>String</td>
-<td>结算币种</td>
-</tr>
-<tr>
-<td></td>
-<td>transferAmount</td>
-<td>String</td>
-<td>结算金额</td>
+<td>交易币种</td>
 </tr>
 <tr>
 <td></td>
@@ -1212,6 +1214,12 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>commission</td>
 <td>String</td>
 <td>手续费</td>
+</tr>
+<tr>
+<td></td>
+<td>commissionCurrency</td>
+<td>String</td>
+<td>手续费币种</td>
 </tr>
 <tr>
 <td></td>

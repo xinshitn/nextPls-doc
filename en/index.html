@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-15" class="toc-h1 toc-link" data-title="Version 1.0.15">Version 1.0.15</a>
+            <a href="#version-1-0-16" class="toc-h1 toc-link" data-title="Version 1.0.16">Version 1.0.16</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -324,7 +324,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-15'>Version 1.0.15</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-16'>Version 1.0.16</h1><h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
@@ -3381,7 +3381,8 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOutAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
@@ -3389,6 +3390,7 @@ CEK is not a necessarily human readable ASCII string
         </span><span class="s2">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"exchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.369781"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commissionCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"totalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.67"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3445,6 +3447,12 @@ CEK is not a necessarily human readable ASCII string
 </tr>
 <tr>
 <td></td>
+<td>payInAmount</td>
+<td>String</td>
+<td>Pay In Amount</td>
+</tr>
+<tr>
+<td></td>
 <td>payOutCurrency</td>
 <td>String</td>
 <td>Pay Out Currency</td>
@@ -3478,6 +3486,12 @@ CEK is not a necessarily human readable ASCII string
 <td>commission</td>
 <td>String</td>
 <td>commission</td>
+</tr>
+<tr>
+<td></td>
+<td>commissionCurrency</td>
+<td>String</td>
+<td>currency of commission</td>
 </tr>
 <tr>
 <td></td>
