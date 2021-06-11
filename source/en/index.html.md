@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.16
+# Version 1.0.17.2
 
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 */
 ```
@@ -1673,7 +1673,7 @@ This method allows the partner to initiate the transfer.
         "remitterIdExpDate": "01/01/1994",
         "remitterNationality": "HKG",
         "remitterAccountNumber": "",
-        "sourceIncome": "SALARY",
+        "sourceOfIncome": "SALARY",
         
         "beneficiaryFirstName": "Beneficiary_First_Name",
         "beneficiaryMiddleName": "",
@@ -1779,7 +1779,7 @@ entity | | Object | Parameter list | M
 | | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(16) | Remitter source of income | M
+| | sourceOfIncome | String(16) | Remitter source of income | M
 | | beneficiaryFirstName | String(50) | Beneficiary First Name | M
 | | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
 | | beneficiaryLastName | String(50) | Beneficiary Last Name | M
@@ -1804,6 +1804,7 @@ entity | | Object | Parameter list | M
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
 | | beneficiaryRelationship | String(16) | Relationship with the remitter | M
 | | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
+| | beneficiaryBankName | String(64) | Bank name for Beneficiary | C
 | | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | beneficiaryAccount | String(35) | Account of Beneficiary | C
@@ -1886,7 +1887,7 @@ Before using this method, you must request the 'GetExRateLock'
         "remitterIdExpDate": "01/01/1994",
         "remitterNationality": "HKG",
         "remitterAccountNumber": "",
-        "sourceIncome": "SALARY",
+        "sourceOfIncome": "SALARY",
         
         "beneficiaryFirstName": "Beneficiary_First_Name",
         "beneficiaryMiddleName": "",
@@ -1962,7 +1963,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
              "remitterIdExpDate": "01/01/1994",
              "remitterNationality": "HKG",
              "remitterAccountNumber": "",
-             "sourceIncome": "SALARY",
+             "sourceOfIncome": "SALARY",
              
              "beneficiaryFirstName": "Beneficiary_First_Name",
              "beneficiaryMiddleName": "",
@@ -2112,7 +2113,7 @@ entity | | Object | Parameter list | M
 | | remitterGender | String(1) | Remitter gender. M=Male, F=Female | O
 | | remitterNationality | String(3) | Remitter Nationality(3 characters Country ISO code) | M
 | | remitterAccountNumber | String(30) | Remitter account number | O
-| | sourceIncome | String(16) | Remitter source of income | M
+| | sourceOfIncome | String(16) | Remitter source of income | M
 | | beneficiaryFirstName | String(50) | Beneficiary First Name | M
 | | beneficiaryMiddleName | String(50) | Beneficiary Middle Name | O
 | | beneficiaryLastName | String(50) | Beneficiary Last Name | M
@@ -2136,6 +2137,7 @@ entity | | Object | Parameter list | M
 | | beneficiaryNationality | String(3) | Nationality of Beneficiary(3 Character Country ISO Code) | M
 | | beneficiaryRelationship | String(16) | Relationship with the remitter | M
 | | beneficiaryBankCode | String(20) | Bank code for Beneficiary | C
+| | beneficiaryBankName | String(64) | Bank name for Beneficiary | C
 | | beneficiaryBankAccountNumber | String(30) | Bank Account Number of Beneficiary | C
 | | beneficiaryBankAccountName | String(35) | Bank Account name of Beneficiary | C
 | | beneficiaryAccount | String(35) | Account of Beneficiary | C

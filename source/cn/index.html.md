@@ -13,7 +13,7 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.16 
+# 接口版本 v1.0.17.2 
 [For English](/en)
 ## 简介
 
@@ -23,7 +23,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 ```
 ```shell
@@ -31,7 +31,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 
 ```
@@ -40,7 +40,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.16</version>
+      <version>1.0.17.2</version>
   </dependency>
 */
 ```
@@ -675,7 +675,7 @@ entity | | Object | NextPls返回结果
         "remitterIdExpDate": "01/01/1994",
         "remitterNationality": "HKG",
         "remitterAccountNumber": "",
-        "sourceIncome": "SALARY",
+        "sourceOfIncome": "SALARY",
         
         "beneficiaryFirstName": "Beneficiary_First_Name",
         "beneficiaryMiddleName": "",
@@ -779,7 +779,7 @@ entity | | Object | 客户方请求参数 | M
 | | remitterGender | String(1) | 汇款人性别. M=Male, F=Female | O
 | | remitterNationality | String(3) | 汇款人国籍(3位国家编码) | M
 | | remitterAccountNumber | String(30) | 汇款人账户号 | O
-| | sourceIncome | String(16) | 汇款人收入来源 | M
+| | sourceOfIncome | String(16) | 汇款人收入来源 | M
 | | beneficiaryFirstName | String(50) | 收款人名-英 | M
 | | beneficiaryMiddleName | String(50) | 收款人中间名-英 | O
 | | beneficiaryLastName | String(50) | 收款人姓-英 | M
@@ -804,6 +804,7 @@ entity | | Object | 客户方请求参数 | M
 | | beneficiaryNationality | String(3) | 收款人国籍(3位国家编码) | M
 | | beneficiaryRelationship | String(16) | 与汇款者的关系 | M
 | | beneficiaryBankCode | String(20) | 收款机构编号 | C
+| | beneficiaryBankName | String(64) | 收款银行名称 | C
 | | beneficiaryBankAccountNumber | String(30) | 收款银行账户 | C
 | | beneficiaryBankAccountName | String(35) | 收款户名 | C
 | | beneficiaryAccount | String(35) | 收款账号 | C
