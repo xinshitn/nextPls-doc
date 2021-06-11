@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-0-16" class="toc-h1 toc-link" data-title="接口版本 v1.0.16">接口版本 v1.0.16</a>
+            <a href="#v1-0-17-2" class="toc-h1 toc-link" data-title="接口版本 v1.0.17.2">接口版本 v1.0.17.2</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
@@ -324,7 +324,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='v1-0-16'>接口版本 v1.0.16</h1>
+        <h1 id='v1-0-17-2'>接口版本 v1.0.17.2</h1>
 <p><a href="/en">For English</a></p>
 <h2 id='5ea2e0cde2'>简介</h2>
 <blockquote>
@@ -333,20 +333,20 @@
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">16</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mf">17.2</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.16&lt;/version&gt;
+      &lt;version&gt;1.0.17.2&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.16&lt;/version&gt;
+      &lt;version&gt;1.0.17.2&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -1267,7 +1267,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         </span><span class="s2">"remitterIdExpDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/01/1994"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterNationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"remitterAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sourceIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALARY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceOfIncome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALARY"</span><span class="p">,</span><span class="w">
 
         </span><span class="s2">"beneficiaryFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary_First_Name"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"beneficiaryMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1542,7 +1542,7 @@ CEK不需要有特殊含义，可以为随机的字符串
 </tr>
 <tr>
 <td></td>
-<td>sourceIncome</td>
+<td>sourceOfIncome</td>
 <td>String(16)</td>
 <td>汇款人收入来源</td>
 <td>M</td>
@@ -1713,6 +1713,13 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>beneficiaryBankCode</td>
 <td>String(20)</td>
 <td>收款机构编号</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td>beneficiaryBankName</td>
+<td>String(64)</td>
+<td>收款银行名称</td>
 <td>C</td>
 </tr>
 <tr>
