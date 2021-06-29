@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-17-2" class="toc-h1 toc-link" data-title="Version 1.0.17.2">Version 1.0.17.2</a>
+            <a href="#version-1-0-18-1" class="toc-h1 toc-link" data-title="Version 1.0.18.1">Version 1.0.18.1</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -324,7 +324,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-17-2'>Version 1.0.17.2</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-18-1'>Version 1.0.18.1</h1><h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
@@ -4130,6 +4130,12 @@ CEK is not a necessarily human readable ASCII string
 <td>String</td>
 <td>The Transaction status</td>
 </tr>
+<tr>
+<td></td>
+<td>errorMsg</td>
+<td>String</td>
+<td>The Transaction error message</td>
+</tr>
 </tbody></table>
 <h2 id='6-6-dotokentransaction'>6.6.DoTokenTransaction</h2>
 <p>This method allows the partner to initiate the transfer by a rate token.
@@ -4904,6 +4910,12 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 <td>String</td>
 <td>The Transaction status</td>
 </tr>
+<tr>
+<td></td>
+<td>errorMsg</td>
+<td>String</td>
+<td>The Transaction error message</td>
+</tr>
 </tbody></table>
 <h2 id='6-7-gettransactionstatus'>6.7.GetTransactionStatus</h2>
 <p>This method allows the partner to check the Transaction status. </p>
@@ -5060,6 +5072,12 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 <td>status</td>
 <td>String</td>
 <td>The Transaction status</td>
+</tr>
+<tr>
+<td></td>
+<td>errorMsg</td>
+<td>String</td>
+<td>The Transaction error message</td>
 </tr>
 </tbody></table>
 <h2 id='6-8-dotransactioncancel'>6.8.DoTransactionCancel</h2>
