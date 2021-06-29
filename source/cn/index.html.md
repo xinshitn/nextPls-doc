@@ -13,7 +13,7 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.17.2 
+# 接口版本 v1.0.18.1 
 [For English](/en)
 ## 简介
 
@@ -839,6 +839,7 @@ entity | | Object | NextPls返回结果
 | | txnNo | String | NextPls订单唯一编号
 | | clientTxnNo | String | 客户方订单唯一编号
 | | status | String | 订单状态
+| | errorMsg | String | 订单错误信息
 
 
 ## ~~6.6.DoTokenTransaction~~
@@ -929,6 +930,7 @@ entity | | Object | NextPls返回结果
 | | clientTxnNo | String | 客户方订单唯一编号
 | | reference | String | 现金到账的领取码
 | | status | String | 订单状态
+| | errorMsg | String | 订单错误信息
 
 
 ## ~~6.8.DoTransactionCancel~~

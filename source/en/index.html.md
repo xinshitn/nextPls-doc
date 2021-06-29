@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.17.2
+# Version 1.0.18.1
 
 ## Introduction
 
@@ -1839,6 +1839,7 @@ entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
+| | errorMsg | String | The Transaction error message
 
 
 ## 6.6.DoTokenTransaction
@@ -2171,6 +2172,7 @@ entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
+| | errorMsg | String | The Transaction error message
 
 
 ## 6.7.GetTransactionStatus
@@ -2259,6 +2261,7 @@ entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner txn
 | | status | String | The Transaction status
+| | errorMsg | String | The Transaction error message
 
 
 
