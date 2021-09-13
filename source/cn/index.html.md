@@ -13,7 +13,7 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.18.1 
+# 接口版本 v1.0.19 
 [For English](/en)
 ## 简介
 
@@ -23,7 +23,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 ```
 ```shell
@@ -31,7 +31,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 
 ```
@@ -40,7 +40,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 */
 ```
@@ -936,9 +936,13 @@ entity | | Object | NextPls返回结果
 ## ~~6.8.DoTransactionCancel~~
 
 
-# Errors
+# 错误信息
 ## 7.1.HTTP Error Codes
-### These are error codes that will be returned in the body of API responses
+### 这些错误编码将在API的返回体中显示
+
+<aside class="warning">
+注意：接口状态仅代表当前请求结果，不代表订单状态，订单状态请务必以订单查询中的状态为准！
+</aside>
 
 Error Code | Description
 --------- | -------

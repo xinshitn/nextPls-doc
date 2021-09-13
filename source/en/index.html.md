@@ -15,8 +15,8 @@ includes:
 search: true
 ---
 
-# Version 1.0.18.1
-
+# Version 1.0.19
+[中文版](/cn)
 ## Introduction
 
 >We suggest using SDK to start first (Example in Java):
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.17.2</version>
+      <version>1.0.19</version>
   </dependency>
 */
 ```
@@ -2358,6 +2358,10 @@ entity | | Object | Parameter list
 # Errors
 ## 7.1.HTTP Error Codes
 ### These are error codes that will be returned in the body of API responses
+
+<aside class="warning">
+Warning：The Error Codes only represents the result of the current request, not the status of the transaction. The status of the transaction must be based on what in the order query.
+</aside>
 
 Error Code | Description
 --------- | -------
