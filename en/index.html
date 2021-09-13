@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#version-1-0-18-1" class="toc-h1 toc-link" data-title="Version 1.0.18.1">Version 1.0.18.1</a>
+            <a href="#version-1-0-19" class="toc-h1 toc-link" data-title="Version 1.0.19">Version 1.0.19</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
@@ -324,27 +324,29 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='version-1-0-18-1'>Version 1.0.18.1</h1><h2 id='introduction'>Introduction</h2>
+        <h1 id='version-1-0-19'>Version 1.0.19</h1>
+<p><a href="/cn">中文版</a></p>
+<h2 id='introduction'>Introduction</h2>
 <blockquote>
 <p>We suggest using SDK to start first (Example in Java):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mf">17.2</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">19</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.17.2&lt;/version&gt;
+      &lt;version&gt;1.0.19&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.17.2&lt;/version&gt;
+      &lt;version&gt;1.0.19&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -5240,6 +5242,10 @@ Before using this method, you must request the &#39;GetExRateLock&#39;</p>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1><h2 id='7-1-http-error-codes'>7.1.HTTP Error Codes</h2><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
+<aside class="warning">
+Warning：The Error Codes only represents the result of the current request, not the status of the transaction. The status of the transaction must be based on what in the order query.
+</aside>
+
 <table><thead>
 <tr>
 <th>Error Code</th>

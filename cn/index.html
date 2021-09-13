@@ -221,7 +221,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-0-18-1" class="toc-h1 toc-link" data-title="接口版本 v1.0.18.1">接口版本 v1.0.18.1</a>
+            <a href="#v1-0-19" class="toc-h1 toc-link" data-title="接口版本 v1.0.19">接口版本 v1.0.19</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
@@ -308,7 +308,7 @@
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#a38a81c9d5" class="toc-h1 toc-link" data-title="错误信息">错误信息</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#7-1-http-error-codes" class="toc-h2 toc-link" data-title="7.1.HTTP Error Codes">7.1.HTTP Error Codes</a>
@@ -324,7 +324,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='v1-0-18-1'>接口版本 v1.0.18.1</h1>
+        <h1 id='v1-0-19'>接口版本 v1.0.19</h1>
 <p><a href="/en">For English</a></p>
 <h2 id='5ea2e0cde2'>简介</h2>
 <blockquote>
@@ -333,20 +333,20 @@
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">&lt;dependency&gt;</span><span class="w">
       </span><span class="err">&lt;groupId&gt;com.nextpls&lt;/groupId&gt;</span><span class="w">
       </span><span class="err">&lt;artifactId&gt;sdk&lt;/artifactId&gt;</span><span class="w">
-      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mf">17.2</span><span class="err">&lt;/version&gt;</span><span class="w">
+      </span><span class="err">&lt;version&gt;</span><span class="mf">1.0</span><span class="err">.</span><span class="mi">19</span><span class="err">&lt;/version&gt;</span><span class="w">
   </span><span class="err">&lt;/dependency&gt;</span><span class="w">
 </span></code></pre><pre class="highlight shell tab-shell"><code>
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.17.2&lt;/version&gt;
+      &lt;version&gt;1.0.19&lt;/version&gt;
   &lt;/dependency&gt;
 
 </code></pre><pre class="highlight java tab-java"><code><span class="cm">/**
   &lt;dependency&gt;
       &lt;groupId&gt;com.nextpls&lt;/groupId&gt;
       &lt;artifactId&gt;sdk&lt;/artifactId&gt;
-      &lt;version&gt;1.0.17.2&lt;/version&gt;
+      &lt;version&gt;1.0.19&lt;/version&gt;
   &lt;/dependency&gt;
 */</span>
 </code></pre>
@@ -2014,7 +2014,11 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>订单错误信息</td>
 </tr>
 </tbody></table>
-<h2 id='6-8-dotransactioncancel'><del>6.8.DoTransactionCancel</del></h2><h1 id='errors'>Errors</h1><h2 id='7-1-http-error-codes'>7.1.HTTP Error Codes</h2><h3 id='these-are-error-codes-that-will-be-returned-in-the-body-of-api-responses'>These are error codes that will be returned in the body of API responses</h3>
+<h2 id='6-8-dotransactioncancel'><del>6.8.DoTransactionCancel</del></h2><h1 id='a38a81c9d5'>错误信息</h1><h2 id='7-1-http-error-codes'>7.1.HTTP Error Codes</h2><h3 id='api'>这些错误编码将在API的返回体中显示</h3>
+<aside class="warning">
+注意：接口状态仅代表当前请求结果，不代表订单状态，订单状态请务必以订单查询中的状态为准！
+</aside>
+
 <table><thead>
 <tr>
 <th>Error Code</th>
