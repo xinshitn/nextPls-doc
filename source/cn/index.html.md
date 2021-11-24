@@ -13,7 +13,7 @@ toc_footers:
 search: true
 ---
 
-# 接口版本 v1.0.19 
+# 接口版本 v1.0.19.2 
 [For English](/en)
 ## 简介
 
@@ -23,7 +23,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 ```
 ```shell
@@ -31,7 +31,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 
 ```
@@ -40,7 +40,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 */
 ```

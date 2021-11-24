@@ -15,7 +15,7 @@ includes:
 search: true
 ---
 
-# Version 1.0.19
+# Version v1.0.19.2
 [中文版](/cn)
 ## Introduction
 
@@ -25,7 +25,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 ```
 ```shell
@@ -33,7 +33,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 
 ```
@@ -42,7 +42,7 @@ search: true
   <dependency>
       <groupId>com.nextpls</groupId>
       <artifactId>sdk</artifactId>
-      <version>1.0.19</version>
+      <version>1.0.19.2</version>
   </dependency>
 */
 ```
