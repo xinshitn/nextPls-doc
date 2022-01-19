@@ -959,6 +959,7 @@ CEK不需要有特殊含义，可以为随机的字符串
   </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C2C"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
@@ -979,6 +980,7 @@ CEK不需要有特殊含义，可以为随机的字符串
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "transactionType": "C2C",
              "payInCountry": "HKG",
              "payInCurrency": "HKD",
              "payInAmount": "13.57",
@@ -999,6 +1001,7 @@ CEK不需要有特殊含义，可以为随机的字符串
         <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
     <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
     <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+    <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransactionType</span><span class="o">(</span><span class="s">"C2C"</span><span class="o">);</span>
     <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
     <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
     <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInAmount</span><span class="o">(</span><span class="s">"13.57"</span><span class="o">);</span>
@@ -1043,6 +1046,13 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>String(20)</td>
 <td>客户方唯一编号</td>
 <td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>transactionType</td>
+<td>String(3)</td>
+<td>交易类型：C2C(默认),C2B,B2B,B2C</td>
+<td>O</td>
 </tr>
 <tr>
 <td></td>
@@ -1112,6 +1122,7 @@ CEK不需要有特殊含义，可以为随机的字符串
   </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C2C"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payOutCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
@@ -1168,6 +1179,12 @@ CEK不需要有特殊含义，可以为随机的字符串
 <td>clientTxnNo</td>
 <td>String</td>
 <td>客户方交易编号</td>
+</tr>
+<tr>
+<td></td>
+<td>transactionType</td>
+<td>String</td>
+<td>交易类型</td>
 </tr>
 <tr>
 <td></td>

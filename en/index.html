@@ -3243,6 +3243,7 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"apiName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO_TRANSACTION_PRE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C2C"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
@@ -3263,6 +3264,7 @@ CEK is not a necessarily human readable ASCII string
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "transactionType": "C2C",
              "payInCountry": "HKG",
              "payInCurrency": "HKD",
              "payInAmount": "13.57",
@@ -3283,6 +3285,7 @@ CEK is not a necessarily human readable ASCII string
                 <span class="n">publicKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
         <span class="n">NextPlsTransactionPreRequestDto</span> <span class="n">preRequestDto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NextPlsTransactionPreRequestDto</span><span class="o">();</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setClientTxnNo</span><span class="o">(</span><span class="s">"1000"</span><span class="o">);</span>
+        <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setTransactionType</span><span class="o">(</span><span class="s">"C2C"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCountry</span><span class="o">(</span><span class="s">"HKG"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInCurrency</span><span class="o">(</span><span class="s">"HKD"</span><span class="o">);</span>
         <span class="n">preRequestDto</span><span class="o">.</span><span class="na">setPayInAmount</span><span class="o">(</span><span class="s">"13.57"</span><span class="o">);</span>
@@ -3323,6 +3326,12 @@ CEK is not a necessarily human readable ASCII string
 <td>clientTxnNo</td>
 <td>String(20)</td>
 <td>Unique code for partner&#39;s txn</td>
+</tr>
+<tr>
+<td></td>
+<td>transactionType</td>
+<td>String(3)</td>
+<td>C2C(Default),C2B,B2B,B2C</td>
 </tr>
 <tr>
 <td></td>
@@ -3383,6 +3392,7 @@ CEK is not a necessarily human readable ASCII string
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"txnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IU201G0279816077"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C2C"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientTxnNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w"> 
         </span><span class="s2">"payInAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.57"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payInCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
@@ -3440,6 +3450,12 @@ CEK is not a necessarily human readable ASCII string
 <td>clientTxnNo</td>
 <td>String</td>
 <td>Unique code for partner&#39;s txn</td>
+</tr>
+<tr>
+<td></td>
+<td>transactionType</td>
+<td>String</td>
+<td>C2C,C2B,B2B,B2C</td>
 </tr>
 <tr>
 <td></td>
