@@ -519,6 +519,7 @@ This method allows the partner to Get the last rate and locked
   "apiName": "DO_TRANSACTION_PRE",
   "entity": {
     "clientTxnNo": "1000",
+    "transactionType": "C2C",
     "payInCountry": "HKG",
     "payInCurrency": "HKD",
     "payInAmount": "13.57",
@@ -541,6 +542,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "transactionType": "C2C",
              "payInCountry": "HKG",
              "payInCurrency": "HKD",
              "payInAmount": "13.57",
@@ -563,6 +565,7 @@ public class example{
         publicKey, secretKey);
     NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
     preRequestDto.setClientTxnNo("1000");
+    preRequestDto.setTransactionType("C2C");
     preRequestDto.setPayInCountry("HKG");
     preRequestDto.setPayInCurrency("HKD");
     preRequestDto.setPayInAmount("13.57");
@@ -585,6 +588,7 @@ public class example{
 apiName | | String | DO_TRANSACTION_PRE | M
 entity | | Object | 客户方请求参数 | M
 | | clientTxnNo | String(20) | 客户方唯一编号 | M
+| | transactionType | String(3) | 交易类型：C2C(默认),C2B,B2B,B2C | O
 | | payInCountry | String(3) | 汇款(源)国家 | M
 | | payInCurrency | String(3) | 汇款(源)币种 | M
 | | payInAmount | String(18) | 汇款(源)金额 | C
@@ -604,6 +608,7 @@ entity | | Object | 客户方请求参数 | M
   "entity": {
     "txnNo": "IU201G0279816077",
     "clientTxnNo": "1000",
+    "transactionType": "C2C",
     "payInAmount": "13.57",
     "payInCurrency": "HKD",
     "payOutCurrency": "PHP",
@@ -627,6 +632,7 @@ msg | | String | 返回消息
 entity | | Object | NextPls返回结果
 | | txnNo | String | 交易编号
 | | clientTxnNo | String | 客户方交易编号
+| | transactionType | String | 交易类型
 | | payInAmount | String | 汇款(源)金额
 | | payInCurrency | String | 汇款(源)币种
 | | payOutCurrency | String | 到账(目标)币种

@@ -1515,6 +1515,7 @@ This method allows the partner to preview the transfer details and keep the rate
     "apiName": "DO_TRANSACTION_PRE",
     "entity": {
         "clientTxnNo": "1000",
+        "transactionType": "C2C",
         "payInCountry": "HKG",
         "payInCurrency": "HKD",
         "payInAmount": "13.57",
@@ -1537,6 +1538,7 @@ curl -X POST http://staging.nextpls.com/v1/remittance
          "apiName": "DO_TRANSACTION_PRE",
          "entity": {
              "clientTxnNo": "1000",
+             "transactionType": "C2C",
              "payInCountry": "HKG",
              "payInCurrency": "HKD",
              "payInAmount": "13.57",
@@ -1559,6 +1561,7 @@ public class example{
                 publicKey, secretKey);
         NextPlsTransactionPreRequestDto preRequestDto = new NextPlsTransactionPreRequestDto();
         preRequestDto.setClientTxnNo("1000");
+        preRequestDto.setTransactionType("C2C");
         preRequestDto.setPayInCountry("HKG");
         preRequestDto.setPayInCurrency("HKD");
         preRequestDto.setPayInAmount("13.57");
@@ -1581,6 +1584,7 @@ Field |   | Type | Describe
 apiName | | String | DO_TRANSACTION_PRE
 entity | | Object | Parameter list
 | | clientTxnNo | String(20) | Unique code for partner's txn | M
+| | transactionType | String(3) | C2C(Default),C2B,B2B,B2C | O
 | | payInCountry | String(3) | Pay In Country Code | M
 | | payInCurrency | String(3) | Pay In Currency | M
 | | payInAmount | String(18) | Pay In Amount | C
@@ -1599,6 +1603,7 @@ entity | | Object | Parameter list
     "msg": "success",
     "entity": {
         "txnNo": "IU201G0279816077",
+        "transactionType": "C2C",
         "clientTxnNo": "1000", 
         "payInAmount": "13.57",
         "payInCurrency": "HKD",
@@ -1623,6 +1628,7 @@ msg | | String | Result message
 entity | | Object | Parameter list
 | | txnNo | String | Unique code for NextPls txn
 | | clientTxnNo | String | Unique code for partner's txn
+| | transactionType | String | C2C,C2B,B2B,B2C
 | | payInCurrency | String | Pay In Currency
 | | payInAmount | String | Pay In Amount
 | | payOutCurrency | String | Pay Out Currency
