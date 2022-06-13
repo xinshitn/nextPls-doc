@@ -767,9 +767,9 @@ entity | | Object | 客户方请求参数 | M
 | | remitterFirstName | String(50) | 汇款人名-英 | M
 | | remitterMiddleName | String(50) | 汇款人中间名-英 | O
 | | remitterLastName | String(50) | 汇款人姓-英 | M
-| | remitterFirstLocalName | String(50) | 汇款人名-母语 | M
+| | remitterFirstLocalName | String(50) | 汇款人名-母语 | C
 | | remitterMiddleLocalName | String(50) | 汇款人中间名-母语 | O
-| | remitterLastLocalName | String(50) | 汇款人姓-母语 | M
+| | remitterLastLocalName | String(50) | 汇款人姓-母语 | C
 | | remitterMobile | String(20) | 汇款人手机号 | M
 | | remitterEmail | String(50) | 汇款人邮箱 | O
 | | remitterAddress1 | String(35) | 汇款人地址1 | M
@@ -788,7 +788,7 @@ entity | | Object | 客户方请求参数 | M
 | | remitterNationality | String(3) | 汇款人国籍(3位国家编码) | M
 | | remitterAccountNumber | String(30) | 汇款人账户号 | O
 | | sourceOfIncome | String(16) | 汇款人收入来源 | M
-| | beneficiaryFirstName | String(50) | 收款人名-英 | M
+| | beneficiaryFirstName | String(50) | 收款人名-英 | C
 | | beneficiaryMiddleName | String(50) | 收款人中间名-英 | O
 | | beneficiaryLastName | String(50) | 收款人姓-英 | M
 | | beneficiaryFirstLocalName | String(50) | 收款人名-母语 | M
